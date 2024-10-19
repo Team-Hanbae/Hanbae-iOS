@@ -263,7 +263,6 @@ class MetronomeViewModel {
             
         case let .changeAccent(daebak, sobak):
             self.accentUseCase.moveNextAccent(daebakIndex: daebak, sobakIndex: sobak)
-            print("\(daebak) \(sobak)")
         case .stopMetronome:
             self._state.isPlaying = false
             self.metronomeOnOffUseCase.stop()
