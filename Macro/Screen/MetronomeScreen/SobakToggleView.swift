@@ -10,7 +10,7 @@ import SwiftUI
 struct SobakToggleView: View {
     
     @Binding var isSobakOn: Bool
-    @Binding var jangdan: Jangdan
+    var jangdan: Jangdan?
     
     var body: some View {
             HStack {
