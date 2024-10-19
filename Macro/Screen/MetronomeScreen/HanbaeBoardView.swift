@@ -15,7 +15,7 @@ struct HanbaeBoardView: View {
     var tabBakBarEvent: (Int, Int) -> Void
     
     var body: some View {
-        Grid(verticalSpacing: 4) {
+        Grid(horizontalSpacing: 0) {
             GridRow {
                 ForEach(jangdan.indices, id: \.self) { daebakIndex in
                     
@@ -29,9 +29,27 @@ struct HanbaeBoardView: View {
                         tabBakBarEvent(daebakIndex, sobak)
                     }
                     .gridCellColumns(jangdan[daebakIndex].count)
+                    
+                    if daebakIndex < jangdan.count - 1 {
+                        VStack {
+                            Rectangle()
+                                .frame(width: 1, height: 12)
+                                .foregroundStyle(.bakbardivider)
+                                .offset(y: -16)
+                            
+                            Spacer()
+                            
+                            Rectangle()
+                                .frame(width: 1, height: 12)
+                                .foregroundStyle(.bakbardivider)
+                                .offset(y: 16)
+                        }
+                        .frame(width: 4)
+                    }
                 }
             }
         }
+        .padding(.vertical, 16)
     }
 }
 
