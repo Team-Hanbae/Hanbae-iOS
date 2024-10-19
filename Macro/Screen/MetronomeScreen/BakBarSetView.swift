@@ -79,29 +79,21 @@ func determineRhythmCase(daebakCount: Int, bakCount: Int) -> RhythmCase {
 // BakBarSetView: 대박과 소박을 그리는 뷰
 struct BakBarSetView: View {
     @State var viewModel: MetronomeViewModel
-    var bakCount: Int // 소박 개수
-    var daebakCount: Int // 대박 개수
-    var daebakList: [[Accent]] // 대박 리스트
-    var isSobakMode: Bool // 소박 보기 모드인지 대박 보기 모드인지 구분하는 불리언 값
-    var isPlaying: Bool // 재생 중인지 여부
-    var currentIndex: Int? // 현재 재생 중인 인덱스
-    
-    
     
     var body: some View {
         // 대박과 소박 개수로 리듬 케이스 결정
-        let rhythmCase = determineRhythmCase(daebakCount: daebakCount, bakCount: bakCount)
+        let rhythmCase = determineRhythmCase(daebakCount: viewModel.state.daebakCount, bakCount: viewModel.state.bakCount)
         
         HStack(spacing: 1) {
-            if isSobakMode {
+            if viewModel.state.isSobakOn {
                 // 소박을 반복하여 그리기
-                ForEach(daebakList.indices, id: \.self) { daebakIndex in
-                    let daebak = daebakList[daebakIndex]
+                ForEach(viewModel.state.jangdanAccent.indices, id: \.self) { daebakIndex in
+                    let daebak = viewModel.state.jangdanAccent[daebakIndex]
                     
                     HStack(spacing: 0) { // 소박들이 한 대박 안에 붙어서 렌더링
                         ForEach(daebak.indices, id: \.self) { sobakIndex in
                             let currentSobakIndex = (daebakIndex * daebak.count) + sobakIndex
-                            let isCurrentBeat = isPlaying && currentIndex == currentSobakIndex
+                            let isCurrentBeat = viewModel.state.isPlaying && viewModel.state.currentIndex == currentSobakIndex
                             
                             BakBarView(
                                 currentAccent: daebak[sobakIndex], // 소박의 강세 적용
@@ -110,9 +102,9 @@ struct BakBarSetView: View {
                                 barWidth: rhythmCase.sobakSize()?.width ?? 30, // 소박 너비
                                 
                                 // 재생 중일 때와 아닐 때의 색상 분기 처리
-                                barColor: !isPlaying ? .bakbarActive : (isCurrentBeat ? .bakbarActive : .bakbarInactive),
-                                strongAccentIntColor: !isPlaying ? .bakbarnumberBlack : (isCurrentBeat ? .bakbarnumberBlack : .bakbarnumberBlack),
-                                elseAccentIntColor: !isPlaying ? .bakbarnumberWhite : (isCurrentBeat ? .bakbarnumberWhite  : .bakbarnumberGray),
+                                barColor: !viewModel.state.isPlaying ? .bakbarActive : (isCurrentBeat ? .bakbarActive : .bakbarInactive),
+                                strongAccentIntColor: !viewModel.state.isPlaying ? .bakbarnumberBlack : (isCurrentBeat ? .bakbarnumberBlack : .bakbarnumberBlack),
+                                elseAccentIntColor: !viewModel.state.isPlaying ? .bakbarnumberWhite : (isCurrentBeat ? .bakbarnumberWhite  : .bakbarnumberGray),
                                 accent: {
                                     viewModel.effect(action: .changeAccent(daebak: daebakIndex, sobak: sobakIndex))
                                 }
@@ -130,7 +122,7 @@ struct BakBarSetView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 4)) // 소박도 둥근 모서리 적용
                     
                     // 대박 사이에 디바이더 추가
-                    if daebakIndex != daebakList.count - 1 {
+                    if daebakIndex != viewModel.state.jangdanAccent.count - 1 {
                         VStack(spacing: 285) {
                             Divider()
                                 .frame(width: 1, height: 12)
@@ -144,10 +136,10 @@ struct BakBarSetView: View {
                 }
             } else {
                 // 대박을 반복하여 그리기
-                ForEach(daebakList.indices, id: \.self) { daebakIndex in
+                ForEach(viewModel.state.jangdanAccent.indices, id: \.self) { daebakIndex in
                     let size = rhythmCase.daebakSize(forIndex: daebakIndex)
-                    let daebak = daebakList[daebakIndex]
-                    let isCurrentBeat = isPlaying && currentIndex == daebakIndex
+                    let daebak = viewModel.state.jangdanAccent[daebakIndex]
+                    let isCurrentBeat = viewModel.state.isPlaying && viewModel.state.currentIndex == daebakIndex
                     
                     BakBarView(
                         currentAccent: daebak[0],
@@ -155,16 +147,16 @@ struct BakBarSetView: View {
                         barHeight: size.height,
                         barWidth: size.width,
                         
-                        barColor: !isPlaying ? .bakbarActive : (isCurrentBeat ? .bakbarActive : .bakbarInactive),
-                        strongAccentIntColor: !isPlaying ? .bakbarnumberBlack : (isCurrentBeat ? .bakbarnumberBlack : .bakbarnumberBlack),
-                        elseAccentIntColor: !isPlaying ? .bakbarnumberWhite : (isCurrentBeat ? .bakbarnumberWhite  : .bakbarnumberGray),
+                        barColor: !viewModel.state.isPlaying ? .bakbarActive : (isCurrentBeat ? .bakbarActive : .bakbarInactive),
+                        strongAccentIntColor: !viewModel.state.isPlaying ? .bakbarnumberBlack : (isCurrentBeat ? .bakbarnumberBlack : .bakbarnumberBlack),
+                        elseAccentIntColor: !viewModel.state.isPlaying ? .bakbarnumberWhite : (isCurrentBeat ? .bakbarnumberWhite  : .bakbarnumberGray),
                         accent: {viewModel.effect(action: .changeAccent(daebak: daebakIndex, sobak: 0))}
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 4))
                     //                        .padding(.trailing, 1)
                     
                     // 대박 사이에 디바이더 추가
-                    if daebakIndex != daebakList.count - 1 {
+                    if daebakIndex != viewModel.state.jangdanAccent.count - 1 {
                         VStack(spacing: 285) {
                             Divider()
                                 .frame(width: 1, height: 12)
@@ -185,24 +177,11 @@ struct BakBarSetView: View {
 // 프리뷰 설정
 struct BakBarSetView_Previews: PreviewProvider {
     static var previews: some View {
-        let daebakList: [[Accent]] = [
-            [.strong, .medium, .weak],
-            [.medium, .weak, .strong],
-            [.weak, .strong, .medium],
-            [.strong, .medium, .weak]
-        ]
-        
         let viewModel = MetronomeViewModel()
         viewModel.effect(action: .selectJangdan(jangdan: .굿거리))
         
         return BakBarSetView(
-            viewModel: viewModel,
-            bakCount: 12,
-            daebakCount: 4,
-            daebakList: daebakList,
-            isSobakMode: true, // 소박 모드
-            isPlaying: true, // 재생 중 상태
-            currentIndex: 0 // 현재 인덱스
+            viewModel: viewModel
         )
     }
 }
