@@ -11,6 +11,7 @@
 		2B88610F2CBD2E720036C6DB /* JangdanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88610E2CBD2E720036C6DB /* JangdanRepository.swift */; };
 		2B8861112CBD2EF10036C6DB /* JangdanDataInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861102CBD2EF10036C6DB /* JangdanDataInterface.swift */; };
 		2B8861132CBD34D30036C6DB /* JangdanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861122CBD34D30036C6DB /* JangdanEnum.swift */; };
+		2B88611F2CC4B5C60036C6DB /* DaebakPendulumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88611E2CC4B5C60036C6DB /* DaebakPendulumView.swift */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2BE5ADEE2CABC4570094F3C3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDC2CABC4570094F3C3 /* Date+Extensions.swift */; };
@@ -68,6 +69,7 @@
 		2B88610E2CBD2E720036C6DB /* JangdanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanRepository.swift; sourceTree = "<group>"; };
 		2B8861102CBD2EF10036C6DB /* JangdanDataInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanDataInterface.swift; sourceTree = "<group>"; };
 		2B8861122CBD34D30036C6DB /* JangdanEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEnum.swift; sourceTree = "<group>"; };
+		2B88611E2CC4B5C60036C6DB /* DaebakPendulumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaebakPendulumView.swift; sourceTree = "<group>"; };
 		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +315,7 @@
 		43774F612CB7EDB100F54EF7 /* MetronomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2B88611E2CC4B5C60036C6DB /* DaebakPendulumView.swift */,
 				575157E52CBCE84700DC18D3 /* BakBarView.swift */,
 				575157E72CBCEFE100DC18D3 /* BakBarSetView.swift */,
 				43774F642CB7FD5300F54EF7 /* MetronomeView.swift */,
@@ -477,6 +480,7 @@
 				2BF22E8E2CB66E0A00E66E50 /* TempMainView.swift in Sources */,
 				439ABF082CB8220B003F6343 /* SobakToggleView.swift in Sources */,
 				575157E82CBCEFEC00DC18D3 /* BakBarSetView.swift in Sources */,
+				2B88611F2CC4B5C60036C6DB /* DaebakPendulumView.swift in Sources */,
 				439ABF0C2CB90E11003F6343 /* JangdanSelectSheetView.swift in Sources */,
 				3C1DB7342CB3C14900160970 /* MoveNextAccentInterface.swift in Sources */,
 				438226E12CAEC728007A3B23 /* TemplateUseCase.swift in Sources */,
