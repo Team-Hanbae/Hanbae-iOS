@@ -15,6 +15,7 @@
 		2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */; };
 		2B8861192CC3E61F0036C6DB /* PawnBakBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861182CC3E61F0036C6DB /* PawnBakBarView.swift */; };
 		2B88611B2CC3E62A0036C6DB /* PawnBakBarSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88611A2CC3E62A0036C6DB /* PawnBakBarSetView.swift */; };
+		2B88611F2CC4B5C60036C6DB /* DaebakPendulumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88611E2CC4B5C60036C6DB /* DaebakPendulumView.swift */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2BE5ADEE2CABC4570094F3C3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDC2CABC4570094F3C3 /* Date+Extensions.swift */; };
@@ -76,6 +77,7 @@
 		2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeBoardView.swift; sourceTree = "<group>"; };
 		2B8861182CC3E61F0036C6DB /* PawnBakBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnBakBarView.swift; sourceTree = "<group>"; };
 		2B88611A2CC3E62A0036C6DB /* PawnBakBarSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnBakBarSetView.swift; sourceTree = "<group>"; };
+		2B88611E2CC4B5C60036C6DB /* DaebakPendulumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaebakPendulumView.swift; sourceTree = "<group>"; };
 		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,6 +493,7 @@
 				575157E82CBCEFEC00DC18D3 /* BakBarSetView.swift in Sources */,
 				2B88611F2CC4B5C60036C6DB /* DaebakPendulumView.swift in Sources */,
 				2B8861192CC3E61F0036C6DB /* PawnBakBarView.swift in Sources */,
+				2B88611F2CC4B5C60036C6DB /* DaebakPendulumView.swift in Sources */,
 				439ABF0C2CB90E11003F6343 /* JangdanSelectSheetView.swift in Sources */,
 				3C1DB7342CB3C14900160970 /* MoveNextAccentInterface.swift in Sources */,
 				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
