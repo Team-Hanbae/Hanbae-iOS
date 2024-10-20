@@ -34,9 +34,14 @@ struct MetronomeView: View {
     var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                daebakPendulumView()
+                DaebakPendulumView(trigger: self.viewModel.state.pendulumTrigger)
+                    .padding(.horizontal, 16)
                     .padding(.top, 24)
                     .padding(.bottom, 16)
+                
+//                daebakPendulumView()
+//                    .padding(.top, 24)
+//                    .padding(.bottom, 16)
                 
                 BakBarSetView(
                     viewModel: self.viewModel,
@@ -205,6 +210,7 @@ class MetronomeViewModel {
         var isPlaying: Bool = false
         var currentIndex: Int = -1
         var bpm: Int = 60
+        var pendulumTrigger: Bool = false
     }
     
     enum Action {
@@ -240,10 +246,17 @@ class MetronomeViewModel {
             self._state.isPlaying.toggle()
             if self._state.isPlaying {
                 self.metronomeOnOffUseCase.play {
+                    withAnimation(.snappy(duration: 60.0 / Double(self._state.bpm))) {
+                        self._state.pendulumTrigger.toggle()
+                    }
+                    
                     self._state.currentIndex += 1
                     self._state.currentIndex %= self._state.isSobakOn ? self._state.bakCount : self._state.daebakCount
                 }
             } else {
+                withAnimation {
+                    self._state.pendulumTrigger = false
+                }
                 self.metronomeOnOffUseCase.stop()
             }
         case .decreaseBpm:
