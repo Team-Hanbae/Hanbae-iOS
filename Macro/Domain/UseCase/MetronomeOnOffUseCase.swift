@@ -19,7 +19,7 @@ class MetronomeOnOffUseCase {
     
     // timer
     private var timer: DispatchSourceTimer?
-    private let queue = DispatchQueue(label: "metronomeTimer", qos: .background) // 다른 스레드
+    private let queue = DispatchQueue(label: "metronomeTimer", qos: .userInteractive) // 다른 스레드
     private var interval: TimeInterval {
         60.0 / Double(bpm)
     }
@@ -59,7 +59,7 @@ extension MetronomeOnOffUseCase {
         // Timer 설정
         if let timer { self.stop() }
         self.timer = DispatchSource.makeTimerSource(queue: self.queue)
-        self.timer?.schedule(deadline: .now(), repeating: self.interval)
+        self.timer?.schedule(deadline: .now(), repeating: self.interval, leeway: .nanoseconds(1))
         self.timer?.setEventHandler { [weak self] in
             guard let self = self else { return }
             
