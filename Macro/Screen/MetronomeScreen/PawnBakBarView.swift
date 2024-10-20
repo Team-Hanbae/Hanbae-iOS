@@ -7,17 +7,6 @@
 
 import SwiftUI
 
-fileprivate extension Accent {
-    var grade: Int {
-        switch self {
-        case .strong: return 3
-        case .medium: return 2
-        case .weak: return 1
-        case .none: return 0
-        }
-    }
-}
-
 struct PawnBakBarView: View {
     var accent: Accent
     var isActive: Bool
@@ -27,15 +16,15 @@ struct PawnBakBarView: View {
         ZStack(alignment: .top) {
             VStack(spacing: 0) {
                 Rectangle()
-                    .fill(accent.grade >= Accent.strong.grade
+                    .fill(accent > .medium
                           ? isActive ? .bakbarActive : .bakbarInactive
                           : .bakbarsetframe)
                 Rectangle()
-                    .fill(accent.grade >= Accent.medium.grade
+                    .fill(accent > .weak
                           ? isActive ? .bakbarActive : .bakbarInactive
                           : .bakbarsetframe)
                 Rectangle()
-                    .fill(accent.grade >= Accent.weak.grade
+                    .fill(accent > .none
                           ? isActive ? .bakbarActive : .bakbarInactive
                           : .bakbarsetframe)
             }

@@ -32,3 +32,14 @@ enum Accent {
         }
     }
 }
+
+extension Accent: Comparable {
+    static func < (lhs: Accent, rhs: Accent) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .strong), (.weak, .strong), (.medium, .strong): return true
+        case (.none, .medium), (.weak, .medium): return true
+        case (.none, .weak): return true
+        default: return false
+        }
+    }
+}
