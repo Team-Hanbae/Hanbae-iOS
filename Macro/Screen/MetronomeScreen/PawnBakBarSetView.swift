@@ -16,7 +16,13 @@ struct PawnBakBarSetView: View {
     var tabBakBarEvent: (Int) -> Void
     
     var body: some View {
-        ZStack {
+        if isDaebakOnly {
+            PawnBakBarView(accent: accents[0], isActive: !isPlaying || activeIndex != nil, bakNumber: daebakIndex + 1)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .onTapGesture {
+                    tabBakBarEvent(0)
+                }
+        } else {
             HStack(spacing: 0) {
                 ForEach(accents.indices, id: \.self) { index in
                     PawnBakBarView(
@@ -41,18 +47,11 @@ struct PawnBakBarSetView: View {
                     }
                 }
             }
-            
-            if isDaebakOnly {
-                PawnBakBarView(accent: accents[0], isActive: !isPlaying || activeIndex != nil, bakNumber: daebakIndex + 1)
-                    .onTapGesture {
-                        tabBakBarEvent(0)
-                    }
-            }
+            .clipShape(RoundedRectangle(cornerRadius: 4))
         }
-        .clipShape(RoundedRectangle(cornerRadius: 4))
     }
 }
 
-//#Preview {
-//    PawnBakBarSetView(accents: [.strong, .medium, .weak, .none], daebakIndex: 3, isDaebakOnly: true, isPlaying: true, activeIndex: nil)
-//}
+#Preview {
+    PawnBakBarSetView(accents: [.strong, .medium, .weak, .none], daebakIndex: 3, isDaebakOnly: true, isPlaying: true, activeIndex: nil) {_ in}
+}
