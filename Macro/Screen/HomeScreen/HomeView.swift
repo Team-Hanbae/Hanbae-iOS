@@ -72,8 +72,10 @@ struct HomeView: View {
                             VStack {
                                 LazyVGrid(columns: columns, spacing: 8) {
                                     ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                        NavigationLink(jangdan.name, destination: BuiltinJangdanPracticeView(viewModel: DIContainer.shared.builtInJangdanPracticeViewModel, jangdanName: jangdan.rawValue))
-                                            .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
+                                        Button(jangdan.name) {
+                                            self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                        }
+                                        .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                     }
                                 }
                             }
