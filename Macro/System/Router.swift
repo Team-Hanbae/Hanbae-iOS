@@ -9,6 +9,7 @@ import SwiftUI
 
 enum Route: Hashable {
     case customJangdanList
+    case builtInJangdanPractice(jangdanName: String)
     case jangdanTypeSelect
     case customJangdanCreate(jangdanName: String)
     case customJangdanPractice(jangdanName: String, jangdanType: String)
@@ -22,6 +23,8 @@ class Router {
         switch route {
         case .customJangdanList:
             return AnyView(CustomJangdanListView(viewModel: DIContainer.shared.customJangdanListViewModel))
+        case let .builtInJangdanPractice(jangdanName):
+            return AnyView(BuiltinJangdanPracticeView(viewModel: DIContainer.shared.builtInJangdanPracticeViewModel, jangdanName: jangdanName))
         case .jangdanTypeSelect:
             return AnyView(JangdanTypeSelectView())
         case let .customJangdanCreate(jangdanName):
