@@ -90,12 +90,16 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         
         // Timer 실행
         self.timer?.resume()
+        // play 여부 publish
+        self.isPlayingSubject.send(true)
     }
     
     func stop() {
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil
+        // stop 여부 publish
+        self.isPlayingSubject.send(false)
     }
     
     func setSoundType() {
