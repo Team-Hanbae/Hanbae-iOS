@@ -64,6 +64,7 @@ class MetronomeControlViewModel {
 
 extension MetronomeControlViewModel {
     enum Action {
+        case changeIsPlaying
         case decreaseShortBpm
         case decreaseLongBpm(currentBpm: Int)
         case increaseShortBpm
@@ -77,6 +78,12 @@ extension MetronomeControlViewModel {
     
     func effect(action: Action) {
         switch action {
+        case .changeIsPlaying:
+            if self._state.isPlaying {
+                self.metronomeOnOffUseCase.stop()
+            } else {
+                self.metronomeOnOffUseCase.play()
+            }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self._state.bpm - 1)
             self.taptapUseCase.finishTapping()
