@@ -23,6 +23,7 @@ class MetronomeOnOffImplement {
     private var currentBeatIndex: Int
     var isSobakOn: Bool
     
+    private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
     var cancelBag: Set<AnyCancellable> = []
     
     // timer
@@ -63,6 +64,10 @@ class MetronomeOnOffImplement {
 
 // Play / Stop
 extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
+    var isPlayingPublisher: AnyPublisher<Bool, Never> {
+        self.isPlayingSubject.eraseToAnyPublisher()
+    }
+    
     
     func changeSobak() {
         self.isSobakOn.toggle()
