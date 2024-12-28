@@ -24,6 +24,7 @@ class MetronomeOnOffImplement {
     private var isSobakOn: Bool
     
     private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
+    private var tickSubject: PassthroughSubject<Void, Never> = .init()
     private var cancelBag: Set<AnyCancellable> = []
     
     // timer
@@ -68,12 +69,15 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isPlayingSubject.eraseToAnyPublisher()
     }
     
+    var tickPublisher: AnyPublisher<Void, Never> {
+        self.tickSubject.eraseToAnyPublisher()
+    }
     
     func changeSobak() {
         self.isSobakOn.toggle()
     }
     
-    func play(_ tickHandler: @escaping () -> Void ) {
+    func play() {
         // 데이터 갱신
         self.currentBeatIndex = 0
         UIApplication.shared.isIdleTimerDisabled = true
@@ -84,7 +88,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.timer?.setEventHandler { [weak self] in
             guard let self = self else { return }
             self.lastPlayTime = .now
-            tickHandler()
             self.timerHandler()
         }
         
@@ -110,5 +113,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         let accent: Accent = jangdanAccentList[self.currentBeatIndex % jangdanAccentList.count]
         self.soundManager.beep(accent)
         self.currentBeatIndex += 1
+        // timer 틱마다 publish
+        self.tickSubject.send()
     }
 }

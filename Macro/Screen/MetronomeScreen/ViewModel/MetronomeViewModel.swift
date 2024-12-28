@@ -47,6 +47,12 @@ class MetronomeViewModel {
             self._state.isPlaying = isPlaying
         }
         .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] _ in
+            guard let self else { return }
+            self.updateStatePerBak()
+        }
+        .store(in: &self.cancelBag)
     }
     
     private var _state: State = .init()
@@ -96,11 +102,9 @@ extension MetronomeViewModel {
         case .changeIsPlaying:
             self.initialDaeSoBakIndex()
             if self._state.isPlaying {
-                self.metronomeOnOffUseCase.play {
-                    self.updateStatePerBak()
-                }
-            } else {
                 self.metronomeOnOffUseCase.stop()
+            } else {
+                self.metronomeOnOffUseCase.play()
             }
             
         case let .changeAccent(row, daebak, sobak, newAccent):
