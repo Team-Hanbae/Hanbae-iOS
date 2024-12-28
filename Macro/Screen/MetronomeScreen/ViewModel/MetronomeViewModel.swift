@@ -95,7 +95,6 @@ extension MetronomeViewModel {
             self.metronomeOnOffUseCase.changeSobak()
         case .changeIsPlaying:
             self.initialDaeSoBakIndex()
-//            self._state.isPlaying.toggle()
             if self._state.isPlaying {
                 self.metronomeOnOffUseCase.play {
                     self.updateStatePerBak()
@@ -107,7 +106,6 @@ extension MetronomeViewModel {
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
-//            self._state.isPlaying = false
             if self._state.isSobakOn {
                 self._state.isSobakOn = false
                 self.metronomeOnOffUseCase.changeSobak()
