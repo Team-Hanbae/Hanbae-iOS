@@ -44,6 +44,7 @@ class MetronomeViewModel {
         
         self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
             guard let self else { return }
+            self.initialDaeSoBakIndex()
             self._state.isPlaying = isPlaying
         }
         .store(in: &self.cancelBag)
@@ -100,7 +101,6 @@ extension MetronomeViewModel {
             self._state.isSobakOn.toggle()
             self.metronomeOnOffUseCase.changeSobak()
         case .changeIsPlaying:
-            self.initialDaeSoBakIndex()
             if self._state.isPlaying {
                 self.metronomeOnOffUseCase.stop()
             } else {

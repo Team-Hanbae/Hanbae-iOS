@@ -91,10 +91,10 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
             self.timerHandler()
         }
         
-        // Timer 실행
-        self.timer?.resume()
         // play 여부 publish
         self.isPlayingSubject.send(true)
+        // Timer 실행
+        self.timer?.resume()
     }
     
     func stop() {
@@ -110,10 +110,11 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     private func timerHandler() {
+        // timer 틱마다 publish
+        self.tickSubject.send()
+        
         let accent: Accent = jangdanAccentList[self.currentBeatIndex % jangdanAccentList.count]
         self.soundManager.beep(accent)
         self.currentBeatIndex += 1
-        // timer 틱마다 publish
-        self.tickSubject.send()
     }
 }
