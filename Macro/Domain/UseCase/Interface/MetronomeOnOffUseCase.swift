@@ -9,6 +9,7 @@ import Combine
 
 protocol MetronomeOnOffUseCase {
     var isPlayingPublisher: AnyPublisher<Bool, Never> { get }
+    var isSobakOnPublisher: AnyPublisher<Bool, Never> { get }
     var tickPublisher: AnyPublisher<Void, Never> { get }
     
     func changeSobak()

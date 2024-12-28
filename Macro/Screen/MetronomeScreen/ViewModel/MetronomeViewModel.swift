@@ -49,6 +49,12 @@ class MetronomeViewModel {
         }
         .store(in: &self.cancelBag)
         
+        self.metronomeOnOffUseCase.isSobakOnPublisher.sink { [weak self] isSobakOn in
+            guard let self else { return }
+            self._state.isSobakOn = isSobakOn
+        }
+        .store(in: &self.cancelBag)
+        
         self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] _ in
             guard let self else { return }
             self.updateStatePerBak()
@@ -95,16 +101,16 @@ extension MetronomeViewModel {
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.initialDaeSoBakIndex()
             self.taptapUseCase.finishTapping()
-            self._state.isSobakOn = false
+            if self._state.isSobakOn {
+                self.metronomeOnOffUseCase.changeSobak()
+            }
         case .changeSobakOnOff:
-            self._state.isSobakOn.toggle()
             self.metronomeOnOffUseCase.changeSobak()
             
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
             if self._state.isSobakOn {
-                self._state.isSobakOn = false
                 self.metronomeOnOffUseCase.changeSobak()
             }
             self.metronomeOnOffUseCase.stop()
