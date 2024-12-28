@@ -49,7 +49,7 @@ struct MetronomeView: View {
                 ListenSobakToggleView(isSobakOn: $isSobakOn)
                     .padding(.bottom, 16)
             }
-            MetronomeControlView(viewModel: viewModel)
+            MetronomeControlView()
         }
         // 빠르기 찾기 기능 비활성화 용도
         .contentShape(Rectangle())

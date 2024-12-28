@@ -15,13 +15,15 @@ class MetronomeControlViewModel {
     private var jangdanRepository: JangdanRepository
     private var taptapUseCase: TapTapUseCase
     private var tempoUseCase: TempoUseCase
+    private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     
     var timerCancellable: AnyCancellable?
     
-    init(jangdanRepository: JangdanRepository, taptapUseCase: TapTapUseCase, tempoUseCase: TempoUseCase) {
+    init(jangdanRepository: JangdanRepository, taptapUseCase: TapTapUseCase, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase) {
         self.jangdanRepository = jangdanRepository
         self.taptapUseCase = taptapUseCase
         self.tempoUseCase = tempoUseCase
+        self.metronomeOnOffUseCase = metronomeOnOffUseCase
         
         self.timerCancellable = nil
         
@@ -36,6 +38,12 @@ class MetronomeControlViewModel {
             self._state.bpm = jangdan.bpm
         }
         .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
+            guard let self else { return }
+            self._state.isPlaying = isPlaying
+        }
+        .store(in: &self.cancelBag)
     }
     
     private var _state: State = .init()
@@ -44,6 +52,7 @@ class MetronomeControlViewModel {
     }
     
     struct State {
+        var isPlaying: Bool = false
         var isMinusActive: Bool = false
         var isPlusActive: Bool = false
         var previousTranslation: CGFloat = .zero
@@ -55,6 +64,7 @@ class MetronomeControlViewModel {
 
 extension MetronomeControlViewModel {
     enum Action {
+        case changeIsPlaying
         case decreaseShortBpm
         case decreaseLongBpm(currentBpm: Int)
         case increaseShortBpm
@@ -68,6 +78,12 @@ extension MetronomeControlViewModel {
     
     func effect(action: Action) {
         switch action {
+        case .changeIsPlaying:
+            if self._state.isPlaying {
+                self.metronomeOnOffUseCase.stop()
+            } else {
+                self.metronomeOnOffUseCase.play()
+            }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self._state.bpm - 1)
             self.taptapUseCase.finishTapping()

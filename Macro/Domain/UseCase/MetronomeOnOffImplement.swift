@@ -21,9 +21,11 @@ class MetronomeOnOffImplement {
     
     private var bpm: Double
     private var currentBeatIndex: Int
-    var isSobakOn: Bool
+    private var isSobakOn: Bool
     
-    var cancelBag: Set<AnyCancellable> = []
+    private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
+    private var tickSubject: PassthroughSubject<Void, Never> = .init()
+    private var cancelBag: Set<AnyCancellable> = []
     
     // timer
     private var timer: DispatchSourceTimer?
@@ -63,12 +65,19 @@ class MetronomeOnOffImplement {
 
 // Play / Stop
 extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
+    var isPlayingPublisher: AnyPublisher<Bool, Never> {
+        self.isPlayingSubject.eraseToAnyPublisher()
+    }
+    
+    var tickPublisher: AnyPublisher<Void, Never> {
+        self.tickSubject.eraseToAnyPublisher()
+    }
     
     func changeSobak() {
         self.isSobakOn.toggle()
     }
     
-    func play(_ tickHandler: @escaping () -> Void ) {
+    func play() {
         // 데이터 갱신
         self.currentBeatIndex = 0
         UIApplication.shared.isIdleTimerDisabled = true
@@ -79,10 +88,11 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.timer?.setEventHandler { [weak self] in
             guard let self = self else { return }
             self.lastPlayTime = .now
-            tickHandler()
             self.timerHandler()
         }
         
+        // play 여부 publish
+        self.isPlayingSubject.send(true)
         // Timer 실행
         self.timer?.resume()
     }
@@ -91,6 +101,8 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil
+        // stop 여부 publish
+        self.isPlayingSubject.send(false)
     }
     
     func setSoundType() {
@@ -98,6 +110,9 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     private func timerHandler() {
+        // timer 틱마다 publish
+        self.tickSubject.send()
+        
         let accent: Accent = jangdanAccentList[self.currentBeatIndex % jangdanAccentList.count]
         self.soundManager.beep(accent)
         self.currentBeatIndex += 1
