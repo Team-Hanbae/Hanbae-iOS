@@ -24,6 +24,7 @@ class MetronomeOnOffImplement {
     private var isSobakOn: Bool
     
     private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
+    private var isSobakOnSubject: PassthroughSubject<Bool, Never> = .init()
     private var tickSubject: PassthroughSubject<Void, Never> = .init()
     private var cancelBag: Set<AnyCancellable> = []
     
@@ -67,6 +68,10 @@ class MetronomeOnOffImplement {
 extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     var isPlayingPublisher: AnyPublisher<Bool, Never> {
         self.isPlayingSubject.eraseToAnyPublisher()
+    }
+    
+    var isSobakOnPublisher: AnyPublisher<Bool, Never> {
+        self.isSobakOnSubject.eraseToAnyPublisher()
     }
     
     var tickPublisher: AnyPublisher<Void, Never> {
