@@ -80,6 +80,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     
     func changeSobak() {
         self.isSobakOn.toggle()
+        self.isSobakOnSubject.send(self.isSobakOn)
     }
     
     func play() {
