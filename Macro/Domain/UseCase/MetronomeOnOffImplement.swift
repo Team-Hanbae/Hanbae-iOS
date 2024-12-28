@@ -21,10 +21,10 @@ class MetronomeOnOffImplement {
     
     private var bpm: Double
     private var currentBeatIndex: Int
-    var isSobakOn: Bool
+    private var isSobakOn: Bool
     
     private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
-    var cancelBag: Set<AnyCancellable> = []
+    private var cancelBag: Set<AnyCancellable> = []
     
     // timer
     private var timer: DispatchSourceTimer?
