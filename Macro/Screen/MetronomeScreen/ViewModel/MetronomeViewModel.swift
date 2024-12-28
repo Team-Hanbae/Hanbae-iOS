@@ -78,7 +78,6 @@ extension MetronomeViewModel {
     enum Action: Equatable {
         case selectJangdan(selectedJangdanName: String)
         case changeSobakOnOff
-        case changeIsPlaying
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case stopMetronome
         case estimateBpm
@@ -100,12 +99,6 @@ extension MetronomeViewModel {
         case .changeSobakOnOff:
             self._state.isSobakOn.toggle()
             self.metronomeOnOffUseCase.changeSobak()
-        case .changeIsPlaying:
-            if self._state.isPlaying {
-                self.metronomeOnOffUseCase.stop()
-            } else {
-                self.metronomeOnOffUseCase.play()
-            }
             
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
