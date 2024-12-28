@@ -41,6 +41,12 @@ class MetronomeViewModel {
             self._state.isTapping = isTapping
         }
         .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
+            guard let self else { return }
+            self._state.isPlaying = isPlaying
+        }
+        .store(in: &self.cancelBag)
     }
     
     private var _state: State = .init()
