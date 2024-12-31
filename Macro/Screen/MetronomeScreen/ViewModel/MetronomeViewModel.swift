@@ -41,6 +41,25 @@ class MetronomeViewModel {
             self._state.isTapping = isTapping
         }
         .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
+            guard let self else { return }
+            self.initialDaeSoBakIndex()
+            self._state.isPlaying = isPlaying
+        }
+        .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.isSobakOnPublisher.sink { [weak self] isSobakOn in
+            guard let self else { return }
+            self._state.isSobakOn = isSobakOn
+        }
+        .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] _ in
+            guard let self else { return }
+            self.updateStatePerBak()
+        }
+        .store(in: &self.cancelBag)
     }
     
     private var _state: State = .init()
@@ -65,7 +84,6 @@ extension MetronomeViewModel {
     enum Action: Equatable {
         case selectJangdan(selectedJangdanName: String)
         case changeSobakOnOff
-        case changeIsPlaying
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case stopMetronome
         case estimateBpm
@@ -83,27 +101,16 @@ extension MetronomeViewModel {
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.initialDaeSoBakIndex()
             self.taptapUseCase.finishTapping()
-            self._state.isSobakOn = false
-        case .changeSobakOnOff:
-            self._state.isSobakOn.toggle()
-            self.metronomeOnOffUseCase.changeSobak()
-        case .changeIsPlaying:
-            self.initialDaeSoBakIndex()
-            self._state.isPlaying.toggle()
-            if self._state.isPlaying {
-                self.metronomeOnOffUseCase.play {
-                    self.updateStatePerBak()
-                }
-            } else {
-                self.metronomeOnOffUseCase.stop()
+            if self._state.isSobakOn {
+                self.metronomeOnOffUseCase.changeSobak()
             }
+        case .changeSobakOnOff:
+            self.metronomeOnOffUseCase.changeSobak()
             
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
-            self._state.isPlaying = false
             if self._state.isSobakOn {
-                self._state.isSobakOn = false
                 self.metronomeOnOffUseCase.changeSobak()
             }
             self.metronomeOnOffUseCase.stop()

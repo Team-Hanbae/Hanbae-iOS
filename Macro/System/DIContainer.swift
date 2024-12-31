@@ -24,7 +24,7 @@ class DIContainer {
         self._metronomeViewModel = MetronomeViewModel(templateUseCase: self._templateUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase, tempoUseCase: self._tempoUseCase, accentUseCase: self._accentUseCase, taptapUseCase: self._tapTapUseCase)
         
         self._controlViewModel =
-        MetronomeControlViewModel(jangdanRepository: self._jangdanDataSource, taptapUseCase: self._tapTapUseCase, tempoUseCase: self._tempoUseCase)
+        MetronomeControlViewModel(jangdanRepository: self._jangdanDataSource, taptapUseCase: self._tapTapUseCase, tempoUseCase: self._tempoUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase)
         
         self._homeViewModel = HomeViewModel(metronomeOnOffUseCase: self._metronomeOnOffUseCase)
         self._customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self._templateUseCase)
