@@ -21,16 +21,13 @@ class CustomJangdanCreateViewModel {
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
-            self._state.currentJangdanType = jangdanType
+            self.state.currentJangdanType = jangdanType
         }
         .store(in: &cancelbag)
         
     }
     
-    private var _state: State = .init()
-    var state: State {
-        return _state
-    }
+    private(set) var state: State = .init()
     
     struct State {
         var currentJangdanType: Jangdan?

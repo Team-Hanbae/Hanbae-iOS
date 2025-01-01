@@ -29,27 +29,24 @@ class MetronomeControlViewModel {
         
         self.taptapUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
-            self._state.isTapping = isTapping
+            self.state.isTapping = isTapping
         }
         .store(in: &self.cancelBag)
         
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdan in
             guard let self else { return }
-            self._state.bpm = jangdan.bpm
+            self.state.bpm = jangdan.bpm
         }
         .store(in: &self.cancelBag)
         
         self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
             guard let self else { return }
-            self._state.isPlaying = isPlaying
+            self.state.isPlaying = isPlaying
         }
         .store(in: &self.cancelBag)
     }
     
-    private var _state: State = .init()
-    var state: State {
-        return _state
-    }
+    private(set) var state: State = .init()
     
     struct State {
         var isPlaying: Bool = false
@@ -79,13 +76,13 @@ extension MetronomeControlViewModel {
     func effect(action: Action) {
         switch action {
         case .changeIsPlaying:
-            if self._state.isPlaying {
+            if self.state.isPlaying {
                 self.metronomeOnOffUseCase.stop()
             } else {
                 self.metronomeOnOffUseCase.play()
             }
         case .decreaseShortBpm:
-            self.tempoUseCase.updateTempo(newBpm: self._state.bpm - 1)
+            self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)
             self.taptapUseCase.finishTapping()
         case let .decreaseLongBpm(currentBpm):
             let remainder = currentBpm % 10
@@ -93,7 +90,7 @@ extension MetronomeControlViewModel {
             self.tempoUseCase.updateTempo(newBpm: roundedBpm - 10)
             self.taptapUseCase.finishTapping()
         case .increaseShortBpm:
-            self.tempoUseCase.updateTempo(newBpm: self._state.bpm + 1)
+            self.tempoUseCase.updateTempo(newBpm: self.state.bpm + 1)
             self.taptapUseCase.finishTapping()
         case let .increaseLongBpm(currentBpm):
             let roundedBpm = currentBpm - (currentBpm % 10)
@@ -105,14 +102,14 @@ extension MetronomeControlViewModel {
             self.taptapUseCase.tap()
         case let .toggleActiveState(isIncreasing, isActive):
             if isIncreasing {
-                self._state.isPlusActive = isActive
+                self.state.isPlusActive = isActive
             } else {
-                self._state.isMinusActive = isActive
+                self.state.isMinusActive = isActive
             }
         case let .setPreviousTranslation(position):
-            self._state.previousTranslation = position
+            self.state.previousTranslation = position
         case let .setSpeed(speed):
-            self._state.speed = speed
+            self.state.speed = speed
         }
     }
 }

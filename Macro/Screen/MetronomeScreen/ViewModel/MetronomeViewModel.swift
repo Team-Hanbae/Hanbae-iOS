@@ -26,32 +26,32 @@ class MetronomeViewModel {
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
-            self._state.currentJangdanType = jangdanType
+            self.state.currentJangdanType = jangdanType
         }
         .store(in: &self.cancelBag)
         
         self.accentUseCase.accentListPublisher.sink { [weak self] accentList in
             guard let self else { return }
-            self._state.jangdanAccent = accentList
+            self.state.jangdanAccent = accentList
         }
         .store(in: &self.cancelBag)
         
         self.taptapUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
-            self._state.isTapping = isTapping
+            self.state.isTapping = isTapping
         }
         .store(in: &self.cancelBag)
         
         self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
             guard let self else { return }
             self.initialDaeSoBakIndex()
-            self._state.isPlaying = isPlaying
+            self.state.isPlaying = isPlaying
         }
         .store(in: &self.cancelBag)
         
         self.metronomeOnOffUseCase.isSobakOnPublisher.sink { [weak self] isSobakOn in
             guard let self else { return }
-            self._state.isSobakOn = isSobakOn
+            self.state.isSobakOn = isSobakOn
         }
         .store(in: &self.cancelBag)
         
@@ -62,10 +62,7 @@ class MetronomeViewModel {
         .store(in: &self.cancelBag)
     }
     
-    private var _state: State = .init()
-    var state: State {
-        return _state
-    }
+    private(set) var state: State = .init()
     
     struct State {
         var currentJangdanName: String?
@@ -97,11 +94,11 @@ extension MetronomeViewModel {
         
         switch action {
         case let .selectJangdan(jangdanName):
-            self._state.currentJangdanName = jangdanName
+            self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.initialDaeSoBakIndex()
             self.taptapUseCase.finishTapping()
-            if self._state.isSobakOn {
+            if self.state.isSobakOn {
                 self.metronomeOnOffUseCase.changeSobak()
             }
         case .changeSobakOnOff:
@@ -110,7 +107,7 @@ extension MetronomeViewModel {
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
-            if self._state.isSobakOn {
+            if self.state.isSobakOn {
                 self.metronomeOnOffUseCase.changeSobak()
             }
             self.metronomeOnOffUseCase.stop()
@@ -122,16 +119,16 @@ extension MetronomeViewModel {
     }
     
     private func updateStatePerBak() {
-        var nextSobak: Int = self._state.currentSobak
-        var nextDaebak: Int = self._state.currentDaebak
-        var nextRow: Int = self._state.currentRow
+        var nextSobak: Int = self.state.currentSobak
+        var nextDaebak: Int = self.state.currentDaebak
+        var nextRow: Int = self.state.currentRow
         
         nextSobak += 1
-        if nextSobak == self._state.jangdanAccent[nextRow][nextDaebak].count {
+        if nextSobak == self.state.jangdanAccent[nextRow][nextDaebak].count {
             nextDaebak += 1
-            if nextDaebak == self._state.jangdanAccent[nextRow].count {
+            if nextDaebak == self.state.jangdanAccent[nextRow].count {
                 nextRow += 1
-                if nextRow == self._state.jangdanAccent.count {
+                if nextRow == self.state.jangdanAccent.count {
                     nextRow = 0
                 }
                 nextDaebak = 0
@@ -139,14 +136,14 @@ extension MetronomeViewModel {
             nextSobak = 0
         }
         
-        self._state.currentSobak = nextSobak
-        self._state.currentDaebak = nextDaebak
-        self._state.currentRow = nextRow
+        self.state.currentSobak = nextSobak
+        self.state.currentDaebak = nextDaebak
+        self.state.currentRow = nextRow
     }
     
     private func initialDaeSoBakIndex() {
-        self._state.currentRow = self._state.jangdanAccent.count - 1
-        self._state.currentDaebak = self._state.jangdanAccent[self._state.currentRow].count - 1
-        self._state.currentSobak = self._state.jangdanAccent[self._state.currentRow][self._state.currentDaebak].count - 1
+        self.state.currentRow = self.state.jangdanAccent.count - 1
+        self.state.currentDaebak = self.state.jangdanAccent[self.state.currentRow].count - 1
+        self.state.currentSobak = self.state.jangdanAccent[self.state.currentRow][self.state.currentDaebak].count - 1
     }
 }
