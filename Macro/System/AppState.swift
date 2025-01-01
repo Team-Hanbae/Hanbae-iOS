@@ -12,47 +12,41 @@ class AppState {
     
     init() {
 #if DEBUG
-        self._didLaunchedBefore = false
+        self.didLaunchedBefore = false
 #else
-        self._didLaunchedBefore = UserDefaults.standard.bool(forKey: "didLaunchedBefore")
+        self.didLaunchedBefore = UserDefaults.standard.bool(forKey: "didLaunchedBefore")
 #endif
         
         let instrument = UserDefaults.standard.string(forKey: "selectedInstrument") ?? "장구"
-        self._selectedInstrument = Instrument(rawValue: instrument) ?? .장구
+        self.selectedInstrument = Instrument(rawValue: instrument) ?? .장구
         
-        self._isBeepSound = UserDefaults.standard.bool(forKey: "isBeepSound")
+        self.isBeepSound = UserDefaults.standard.bool(forKey: "isBeepSound")
     }
     
     // 최초실행여부
-    private var _didLaunchedBefore: Bool
+    private(set) var didLaunchedBefore: Bool
     
     // 선택된 악기
-    private var _selectedInstrument: Instrument
+    private(set) var selectedInstrument: Instrument
     
     // 비프음 여부
-    private var _isBeepSound: Bool
+    private(set) var isBeepSound: Bool
     
 }
 
 extension AppState {
-    var didLaunchedBefore: Bool { self._didLaunchedBefore }
-    
-    var selectedInstrument: Instrument { self._selectedInstrument }
-    
-    var isBeepSound: Bool { self._isBeepSound }
-    
     func appLaunched() {
-        self._didLaunchedBefore = true
+        self.didLaunchedBefore = true
         UserDefaults.standard.set(true, forKey: "didLaunchedBefore")
     }
     
     func setInstrument(_ instrument: Instrument) {
-        self._selectedInstrument = instrument
+        self.selectedInstrument = instrument
         UserDefaults.standard.set(instrument.rawValue, forKey: "selectedInstrument")
     }
     
     func toggleBeepSound() {
-        self._isBeepSound.toggle()
-        UserDefaults.standard.set(self._isBeepSound, forKey: "isBeepSound")
+        self.isBeepSound.toggle()
+        UserDefaults.standard.set(self.isBeepSound, forKey: "isBeepSound")
     }
 }
