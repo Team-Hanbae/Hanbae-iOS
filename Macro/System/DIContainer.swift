@@ -11,87 +11,60 @@ class DIContainer {
     static let shared: DIContainer = DIContainer()
     
     private init() {
-        self._appState = .init()
-        self._jangdanDataSource = .init(appState: self._appState)!
-        self._soundManager = .init(appState: self._appState)!
+        self.appState = .init()
+        self.jangdanDataSource = .init(appState: self.appState)!
+        self.soundManager = .init(appState: self.appState)!
         
-        self._templateUseCase = TemplateImplement(jangdanRepository: self._jangdanDataSource, appState: self._appState)
-        self._tempoUseCase = TempoImplement(jangdanRepository: self._jangdanDataSource)
-        self._metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self._jangdanDataSource, soundManager: _soundManager)
-        self._accentUseCase = AccentImplement(jangdanRepository: self._jangdanDataSource)
-        self._tapTapUseCase = TapTapImplement(tempoUseCase: self._tempoUseCase)
+        self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource, appState: self.appState)
+        self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
+        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: soundManager)
+        self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
+        self.tapTapUseCase = TapTapImplement(tempoUseCase: self.tempoUseCase)
         
-        self._metronomeViewModel = MetronomeViewModel(templateUseCase: self._templateUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase, tempoUseCase: self._tempoUseCase, accentUseCase: self._accentUseCase, taptapUseCase: self._tapTapUseCase)
+        self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase, taptapUseCase: self.tapTapUseCase)
         
-        self._controlViewModel =
-        MetronomeControlViewModel(jangdanRepository: self._jangdanDataSource, taptapUseCase: self._tapTapUseCase, tempoUseCase: self._tempoUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase)
+        self.controlViewModel =
+        MetronomeControlViewModel(jangdanRepository: self.jangdanDataSource, taptapUseCase: self.tapTapUseCase, tempoUseCase: self.tempoUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
         
-        self._homeViewModel = HomeViewModel(metronomeOnOffUseCase: self._metronomeOnOffUseCase)
-        self._customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self._templateUseCase)
-        self._builtInJangdanPracticeViewModel = BuiltInJangdanPracticeViewModel(templateUseCase: self._templateUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase)
-        self._customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self._templateUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase)
-        self._customJangdanCreateViewModel = CustomJangdanCreateViewModel(templateUseCase: self._templateUseCase, metronomeOnOffUseCase: self._metronomeOnOffUseCase)
+        self.homeViewModel = HomeViewModel(metronomeOnOffUseCase: self.metronomeOnOffUseCase)
+        self.customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self.templateUseCase)
+        self.builtInJangdanPracticeViewModel = BuiltInJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
+        self.customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
+        self.customJangdanCreateViewModel = CustomJangdanCreateViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
         
-        self._router = .init()
+        self.router = .init()
     }
     
     // ViewModel
-    private var _metronomeViewModel: MetronomeViewModel
-    var metronomeViewModel: MetronomeViewModel {
-        self._metronomeViewModel
-    }
+    private(set) var metronomeViewModel: MetronomeViewModel
     
-    // controllerViewModel
-    private var _controlViewModel: MetronomeControlViewModel
-    var controlViewModel: MetronomeControlViewModel {
-        self._controlViewModel
-    }
+    private(set) var controlViewModel: MetronomeControlViewModel
     
-    private var _homeViewModel: HomeViewModel
-    var homeViewModel: HomeViewModel {
-        self._homeViewModel
-    }
+    private(set) var homeViewModel: HomeViewModel
     
-    private var _customJangdanListViewModel: CustomJangdanListViewModel
-    var customJangdanListViewModel: CustomJangdanListViewModel {
-        self._customJangdanListViewModel
-    }
+    private(set) var customJangdanListViewModel: CustomJangdanListViewModel
     
-    private var _builtInJangdanPracticeViewModel: BuiltInJangdanPracticeViewModel
-    var builtInJangdanPracticeViewModel: BuiltInJangdanPracticeViewModel {
-        self._builtInJangdanPracticeViewModel
-    }
+    private(set) var builtInJangdanPracticeViewModel: BuiltInJangdanPracticeViewModel
     
-    private var _customJangdanPracticeViewModel: CustomJangdanPracticeViewModel
-    var customJangdanPracticeViewModel: CustomJangdanPracticeViewModel {
-        self._customJangdanPracticeViewModel
-    }
+    private(set) var customJangdanPracticeViewModel: CustomJangdanPracticeViewModel
     
-    private var _customJangdanCreateViewModel: CustomJangdanCreateViewModel
-    var customJangdanCreateViewModel: CustomJangdanCreateViewModel {
-        self._customJangdanCreateViewModel
-    }
+    private(set) var customJangdanCreateViewModel: CustomJangdanCreateViewModel
     
     // UseCase Implements
-    private var _templateUseCase: TemplateImplement
-    private var _tempoUseCase: TempoImplement
-    private var _metronomeOnOffUseCase: MetronomeOnOffImplement
-    private var _accentUseCase: AccentImplement
-    private var _tapTapUseCase: TapTapImplement
+    private var templateUseCase: TemplateImplement
+    private var tempoUseCase: TempoImplement
+    private var metronomeOnOffUseCase: MetronomeOnOffImplement
+    private var accentUseCase: AccentImplement
+    private var tapTapUseCase: TapTapImplement
     
-    private var _jangdanDataSource: JangdanDataManager
-    private var _soundManager: SoundManager
+    // Service
+    private var jangdanDataSource: JangdanDataManager
+    private var soundManager: SoundManager
     
-    //router
-    private var _router: Router
-    var router: Router {
-        self._router
-    }
+    // Router
+    private(set) var router: Router
     
-    //appState
-    private var _appState: AppState
-    var appState: AppState {
-        self._appState
-    }
+    // AppState
+    private(set) var appState: AppState
     
 }
