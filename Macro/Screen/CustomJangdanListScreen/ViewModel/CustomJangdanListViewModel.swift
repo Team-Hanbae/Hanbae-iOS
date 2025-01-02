@@ -21,8 +21,7 @@ class CustomJangdanListViewModel {
         var customJangdanList: [JangdanSimpleType] = []
     }
     
-    private var _state: State = .init()
-    var state: State { _state }
+    private(set) var state: State = .init()
 }
 
 extension CustomJangdanListViewModel {
@@ -34,7 +33,7 @@ extension CustomJangdanListViewModel {
     func effect(action: Action) {
         switch action {
         case .fetchCustomJangdanData:
-            self._state.customJangdanList = templateUseCase.allCustomJangdanTemplate.map { jangdanEntity in
+            self.state.customJangdanList = templateUseCase.allCustomJangdanTemplate.map { jangdanEntity in
                 return (jangdanEntity.jangdanType, jangdanEntity.name, jangdanEntity.createdAt ?? .now)
             }.sorted {
                 $0.lastUpdate > $1.lastUpdate
