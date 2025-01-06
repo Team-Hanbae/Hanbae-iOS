@@ -13,6 +13,30 @@ class DynamicIconImplement {
 
 extension DynamicIconImplement: DynamicIconUseCase {
     func setEventIconIfNeeded() {
-        UIApplication.shared.setAlternateIconName("TestIcon")
+        let today = Date.now
+        
+        let start = Date.at(year: 2025, month: 1, day: 1)!
+        let end = Date.at(year: 2025, month: 2, day: 1)!
+        let 설날이벤트: ClosedRange<Date> = start...end
+        
+        switch today {
+        case 설날이벤트:
+            setIconWithoutAlert("TestIcon")
+        default:
+            setIconWithoutAlert(nil)
+        }
+    }
+    
+    private func setIconWithoutAlert(_ iconName: String?) {
+        guard UIApplication.shared.responds(to: #selector(getter: UIApplication.supportsAlternateIcons)) else { return }
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+        guard UIApplication.shared.alternateIconName != iconName else { return }
+        
+        typealias setAlternateIconName = @convention(c) (NSObject, Selector, NSString?, @escaping (NSError) -> ()) -> ()
+        let selectorString = "_setAlternateIconName:completionHandler:"
+        let selector = NSSelectorFromString(selectorString)
+        let imp = UIApplication.shared.method(for: selector)
+        let method = unsafeBitCast(imp, to: setAlternateIconName.self)
+        method(UIApplication.shared, selector, iconName as NSString?, { _ in })
     }
 }
