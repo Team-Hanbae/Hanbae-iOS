@@ -5,4 +5,14 @@
 //  Created by Yunki on 1/6/25.
 //
 
-import Foundation
+import UIKit.UIApplication
+
+class DynamicIconImplement {
+    
+}
+
+extension DynamicIconImplement: DynamicIconUseCase {
+    func setEventIconIfNeeded() {
+        UIApplication.shared.setAlternateIconName("TestIcon")
+    }
+}
