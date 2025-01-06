@@ -81,20 +81,22 @@ struct HomeView: View {
                                     }
                                 }
                                 .padding(.top, 34)
-                                .padding(.horizontal, 16)
                                                                 
                                 if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
                                     Link(destination: surveyURL) {
                                         Image(.surveyBanner)
                                             .resizable()
                                             .scaledToFill()
+                                            .clipShape(RoundedRectangle(cornerRadius: 16))
                                     }
-                                    .padding(.top, 44.5)
+                                    .padding(.top, 56)
+                                    .padding(.bottom, 38.5)
                                 }
                             }
                         }
                         .scrollIndicators(.hidden)
                         .ignoresSafeArea(edges: .bottom)
+                        .padding(.horizontal, 16)
                         .navigationDestination(for: Route.self) { path in
                             router.view(for: path)
                         }
