@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Environment(\.openURL) var openURL
     @State private var viewModel: HomeViewModel = DIContainer.shared.homeViewModel
     private var router: Router = DIContainer.shared.router
     private var appState: AppState = DIContainer.shared.appState
