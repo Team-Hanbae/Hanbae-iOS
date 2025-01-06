@@ -90,11 +90,12 @@ struct HomeView: View {
                                             .clipShape(RoundedRectangle(cornerRadius: 16))
                                     }
                                     .padding(.top, 56)
-                                    .padding(.bottom, 5)
+                                    .padding(.bottom, 38.5)
                                 }
                             }
                         }
                         .scrollIndicators(.hidden)
+                        .ignoresSafeArea(edges: .bottom)
                         .padding(.horizontal, 16)
                         .navigationDestination(for: Route.self) { path in
                             router.view(for: path)
