@@ -83,11 +83,13 @@ struct HomeView: View {
                                 .padding(.top, 34)
                                 .padding(.horizontal, 16)
                                                                 
-                                Link(destination: URL(string: "https://forms.gle/uZCyBishXSHAwfTHA")!) {
-                                    Image(.surveyBanner)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .padding(.top, 44.5)
+                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                    Link(destination: surveyURL) {
+                                        Image(.surveyBanner)
+                                            .resizable()
+                                            .scaledToFill()
+                                    }
+                                    .padding(.top, 44.5)
                                 }
                             }
                         }
