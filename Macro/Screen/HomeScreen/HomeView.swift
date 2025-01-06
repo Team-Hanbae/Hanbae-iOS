@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @Environment(\.openURL) var openURL
     @State private var viewModel: HomeViewModel = DIContainer.shared.homeViewModel
     private var router: Router = DIContainer.shared.router
     private var appState: AppState = DIContainer.shared.appState
@@ -82,11 +83,13 @@ struct HomeView: View {
                                 }
                                 .padding(.top, 34)
                                 .padding(.horizontal, 16)
-                                
-                                Image(.surveyBanner)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .padding(.top, 44.5)
+                                                                
+                                Link(destination: URL(string: "https://forms.gle/uZCyBishXSHAwfTHA")!) {
+                                    Image(.surveyBanner)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .padding(.top, 44.5)
+                                }
                             }
                         }
                         .scrollIndicators(.hidden)
