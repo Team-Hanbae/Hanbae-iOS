@@ -6,11 +6,11 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>TestIcon</key>
+			<key>NewYear</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>TestIcon</string>
+					<string>NewYear</string>
 				</array>
 			</dict>
 		</dict>

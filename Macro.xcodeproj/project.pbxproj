@@ -23,8 +23,8 @@
 		2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96F4922CD131BD00933DE2 /* AccentEnum.swift */; };
 		2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */; };
 		2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */; };
-		2BAA4F6A2D2BA17A0022195E /* TestIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F682D2BA17A0022195E /* TestIcon@2x.png */; };
-		2BAA4F6B2D2BA17A0022195E /* TestIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F692D2BA17A0022195E /* TestIcon@3x.png */; };
+		2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F702D2C98AC0022195E /* NewYear@2x.png */; };
+		2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F722D2C98B10022195E /* NewYear@3x.png */; };
 		2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B62CE62532008173A5 /* JangdanDataManager.swift */; };
 		2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */; };
 		2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
@@ -118,8 +118,8 @@
 		2B96F4922CD131BD00933DE2 /* AccentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentEnum.swift; sourceTree = "<group>"; };
 		2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconUseCase.swift; sourceTree = "<group>"; };
 		2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconImplement.swift; sourceTree = "<group>"; };
-		2BAA4F682D2BA17A0022195E /* TestIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestIcon@2x.png"; sourceTree = "<group>"; };
-		2BAA4F692D2BA17A0022195E /* TestIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestIcon@3x.png"; sourceTree = "<group>"; };
+		2BAA4F702D2C98AC0022195E /* NewYear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@2x.png"; sourceTree = "<group>"; };
+		2BAA4F722D2C98B10022195E /* NewYear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@3x.png"; sourceTree = "<group>"; };
 		2BB797B62CE62532008173A5 /* JangdanDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanDataManager.swift; sourceTree = "<group>"; };
 		2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanSwiftData.swift; sourceTree = "<group>"; };
 		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
@@ -280,8 +280,8 @@
 		2BAA4F672D2BA1000022195E /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				2BAA4F682D2BA17A0022195E /* TestIcon@2x.png */,
-				2BAA4F692D2BA17A0022195E /* TestIcon@3x.png */,
+				2BAA4F702D2C98AC0022195E /* NewYear@2x.png */,
+				2BAA4F722D2C98B10022195E /* NewYear@3x.png */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -633,14 +633,14 @@
 				3C8F35292D1FF06800209AD3 /* jangu_medium.wav in Resources */,
 				3C8F352A2D1FF06800209AD3 /* buk_medium.wav in Resources */,
 				3C8F352B2D1FF06800209AD3 /* buk_weak.wav in Resources */,
+				2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */,
 				3C8F352C2D1FF06800209AD3 /* jangu_weak.wav in Resources */,
+				2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */,
 				3C8F352D2D1FF06800209AD3 /* beep_strong.wav in Resources */,
 				3C8F352E2D1FF06800209AD3 /* jangu_strong.wav in Resources */,
 				3C8F352F2D1FF06800209AD3 /* beep_medium.wav in Resources */,
 				3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */,
 				43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */,
-				2BAA4F6A2D2BA17A0022195E /* TestIcon@2x.png in Resources */,
-				2BAA4F6B2D2BA17A0022195E /* TestIcon@3x.png in Resources */,
 				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,
 				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
 				2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */,

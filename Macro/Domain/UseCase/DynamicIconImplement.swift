@@ -16,12 +16,12 @@ extension DynamicIconImplement: DynamicIconUseCase {
         let today = Date.now
         
         let start = Date.at(year: 2025, month: 1, day: 1)!
-        let end = Date.at(year: 2025, month: 2, day: 1)!
+        let end = Date.at(year: 2025, month: 2, day: 6)!
         let 설날이벤트: ClosedRange<Date> = start...end
         
         switch today {
         case 설날이벤트:
-            setIconWithoutAlert("TestIcon")
+            setIconWithoutAlert("NewYear")
         default:
             setIconWithoutAlert(nil)
         }
