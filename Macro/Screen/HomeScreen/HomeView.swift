@@ -69,20 +69,28 @@ struct HomeView: View {
                     ZStack(alignment: .top) {
                         ScrollView() {
                             // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                            VStack {
-                                LazyVGrid(columns: columns, spacing: 8) {
-                                    ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                        Button(jangdan.name) {
-                                            self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                            VStack(spacing: 0) {
+                                VStack {
+                                    LazyVGrid(columns: columns, spacing: 8) {
+                                        ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                                            Button(jangdan.name) {
+                                                self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                            }
+                                            .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                         }
-                                        .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                     }
                                 }
+                                .padding(.top, 34)
+                                .padding(.horizontal, 16)
+                                
+                                Image(.surveyBanner)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .padding(.top, 44.5)
                             }
-                            .padding(.top, 34)
                         }
                         .scrollIndicators(.hidden)
-                        .padding(.horizontal, 16)
+                        .ignoresSafeArea(edges: .bottom)
                         .navigationDestination(for: Route.self) { path in
                             router.view(for: path)
                         }
