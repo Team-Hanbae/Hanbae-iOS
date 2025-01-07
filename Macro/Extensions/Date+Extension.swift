@@ -16,4 +16,15 @@ extension Date {
         
         return formatter.string(from: self)
     }
+    
+    static func at(year: Int, month: Int, day: Int) -> Date? {
+        let component = DateComponents(year: year, month: month, day: day)
+        var calendar = Calendar.current
+        calendar.timeZone = .current
+        calendar.locale = .autoupdatingCurrent
+        
+        guard let date = calendar.date(from: component) else { return nil }
+        
+        return date
+    }
 }

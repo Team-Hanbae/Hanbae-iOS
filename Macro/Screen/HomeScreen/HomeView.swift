@@ -9,9 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var viewModel: HomeViewModel = DIContainer.shared.homeViewModel
-    private var router: Router = DIContainer.shared.router
-    private var appState: AppState = DIContainer.shared.appState
+    @State private var viewModel: HomeViewModel
+    private var router: Router
+    private var appState: AppState
+    
+    init(viewModel: HomeViewModel, router: Router, appState: AppState) {
+        self.viewModel = viewModel
+        self.router = router
+        self.appState = appState
+    }
     
     private let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 8), count: 2)
     
@@ -177,5 +183,5 @@ extension HomeView {
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: DIContainer.shared.homeViewModel, router: DIContainer.shared.router, appState: DIContainer.shared.appState)
 }
