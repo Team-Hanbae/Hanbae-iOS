@@ -11,21 +11,26 @@ import SwiftUI
 class HomeViewModel {
     
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
+    private var dynamicIconUseCase: DynamicIconUseCase
     
-    init(metronomeOnOffUseCase: MetronomeOnOffUseCase) {
+    init(metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase) {
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
+        self.dynamicIconUseCase = dynamicIconUseCase
     }
 }
 
 extension HomeViewModel {
     enum Action {
         case changeSoundType
+        case appEntered
     }
     
     func effect(action: Action) {
         switch action {
         case .changeSoundType:
             self.metronomeOnOffUseCase.setSoundType()
+        case .appEntered:
+            self.dynamicIconUseCase.setEventIconIfNeeded()
         }
     }
 }

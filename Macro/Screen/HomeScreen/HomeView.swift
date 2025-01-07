@@ -9,9 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State private var viewModel: HomeViewModel = DIContainer.shared.homeViewModel
-    private var router: Router = DIContainer.shared.router
-    private var appState: AppState = DIContainer.shared.appState
+    @State private var viewModel: HomeViewModel
+    private var router: Router
+    private var appState: AppState
+    
+    init(viewModel: HomeViewModel, router: Router, appState: AppState) {
+        self.viewModel = viewModel
+        self.router = router
+        self.appState = appState
+    }
     
     private let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 8), count: 2)
     
@@ -69,19 +75,33 @@ struct HomeView: View {
                     ZStack(alignment: .top) {
                         ScrollView() {
                             // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                            VStack {
-                                LazyVGrid(columns: columns, spacing: 8) {
-                                    ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                        Button(jangdan.name) {
-                                            self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                            VStack(spacing: 0) {
+                                VStack {
+                                    LazyVGrid(columns: columns, spacing: 8) {
+                                        ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                                            Button(jangdan.name) {
+                                                self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                            }
+                                            .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                         }
-                                        .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                     }
                                 }
+                                .padding(.top, 34)
+                                                                
+                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                    Link(destination: surveyURL) {
+                                        Image(.surveyBanner)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    }
+                                    .padding(.top, 56)
+                                    .padding(.bottom, 38.5)
+                                }
                             }
-                            .padding(.top, 34)
                         }
                         .scrollIndicators(.hidden)
+                        .ignoresSafeArea(edges: .bottom)
                         .padding(.horizontal, 16)
                         .navigationDestination(for: Route.self) { path in
                             router.view(for: path)
@@ -163,5 +183,5 @@ extension HomeView {
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: DIContainer.shared.homeViewModel, router: DIContainer.shared.router, appState: DIContainer.shared.appState)
 }

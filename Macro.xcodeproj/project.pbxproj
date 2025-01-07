@@ -21,6 +21,10 @@
 		2B88611B2CC3E62A0036C6DB /* BakBarSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */; };
 		2B96F4912CD1302C00933DE2 /* MetronomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96F4902CD1302C00933DE2 /* MetronomeViewModel.swift */; };
 		2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96F4922CD131BD00933DE2 /* AccentEnum.swift */; };
+		2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */; };
+		2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */; };
+		2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F702D2C98AC0022195E /* NewYear@2x.png */; };
+		2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F722D2C98B10022195E /* NewYear@3x.png */; };
 		2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B62CE62532008173A5 /* JangdanDataManager.swift */; };
 		2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */; };
 		2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
@@ -112,6 +116,10 @@
 		2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakBarSetView.swift; sourceTree = "<group>"; };
 		2B96F4902CD1302C00933DE2 /* MetronomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewModel.swift; sourceTree = "<group>"; };
 		2B96F4922CD131BD00933DE2 /* AccentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentEnum.swift; sourceTree = "<group>"; };
+		2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconUseCase.swift; sourceTree = "<group>"; };
+		2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconImplement.swift; sourceTree = "<group>"; };
+		2BAA4F702D2C98AC0022195E /* NewYear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@2x.png"; sourceTree = "<group>"; };
+		2BAA4F722D2C98B10022195E /* NewYear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@3x.png"; sourceTree = "<group>"; };
 		2BB797B62CE62532008173A5 /* JangdanDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanDataManager.swift; sourceTree = "<group>"; };
 		2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanSwiftData.swift; sourceTree = "<group>"; };
 		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
@@ -269,6 +277,15 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		2BAA4F672D2BA1000022195E /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				2BAA4F702D2C98AC0022195E /* NewYear@2x.png */,
+				2BAA4F722D2C98B10022195E /* NewYear@3x.png */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
 		2BC4B9FF2CE371DB00A90C1F /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +338,7 @@
 				3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */,
 				3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */,
 				3C6EAFA92CDD12DE003F2191 /* AccentUseCase.swift */,
+				2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -335,6 +353,7 @@
 				2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */,
 				3C1DB7312CB3B58500160970 /* AccentImplement.swift */,
 				2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */,
+				2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -442,6 +461,7 @@
 				2B96F48D2CD12D3B00933DE2 /* Asset */,
 				43774F512CB7C00000F54EF7 /* Font */,
 				2B96F48E2CD12D5E00933DE2 /* Sound */,
+				2BAA4F672D2BA1000022195E /* Icon */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -613,7 +633,9 @@
 				3C8F35292D1FF06800209AD3 /* jangu_medium.wav in Resources */,
 				3C8F352A2D1FF06800209AD3 /* buk_medium.wav in Resources */,
 				3C8F352B2D1FF06800209AD3 /* buk_weak.wav in Resources */,
+				2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */,
 				3C8F352C2D1FF06800209AD3 /* jangu_weak.wav in Resources */,
+				2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */,
 				3C8F352D2D1FF06800209AD3 /* beep_strong.wav in Resources */,
 				3C8F352E2D1FF06800209AD3 /* jangu_strong.wav in Resources */,
 				3C8F352F2D1FF06800209AD3 /* beep_medium.wav in Resources */,
@@ -653,6 +675,7 @@
 				2B0022492CF3260800C60C4F /* AppState.swift in Sources */,
 				3C719E432CEF532900D233DC /* HomeViewModel.swift in Sources */,
 				2BCA580E2CCF5F8700FA08A9 /* TapTapImplement.swift in Sources */,
+				2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */,
 				3C6EAFAA2CDD12DE003F2191 /* AccentUseCase.swift in Sources */,
 				4303C81F2CF7951800EB956A /* String+Extension.swift in Sources */,
 				2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */,
@@ -696,6 +719,7 @@
 				2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */,
 				438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */,
 				2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */,
+				2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */,
 				2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */,
 				4349F8F42CEC85D5001FE727 /* MetronomeControlViewModel.swift in Sources */,
 				3C46FC0C2CEF0F5F0067EE65 /* InstrumentsSelectView.swift in Sources */,
