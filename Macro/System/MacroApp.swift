@@ -15,8 +15,7 @@ struct MacroApp: App {
         WindowGroup {
             HomeView(viewModel: self.homeViewModel, router: DIContainer.shared.router, appState: DIContainer.shared.appState)
                 .onAppear {
-                    Task {
-                        try? await Task.sleep(nanoseconds: 10)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         self.homeViewModel.effect(action: .appEntered)
                     }
                 }
