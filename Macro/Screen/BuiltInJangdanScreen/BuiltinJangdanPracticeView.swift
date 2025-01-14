@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct BuiltinJangdanPracticeView: View {
     
@@ -53,6 +54,15 @@ struct BuiltinJangdanPracticeView: View {
                             }
                         }
                     }
+            }
+        }
+        .onAppear {
+            self.appState.increaseEnteredJangdan()
+            print(appState.numberOfEnteredJangdan)
+            if appState.numberOfEnteredJangdan % 100 == 0 {
+                if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
