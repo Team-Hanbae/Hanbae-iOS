@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct HomeView: View {
-    
+    @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
+    
     private var router: Router
     private var appState: AppState
     
@@ -81,6 +83,10 @@ struct HomeView: View {
                                         ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
                                             Button(jangdan.name) {
                                                 self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                                self.appState.increaseEnteredJangdan()
+                                                if self.appState.numberOfEnteredJangdan % 100 == 0 {
+                                                    self.requestReview()
+                                                }
                                             }
                                             .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                         }
