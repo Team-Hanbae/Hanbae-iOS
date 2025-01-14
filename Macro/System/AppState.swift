@@ -21,6 +21,9 @@ class AppState {
         self.selectedInstrument = Instrument(rawValue: instrument) ?? .장구
         
         self.isBeepSound = UserDefaults.standard.bool(forKey: "isBeepSound")
+        
+        self.numberOfCreatedCustomJangdan = UserDefaults.standard.integer(forKey: "numberOfCreatedCustomJangdan")
+        self.numverOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numverOfEnteredJangdan")
     }
     
     // 최초실행여부
@@ -32,6 +35,11 @@ class AppState {
     // 비프음 여부
     private(set) var isBeepSound: Bool
     
+    // 커스텀장단 생성 횟수
+    private(set) var numberOfCreatedCustomJangdan: Int
+    
+    // 장단 진입 횟수
+    private(set) var numverOfEnteredJangdan: Int
 }
 
 extension AppState {
