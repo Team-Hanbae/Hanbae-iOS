@@ -60,9 +60,11 @@ extension AppState {
     
     func increaseCreatedCustomJangdan() {
         self.numberOfCreatedCustomJangdan += 1
+        UserDefaults.standard.set(self.numberOfCreatedCustomJangdan ,forKey: "numberOfCreatedCustomJangdan")
     }
     
     func increaseEnteredJangdan() {
         self.numberOfEnteredJangdan += 1
+        UserDefaults.standard.set(self.numberOfEnteredJangdan ,forKey: "numberOfEnteredJangdan")
     }
 }

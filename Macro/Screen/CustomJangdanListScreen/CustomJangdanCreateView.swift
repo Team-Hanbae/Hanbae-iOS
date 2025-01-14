@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomJangdanCreateView: View {
     
     @State var viewModel: CustomJangdanCreateViewModel
-    @State private var appState: AppState = DIContainer.shared.appState
+    var appState: AppState = DIContainer.shared.appState
     var router: Router = DIContainer.shared.router
     
     var jangdanName: String
