@@ -10,8 +10,10 @@ import SwiftUI
 struct CustomJangdanListView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.editMode) private var editMode
+    @Environment(\.requestReview) private var requestReview
     
     @State var viewModel: CustomJangdanListViewModel
+    @State private var appState: AppState = DIContainer.shared.appState
     var router: Router = DIContainer.shared.router
     
     @State private var deleteButtonAlert: Bool = false
@@ -88,6 +90,11 @@ struct CustomJangdanListView: View {
         }
         .task {
             self.viewModel.effect(action: .fetchCustomJangdanData)
+        }
+        .onAppear {
+            if appState.numberOfCreatedCustomJangdan == 3 {
+                requestReview()
+            }
         }
         .listStyle(.plain)
         .listRowSpacing(12)

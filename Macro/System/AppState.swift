@@ -57,4 +57,8 @@ extension AppState {
         self.isBeepSound.toggle()
         UserDefaults.standard.set(self.isBeepSound, forKey: "isBeepSound")
     }
+    
+    func increaseCreatedCustomJangdan() {
+        self.numberOfCreatedCustomJangdan += 1
+    }
 }
