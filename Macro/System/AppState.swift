@@ -23,7 +23,7 @@ class AppState {
         self.isBeepSound = UserDefaults.standard.bool(forKey: "isBeepSound")
         
         self.numberOfCreatedCustomJangdan = UserDefaults.standard.integer(forKey: "numberOfCreatedCustomJangdan")
-        self.numverOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numverOfEnteredJangdan")
+        self.numberOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numberOfEnteredJangdan")
     }
     
     // 최초실행여부
@@ -39,7 +39,7 @@ class AppState {
     private(set) var numberOfCreatedCustomJangdan: Int
     
     // 장단 진입 횟수
-    private(set) var numverOfEnteredJangdan: Int
+    private(set) var numberOfEnteredJangdan: Int
 }
 
 extension AppState {
@@ -60,5 +60,9 @@ extension AppState {
     
     func increaseCreatedCustomJangdan() {
         self.numberOfCreatedCustomJangdan += 1
+    }
+    
+    func increaseEnteredJangdan() {
+        self.numberOfEnteredJangdan += 1
     }
 }
