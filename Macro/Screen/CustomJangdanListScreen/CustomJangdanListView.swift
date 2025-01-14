@@ -93,8 +93,8 @@ struct CustomJangdanListView: View {
             self.viewModel.effect(action: .fetchCustomJangdanData)
         }
         .onAppear {
-            if appState.numberOfCreatedCustomJangdan == 3 {
-                requestReview()
+            if self.appState.numberOfCreatedCustomJangdan == 3 {
+                self.requestReview()
             }
         }
         .listStyle(.plain)
