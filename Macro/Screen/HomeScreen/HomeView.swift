@@ -12,6 +12,8 @@ struct HomeView: View {
     @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
     
+    @State private var scrollOffset: CGFloat = 0
+    
     private var router: Router
     private var appState: AppState
     
@@ -75,9 +77,12 @@ struct HomeView: View {
                     .padding(.top, 11)
                     
                     ZStack(alignment: .top) {
-                        ScrollView() {
+                        ScrollView {
                             // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
                             VStack(spacing: 0) {
+                                // 스크롤 트래킹용 투명 View
+                                scrollObservableView
+                                
                                 if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
                                     Link(destination: surveyURL) {
                                         Image(.surveyBanner)
@@ -105,6 +110,9 @@ struct HomeView: View {
                                 .padding(.bottom, 38.5)
                             }
                         }
+                        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
+                            self.scrollOffset = value - 114
+                        })
                         .scrollIndicators(.hidden)
                         .ignoresSafeArea(edges: .bottom)
                         .padding(.horizontal, 16)
@@ -114,7 +122,7 @@ struct HomeView: View {
                         
                         Rectangle()
                             .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
-                            .frame(height: 36)
+                            .frame(height: min(36, max(-self.scrollOffset, 0)))
                     }
                 }
             }
@@ -184,6 +192,25 @@ extension HomeView {
                 return newValue
             }
         }
+    }
+}
+
+extension HomeView {
+    struct ScrollPreferenceKey: PreferenceKey {
+        static var defaultValue: CGFloat = .zero
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { }
+    }
+    
+    private var scrollObservableView: some View {
+        GeometryReader { proxy in
+            let offsetY = proxy.frame(in: .global).origin.y
+            Color.clear
+                .preference(
+                    key: ScrollPreferenceKey.self,
+                    value: offsetY
+                )
+        }
+        .frame(height: 0)
     }
 }
 
