@@ -78,6 +78,16 @@ struct HomeView: View {
                         ScrollView() {
                             // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
                             VStack(spacing: 0) {
+                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                    Link(destination: surveyURL) {
+                                        Image(.surveyBanner)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    }
+                                    .padding(.vertical, 24)
+                                }
+                                
                                 VStack {
                                     LazyVGrid(columns: columns, spacing: 8) {
                                         ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
@@ -92,18 +102,7 @@ struct HomeView: View {
                                         }
                                     }
                                 }
-                                .padding(.top, 34)
-                                                                
-                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
-                                    Link(destination: surveyURL) {
-                                        Image(.surveyBanner)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    }
-                                    .padding(.top, 56)
-                                    .padding(.bottom, 38.5)
-                                }
+                                .padding(.bottom, 38.5)
                             }
                         }
                         .scrollIndicators(.hidden)
