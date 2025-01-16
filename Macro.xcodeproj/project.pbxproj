@@ -31,9 +31,6 @@
 		2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4BA002CE371E800A90C1F /* HomeView.swift */; };
 		2BCA580E2CCF5F8700FA08A9 /* TapTapImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */; };
 		2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */; };
-		2BDB14A32D365705006A9679 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB14A22D365705006A9679 /* jangu_medium.wav */; };
-		2BDB14A52D36570E006A9679 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB14A42D36570E006A9679 /* jangu_strong.wav */; };
-		2BDB14A72D365714006A9679 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB14A62D365714006A9679 /* jangu_weak.wav */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */; };
@@ -60,6 +57,9 @@
 		3C8F352D2D1FF06800209AD3 /* beep_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35202D1FF06800209AD3 /* beep_strong.wav */; };
 		3C8F352F2D1FF06800209AD3 /* beep_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F351F2D1FF06800209AD3 /* beep_medium.wav */; };
 		3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35232D1FF06800209AD3 /* buk_strong.wav */; };
+		3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */; };
+		3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */; };
+		3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */; };
 		3CE4C4862CF4E13400FDE6AA /* ViewSobakToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4C4852CF4E13400FDE6AA /* ViewSobakToggleView.swift */; };
 		3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */; };
 		3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */; };
@@ -126,9 +126,6 @@
 		2BC4BA002CE371E800A90C1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTapImplement.swift; sourceTree = "<group>"; };
 		2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectTempoInterface.swift; sourceTree = "<group>"; };
-		2BDB14A22D365705006A9679 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
-		2BDB14A42D36570E006A9679 /* jangu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_strong.wav; sourceTree = "<group>"; };
-		2BDB14A62D365714006A9679 /* jangu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_weak.wav; sourceTree = "<group>"; };
 		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +155,9 @@
 		3C8F35222D1FF06800209AD3 /* buk_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_medium.wav; sourceTree = "<group>"; };
 		3C8F35232D1FF06800209AD3 /* buk_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_strong.wav; sourceTree = "<group>"; };
 		3C8F35242D1FF06800209AD3 /* buk_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_weak.wav; sourceTree = "<group>"; };
+		3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
+		3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_strong.wav; sourceTree = "<group>"; };
+		3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_weak.wav; sourceTree = "<group>"; };
 		3CE4C4852CF4E13400FDE6AA /* ViewSobakToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSobakToggleView.swift; sourceTree = "<group>"; };
 		3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
 		3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
@@ -247,15 +247,15 @@
 		2B96F48E2CD12D5E00933DE2 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */,
+				3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */,
+				3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */,
 				3C8F351F2D1FF06800209AD3 /* beep_medium.wav */,
 				3C8F35202D1FF06800209AD3 /* beep_strong.wav */,
 				3C8F35212D1FF06800209AD3 /* beep_weak.wav */,
 				3C8F35222D1FF06800209AD3 /* buk_medium.wav */,
 				3C8F35232D1FF06800209AD3 /* buk_strong.wav */,
 				3C8F35242D1FF06800209AD3 /* buk_weak.wav */,
-				2BDB14A22D365705006A9679 /* jangu_medium.wav */,
-				2BDB14A42D36570E006A9679 /* jangu_strong.wav */,
-				2BDB14A62D365714006A9679 /* jangu_weak.wav */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -630,19 +630,19 @@
 			files = (
 				43774F572CB7C11D00F54EF7 /* Pretendard-Regular.otf in Resources */,
 				3C8F35282D1FF06800209AD3 /* beep_weak.wav in Resources */,
-				2BDB14A32D365705006A9679 /* jangu_medium.wav in Resources */,
 				3C8F352A2D1FF06800209AD3 /* buk_medium.wav in Resources */,
 				3C8F352B2D1FF06800209AD3 /* buk_weak.wav in Resources */,
-				2BDB14A72D365714006A9679 /* jangu_weak.wav in Resources */,
 				2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */,
 				2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */,
 				3C8F352D2D1FF06800209AD3 /* beep_strong.wav in Resources */,
 				3C8F352F2D1FF06800209AD3 /* beep_medium.wav in Resources */,
 				3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */,
+				3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */,
+				3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */,
+				3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */,
 				43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */,
 				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,
 				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
-				2BDB14A52D36570E006A9679 /* jangu_strong.wav in Resources */,
 				2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */,
 				43774F532CB7C10E00F54EF7 /* Pretendard-Medium.otf in Resources */,
 			);
