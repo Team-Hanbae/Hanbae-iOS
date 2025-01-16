@@ -76,53 +76,56 @@ struct HomeView: View {
                     .padding(.horizontal, 16)
                     .padding(.top, 11)
                     
-                    ZStack(alignment: .top) {
-                        ScrollView {
-                            // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                            VStack(spacing: 0) {
-                                // 스크롤 트래킹용 투명 View
-                                scrollObservableView
-                                
-                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
-                                    Link(destination: surveyURL) {
-                                        Image(.surveyBanner)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                    GeometryReader { geo in
+                        ZStack(alignment: .top) {
+                            ScrollView {
+                                // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
+                                VStack(spacing: 0) {
+                                    // 스크롤 트래킹용 투명 View
+                                    scrollObservableView
+                                    
+                                    if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                        Link(destination: surveyURL) {
+                                            Image(.surveyBanner)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        }
+                                        .padding(.vertical, 24)
                                     }
-                                    .padding(.vertical, 24)
-                                }
-                                
-                                VStack {
-                                    LazyVGrid(columns: columns, spacing: 8) {
-                                        ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                            Button(jangdan.name) {
-                                                self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
-                                                self.appState.increaseEnteredJangdan()
-                                                if self.appState.numberOfEnteredJangdan % 100 == 0 {
-                                                    self.requestReview()
+                                    
+                                    VStack {
+                                        LazyVGrid(columns: columns, spacing: 8) {
+                                            ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                                                Button(jangdan.name) {
+                                                    self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                                    self.appState.increaseEnteredJangdan()
+                                                    if self.appState.numberOfEnteredJangdan % 100 == 0 {
+                                                        self.requestReview()
+                                                    }
                                                 }
+                                                .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                             }
-                                            .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                         }
                                     }
+                                    .padding(.bottom, 38.5)
                                 }
-                                .padding(.bottom, 38.5)
                             }
+                            .onPreferenceChange(ScrollPreferenceKey.self) { value in
+                                // 스크롤 내부 View의 최상단 - 스크롤뷰의 최상단
+                                self.scrollOffset = value - geo.frame(in: .global).origin.y
+                            }
+                            .scrollIndicators(.hidden)
+                            .ignoresSafeArea(edges: .bottom)
+                            .padding(.horizontal, 16)
+                            .navigationDestination(for: Route.self) { path in
+                                router.view(for: path)
+                            }
+                            
+                            Rectangle()
+                                .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
+                                .frame(height: min(36, max(-self.scrollOffset, 0)))
                         }
-                        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
-                            self.scrollOffset = value - 114
-                        })
-                        .scrollIndicators(.hidden)
-                        .ignoresSafeArea(edges: .bottom)
-                        .padding(.horizontal, 16)
-                        .navigationDestination(for: Route.self) { path in
-                            router.view(for: path)
-                        }
-                        
-                        Rectangle()
-                            .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
-                            .frame(height: min(36, max(-self.scrollOffset, 0)))
                     }
                 }
             }
