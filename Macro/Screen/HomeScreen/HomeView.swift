@@ -12,6 +12,8 @@ struct HomeView: View {
     @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
     
+    @State private var scrollOffset: CGFloat = 0
+    
     private var router: Router
     private var appState: AppState
     
@@ -74,48 +76,56 @@ struct HomeView: View {
                     .padding(.horizontal, 16)
                     .padding(.top, 11)
                     
-                    ZStack(alignment: .top) {
-                        ScrollView() {
-                            // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                            VStack(spacing: 0) {
-                                VStack {
-                                    LazyVGrid(columns: columns, spacing: 8) {
-                                        ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                            Button(jangdan.name) {
-                                                self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
-                                                self.appState.increaseEnteredJangdan()
-                                                if self.appState.numberOfEnteredJangdan % 100 == 0 {
-                                                    self.requestReview()
+                    GeometryReader { geo in
+                        ZStack(alignment: .top) {
+                            ScrollView {
+                                // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
+                                VStack(spacing: 0) {
+                                    // 스크롤 트래킹용 투명 View
+                                    scrollObservableView
+                                    
+                                    if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                        Link(destination: surveyURL) {
+                                            Image(.surveyBanner)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        }
+                                        .padding(.vertical, 24)
+                                    }
+                                    
+                                    VStack {
+                                        LazyVGrid(columns: columns, spacing: 8) {
+                                            ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                                                Button(jangdan.name) {
+                                                    self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                                    self.appState.increaseEnteredJangdan()
+                                                    if self.appState.numberOfEnteredJangdan % 100 == 0 {
+                                                        self.requestReview()
+                                                    }
                                                 }
+                                                .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                             }
-                                            .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                         }
                                     }
-                                }
-                                .padding(.top, 34)
-                                                                
-                                if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
-                                    Link(destination: surveyURL) {
-                                        Image(.surveyBanner)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    }
-                                    .padding(.top, 56)
                                     .padding(.bottom, 38.5)
                                 }
                             }
+                            .onPreferenceChange(ScrollPreferenceKey.self) { value in
+                                // 스크롤 내부 View의 최상단 - 스크롤뷰의 최상단
+                                self.scrollOffset = value - geo.frame(in: .global).origin.y
+                            }
+                            .scrollIndicators(.hidden)
+                            .ignoresSafeArea(edges: .bottom)
+                            .padding(.horizontal, 16)
+                            .navigationDestination(for: Route.self) { path in
+                                router.view(for: path)
+                            }
+                            
+                            Rectangle()
+                                .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
+                                .frame(height: min(36, max(-self.scrollOffset, 0)))
                         }
-                        .scrollIndicators(.hidden)
-                        .ignoresSafeArea(edges: .bottom)
-                        .padding(.horizontal, 16)
-                        .navigationDestination(for: Route.self) { path in
-                            router.view(for: path)
-                        }
-                        
-                        Rectangle()
-                            .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
-                            .frame(height: 36)
                     }
                 }
             }
@@ -185,6 +195,25 @@ extension HomeView {
                 return newValue
             }
         }
+    }
+}
+
+extension HomeView {
+    struct ScrollPreferenceKey: PreferenceKey {
+        static var defaultValue: CGFloat = .zero
+        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { }
+    }
+    
+    private var scrollObservableView: some View {
+        GeometryReader { proxy in
+            let offsetY = proxy.frame(in: .global).origin.y
+            Color.clear
+                .preference(
+                    key: ScrollPreferenceKey.self,
+                    value: offsetY
+                )
+        }
+        .frame(height: 0)
     }
 }
 
