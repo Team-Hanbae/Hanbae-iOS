@@ -1,130 +1,85 @@
+> 이 문서는 `한배`에 기여하기 위한 프로세스에 대해 작성되었습니다.
+
 ## 목차
-  - [1. 브랜치 전략](#1-브랜치-전략)
-  - [2. 커밋 규칙](#2-커밋-규칙)
-  - [3. issue 스타일 가이드](#3-issue-스타일-가이드)
-  - [4. pull request 스타일 가이드](#4-pull-request-스타일-가이드)
+- [1. 개발 프로세스](#1-개발-프로세스)
+- [2. Category](#2-category)
+- [3. 브랜치 전략](#3-브랜치-전략)
 
 <br>
 
-## 1. 네이밍 전략
+## 1. 개발 프로세스
+### 1. 이슈 생성 / 할당
 ```
-- feat: 새로운 기능 추가
+- 적절한 Issue Template을 선택하여 작성합니다.
+- 적절한 Label을 설정합니다.
+- 이슈 제목 형식 : "[Category] 이슈 제목"
+  ex) [Feat] 백그라운드 재생 기능 추가
+- 이슈에 본인을 Assignee로 지정합니다.
+```
+### 2. 브랜치 생성
+```
+- dev 브랜치를 Branch Source로 생성합니다.
+- 브랜치 이름은 영문만 사용하여 작성합니다.
+- 브랜치 이름 형식 : "category/#이슈번호-브랜치-이름"
+  ex) feat/#234-Background-Playback
+```
+### 3. 작업
+```
+- 작은 Task마다 커밋을 분리하여 작성합니다.
+- 커밋 이름 형식 : "[category] #이슈번호 커밋내용"
+  ex) [feat] #234 백그라운드 재생 옵션 추가
+- remote 브랜치로 push 합니다.
+```
+### 4. Pull Request (PR)
+```
+- 모든 PR은 정상적으로 빌드되어야 합니다.
+- dev 브랜치를 타겟으로 PR을 생성합니다.
+- 적절한 Asignee를 할당합니다.
+- 적절한 Label을 설정합니다.
+- PR 제목 형식 : "[Category] #이슈번호 PR내용"
+  ex) [Feat] #234 백그라운드 재생 기능 추가
+- PR 내용을 작성합니다.
+- PR 생성시 Xcode Cloud의 빌드, 테스트, 분석이 실행됩니다.
+- PR 생성 이후 24시간 동안 코드리뷰를 진행합니다.
+- Xcode Cloud를 통과하고 1인 이상의 Approve를 받으면 Merge가 가능합니다.
+- PR 최종 Merge시 Xcode Cloud를 통해 빌드, 테스트, 분석, Archieve 되어 Testflight(내부) 배포됩니다.
+- Merge는 PR 생성자가 하는 것을 원칙으로 합니다.
+- Merge 이후 작업 브랜치는 삭제합니다.
+```
+### 5. Pre-Release
+```
+- 버전 업데이트시 가장 먼저 진행됩니다.
+- 버전별 기능명세를 논의, 결정합니다.
+- Pre-Release 카테고리로 이슈를 생성합니다.
+- Xcode에서 프로젝트 버전넘버를 업데이트합니다.
+- Pre-Release 카테고리로 PR을 생성, Merge합니다.
+- 이후 다른 기능들을 구현합니다.
+```
+### 6. Release
+```
+- AppStore에 배포하기 위한 과정입니다.
+- dev 브랜치에서 main 으로 Merge합니다.
+- Release 카테고리로 이슈, PR 프로세스를 진행합니다.
+- PR 생성시 Xcode Cloud의 빌드, 테스트, 분석이 실행됩니다.
+- PR 최종 Merge시 Xcode Cloud를 통해 빌드, 테스트, 분석, Archieve 되어 AppStore 배포 준비가 완료됩니다.
+- GitHub Repository에서 Releases 항목을 업데이트합니다.
+- Notion에 업데이트 사항을 기록합니다.
+```
+
+## 2. Category
+```
+- feat: 새로운 기능 추가, 변경
 - fix: 버그 수정
 - docs: 문서 수정
 - refactor: 코드 리팩토링
-- test: 테스트 코드, 리팩토링 테스트 코드 추가
+- test: 테스트 코드 작성
 - chore: 빌드 업무 수정, 패키지 매니저 수정, 잡일
+- design: 디자인 에셋 추가, 변경
 ```
 
-## 2. 브랜치 전략
-- 브랜치는 `브랜치종류/#이슈번호-설명간단히(영문)` 으로 생성한다.
+## 3. 브랜치 전략
+> 브랜치 명명 규칙: `카테고리/#이슈번호-설명간단히(영문)`
 ```
-브랜치종류/#이슈번호-간략한설명(영문)
-ex) feat/#24-SecondView
-```
-
-<br>
-
-### 2-1. 브랜치 규칙
-```
-1. develop, main 브랜치에서의 작업은 원칙적으로 금지한다.
-2. 자신이 담당한 부분 이외에 다른 팀원이 담당한 부분을 수정할 때에는 반드시 변경 사항을 전달한다.
-3. 본인의 Pull Request는 본인이 Merge한다.
-4. Commit, Push, Merge, Pull Request 등 모든 작업은 앱이 정상적으로 실행되는 지 빌드한 후 수행한다.
-```
-
-### 2-2. 브랜치 플로우
-```
-1. Issue를 생성한다.
-2. feature 브랜치를 생성한다.
-3. feature 브랜치 내부에서 Add - Commit - Push - Pull Request 의 과정을 거친다.
-4. Pull Request가 작성되면 충돌 확인 후 merge 한다.
-5. 종료된 Pull Request branch는 삭제한다.
-```
-
-<br>
-
-## 3. 커밋 규칙
-- 커밋은 `[커밋종류] #이슈번호 커밋내용` 으로 생성한다.
-```
-[커밋종류] #이슈번호 커밋내용
-ex) [feat] #12 MainView 생성
-```
-
-<br>
-
-## 4. Issue 스타일 가이드
-### Feature Issue
-```
----
-name: Feature Template
-about: 기능 추가시 작성해 주세요
-title: ''
-labels: enhancement
-assignees: ''
-
----
-
-## Description
-추가하려는 기능에 대해 간단히 설명해 주세요
-
-## TODO
-할 일 목록을 작성해 주세요
-
-- [ ] 
-
-## ScreenShot
-추가할 기능의 스크린샷이 있다면 첨부해 주세요
-
-### ETC
-기타 참고사항을 작성해 주세요
-```
-
-<br>
-
-### Bug Issue
-```
----
-name: Bug Template
-about: 버그 발생시 작성해 주세요
-title: ''
-labels: bug
-assignees: ''
-
----
-
-## Problem
-무슨 문제인지 간단히 작성해 주세요
-
-- [ ] 
-
-## How to Solve
-어떻게 해결했는지 작성해 주세요
-
-- [ ] 
-
-### ETC
-기타 참고사항을 작성해 주세요
-```
-
-<br>
-
-## 5. Pull Request 스타일 가이드
-아래 템플릿을 따르고 있습니다.
-```
-## 제목 양식
-> [카테고리] #{이슈 번호} {PR 내용}
-***
-## 개요
-> 변경 사항 및 관련 이슈에 대해 간단하게 작성해주세요.
-
-### 연관이슈 #{이슈 번호}
-
-## 작업 내용
-### 1. 
-
-### 작업 스크린샷 (Optional)
-
-## 리뷰어에게 남길 말 (Optional)
-> 리뷰어가 특별히 봐주었으면 하는 부분이 있다면 작성해 주세요
+- main(default): AppStore 배포 코드
+- dev: Testflight(내부) 배포 코드
 ```
