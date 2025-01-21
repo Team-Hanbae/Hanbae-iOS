@@ -1,7 +1,7 @@
 ---
 name: Other Template
 about: 다른 작업시 작성해 주세요
-title: "[category] "
+title: "[Category] "
 labels: ''
 assignees: ''
 

@@ -1,6 +1,6 @@
 ---
 name: Feature Template
-about: 기능 추가시 작성해 주세요
+about: 기능 추가, 변경시 작성해 주세요
 title: "[Feat] "
 labels: enhancement
 assignees: ''
