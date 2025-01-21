@@ -2,6 +2,12 @@
 
 ## 목차
 - [1. 개발 프로세스](#1-개발-프로세스)
+  - [1-1. 이슈 생성 / 할당](#1-이슈-생성--할당)
+  - [1-2. 브랜치 생성](#2-브랜치-생성)
+  - [1-3. 작업](#3-작업)
+  - [1-4. Pull Request (PR)](#4-pull-request-pr)
+  - [1-5. Pre-Release](#5-pre-release)
+  - [1-6. Release](#6-release)
 - [2. Category](#2-category)
 - [3. 브랜치 전략](#3-브랜치-전략)
 
@@ -12,7 +18,7 @@
 ```
 - 적절한 Issue Template을 선택하여 작성합니다.
 - 적절한 Label을 설정합니다.
-- 이슈 제목 형식 : "[Category] 이슈 제목"
+- 이슈 제목 형식 : "[Category] 이슈 제목" - (Category는 대문자로 시작합니다)
   ex) [Feat] 백그라운드 재생 기능 추가
 - 이슈에 본인을 Assignee로 지정합니다.
 ```
@@ -20,13 +26,13 @@
 ```
 - dev 브랜치를 Branch Source로 생성합니다.
 - 브랜치 이름은 영문만 사용하여 작성합니다.
-- 브랜치 이름 형식 : "category/#이슈번호-브랜치-이름"
+- 브랜치 이름 형식 : "category/#이슈번호-브랜치-이름" - (category는 소문자로 시작합니다)
   ex) feat/#234-Background-Playback
 ```
 ### 3. 작업
 ```
 - 작은 Task마다 커밋을 분리하여 작성합니다.
-- 커밋 이름 형식 : "[category] #이슈번호 커밋내용"
+- 커밋 이름 형식 : "[category] #이슈번호 커밋내용" - (category는 소문자로 시작합니다)
   ex) [feat] #234 백그라운드 재생 옵션 추가
 - remote 브랜치로 push 합니다.
 ```
@@ -36,7 +42,7 @@
 - dev 브랜치를 타겟으로 PR을 생성합니다.
 - 적절한 Asignee를 할당합니다.
 - 적절한 Label을 설정합니다.
-- PR 제목 형식 : "[Category] #이슈번호 PR내용"
+- PR 제목 형식 : "[Category] #이슈번호 PR내용" - (Category는 대문자로 시작합니다)
   ex) [Feat] #234 백그라운드 재생 기능 추가
 - PR 내용을 작성합니다.
 - PR 생성시 Xcode Cloud의 빌드, 테스트, 분석이 실행됩니다.
@@ -78,7 +84,6 @@
 ```
 
 ## 3. 브랜치 전략
-> 브랜치 명명 규칙: `카테고리/#이슈번호-설명간단히(영문)`
 ```
 - main(default): AppStore 배포 코드
 - dev: Testflight(내부) 배포 코드
