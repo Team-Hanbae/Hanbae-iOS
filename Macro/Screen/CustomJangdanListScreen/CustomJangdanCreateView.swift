@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomJangdanCreateView: View {
     
     @State var viewModel: CustomJangdanCreateViewModel
+    var appState: AppState = DIContainer.shared.appState
     var router: Router = DIContainer.shared.router
     
     var jangdanName: String
@@ -77,6 +78,9 @@ struct CustomJangdanCreateView: View {
                         // 장단 저장 버튼
                         Button {
                             exportJandanAlert = true
+                            
+                            // 인앱리뷰 트리거 - 커스텀 장단 생성 횟수 증가
+                            appState.increaseCreatedCustomJangdan()
                         } label: {
                             Text("저장")
                                 .font(.Body_R)
