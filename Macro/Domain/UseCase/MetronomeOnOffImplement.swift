@@ -61,6 +61,12 @@ class MetronomeOnOffImplement {
             self.timer?.schedule(deadline: .now() + nextStartTime, repeating: self.interval, leeway: .nanoseconds(1))
         }
         .store(in: &self.cancelBag)
+        
+        self.soundManager.callInterruptPublisher.sink {[weak self] callInterrupt in
+        guard let self else { return }
+            callInterrupt == true ? self.stop() : nil
+        }
+        .store(in: &self.cancelBag)
     }
 }
 
