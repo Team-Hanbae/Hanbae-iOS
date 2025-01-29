@@ -90,6 +90,8 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     func play() {
+        // AudioEngine start()
+        self.soundManager.audioEngineStart()
         // 데이터 갱신
         self.currentBeatIndex = 0
         UIApplication.shared.isIdleTimerDisabled = true

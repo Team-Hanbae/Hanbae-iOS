@@ -10,6 +10,7 @@ import Combine
 // 소리내는 UseCase용
 protocol PlaySoundInterface {
     var callInterruptPublisher: AnyPublisher<Bool, Never> { get }
+    func audioEngineStart()
     func beep(_ accent: Accent)
     func setSoundType()
 }

@@ -43,12 +43,7 @@ class SoundManager {
         self.engine.connect(dummyNode, to: self.engine.mainMixerNode, format: nil)
         
         // 엔진 시작
-        do {
-            try engine.start()
-        } catch {
-            print("SoundManager: 오디오 엔진 시작 중 에러 발생 - \(error)")
-            return nil
-        }
+        self.audioEngineStart()
         
         // 더미 노드 분리
         self.engine.detach(dummyNode)
@@ -75,30 +70,7 @@ class SoundManager {
         }
     }
     
-    func resumePlaybackAfterInterruption() {
-        // 인터럽션이 종료되었을 때 일정 시간 간격으로 오디오 복구 시도
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // 0.5초 후에 시도
-            if AVAudioSession.sharedInstance().isOtherAudioPlaying == false {
-                self.audioEngineStart()
-            } else {
-                // 오디오 복구 시도가 실패했을 때 재시도
-                self.resumePlaybackAfterInterruption()
-            }
-        }
-    }
-    
-    // 전화 송/수신으로 인한 인터럽트 후 엔진 재시작
-    func audioEngineStart() {
-        if !self.engine.isRunning {
-            do {
-                try self.engine.start()
-            } catch {
-                print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func setupNotifications() {
+    private func setupNotifications() {
         let callInterruptNotificationCenter = NotificationCenter.default
         callInterruptNotificationCenter.addObserver(self,
                                                     selector: #selector(handleInterruption),
@@ -144,11 +116,9 @@ extension SoundManager: PlaySoundInterface {
     var callInterruptPublisher: AnyPublisher<Bool, Never> {
         publisher.eraseToAnyPublisher()
     }
-
-    func beep(_ accent: Accent) {
-        
-        guard let buffer = self.audioBuffers[accent] else { return }
-
+    
+    func audioEngineStart() {
+        self.engine.stop()
         if !self.engine.isRunning {
             do {
                 try self.engine.start()
@@ -156,6 +126,11 @@ extension SoundManager: PlaySoundInterface {
                 print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
             }
         }
+    }
+
+    func beep(_ accent: Accent) {
+        
+        guard let buffer = self.audioBuffers[accent] else { return }
         
         // 각 강세별 PlayerNode를 동적으로 생성하여 재생
         let playerNode = AVAudioPlayerNode()
