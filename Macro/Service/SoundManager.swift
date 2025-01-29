@@ -65,7 +65,6 @@ class SoundManager {
             
         case .ended:
             self.audioEngineStart()
-            self.publisher.send()
         default: ()
         }
     }
