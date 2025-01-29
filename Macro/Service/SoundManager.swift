@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import AVFoundation
 
 class SoundManager {
@@ -16,6 +17,8 @@ class SoundManager {
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
+    
+    private var publisher: PassthroughSubject<Bool, Never> = .init()
     
     init?(appState: AppState) {
         self.appState = appState
@@ -56,23 +59,52 @@ class SoundManager {
     
     @objc func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
-            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
-                return
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+            return
         }
         switch type {
         case .began:
-            print("중단됨")
+            self.publisher.send(true)
+            self.engine.stop()
+            
+        case .ended:
+            self.audioEngineStart()
+            self.publisher.send(false)
         default: ()
+        }
+    }
+    
+    func resumePlaybackAfterInterruption() {
+        // 인터럽션이 종료되었을 때 일정 시간 간격으로 오디오 복구 시도
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // 0.5초 후에 시도
+            if AVAudioSession.sharedInstance().isOtherAudioPlaying == false {
+                self.audioEngineStart()
+            } else {
+                // 오디오 복구 시도가 실패했을 때 재시도
+                self.resumePlaybackAfterInterruption()
+            }
+        }
+    }
+    
+    // 전화 송/수신으로 인한 인터럽트 후 엔진 재시작
+    func audioEngineStart() {
+        if !self.engine.isRunning {
+            do {
+                try self.engine.start()
+            } catch {
+                print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
+            }
         }
     }
     
     func setupNotifications() {
         let callInterruptNotificationCenter = NotificationCenter.default
         callInterruptNotificationCenter.addObserver(self,
-                       selector: #selector(handleInterruption),
-                       name: AVAudioSession.interruptionNotification,
-                       object: AVAudioSession.sharedInstance())
+                                                    selector: #selector(handleInterruption),
+                                                    name: AVAudioSession.interruptionNotification,
+                                                    object: self.audioSession
+        )
     }
     
     private func configureSoundPlayers(weak: String, medium: String, strong: String) throws {
@@ -109,9 +141,21 @@ class SoundManager {
 
 extension SoundManager: PlaySoundInterface {
     
+    var callInterruptPublisher: AnyPublisher<Bool, Never> {
+        publisher.eraseToAnyPublisher()
+    }
+
     func beep(_ accent: Accent) {
         
         guard let buffer = self.audioBuffers[accent] else { return }
+
+        if !self.engine.isRunning {
+            do {
+                try self.engine.start()
+            } catch {
+                print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
+            }
+        }
         
         // 각 강세별 PlayerNode를 동적으로 생성하여 재생
         let playerNode = AVAudioPlayerNode()
