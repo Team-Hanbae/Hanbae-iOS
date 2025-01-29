@@ -18,7 +18,7 @@ class SoundManager {
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
     
-    private var publisher: PassthroughSubject<Bool, Never> = .init()
+    private var publisher: PassthroughSubject<Void, Never> = .init()
     
     init?(appState: AppState) {
         self.appState = appState
@@ -60,12 +60,12 @@ class SoundManager {
         }
         switch type {
         case .began:
-            self.publisher.send(true)
+            self.publisher.send()
             self.engine.stop()
             
         case .ended:
             self.audioEngineStart()
-            self.publisher.send(false)
+            self.publisher.send()
         default: ()
         }
     }
@@ -113,7 +113,7 @@ class SoundManager {
 
 extension SoundManager: PlaySoundInterface {
     
-    var callInterruptPublisher: AnyPublisher<Bool, Never> {
+    var callInterruptPublisher: AnyPublisher<Void, Never> {
         publisher.eraseToAnyPublisher()
     }
     

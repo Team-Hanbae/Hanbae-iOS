@@ -62,9 +62,8 @@ class MetronomeOnOffImplement {
         }
         .store(in: &self.cancelBag)
         
-        self.soundManager.callInterruptPublisher.sink {[weak self] callInterrupt in
-        guard let self else { return }
-            callInterrupt == true ? self.stop() : nil
+        self.soundManager.callInterruptPublisher.sink {[weak self] in
+            self?.stop()
         }
         .store(in: &self.cancelBag)
     }
