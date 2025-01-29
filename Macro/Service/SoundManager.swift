@@ -52,7 +52,7 @@ class SoundManager {
         self.setupNotifications()
     }
     
-    @objc func handleInterruption(notification: Notification) {
+    @objc private func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo,
               let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
               let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
