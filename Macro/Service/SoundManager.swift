@@ -49,6 +49,30 @@ class SoundManager {
         
         // 더미 노드 분리
         self.engine.detach(dummyNode)
+        
+        // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
+        self.setupNotifications()
+    }
+    
+    @objc func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+                return
+        }
+        switch type {
+        case .began:
+            print("중단됨")
+        default: ()
+        }
+    }
+    
+    func setupNotifications() {
+        let callInterruptNotificationCenter = NotificationCenter.default
+        callInterruptNotificationCenter.addObserver(self,
+                       selector: #selector(handleInterruption),
+                       name: AVAudioSession.interruptionNotification,
+                       object: AVAudioSession.sharedInstance())
     }
     
     private func configureSoundPlayers(weak: String, medium: String, strong: String) throws {
