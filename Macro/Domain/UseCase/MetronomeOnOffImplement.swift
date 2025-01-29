@@ -61,6 +61,11 @@ class MetronomeOnOffImplement {
             self.timer?.schedule(deadline: .now() + nextStartTime, repeating: self.interval, leeway: .nanoseconds(1))
         }
         .store(in: &self.cancelBag)
+        
+        self.soundManager.callInterruptPublisher.sink {[weak self] in
+            self?.stop()
+        }
+        .store(in: &self.cancelBag)
     }
 }
 
@@ -84,6 +89,8 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     func play() {
+        // AudioEngine start()
+        self.soundManager.audioEngineStart()
         // 데이터 갱신
         self.currentBeatIndex = 0
         UIApplication.shared.isIdleTimerDisabled = true

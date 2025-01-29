@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import AVFoundation
 
 class SoundManager {
@@ -16,6 +17,8 @@ class SoundManager {
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
+    
+    private var publisher: PassthroughSubject<Void, Never> = .init()
     
     init?(appState: AppState) {
         self.appState = appState
@@ -40,15 +43,39 @@ class SoundManager {
         self.engine.connect(dummyNode, to: self.engine.mainMixerNode, format: nil)
         
         // 엔진 시작
-        do {
-            try engine.start()
-        } catch {
-            print("SoundManager: 오디오 엔진 시작 중 에러 발생 - \(error)")
-            return nil
-        }
+        self.audioEngineStart()
         
         // 더미 노드 분리
         self.engine.detach(dummyNode)
+        
+        // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
+        self.setupNotifications()
+    }
+    
+    @objc private func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+            return
+        }
+        switch type {
+        case .began:
+            self.publisher.send()
+            self.engine.stop()
+            
+        case .ended:
+            self.audioEngineStart()
+        default: ()
+        }
+    }
+    
+    private func setupNotifications() {
+        let callInterruptNotificationCenter = NotificationCenter.default
+        callInterruptNotificationCenter.addObserver(self,
+                                                    selector: #selector(handleInterruption),
+                                                    name: AVAudioSession.interruptionNotification,
+                                                    object: self.audioSession
+        )
     }
     
     private func configureSoundPlayers(weak: String, medium: String, strong: String) throws {
@@ -85,6 +112,21 @@ class SoundManager {
 
 extension SoundManager: PlaySoundInterface {
     
+    var callInterruptPublisher: AnyPublisher<Void, Never> {
+        publisher.eraseToAnyPublisher()
+    }
+    
+    func audioEngineStart() {
+        self.engine.stop()
+        if !self.engine.isRunning {
+            do {
+                try self.engine.start()
+            } catch {
+                print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
+            }
+        }
+    }
+
     func beep(_ accent: Accent) {
         
         guard let buffer = self.audioBuffers[accent] else { return }
