@@ -9,22 +9,19 @@ import Combine
 import Foundation
 
 class TapTapImplement {
-    private var isTapping: Bool
-    @Published private var lastTappedDate: Date
     private var timeStampList: [Date] = []
+    private var isTapping: Bool
+    
+    /// 마지막 tap 시점으로부터 6초가 지났을 때 이벤트를 전달하기 위한 publisher
+    @Published private var lastTappedDate: Date?
     
     private var isTappingSubject = PassthroughSubject<Bool, Never>()
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    private var tempoUseCase: ReflectTempoInterface
-    
-    init(tempoUseCase: ReflectTempoInterface) {
+    init() {
         self.isTapping = false
-        self.lastTappedDate = .now
         self.timeStampList = []
-        
-        self.tempoUseCase = tempoUseCase
         
         $lastTappedDate
             .debounce(for: .seconds(6), scheduler: DispatchQueue.main)
@@ -43,25 +40,25 @@ extension TapTapImplement: TapTapUseCase {
         self.isTappingSubject.eraseToAnyPublisher()
     }
     
-    func tap() {
+    func tap(timeStamp: Date = .now) -> Int? {
         if !isTapping {
             isTapping = true
             self.isTappingSubject.send(self.isTapping)
         }
         
-        lastTappedDate = .now
-        self.timeStampList.append(lastTappedDate)
+        lastTappedDate = timeStamp
+        self.timeStampList.append(timeStamp)
         
         if timeStampList.count > 5 {
             self.timeStampList.removeFirst()
         }
         
-        guard timeStampList.count > 1 else { return }
+        guard timeStampList.count > 1 else { return nil }
         
         let interval: TimeInterval = timeStampList.last!.timeIntervalSince(timeStampList.first!)
         let averageInterval: TimeInterval = interval / Double(timeStampList.count - 1)
         let tempo: Double = 60 / averageInterval
-        self.tempoUseCase.reflectTempo(by: Int(tempo.rounded()))
+        return Int(tempo.rounded())
     }
     
     func finishTapping() {
