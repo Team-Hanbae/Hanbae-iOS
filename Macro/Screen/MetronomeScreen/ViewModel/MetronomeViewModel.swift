@@ -79,15 +79,12 @@ extension MetronomeViewModel {
         case changeSobakOnOff
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case stopMetronome
-        case estimateBpm
         case disableEstimateBpm
         case changeBlinkOnOff
     }
     
     func effect(action: Action) {
-        if action != .estimateBpm {
-            self.taptapUseCase.finishTapping()
-        }
+        self.taptapUseCase.finishTapping()
         
         switch action {
         case let .selectJangdan(jangdanName):
@@ -108,8 +105,6 @@ extension MetronomeViewModel {
                 self.metronomeOnOffUseCase.changeSobak()
             }
             self.metronomeOnOffUseCase.stop()
-        case .estimateBpm:
-            self.taptapUseCase.tap()
         case .disableEstimateBpm:
             self.taptapUseCase.finishTapping()
         case .changeBlinkOnOff:
