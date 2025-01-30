@@ -13,3 +13,7 @@ protocol TapTapUseCase {
     func tap(timeStamp: Date) -> Int?
     func finishTapping()
 }
+
+extension TapTapUseCase {
+    func tap(timeStamp: Date = .now) -> Int? { return nil }
+}
