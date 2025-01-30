@@ -30,7 +30,6 @@
 		2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
 		2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4BA002CE371E800A90C1F /* HomeView.swift */; };
 		2BCA580E2CCF5F8700FA08A9 /* TapTapImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */; };
-		2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */; };
@@ -124,7 +123,6 @@
 		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
 		2BC4BA002CE371E800A90C1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTapImplement.swift; sourceTree = "<group>"; };
-		2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectTempoInterface.swift; sourceTree = "<group>"; };
 		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */,
-				2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */,
 				3C6EAFA12CDD1061003F2191 /* TapTapUseCase.swift */,
 				3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */,
 				3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */,
@@ -714,7 +711,6 @@
 				3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */,
 				2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */,
 				438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */,
-				2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */,
 				2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */,
 				2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */,
 				4349F8F42CEC85D5001FE727 /* MetronomeControlViewModel.swift in Sources */,

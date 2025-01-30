@@ -30,9 +30,3 @@ extension TempoImplement: TempoUseCase {
         }
     }
 }
-
-extension TempoImplement: ReflectTempoInterface {
-    func reflectTempo(by tempo: Int) {
-        self.updateTempo(newBpm: tempo)
-    }
-}
