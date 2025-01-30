@@ -15,5 +15,5 @@ protocol TapTapUseCase {
 }
 
 extension TapTapUseCase {
-    func tap(timeStamp: Date = .now) -> Int? { return nil }
+    func tap(timeStamp: Date = .now) -> Int? { tap(timeStamp: timeStamp) }
 }
