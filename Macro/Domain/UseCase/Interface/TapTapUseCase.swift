@@ -6,9 +6,10 @@
 //
 
 import Combine
+import Foundation
 
 protocol TapTapUseCase {
     var isTappingPublisher: AnyPublisher<Bool, Never> { get }
-    func tap()
+    func tap(timeStamp: Date) -> Int?
     func finishTapping()
 }
