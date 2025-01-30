@@ -99,7 +99,8 @@ extension MetronomeControlViewModel {
         case let .roundBpm(currentBpm):
             self.tempoUseCase.updateTempo(newBpm: currentBpm)
         case .estimateBpm:
-            self.taptapUseCase.tap()
+            guard let bpm = self.taptapUseCase.tap() else { break }
+            self.tempoUseCase.updateTempo(newBpm: bpm)
         case let .toggleActiveState(isIncreasing, isActive):
             if isIncreasing {
                 self.state.isPlusActive = isActive
