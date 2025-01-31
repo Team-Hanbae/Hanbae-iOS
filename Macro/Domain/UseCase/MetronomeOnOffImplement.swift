@@ -109,6 +109,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.soundManager.audioEngineStart()
         // 데이터 갱신
         self.currentBeatIndex = 0
+        self.initialDaeSoBakIndex()
         UIApplication.shared.isIdleTimerDisabled = true
         // Timer 설정
         if let timer { self.stop() }
