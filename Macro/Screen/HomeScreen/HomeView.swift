@@ -11,7 +11,7 @@ import StoreKit
 struct HomeView: View {
     @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
-    
+    @State private var metronomeViewModel: MetronomeViewModel = DIContainer.shared.metronomeViewModel
     @State private var scrollOffset: CGFloat = 0
     
     private var router: Router
@@ -27,106 +27,113 @@ struct HomeView: View {
     
     var body: some View {
         if self.appState.didLaunchedBefore {
-            NavigationStack(path: Binding(
-                get: { router.path }, set: { router.path = $0 }
-            ))
-            {
-                VStack(spacing: 0) {
-                    HStack {
-                        Menu {
-                            Button("북") {
-                                self.appState.setInstrument(.북)
-                                self.viewModel.effect(action: .changeSoundType)
+            ZStack {
+                NavigationStack(path: Binding(
+                    get: { router.path }, set: { router.path = $0 }
+                ))
+                {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Menu {
+                                Button("북") {
+                                    self.appState.setInstrument(.북)
+                                    self.viewModel.effect(action: .changeSoundType)
+                                }
+                                Button("장구") {
+                                    self.appState.setInstrument(.장구)
+                                    self.viewModel.effect(action: .changeSoundType)
+                                }
+                            } label: {
+                                HStack(spacing: 12) {
+                                    Text("\(self.appState.selectedInstrument.rawValue)")
+                                        .font(.Callout_R)
+                                        .frame(width: 30)
+                                    Image(systemName: "chevron.down")
+                                        .font(.system(size: 16))
+                                        .fontWeight(.semibold)
+                                        .frame(height: 22)
+                                }
+                                .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 12))
+                                .background {
+                                    RoundedRectangle(cornerRadius: 35)
+                                        .stroke(lineWidth: 2)
+                                        .clipShape(RoundedRectangle(cornerRadius: 35))
+                                }
+                                .foregroundStyle(.buttonReverse)
                             }
-                            Button("장구") {
-                                self.appState.setInstrument(.장구)
-                                self.viewModel.effect(action: .changeSoundType)
-                            }
-                        } label: {
-                            HStack(spacing: 12) {
-                                Text("\(self.appState.selectedInstrument.rawValue)")
-                                    .font(.Callout_R)
-                                    .frame(width: 30)
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: 16))
-                                    .fontWeight(.semibold)
-                                    .frame(height: 22)
-                            }
-                            .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 12))
-                            .background {
-                                RoundedRectangle(cornerRadius: 35)
-                                    .stroke(lineWidth: 2)
-                                    .clipShape(RoundedRectangle(cornerRadius: 35))
-                            }
-                            .foregroundStyle(.buttonReverse)
+                            .padding(.leading, 8)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "tray.full.fill")
+                                .font(.system(size: 22))
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundStyle(.textSecondary)
+                                .onTapGesture {
+                                    router.push(.customJangdanList)
+                                }
+                                .frame(width: 44, height: 44)
                         }
-                        .padding(.leading, 8)
+                        .padding(.horizontal, 16)
+                        .padding(.top, 11)
                         
-                        Spacer()
-                        
-                        Image(systemName: "tray.full.fill")
-                            .font(.system(size: 22))
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
-                            .onTapGesture {
-                                router.push(.customJangdanList)
-                            }
-                            .frame(width: 44, height: 44)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.top, 11)
-                    
-                    GeometryReader { geo in
-                        ZStack(alignment: .top) {
-                            ScrollView {
-                                // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                                VStack(spacing: 0) {
-                                    // 스크롤 트래킹용 투명 View
-                                    scrollObservableView
-                                    
-                                    if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
-                                        Link(destination: surveyURL) {
-                                            Image(.surveyBanner)
-                                                .resizable()
-                                                .scaledToFill()
-                                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                        GeometryReader { geo in
+                            ZStack(alignment: .top) {
+                                ScrollView {
+                                    // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
+                                    VStack(spacing: 0) {
+                                        // 스크롤 트래킹용 투명 View
+                                        scrollObservableView
+                                        
+                                        if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                            Link(destination: surveyURL) {
+                                                Image(.surveyBanner)
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                            }
+                                            .padding(.vertical, 24)
                                         }
-                                        .padding(.vertical, 24)
-                                    }
-                                    
-                                    VStack {
-                                        LazyVGrid(columns: columns, spacing: 8) {
-                                            ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                                Button(jangdan.name) {
-                                                    self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
-                                                    self.appState.increaseEnteredJangdan()
-                                                    if self.appState.numberOfEnteredJangdan % 100 == 0 {
-                                                        self.requestReview()
+                                        
+                                        VStack {
+                                            LazyVGrid(columns: columns, spacing: 8) {
+                                                ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                                                    Button(jangdan.name) {
+                                                        self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                                                        self.appState.increaseEnteredJangdan()
+                                                        if self.appState.numberOfEnteredJangdan % 100 == 0 {
+                                                            self.requestReview()
+                                                        }
                                                     }
+                                                    .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                                 }
-                                                .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
                                             }
                                         }
+                                        .padding(.bottom, 38.5)
                                     }
-                                    .padding(.bottom, 38.5)
                                 }
+                                .onPreferenceChange(ScrollPreferenceKey.self) { value in
+                                    // 스크롤 내부 View의 최상단 - 스크롤뷰의 최상단
+                                    self.scrollOffset = value - geo.frame(in: .global).origin.y
+                                }
+                                .scrollIndicators(.hidden)
+                                .ignoresSafeArea(edges: .bottom)
+                                .padding(.horizontal, 16)
+                                .navigationDestination(for: Route.self) { path in
+                                    router.view(for: path)
+                                }
+                                
+                                Rectangle()
+                                    .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
+                                    .frame(height: min(36, max(-self.scrollOffset, 0)))
                             }
-                            .onPreferenceChange(ScrollPreferenceKey.self) { value in
-                                // 스크롤 내부 View의 최상단 - 스크롤뷰의 최상단
-                                self.scrollOffset = value - geo.frame(in: .global).origin.y
-                            }
-                            .scrollIndicators(.hidden)
-                            .ignoresSafeArea(edges: .bottom)
-                            .padding(.horizontal, 16)
-                            .navigationDestination(for: Route.self) { path in
-                                router.view(for: path)
-                            }
-                            
-                            Rectangle()
-                                .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
-                                .frame(height: min(36, max(-self.scrollOffset, 0)))
                         }
                     }
+                }
+                
+                if self.metronomeViewModel.state.isBlinkOn {
+                    Color.white
+                        .ignoresSafeArea()
                 }
             }
         } else {

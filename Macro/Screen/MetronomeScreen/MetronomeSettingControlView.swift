@@ -29,6 +29,7 @@ struct MetronomeSettingControlView: View {
             
             Button {
                 self.isBlinkOn.toggle()
+                self.viewModel.effect(action: .changeBlinkOnOff)
             } label: {
                 DisplayBlinkView(isBlinkOn: $isBlinkOn)
             }
