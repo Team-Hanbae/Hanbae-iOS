@@ -134,6 +134,7 @@ struct HomeView: View {
                     Color.white
                         .ignoresSafeArea()
                         .animation(.linear(duration: 0.3), value: self.viewModel.state.isBlinking)
+                        .allowsHitTesting(false)
                 }
             }
         } else {
