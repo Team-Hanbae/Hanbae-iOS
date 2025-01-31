@@ -12,27 +12,24 @@ struct ListenSobakToggleView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Image(.listenSobak)
-                .aspectRatio(contentMode: .fit)
-                .padding(.trailing, 10)
-            
-            Text("소박 듣기")
-                .font(.Title3_R)
-                .foregroundColor(.textSecondary)
-            
-            Spacer()
-            
-            Toggle("", isOn: $isSobakOn)
-                .labelsHidden()
-                .toggleStyle(SwitchToggleStyle(tint: .buttonToggleOn))
+            HStack(spacing: 0) {
+                Image(.listenSobak)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.trailing, 6)
+                
+                Text("소박 듣기")
+                    .font(.Title3_R)
+                    .foregroundColor(.textSecondary)
+            }
+            .padding(.horizontal, 9.25)
         }
-        .padding(.horizontal, 24)
         .padding(.vertical, 12)
+        .padding(.leading, 22)
+        .padding(.trailing, 24)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.backgroundCard)
         )
-        .padding(.horizontal, 16)
     }
 }
 
