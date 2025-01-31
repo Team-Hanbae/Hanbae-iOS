@@ -130,10 +130,10 @@ struct HomeView: View {
                     }
                 }
                 
-                if self.viewModel.state.isBlinkOn {
+                if self.viewModel.state.isBlinking {
                     Color.white
                         .ignoresSafeArea()
-                        .animation(.linear(duration: 0.3), value: self.viewModel.state.isBlinkOn)
+                        .animation(.linear(duration: 0.3), value: self.viewModel.state.isBlinking)
                 }
             }
         } else {

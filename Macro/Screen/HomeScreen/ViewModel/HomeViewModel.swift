@@ -22,9 +22,9 @@ class HomeViewModel {
         
         self.metronomeOnOffUseCase.firstTickPublisher.sink { [weak self] _ in
             guard let self else { return }
-            self.state.isBlinkOn = true
+            self.state.isBlinking = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.state.isBlinkOn = false
+                self.state.isBlinking = false
             }
         }
         .store(in: &cancelBag)
@@ -33,7 +33,7 @@ class HomeViewModel {
     private(set) var state: State = .init()
     
     struct State {
-        var isBlinkOn: Bool = false
+        var isBlinking: Bool = false
     }
 }
 
