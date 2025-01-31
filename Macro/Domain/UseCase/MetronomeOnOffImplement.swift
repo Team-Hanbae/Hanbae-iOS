@@ -143,7 +143,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         // timer 카운트를 해주고, 틱마다 publish
         self.updateStatePerBak()
         self.tickSubject.send((currentSobak, currentDaebak, currentRow))
-        if self.isBlinkOn && self.currentSobak == 0 {
+        if self.isBlinkOn && self.currentDaebak == 0 && self.currentSobak == 0 {
             self.firstTickSubject.send()
         }
         
