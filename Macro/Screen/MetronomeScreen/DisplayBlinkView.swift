@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DisplayBlinkView: View {
+    
+    @Binding var isBlinkOn: Bool
+    
     var body: some View {
         HStack(spacing: 0) {
             Image(.flash)
@@ -23,11 +26,12 @@ struct DisplayBlinkView: View {
         .padding(.trailing, 24)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.backgroundCard)
+                .fill(self.isBlinkOn ? Color.buttonToggleOn : Color.buttonToggleOff)
         )
     }
 }
 
 #Preview {
-    DisplayBlinkView()
+    @Previewable @State var isBlinkOn = true
+    DisplayBlinkView(isBlinkOn: $isBlinkOn)
 }

@@ -28,7 +28,7 @@ struct ListenSobakToggleView: View {
         .padding(.trailing, 24)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color.backgroundCard)
+                .fill(self.isSobakOn ? Color.buttonToggleOn : Color.buttonToggleOff)
         )
     }
 }

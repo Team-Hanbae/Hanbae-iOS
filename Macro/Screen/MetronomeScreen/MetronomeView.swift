@@ -10,8 +10,6 @@ import SwiftUI
 struct MetronomeView: View {
     @State var viewModel: MetronomeViewModel
     
-    @State private var isSobakOn: Bool = false
-    
     private var jangdanName: String
     
     init(viewModel: MetronomeViewModel, jangdanName: String) {
@@ -44,25 +42,7 @@ struct MetronomeView: View {
             .padding(.horizontal, 8)
             
             // MARK: 2. 소박 듣기, 소박 보기 뷰
-            HStack(spacing: 10) {
-                
-                Button {
-                    
-                } label: {
-                    if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
-                        ViewSobakToggleView(isSobakOn: $isSobakOn)
-                    } else {
-                        ListenSobakToggleView(isSobakOn: $isSobakOn)
-                    }
-                }
-                
-                Button {
-                    
-                } label: {
-                    DisplayBlinkView()
-                }
-            }
-            .padding(.bottom, 16)
+            MetronomeSettingControlView()
             
             // MARK: 3. BPM 및 재생 조절 뷰
             MetronomeControlView()
@@ -75,10 +55,6 @@ struct MetronomeView: View {
         
         .task {
             self.viewModel.effect(action: .selectJangdan(selectedJangdanName: self.jangdanName))
-            self.isSobakOn = self.viewModel.state.isSobakOn
-        }
-        .onChange(of: isSobakOn) {
-            self.viewModel.effect(action: .changeSobakOnOff)
         }
     }
 }
