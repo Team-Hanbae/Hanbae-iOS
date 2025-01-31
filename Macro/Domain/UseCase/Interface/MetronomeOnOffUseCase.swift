@@ -19,4 +19,5 @@ protocol MetronomeOnOffUseCase {
     func stop()
     func setSoundType()
     func initialDaeSoBakIndex()
+    func resetOptions()
 }
