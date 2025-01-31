@@ -1,15 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "ViewSobak.svg",
-      "idiom" : "universal"
+      "filename" : "Icon_ViewSobak.svg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Icon_ViewSobak 1.svg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Icon_ViewSobak 2.svg",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

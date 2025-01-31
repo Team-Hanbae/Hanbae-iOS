@@ -60,5 +60,5 @@ struct MetronomeView: View {
 }
 
 #Preview {
-    MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: "자진모리")
+    MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: "진양")
 }
