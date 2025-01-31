@@ -18,6 +18,7 @@ struct MetronomeSettingControlView: View {
             
             Button {
                 self.isSobakOn.toggle()
+                self.viewModel.effect(action: .changeSobakOnOff)
             } label: {
                 if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
                     ViewSobakToggleView(isSobakOn: $isSobakOn)
