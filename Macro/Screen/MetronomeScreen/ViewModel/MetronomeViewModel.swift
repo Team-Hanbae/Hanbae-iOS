@@ -120,6 +120,7 @@ extension MetronomeViewModel {
             self.taptapUseCase.finishTapping()
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
+            self.metronomeOnOffUseCase.changeBlink()
         }
     }
 }

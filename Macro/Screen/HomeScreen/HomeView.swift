@@ -11,7 +11,6 @@ import StoreKit
 struct HomeView: View {
     @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
-    @State private var metronomeViewModel: MetronomeViewModel = DIContainer.shared.metronomeViewModel
     @State private var scrollOffset: CGFloat = 0
     
     private var router: Router
@@ -131,9 +130,10 @@ struct HomeView: View {
                     }
                 }
                 
-                if self.metronomeViewModel.state.isBlinkOn {
+                if self.viewModel.state.isBlinkOn {
                     Color.white
                         .ignoresSafeArea()
+                        .animation(.linear(duration: 0.3), value: self.viewModel.state.isBlinkOn)
                 }
             }
         } else {
