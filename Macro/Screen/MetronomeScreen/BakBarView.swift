@@ -37,12 +37,12 @@ struct BakBarView: View {
                     
                     Path { path in
                         for i in 1..<3 {
-                            let y = CGFloat(i) * (geo.size.height / 3) - 0.5
+                            let y = CGFloat(i) * (geo.size.height / 3) + 0.5
                             path.move(to: CGPoint(x: 0, y: y))
                             path.addLine(to: CGPoint(x: geo.size.width, y: y))
                         }
                     }
-                    .stroke(style: StrokeStyle(lineWidth: 1, lineCap: .round, dash: [4, 4]))
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [2, 2]))
                     .foregroundColor(.bakBarDivider)
                     
                     Rectangle()
