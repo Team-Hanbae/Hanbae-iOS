@@ -12,10 +12,9 @@ struct DisplayBlinkView: View {
     @Binding var isBlinkOn: Bool
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 6) {
             Image(.flash)
                 .aspectRatio(contentMode: .fit)
-                .padding(.trailing, 6)
             
             Text("화면 반짝임")
                 .font(.title3)
