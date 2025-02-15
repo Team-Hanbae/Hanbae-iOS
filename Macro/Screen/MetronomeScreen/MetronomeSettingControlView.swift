@@ -14,26 +14,53 @@ struct MetronomeSettingControlView: View {
     @State private var isBlinkOn: Bool = false
     
     var body: some View {
-        HStack(spacing: 10) {
-            
+        HStack(spacing: 8) {
             Button {
                 self.isSobakOn.toggle()
                 self.viewModel.effect(action: .changeSobakOnOff)
             } label: {
-                if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
-                    ViewSobakToggleView(isSobakOn: $isSobakOn)
-                } else {
-                    ListenSobakToggleView(isSobakOn: $isSobakOn)
+                HStack(spacing: 6) {
+                    Image(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? .listenSobak : .viewSobak)
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Text(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? "소박 듣기" : "소박 보기")
+                        .font(.title3)
+                        .foregroundStyle(.textSecondary)
                 }
+                .padding(.vertical, 12)
+                .padding(.leading, 22)
+                .padding(.trailing, 24)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(self.isSobakOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                )
             }
             
             Button {
                 self.isBlinkOn.toggle()
                 self.viewModel.effect(action: .changeBlinkOnOff)
             } label: {
-                DisplayBlinkView(isBlinkOn: $isBlinkOn)
+                HStack(spacing: 6) {
+                    Image(.flash)
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Text("화면 반짝임")
+                        .font(.title3)
+                        .foregroundStyle(.textSecondary)
+                }
+                .padding(.vertical, 12)
+                .padding(.leading, 22)
+                .padding(.trailing, 24)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(self.isBlinkOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                )
             }
         }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 16)
         .padding(.bottom, 16)
     }
 }
