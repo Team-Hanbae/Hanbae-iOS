@@ -22,10 +22,11 @@ struct MetronomeSettingControlView: View {
                 HStack(spacing: 6) {
                     Image(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? .listenSobak : .viewSobak)
                         .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(self.isSobakOn ? Color.buttonToggleOn : Color.textSecondary)
                     
                     Text(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? "소박 듣기" : "소박 보기")
                         .font(.title3)
-                        .foregroundStyle(.textSecondary)
+                        .foregroundStyle(self.isSobakOn ? Color.buttonToggleOn : Color.textSecondary)
                 }
                 .padding(.vertical, 12)
                 .padding(.leading, 22)
@@ -33,7 +34,8 @@ struct MetronomeSettingControlView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(self.isSobakOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                        .fill(self.isSobakOn ? Color.backgroundCard : Color.buttonToggleOff)
+                        .strokeBorder(self.isSobakOn ? Color.buttonToggleOn : Color.buttonToggleOff)
                 )
             }
             
@@ -44,10 +46,11 @@ struct MetronomeSettingControlView: View {
                 HStack(spacing: 6) {
                     Image(.flash)
                         .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(self.isBlinkOn ? Color.buttonToggleOn : Color.textSecondary)
                     
                     Text("화면 반짝임")
                         .font(.title3)
-                        .foregroundStyle(.textSecondary)
+                        .foregroundStyle(self.isBlinkOn ? Color.buttonToggleOn : Color.textSecondary)
                 }
                 .padding(.vertical, 12)
                 .padding(.leading, 22)
@@ -55,7 +58,8 @@ struct MetronomeSettingControlView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(self.isBlinkOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                        .fill(self.isBlinkOn ? Color.backgroundCard : Color.buttonToggleOff)
+                        .strokeBorder(self.isBlinkOn ? Color.buttonToggleOn : Color.buttonToggleOff)
                 )
             }
         }
