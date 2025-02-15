@@ -22,10 +22,17 @@ class MetronomeOnOffImplement {
     private var bpm: Double
     private var currentBeatIndex: Int
     private var isSobakOn: Bool
+    private var isBlinkOn: Bool
+    
+    // 현재 진행중인 박 위치 관련 변수
+    private var currentSobak: Int = 0
+    private var currentDaebak: Int = 0
+    private var currentRow: Int = 0
     
     private var isPlayingSubject: PassthroughSubject<Bool, Never> = .init()
     private var isSobakOnSubject: PassthroughSubject<Bool, Never> = .init()
-    private var tickSubject: PassthroughSubject<Void, Never> = .init()
+    private var tickSubject: PassthroughSubject<(Int,Int,Int), Never> = .init()
+    private var firstTickSubject: PassthroughSubject<Void, Never> = .init()
     private var cancelBag: Set<AnyCancellable> = []
     
     // timer
@@ -43,6 +50,7 @@ class MetronomeOnOffImplement {
         self.bpm = 60.0
         self.currentBeatIndex = 0
         self.isSobakOn = false
+        self.isBlinkOn = false
         self.lastPlayTime = .now
         self.jangdanRepository = jangdanRepository
         self.soundManager = soundManager
@@ -79,8 +87,12 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isSobakOnSubject.eraseToAnyPublisher()
     }
     
-    var tickPublisher: AnyPublisher<Void, Never> {
+    var tickPublisher: AnyPublisher<(Int,Int,Int), Never> {
         self.tickSubject.eraseToAnyPublisher()
+    }
+    
+    var firstTickPublisher: AnyPublisher<Void, Never> {
+        self.firstTickSubject.eraseToAnyPublisher()
     }
     
     func changeSobak() {
@@ -88,11 +100,16 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isSobakOnSubject.send(self.isSobakOn)
     }
     
+    func changeBlink() {
+        self.isBlinkOn.toggle()
+    }
+    
     func play() {
         // AudioEngine start()
         self.soundManager.audioEngineStart()
         // 데이터 갱신
         self.currentBeatIndex = 0
+        self.initialDaeSoBakIndex()
         UIApplication.shared.isIdleTimerDisabled = true
         // Timer 설정
         if let timer { self.stop() }
@@ -123,11 +140,49 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     private func timerHandler() {
-        // timer 틱마다 publish
-        self.tickSubject.send()
+        // timer 카운트를 해주고, 틱마다 publish
+        self.updateStatePerBak()
+        self.tickSubject.send((currentSobak, currentDaebak, currentRow))
+        if self.isBlinkOn && self.currentRow == 0 && self.currentDaebak == 0 && self.currentSobak == 0 {
+            self.firstTickSubject.send()
+        }
         
         let accent: Accent = jangdanAccentList[self.currentBeatIndex % jangdanAccentList.count]
         self.soundManager.beep(accent)
         self.currentBeatIndex += 1
+    }
+    
+    private func updateStatePerBak() {
+        var nextSobak: Int = self.currentSobak
+        var nextDaebak: Int = self.currentDaebak
+        var nextRow: Int = self.currentRow
+        
+        nextSobak += 1
+        if nextSobak == self.jangdan[nextRow][nextDaebak].count {
+            nextDaebak += 1
+            if nextDaebak == self.jangdan[nextRow].count {
+                nextRow += 1
+                if nextRow == self.jangdan.count {
+                    nextRow = 0
+                }
+                nextDaebak = 0
+            }
+            nextSobak = 0
+        }
+        
+        self.currentSobak = nextSobak
+        self.currentDaebak = nextDaebak
+        self.currentRow = nextRow
+    }
+    
+    func initialDaeSoBakIndex() {
+        self.currentRow = self.jangdan.count - 1
+        self.currentDaebak = self.jangdan[self.currentRow].count - 1
+        self.currentSobak = self.jangdan[self.currentRow][self.currentDaebak].count - 1
+    }
+    
+    func resetOptions() {
+        self.isSobakOn = false
+        self.isBlinkOn = false
     }
 }

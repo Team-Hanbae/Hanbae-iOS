@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ListenSobak.png",
+      "filename" : "Icon_ListenSobak.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ListenSobak@2x.png",
+      "filename" : "Icon_ListenSobak 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ListenSobak@3x.png",
+      "filename" : "Icon_ListenSobak 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

@@ -44,20 +44,15 @@ class MetronomeViewModel {
         
         self.metronomeOnOffUseCase.isPlayingPublisher.sink { [weak self] isPlaying in
             guard let self else { return }
-            self.initialDaeSoBakIndex()
             self.state.isPlaying = isPlaying
         }
         .store(in: &self.cancelBag)
         
-        self.metronomeOnOffUseCase.isSobakOnPublisher.sink { [weak self] isSobakOn in
+        self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] currentBakIndex in
             guard let self else { return }
-            self.state.isSobakOn = isSobakOn
-        }
-        .store(in: &self.cancelBag)
-        
-        self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] _ in
-            guard let self else { return }
-            self.updateStatePerBak()
+            self.state.currentSobak = currentBakIndex.0
+            self.state.currentDaebak = currentBakIndex.1
+            self.state.currentRow = currentBakIndex.2
         }
         .store(in: &self.cancelBag)
     }
@@ -71,6 +66,7 @@ class MetronomeViewModel {
         var isSobakOn: Bool = false
         var isPlaying: Bool = false
         var isTapping: Bool = false
+        var isBlinkOn: Bool = false
         var currentSobak: Int = 0
         var currentDaebak: Int = 0
         var currentRow: Int = 0
@@ -85,6 +81,7 @@ extension MetronomeViewModel {
         case stopMetronome
         case estimateBpm
         case disableEstimateBpm
+        case changeBlinkOnOff
     }
     
     func effect(action: Action) {
@@ -96,14 +93,14 @@ extension MetronomeViewModel {
         case let .selectJangdan(jangdanName):
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
-            self.initialDaeSoBakIndex()
+            self.metronomeOnOffUseCase.initialDaeSoBakIndex()
             self.taptapUseCase.finishTapping()
-            if self.state.isSobakOn {
-                self.metronomeOnOffUseCase.changeSobak()
-            }
+            self.state.isSobakOn = false
+            self.state.isBlinkOn = false
+            self.metronomeOnOffUseCase.resetOptions()
         case .changeSobakOnOff:
+            self.state.isSobakOn.toggle()
             self.metronomeOnOffUseCase.changeSobak()
-            
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
@@ -115,35 +112,9 @@ extension MetronomeViewModel {
             self.taptapUseCase.tap()
         case .disableEstimateBpm:
             self.taptapUseCase.finishTapping()
+        case .changeBlinkOnOff:
+            self.state.isBlinkOn.toggle()
+            self.metronomeOnOffUseCase.changeBlink()
         }
-    }
-    
-    private func updateStatePerBak() {
-        var nextSobak: Int = self.state.currentSobak
-        var nextDaebak: Int = self.state.currentDaebak
-        var nextRow: Int = self.state.currentRow
-        
-        nextSobak += 1
-        if nextSobak == self.state.jangdanAccent[nextRow][nextDaebak].count {
-            nextDaebak += 1
-            if nextDaebak == self.state.jangdanAccent[nextRow].count {
-                nextRow += 1
-                if nextRow == self.state.jangdanAccent.count {
-                    nextRow = 0
-                }
-                nextDaebak = 0
-            }
-            nextSobak = 0
-        }
-        
-        self.state.currentSobak = nextSobak
-        self.state.currentDaebak = nextDaebak
-        self.state.currentRow = nextRow
-    }
-    
-    private func initialDaeSoBakIndex() {
-        self.state.currentRow = self.state.jangdanAccent.count - 1
-        self.state.currentDaebak = self.state.jangdanAccent[self.state.currentRow].count - 1
-        self.state.currentSobak = self.state.jangdanAccent[self.state.currentRow][self.state.currentDaebak].count - 1
     }
 }
