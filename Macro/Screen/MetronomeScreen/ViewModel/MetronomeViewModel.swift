@@ -92,7 +92,6 @@ extension MetronomeViewModel {
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.metronomeOnOffUseCase.initialDaeSoBakIndex()
-            self.taptapUseCase.finishTapping()
             self.state.isSobakOn = false
             self.state.isBlinkOn = false
             self.metronomeOnOffUseCase.resetOptions()
@@ -107,7 +106,7 @@ extension MetronomeViewModel {
             }
             self.metronomeOnOffUseCase.stop()
         case .disableEstimateBpm:
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
             self.metronomeOnOffUseCase.changeBlink()
