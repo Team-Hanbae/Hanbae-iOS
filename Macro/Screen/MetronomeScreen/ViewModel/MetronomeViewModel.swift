@@ -13,16 +13,17 @@ class MetronomeViewModel {
     private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var accentUseCase: AccentUseCase
-    private var taptapUseCase: TapTapUseCase
+    private var tempoUseCase: TempoUseCase
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase, taptapUseCase: TapTapUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase) {
         
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
+        self.tempoUseCase = tempoUseCase
         self.accentUseCase = accentUseCase
-        self.taptapUseCase = taptapUseCase
+        
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
@@ -36,7 +37,7 @@ class MetronomeViewModel {
         }
         .store(in: &self.cancelBag)
         
-        self.taptapUseCase.isTappingPublisher.sink { [weak self] isTapping in
+        self.tempoUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
             self.state.isTapping = isTapping
         }
@@ -79,22 +80,18 @@ extension MetronomeViewModel {
         case changeSobakOnOff
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case stopMetronome
-        case estimateBpm
         case disableEstimateBpm
         case changeBlinkOnOff
     }
     
     func effect(action: Action) {
-        if action != .estimateBpm {
-            self.taptapUseCase.finishTapping()
-        }
+        self.tempoUseCase.finishTapping()
         
         switch action {
         case let .selectJangdan(jangdanName):
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.metronomeOnOffUseCase.initialDaeSoBakIndex()
-            self.taptapUseCase.finishTapping()
             self.state.isSobakOn = false
             self.state.isBlinkOn = false
             self.metronomeOnOffUseCase.resetOptions()
@@ -108,10 +105,8 @@ extension MetronomeViewModel {
                 self.metronomeOnOffUseCase.changeSobak()
             }
             self.metronomeOnOffUseCase.stop()
-        case .estimateBpm:
-            self.taptapUseCase.tap()
         case .disableEstimateBpm:
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
             self.metronomeOnOffUseCase.changeBlink()
