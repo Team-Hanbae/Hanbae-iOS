@@ -19,13 +19,12 @@ class DIContainer {
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
         self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: soundManager)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
-        self.tapTapUseCase = TapTapImplement()
         self.dynamicIconUseCase = DynamicIconImplement()
         
-        self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase, taptapUseCase: self.tapTapUseCase)
+        self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase)
         
         self.controlViewModel =
-        MetronomeControlViewModel(jangdanRepository: self.jangdanDataSource, taptapUseCase: self.tapTapUseCase, tempoUseCase: self.tempoUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
+        MetronomeControlViewModel(jangdanRepository: self.jangdanDataSource, tempoUseCase: self.tempoUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
         
         self.homeViewModel = HomeViewModel(metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase)
         self.customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self.templateUseCase)
@@ -56,7 +55,6 @@ class DIContainer {
     private var tempoUseCase: TempoImplement
     private var metronomeOnOffUseCase: MetronomeOnOffImplement
     private var accentUseCase: AccentImplement
-    private var tapTapUseCase: TapTapImplement
     private var dynamicIconUseCase: DynamicIconImplement
     
     // Service

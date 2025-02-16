@@ -13,21 +13,19 @@ class MetronomeControlViewModel {
     
     private var cancelBag: Set<AnyCancellable> = []
     private var jangdanRepository: JangdanRepository
-    private var taptapUseCase: TapTapUseCase
     private var tempoUseCase: TempoUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     
     var timerCancellable: AnyCancellable?
     
-    init(jangdanRepository: JangdanRepository, taptapUseCase: TapTapUseCase, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase) {
+    init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase) {
         self.jangdanRepository = jangdanRepository
-        self.taptapUseCase = taptapUseCase
         self.tempoUseCase = tempoUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         
         self.timerCancellable = nil
         
-        self.taptapUseCase.isTappingPublisher.sink { [weak self] isTapping in
+        self.tempoUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
             self.state.isTapping = isTapping
         }
@@ -83,24 +81,23 @@ extension MetronomeControlViewModel {
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case let .decreaseLongBpm(currentBpm):
             let remainder = currentBpm % 10
             let roundedBpm = remainder == 0 ? currentBpm + remainder : currentBpm + (10 - remainder)
             self.tempoUseCase.updateTempo(newBpm: roundedBpm - 10)
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case .increaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm + 1)
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case let .increaseLongBpm(currentBpm):
             let roundedBpm = currentBpm - (currentBpm % 10)
             self.tempoUseCase.updateTempo(newBpm: roundedBpm + 10)
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         case let .roundBpm(currentBpm):
             self.tempoUseCase.updateTempo(newBpm: currentBpm)
         case .estimateBpm:
-            guard let bpm = self.taptapUseCase.tap() else { break }
-            self.tempoUseCase.updateTempo(newBpm: bpm)
+            self.tempoUseCase.tap()
         case let .toggleActiveState(isIncreasing, isActive):
             if isIncreasing {
                 self.state.isPlusActive = isActive

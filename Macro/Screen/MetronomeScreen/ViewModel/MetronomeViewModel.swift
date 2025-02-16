@@ -13,16 +13,17 @@ class MetronomeViewModel {
     private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var accentUseCase: AccentUseCase
-    private var taptapUseCase: TapTapUseCase
+    private var tempoUseCase: TempoUseCase
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase, taptapUseCase: TapTapUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase) {
         
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
+        self.tempoUseCase = tempoUseCase
         self.accentUseCase = accentUseCase
-        self.taptapUseCase = taptapUseCase
+        
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
@@ -36,7 +37,7 @@ class MetronomeViewModel {
         }
         .store(in: &self.cancelBag)
         
-        self.taptapUseCase.isTappingPublisher.sink { [weak self] isTapping in
+        self.tempoUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
             self.state.isTapping = isTapping
         }
@@ -87,14 +88,13 @@ extension MetronomeViewModel {
     }
     
     func effect(action: Action) {
-        self.taptapUseCase.finishTapping()
+        self.tempoUseCase.finishTapping()
         
         switch action {
         case let .selectJangdan(jangdanName):
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.initialDaeSoBakIndex()
-            self.taptapUseCase.finishTapping()
             if self.state.isSobakOn {
                 self.metronomeOnOffUseCase.changeSobak()
             }
@@ -109,7 +109,7 @@ extension MetronomeViewModel {
             }
             self.metronomeOnOffUseCase.stop()
         case .disableEstimateBpm:
-            self.taptapUseCase.finishTapping()
+            self.tempoUseCase.finishTapping()
         }
     }
     
