@@ -11,8 +11,6 @@ import SwiftUI
 @main
 struct HanbaeWidgetBundle: WidgetBundle {
     var body: some Widget {
-        HanbaeWidget()
-        HanbaeWidgetControl()
         HanbaeWidgetLiveActivity()
     }
 }

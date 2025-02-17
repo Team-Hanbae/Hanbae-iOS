@@ -60,6 +60,8 @@
 		3CB496002D62185E005A7E5F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB495FF2D62185E005A7E5F /* WidgetKit.framework */; };
 		3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB496012D62185E005A7E5F /* SwiftUI.framework */; };
 		3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
+		3CB496412D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
 		3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */; };
 		3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */; };
 		3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */; };
@@ -184,6 +186,7 @@
 		3CB496192D63115F005A7E5F /* MacroDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroDebug.entitlements; sourceTree = "<group>"; };
 		3CB4961A2D632184005A7E5F /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
 		3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeWidgetExtension.entitlements; sourceTree = "<group>"; };
+		3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
 		3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_strong.wav; sourceTree = "<group>"; };
 		3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_weak.wav; sourceTree = "<group>"; };
@@ -222,7 +225,10 @@
 		3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppIntent.swift,
+				Assets.xcassets,
 				AudioVisualizerAnimationView.swift,
+				HanbaeWidgetLiveActivity.swift,
 			);
 			target = 2BE5AD372C9EC9030094F3C3 /* Macro */;
 		};
@@ -463,6 +469,7 @@
 				2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */,
 				2BB797B62CE62532008173A5 /* JangdanDataManager.swift */,
 				5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */,
+				3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -796,6 +803,7 @@
 				2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */,
 				572AB1C62CEDC26200778B9B /* CustomJangdanListView.swift in Sources */,
 				572AB1C72CEDC26200778B9B /* EmptyJangdanListView.swift in Sources */,
+				3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */,
 				3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */,
 				3C6EAFA42CDD1146003F2191 /* TemplateUseCase.swift in Sources */,
 				3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */,
@@ -862,6 +870,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB496412D637D28005A7E5F /* LiveActivityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,8 +78,12 @@ extension MetronomeControlViewModel {
         case .changeIsPlaying:
             if self.state.isPlaying {
                 self.metronomeOnOffUseCase.stop()
+                Task {
+                    await LiveActivityManager.shared.endLiveActivity(bpm: self.state.bpm, jangdanName: "자진모리(테스트)", isPlaying: self.state.isPlaying)
+                }
             } else {
                 self.metronomeOnOffUseCase.play()
+                LiveActivityManager.shared.startLiveActivity(bpm: self.state.bpm, jangdanName: "자진모리(테스트)", isPlaying: self.state.isPlaying)
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)

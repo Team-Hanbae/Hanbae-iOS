@@ -22,7 +22,7 @@ struct HanbaeWidgetAttributes: ActivityAttributes {
 
 struct HanbaeWidgetLiveActivity: Widget {
     
-    @State var isPlaying: Bool = false
+    @State var isPlaying: Bool = true
     
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: HanbaeWidgetAttributes.self) { context in
@@ -44,7 +44,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                     
                     VStack(alignment: .leading, spacing: 4) {
                         AudioVisualizerAnimationView(isPlaying: $isPlaying)
-                        Text("자진모리(흥부가)")
+                        Text("\(context.state.jangdanName)")
                     }
                     
                     Spacer()
@@ -53,7 +53,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                         Circle()
                             .frame(width: 50, height: 50)
                             .foregroundStyle(Color.orange900)
-                        Image(systemName: self.isPlaying ? "pause.fill": "play.fill")
+                        Image(systemName: isPlaying ? "pause.fill": "play.fill")
                             .aspectRatio(contentMode: .fit)
                             .font(.system(size: 24))
                             .foregroundStyle(Color.buttonActive)
