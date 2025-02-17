@@ -219,12 +219,20 @@
 			);
 			target = 3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */;
 		};
+		3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AudioVisualizerAnimationView.swift,
+			);
+			target = 2BE5AD372C9EC9030094F3C3 /* Macro */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3CB496032D62185E005A7E5F /* HanbaeWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */,
 				3CB496142D621860005A7E5F /* Exceptions for "HanbaeWidget" folder in "HanbaeWidgetExtension" target */,
 			);
 			path = HanbaeWidget;

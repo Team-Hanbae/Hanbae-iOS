@@ -33,6 +33,8 @@ struct AudioVisualizerAnimationView: View {
             .onAppear{
                 isPlaying.toggle()
             }
+            .padding(.vertical, 2.5)
+            .padding(.horizontal, 2)
         }
     }
     

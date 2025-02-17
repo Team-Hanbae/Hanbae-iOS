@@ -12,23 +12,63 @@ import SwiftUI
 struct HanbaeWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var bpm: Int
+        var jangdanName: String
+        var isPlaying: Bool
     }
 
     // Fixed non-changing properties about your activity go here!
-    var name: String
 }
 
 struct HanbaeWidgetLiveActivity: Widget {
+    
+    @State var isPlaying: Bool = false
+    
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: HanbaeWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello \(context.state.emoji)")
-            }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+            
+            HStack {
+                HStack {
+                    VStack(spacing: 0) {
+                        Text("빠르기")
+                            .font(.footnote)
+                        Text("\(context.state.bpm)")
+                            .font(.system(size: 40))
+                    }
 
+                    Rectangle()
+                        .frame(width: 1)
+                        .foregroundStyle(Color.white)
+                        .padding(.horizontal, 16)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        AudioVisualizerAnimationView(isPlaying: $isPlaying)
+                        Text("자진모리(흥부가)")
+                    }
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        Circle()
+                            .frame(width: 50, height: 50)
+                            .foregroundStyle(Color.orange900)
+                        Image(systemName: self.isPlaying ? "pause.fill": "play.fill")
+                            .aspectRatio(contentMode: .fit)
+                            .font(.system(size: 24))
+                            .foregroundStyle(Color.buttonActive)
+                    }
+                    .onTapGesture {
+                        self.isPlaying.toggle()
+                    }
+                }
+                .padding(.vertical, 16)
+                .padding(.horizontal, 28)
+            }
+            .frame(height: 90)
+            .frame(maxWidth: .infinity)
+            .background(Color.black)
+            .foregroundStyle(Color.white)
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
@@ -40,15 +80,15 @@ struct HanbaeWidgetLiveActivity: Widget {
                     Text("Trailing")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
+                    Text("Bottom \(context.state.bpm)")
                     // more content
                 }
             } compactLeading: {
                 Text("L")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text("T \(context.state.bpm)")
             } minimal: {
-                Text(context.state.emoji)
+                Text("T \(context.state.bpm)")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -58,23 +98,18 @@ struct HanbaeWidgetLiveActivity: Widget {
 
 extension HanbaeWidgetAttributes {
     fileprivate static var preview: HanbaeWidgetAttributes {
-        HanbaeWidgetAttributes(name: "World")
+        HanbaeWidgetAttributes()
     }
 }
 
 extension HanbaeWidgetAttributes.ContentState {
-    fileprivate static var smiley: HanbaeWidgetAttributes.ContentState {
-        HanbaeWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: HanbaeWidgetAttributes.ContentState {
-         HanbaeWidgetAttributes.ContentState(emoji: "🤩")
+    fileprivate static var jangdanData: HanbaeWidgetAttributes.ContentState {
+        HanbaeWidgetAttributes.ContentState(bpm: 32, jangdanName: "자진모리(흥부가)", isPlaying: true)
      }
 }
 
 #Preview("Notification", as: .content, using: HanbaeWidgetAttributes.preview) {
    HanbaeWidgetLiveActivity()
 } contentStates: {
-    HanbaeWidgetAttributes.ContentState.smiley
-    HanbaeWidgetAttributes.ContentState.starEyes
+    HanbaeWidgetAttributes.ContentState.jangdanData
 }
