@@ -61,7 +61,6 @@
 		3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB496012D62185E005A7E5F /* SwiftUI.framework */; };
 		3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
-		3CB496412D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
 		3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */; };
 		3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */; };
 		3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */; };
@@ -870,7 +869,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CB496412D637D28005A7E5F /* LiveActivityManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

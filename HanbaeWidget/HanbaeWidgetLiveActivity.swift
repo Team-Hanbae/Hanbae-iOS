@@ -16,7 +16,7 @@ struct HanbaeWidgetAttributes: ActivityAttributes {
         var jangdanName: String
         var isPlaying: Bool
     }
-
+    
     // Fixed non-changing properties about your activity go here!
 }
 
@@ -36,7 +36,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                         Text("\(context.state.bpm)")
                             .font(.system(size: 40))
                     }
-
+                    
                     Rectangle()
                         .frame(width: 1)
                         .foregroundStyle(Color.white)
@@ -53,13 +53,17 @@ struct HanbaeWidgetLiveActivity: Widget {
                         Circle()
                             .frame(width: 50, height: 50)
                             .foregroundStyle(Color.orange900)
-                        Image(systemName: isPlaying ? "pause.fill": "play.fill")
+                        Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
                             .aspectRatio(contentMode: .fit)
                             .font(.system(size: 24))
                             .foregroundStyle(Color.buttonActive)
                     }
                     .onTapGesture {
                         self.isPlaying.toggle()
+//                        Task {
+//                            let intent = TogglePlayingIntent(isPlying: <#T##IntentParameter<Bool>#>)
+//                            _ = try? await intent.perform()
+//                        }
                     }
                 }
                 .padding(.vertical, 16)
@@ -105,11 +109,11 @@ extension HanbaeWidgetAttributes {
 extension HanbaeWidgetAttributes.ContentState {
     fileprivate static var jangdanData: HanbaeWidgetAttributes.ContentState {
         HanbaeWidgetAttributes.ContentState(bpm: 32, jangdanName: "자진모리(흥부가)", isPlaying: true)
-     }
+    }
 }
 
 #Preview("Notification", as: .content, using: HanbaeWidgetAttributes.preview) {
-   HanbaeWidgetLiveActivity()
+    HanbaeWidgetLiveActivity()
 } contentStates: {
     HanbaeWidgetAttributes.ContentState.jangdanData
 }
