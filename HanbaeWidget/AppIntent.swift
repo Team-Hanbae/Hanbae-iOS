@@ -19,28 +19,13 @@ import Combine
 //    var favoriteEmoji: String
 //}
 
-struct TogglePlayingIntent: AppIntent {
-    
-
+struct TogglePlayingIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Toggle Play/Pause"
-    
-    @Parameter(title: "하이")
-    var isPlying: Bool
 
+    @MainActor
     func perform() async throws -> some IntentResult {
         // 현재 실행 중인 Live Activity 가져오기
-        let activities = Activity<HanbaeWidgetAttributes>.activities
-        for activity in activities {
-            // 현재 상태 가져오기
-            let currentState = activity.content
-            let updatedState = HanbaeWidgetAttributes.ContentState(
-                bpm: currentState.state.bpm,
-                jangdanName: currentState.state.jangdanName,
-                isPlaying: !currentState.state.isPlaying // 현재 상태를 반대로 변경
-            )
-            // Live Activity 업데이트
-            await activity.update(using: updatedState)
-        }
+        NotificationCenter.default.post(name: .playMetronome, object: nil)
         
         return .result()
     }

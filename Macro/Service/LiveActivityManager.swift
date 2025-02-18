@@ -45,7 +45,15 @@ class LiveActivityManager {
             self.isPlaying = isPlaying
             
             if isPlaying {
-                self.startLiveActivity()
+                if Activity<HanbaeWidgetAttributes>.activities.isEmpty {
+                    print("이미 라이브 액티비티 없음")
+                    self.startLiveActivity()
+                } else {
+                    print("이미 라이브 액티비티 있음")
+                    Task {
+                        await self.updateLiveActivity()
+                    }
+                }
             }
             
             Task {
@@ -53,6 +61,17 @@ class LiveActivityManager {
             }
         }
         .store(in: &self.cancelBag)
+        
+        NotificationCenter.default.publisher(for: .playMetronome)
+            .sink { _ in
+                if self.isPlaying {
+                    self.metronomeOnOffUseCase.stop()
+                } else {
+                    self.metronomeOnOffUseCase.play()
+                }
+                print("hi")
+            }
+            .store(in: &cancelBag)
     }
     
     func startLiveActivity() {

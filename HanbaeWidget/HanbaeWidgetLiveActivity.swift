@@ -8,6 +8,7 @@
 import ActivityKit
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 struct HanbaeWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
@@ -47,15 +48,18 @@ struct HanbaeWidgetLiveActivity: Widget {
                     
                     Spacer()
                     
-                    ZStack {
-                        Circle()
-                            .frame(width: 50, height: 50)
-                            .foregroundStyle(Color.orange900)
-                        Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
-                            .aspectRatio(contentMode: .fit)
-                            .font(.system(size: 24))
-                            .foregroundStyle(Color.buttonActive)
+                    Button(intent: TogglePlayingIntent()) {
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundStyle(Color.orange900)
+                            Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
+                                .aspectRatio(contentMode: .fit)
+                                .font(.system(size: 24))
+                                .foregroundStyle(Color.buttonActive)
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
                 .padding(.vertical, 16)
                 .padding(.horizontal, 28)

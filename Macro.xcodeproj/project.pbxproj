@@ -39,6 +39,8 @@
 		2BE5ADFA2CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADF72CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift */; };
 		2BE5ADFC2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */; };
 		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
+		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
+		2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
 		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
 		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
 		3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */; };
@@ -161,6 +163,7 @@
 		2BE5ADF72CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
 		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
+		2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
 		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
 		3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobakSegmentView.swift; sourceTree = "<group>"; };
@@ -449,6 +452,7 @@
 				2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */,
 				2B365D262CEF1C8C00565F0D /* Date+Extension.swift */,
 				4303C81E2CF7951800EB956A /* String+Extension.swift */,
+				2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -831,6 +835,7 @@
 				3C6EAFA82CDD1243003F2191 /* MetronomeOnOffUseCase.swift in Sources */,
 				579839382CE5F37D00866AD4 /* InstrumentEnum.swift in Sources */,
 				2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */,
+				2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */,
 				2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */,
 				43774F5C2CB7C1D000F54EF7 /* Font+Extension.swift in Sources */,
 				2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */,
@@ -869,6 +874,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
