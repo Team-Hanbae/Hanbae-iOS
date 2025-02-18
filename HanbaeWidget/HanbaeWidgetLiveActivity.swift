@@ -22,8 +22,6 @@ struct HanbaeWidgetAttributes: ActivityAttributes {
 
 struct HanbaeWidgetLiveActivity: Widget {
     
-    @State var isPlaying: Bool = true
-    
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: HanbaeWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
@@ -43,7 +41,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                         .padding(.horizontal, 16)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        AudioVisualizerAnimationView(isPlaying: $isPlaying)
+//                        AudioVisualizerAnimationView(isPlaying: $isPlaying)
                         Text("\(context.state.jangdanName)")
                     }
                     
@@ -57,13 +55,6 @@ struct HanbaeWidgetLiveActivity: Widget {
                             .aspectRatio(contentMode: .fit)
                             .font(.system(size: 24))
                             .foregroundStyle(Color.buttonActive)
-                    }
-                    .onTapGesture {
-                        self.isPlaying.toggle()
-//                        Task {
-//                            let intent = TogglePlayingIntent(isPlying: <#T##IntentParameter<Bool>#>)
-//                            _ = try? await intent.perform()
-//                        }
                     }
                 }
                 .padding(.vertical, 16)

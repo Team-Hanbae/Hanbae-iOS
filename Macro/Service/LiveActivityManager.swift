@@ -47,6 +47,10 @@ class LiveActivityManager {
             if isPlaying {
                 self.startLiveActivity()
             }
+            
+            Task {
+                await self.updateLiveActivity()
+            }
         }
         .store(in: &self.cancelBag)
     }
