@@ -43,6 +43,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                     
                     VStack(alignment: .leading, spacing: 4) {
 //                        AudioVisualizerAnimationView(isPlaying: $isPlaying)
+                        Image(systemName: "waveform")
                         Text("\(context.state.jangdanName)")
                     }
                     
@@ -108,8 +109,10 @@ struct HanbaeWidgetLiveActivity: Widget {
                             .foregroundStyle(Color.white)
                             .padding(.horizontal, 16)
                         
-                        
-                        Text("\(context.state.jangdanName)")
+                        VStack(alignment: .leading, spacing: 4) {
+                            Image(systemName: "waveform")
+                            Text("\(context.state.jangdanName)")
+                        }
                         
                         Spacer()
                     }
