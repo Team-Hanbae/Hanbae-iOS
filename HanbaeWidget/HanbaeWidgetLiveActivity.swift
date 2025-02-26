@@ -83,11 +83,15 @@ struct HanbaeWidgetLiveActivity: Widget {
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                Image(.playState)
+                    .resizable()
+                    .frame(width: 22, height: 22)
+                    .padding(.leading, 3)
             } compactTrailing: {
-                Text("T \(context.state.bpm)")
+                Text("\(context.state.bpm)")
+                    .padding(.trailing, 3)
             } minimal: {
-                Text("T \(context.state.bpm)")
+                Text("\(context.state.bpm)")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
