@@ -73,14 +73,46 @@ struct HanbaeWidgetLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    VStack(spacing: 0) {
+                        Spacer()
+                        Text("빠르기")
+                            .font(.footnote)
+                        Text("\(context.state.bpm)")
+                            .font(.system(size: 40))
+                            .frame(width: 76, height: 40)
+                        Spacer()
+                    }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    VStack {
+                        Spacer()
+                        Button(intent: TogglePlayingIntent()) {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundStyle(Color.orange900)
+                                Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
+                                    .aspectRatio(contentMode: .fit)
+                                    .font(.system(size: 24))
+                                    .foregroundStyle(Color.buttonActive)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        Spacer()
+                    }
                 }
-                DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.bpm)")
-                    // more content
+                DynamicIslandExpandedRegion(.center) {
+                    HStack {
+                        Rectangle()
+                            .frame(width: 1)
+                            .foregroundStyle(Color.white)
+                            .padding(.horizontal, 16)
+                        
+                        
+                        Text("\(context.state.jangdanName)")
+                        
+                        Spacer()
+                    }
                 }
             } compactLeading: {
                 Image(.playState)
@@ -93,8 +125,6 @@ struct HanbaeWidgetLiveActivity: Widget {
             } minimal: {
                 Text("\(context.state.bpm)")
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
         }
     }
 }
