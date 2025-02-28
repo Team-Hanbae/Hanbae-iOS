@@ -74,40 +74,36 @@ class LiveActivityManager {
             .store(in: &cancelBag)
     }
     
-    func startLiveActivity() {
-        if #available(iOS 16.2, *) {
-            if ActivityAuthorizationInfo().areActivitiesEnabled {
-                let initialContentState = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying) // 동적 컨텐츠
-                let activityAttributes = HanbaeWidgetAttributes() // 정적 컨텐츠
-                let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
-                
-                do {
-                    let activity = try Activity.request(attributes: activityAttributes, content: activityContent)
-                    print("Requested Lockscreen Live Activity(Timer) \(String(describing: activity.id)).")
-                } catch (let error) {
-                    print("Error requesting Lockscreen Live Activity(Timer) \(error.localizedDescription).")
-                }
+    private func startLiveActivity() {
+        if ActivityAuthorizationInfo().areActivitiesEnabled {
+            let initialContentState = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying) // 동적 컨텐츠
+            let activityAttributes = HanbaeWidgetAttributes() // 정적 컨텐츠
+            let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
+            
+            do {
+                let activity = try Activity.request(attributes: activityAttributes, content: activityContent)
+                print("Requested Lockscreen Live Activity(Timer) \(String(describing: activity.id)).")
+            } catch (let error) {
+                print("Error requesting Lockscreen Live Activity(Timer) \(error.localizedDescription).")
             }
         }
     }
     
-    func endLiveActivity() async {
-        if #available(iOS 16.2, *) {
-            let finalStatus = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
-            let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
-
-            for activity in Activity<HanbaeWidgetAttributes>.activities {
-                await activity.end(finalContent, dismissalPolicy: .immediate)
-                print("Ending the Live Activity(Timer): \(activity.id)")
-            }
+    private func endLiveActivity() async {
+        let finalStatus = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
+        let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+        
+        for activity in Activity<HanbaeWidgetAttributes>.activities {
+            await activity.end(finalContent, dismissalPolicy: .immediate)
+            print("Ending the Live Activity(Timer): \(activity.id)")
         }
     }
     
-    func updateLiveActivity() async {
+    private func updateLiveActivity() async {
         let status = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
         let content = ActivityContent(state: status, staleDate: nil)
         for activity in Activity<HanbaeWidgetAttributes>.activities {
-                await activity.update(content)
+            await activity.update(content)
         }
     }
 }
