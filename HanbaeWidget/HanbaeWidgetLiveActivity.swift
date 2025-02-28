@@ -42,9 +42,9 @@ struct HanbaeWidgetLiveActivity: Widget {
                         .padding(.horizontal, 16)
                     
                     VStack(alignment: .leading, spacing: 4) {
-//                        AudioVisualizerAnimationView(isPlaying: $isPlaying)
                         Image(systemName: "waveform")
                         Text("\(context.state.jangdanName)")
+                            .lineLimit(1)
                     }
                     
                     Spacer()
@@ -74,16 +74,24 @@ struct HanbaeWidgetLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    VStack(spacing: 0) {
-                        Spacer()
-                        Text("빠르기")
-                            .font(.footnote)
-                        Text("\(context.state.bpm)")
-                            .font(.system(size: 40))
-                            .frame(width: 76, height: 40)
-                        Spacer()
+                    HStack(alignment: .center, spacing: 16) {
+                        VStack(spacing: 2) {
+                            Spacer()
+                            Text("빠르기")
+                                .font(.footnote)
+                            Text("\(context.state.bpm)")
+                                .font(.system(size: 40))
+                                .frame(width: 76, height: 48)
+                            Spacer()
+                        }
+                        
+                        Rectangle()
+                            .frame(width: 1)
+                            .foregroundStyle(Color.white)
                     }
+                    .frame(height: 72)
                 }
+                
                 DynamicIslandExpandedRegion(.trailing) {
                     VStack {
                         Spacer()
@@ -101,19 +109,17 @@ struct HanbaeWidgetLiveActivity: Widget {
                         .buttonStyle(.plain)
                         Spacer()
                     }
+                    .frame(height: 72)
                 }
+                
                 DynamicIslandExpandedRegion(.center) {
                     HStack {
-                        Rectangle()
-                            .frame(width: 1)
-                            .foregroundStyle(Color.white)
-                            .padding(.horizontal, 16)
-                        
                         VStack(alignment: .leading, spacing: 4) {
                             Image(systemName: "waveform")
                             Text("\(context.state.jangdanName)")
+                                .lineLimit(1)
                         }
-                        
+                        .padding(.leading, 16)
                         Spacer()
                     }
                 }
