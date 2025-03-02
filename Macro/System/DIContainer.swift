@@ -33,6 +33,8 @@ class DIContainer {
         self.customJangdanCreateViewModel = CustomJangdanCreateViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
         
         self.router = .init()
+        
+        self.widgetManager = LiveActivityManager(jangdanRepository: self.jangdanDataSource, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase)
     }
     
     // ViewModel
@@ -66,5 +68,8 @@ class DIContainer {
     
     // AppState
     private(set) var appState: AppState
+    
+    // Widget
+    private var widgetManager: LiveActivityManager
     
 }
