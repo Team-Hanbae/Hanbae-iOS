@@ -31,9 +31,20 @@ struct BakBarView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .top) {
-                VStack(spacing: 0) {
+                ZStack(alignment: .bottom) {
                     Rectangle()
                         .foregroundStyle(isPlaying && isActive ? .orange.opacity(0.5) : .frame)
+                    
+                    Path { path in
+                        for i in 1..<3 {
+                            let y = CGFloat(i) * (geo.size.height / 3) + 0.5
+                            path.move(to: CGPoint(x: 0, y: y))
+                            path.addLine(to: CGPoint(x: geo.size.width, y: y))
+                        }
+                    }
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [2, 2]))
+                    .foregroundColor(.bakBarDivider)
+                    
                     Rectangle()
                         .frame(height: CGFloat((geo.size.height / 3) * Double(accentHeight)))
                         .foregroundStyle(isActive

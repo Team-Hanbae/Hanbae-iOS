@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon_ViewSobak.svg",
+      "filename" : "Icon_Flash.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Icon_ViewSobak 1.svg",
+      "filename" : "Icon_Flash 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Icon_ViewSobak 2.svg",
+      "filename" : "Icon_Flash 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

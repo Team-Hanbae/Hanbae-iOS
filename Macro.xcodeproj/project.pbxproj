@@ -29,8 +29,6 @@
 		2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */; };
 		2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
 		2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4BA002CE371E800A90C1F /* HomeView.swift */; };
-		2BCA580E2CCF5F8700FA08A9 /* TapTapImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */; };
-		2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */; };
@@ -39,13 +37,14 @@
 		2BE5ADFA2CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADF72CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift */; };
 		2BE5ADFC2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */; };
 		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
+		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
+		2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
 		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
 		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
 		3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */; };
 		3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C46FBE92CEE38230067EE65 /* SoundEnum.swift */; };
 		3C46FC0C2CEF0F5F0067EE65 /* InstrumentsSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C46FC0B2CEF0F5F0067EE65 /* InstrumentsSelectView.swift */; };
 		3C57946D2CDCD6BF00AE647B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C57946C2CDCD6BF00AE647B /* DIContainer.swift */; };
-		3C6EAFA22CDD1061003F2191 /* TapTapUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA12CDD1061003F2191 /* TapTapUseCase.swift */; };
 		3C6EAFA42CDD1146003F2191 /* TemplateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */; };
 		3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */; };
 		3C6EAFA82CDD1243003F2191 /* MetronomeOnOffUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */; };
@@ -57,10 +56,14 @@
 		3C8F352D2D1FF06800209AD3 /* beep_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35202D1FF06800209AD3 /* beep_strong.wav */; };
 		3C8F352F2D1FF06800209AD3 /* beep_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F351F2D1FF06800209AD3 /* beep_medium.wav */; };
 		3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35232D1FF06800209AD3 /* buk_strong.wav */; };
+		3CB496002D62185E005A7E5F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB495FF2D62185E005A7E5F /* WidgetKit.framework */; };
+		3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB496012D62185E005A7E5F /* SwiftUI.framework */; };
+		3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
 		3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */; };
 		3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */; };
 		3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */; };
-		3CE4C4862CF4E13400FDE6AA /* ViewSobakToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE4C4852CF4E13400FDE6AA /* ViewSobakToggleView.swift */; };
+		3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */; };
 		3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */; };
 		3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */; };
 		3CF498772D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498762D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift */; };
@@ -76,7 +79,6 @@
 		43774F652CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43774F642CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift */; };
 		438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438226DE2CAE8494007A3B23 /* TempoImplement.swift */; };
 		438226E12CAEC728007A3B23 /* TemplateImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438226E02CAEC720007A3B23 /* TemplateImplement.swift */; };
-		439ABF082CB8220B003F6343 /* ListenSobakToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439ABF072CB8220B003F6343 /* ListenSobakToggleView.swift */; };
 		439ABF0A2CB825AE003F6343 /* MetronomeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439ABF092CB825AE003F6343 /* MetronomeControlView.swift */; };
 		572AB1C62CEDC26200778B9B /* CustomJangdanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572AB1C32CEDC26200778B9B /* CustomJangdanListView.swift */; };
 		572AB1C72CEDC26200778B9B /* EmptyJangdanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572AB1C42CEDC26200778B9B /* EmptyJangdanListView.swift */; };
@@ -99,7 +101,28 @@
 			remoteGlobalIDString = 2BE5AD372C9EC9030094F3C3;
 			remoteInfo = Macro;
 		};
+		3CB496112D621860005A7E5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BE5AD302C9EC9030094F3C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CB495FC2D62185E005A7E5F;
+			remoteInfo = HanbaeWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3CB496182D621860005A7E5F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B0022482CF3260800C60C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -124,8 +147,6 @@
 		2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanSwiftData.swift; sourceTree = "<group>"; };
 		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
 		2BC4BA002CE371E800A90C1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTapImplement.swift; sourceTree = "<group>"; };
-		2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectTempoInterface.swift; sourceTree = "<group>"; };
 		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,13 +158,13 @@
 		2BE5ADF72CABC45D0094F3C3 /* MacroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
 		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
+		2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
 		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
 		3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobakSegmentView.swift; sourceTree = "<group>"; };
 		3C46FBE92CEE38230067EE65 /* SoundEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEnum.swift; sourceTree = "<group>"; };
 		3C46FC0B2CEF0F5F0067EE65 /* InstrumentsSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsSelectView.swift; sourceTree = "<group>"; };
 		3C57946C2CDCD6BF00AE647B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
-		3C6EAFA12CDD1061003F2191 /* TapTapUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTapUseCase.swift; sourceTree = "<group>"; };
 		3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateUseCase.swift; sourceTree = "<group>"; };
 		3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoUseCase.swift; sourceTree = "<group>"; };
 		3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffUseCase.swift; sourceTree = "<group>"; };
@@ -155,10 +176,17 @@
 		3C8F35222D1FF06800209AD3 /* buk_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_medium.wav; sourceTree = "<group>"; };
 		3C8F35232D1FF06800209AD3 /* buk_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_strong.wav; sourceTree = "<group>"; };
 		3C8F35242D1FF06800209AD3 /* buk_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_weak.wav; sourceTree = "<group>"; };
+		3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanbaeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CB495FF2D62185E005A7E5F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3CB496012D62185E005A7E5F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3CB496192D63115F005A7E5F /* MacroDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroDebug.entitlements; sourceTree = "<group>"; };
+		3CB4961A2D632184005A7E5F /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
+		3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeWidgetExtension.entitlements; sourceTree = "<group>"; };
+		3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
 		3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_strong.wav; sourceTree = "<group>"; };
 		3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_weak.wav; sourceTree = "<group>"; };
-		3CE4C4852CF4E13400FDE6AA /* ViewSobakToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSobakToggleView.swift; sourceTree = "<group>"; };
+		3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeSettingControlView.swift; sourceTree = "<group>"; };
 		3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
 		3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
 		3CF498762D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanCreateViewModel.swift; sourceTree = "<group>"; };
@@ -175,13 +203,44 @@
 		43774F642CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltinJangdanPracticeView.swift; sourceTree = "<group>"; };
 		438226DE2CAE8494007A3B23 /* TempoImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoImplement.swift; sourceTree = "<group>"; };
 		438226E02CAEC720007A3B23 /* TemplateImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateImplement.swift; sourceTree = "<group>"; };
-		439ABF072CB8220B003F6343 /* ListenSobakToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenSobakToggleView.swift; sourceTree = "<group>"; };
 		439ABF092CB825AE003F6343 /* MetronomeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeControlView.swift; sourceTree = "<group>"; };
 		572AB1C32CEDC26200778B9B /* CustomJangdanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanListView.swift; sourceTree = "<group>"; };
 		572AB1C42CEDC26200778B9B /* EmptyJangdanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyJangdanListView.swift; sourceTree = "<group>"; };
 		579839372CE5F36500866AD4 /* InstrumentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentEnum.swift; sourceTree = "<group>"; };
 		5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicJangdanData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3CB496142D621860005A7E5F /* Exceptions for "HanbaeWidget" folder in "HanbaeWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */;
+		};
+		3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppIntent.swift,
+				Assets.xcassets,
+				AudioVisualizerAnimationView.swift,
+				HanbaeWidgetLiveActivity.swift,
+			);
+			target = 2BE5AD372C9EC9030094F3C3 /* Macro */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3CB496032D62185E005A7E5F /* HanbaeWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */,
+				3CB496142D621860005A7E5F /* Exceptions for "HanbaeWidget" folder in "HanbaeWidgetExtension" target */,
+			);
+			path = HanbaeWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2BE5AD352C9EC9030094F3C3 /* Frameworks */ = {
@@ -202,6 +261,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CB495FA2D62185E005A7E5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */,
+				3CB496002D62185E005A7E5F /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,9 +367,12 @@
 		2BE5AD2F2C9EC9030094F3C3 = {
 			isa = PBXGroup;
 			children = (
+				3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */,
 				2BE5ADE82CABC4570094F3C3 /* Macro */,
 				2BE5ADF42CABC45A0094F3C3 /* MacroTests */,
 				2BE5ADF82CABC45D0094F3C3 /* MacroUITests */,
+				3CB496032D62185E005A7E5F /* HanbaeWidget */,
+				3CB495FE2D62185E005A7E5F /* Frameworks */,
 				2BE5AD392C9EC9030094F3C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -312,6 +383,7 @@
 				2BE5AD382C9EC9030094F3C3 /* Macro.app */,
 				2BE5AD482C9EC9040094F3C3 /* MacroTests.xctest */,
 				2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */,
+				3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -332,8 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */,
-				2BCA580F2CCF7CA600FA08A9 /* ReflectTempoInterface.swift */,
-				3C6EAFA12CDD1061003F2191 /* TapTapUseCase.swift */,
 				3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */,
 				3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */,
 				3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */,
@@ -352,7 +422,6 @@
 				438226DE2CAE8494007A3B23 /* TempoImplement.swift */,
 				2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */,
 				3C1DB7312CB3B58500160970 /* AccentImplement.swift */,
-				2BCA580D2CCF5F8700FA08A9 /* TapTapImplement.swift */,
 				2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */,
 			);
 			path = UseCase;
@@ -374,6 +443,7 @@
 				2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */,
 				2B365D262CEF1C8C00565F0D /* Date+Extension.swift */,
 				4303C81E2CF7951800EB956A /* String+Extension.swift */,
+				2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -393,6 +463,7 @@
 				2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */,
 				2BB797B62CE62532008173A5 /* JangdanDataManager.swift */,
 				5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */,
+				3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -411,6 +482,8 @@
 		2BE5ADE82CABC4570094F3C3 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				3CB4961A2D632184005A7E5F /* Macro.entitlements */,
+				3CB496192D63115F005A7E5F /* MacroDebug.entitlements */,
 				43774F5A2CB7C12D00F54EF7 /* Info.plist */,
 				2BE5ADE32CABC4570094F3C3 /* System */,
 				43774F502CB7BFF800F54EF7 /* Resources */,
@@ -445,6 +518,15 @@
 				3C719E422CEF532900D233DC /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3CB495FE2D62185E005A7E5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CB495FF2D62185E005A7E5F /* WidgetKit.framework */,
+				3CB496012D62185E005A7E5F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3CF498712D12CCD600D361D6 /* ViewModel */ = {
@@ -496,8 +578,7 @@
 				2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */,
 				2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */,
 				3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */,
-				439ABF072CB8220B003F6343 /* ListenSobakToggleView.swift */,
-				3CE4C4852CF4E13400FDE6AA /* ViewSobakToggleView.swift */,
+				3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */,
 				439ABF092CB825AE003F6343 /* MetronomeControlView.swift */,
 				2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */,
 			);
@@ -527,10 +608,12 @@
 				2BE5AD342C9EC9030094F3C3 /* Sources */,
 				2BE5AD352C9EC9030094F3C3 /* Frameworks */,
 				2BE5AD362C9EC9030094F3C3 /* Resources */,
+				3CB496182D621860005A7E5F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3CB496122D621860005A7E5F /* PBXTargetDependency */,
 			);
 			name = Macro;
 			packageProductDependencies = (
@@ -579,6 +662,28 @@
 			productReference = 2BE5AD522C9EC9040094F3C3 /* MacroUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CB496152D621860005A7E5F /* Build configuration list for PBXNativeTarget "HanbaeWidgetExtension" */;
+			buildPhases = (
+				3CB495F92D62185E005A7E5F /* Sources */,
+				3CB495FA2D62185E005A7E5F /* Frameworks */,
+				3CB495FB2D62185E005A7E5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3CB496032D62185E005A7E5F /* HanbaeWidget */,
+			);
+			name = HanbaeWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HanbaeWidgetExtension;
+			productReference = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -586,7 +691,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					2BE5AD372C9EC9030094F3C3 = {
@@ -599,6 +704,9 @@
 					2BE5AD512C9EC9040094F3C3 = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 2BE5AD372C9EC9030094F3C3;
+					};
+					3CB495FC2D62185E005A7E5F = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -619,6 +727,7 @@
 				2BE5AD372C9EC9030094F3C3 /* Macro */,
 				2BE5AD472C9EC9040094F3C3 /* MacroTests */,
 				2BE5AD512C9EC9040094F3C3 /* MacroUITests */,
+				3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -662,6 +771,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CB495FB2D62185E005A7E5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -671,24 +787,23 @@
 			files = (
 				3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */,
 				3C57946D2CDCD6BF00AE647B /* DIContainer.swift in Sources */,
-				3C6EAFA22CDD1061003F2191 /* TapTapUseCase.swift in Sources */,
 				2B0022492CF3260800C60C4F /* AppState.swift in Sources */,
 				3C719E432CEF532900D233DC /* HomeViewModel.swift in Sources */,
-				2BCA580E2CCF5F8700FA08A9 /* TapTapImplement.swift in Sources */,
 				2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */,
 				3C6EAFAA2CDD12DE003F2191 /* AccentUseCase.swift in Sources */,
 				4303C81F2CF7951800EB956A /* String+Extension.swift in Sources */,
 				2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */,
 				572AB1C62CEDC26200778B9B /* CustomJangdanListView.swift in Sources */,
 				572AB1C72CEDC26200778B9B /* EmptyJangdanListView.swift in Sources */,
+				3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */,
 				3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */,
 				3C6EAFA42CDD1146003F2191 /* TemplateUseCase.swift in Sources */,
+				3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */,
 				2B365D202CEEE0E700565F0D /* JangdanTypeSelectView.swift in Sources */,
 				2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */,
 				3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */,
 				5798393C2CEB22CD00866AD4 /* BasicJangdanData.swift in Sources */,
 				3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */,
-				439ABF082CB8220B003F6343 /* ListenSobakToggleView.swift in Sources */,
 				2B8861192CC3E61F0036C6DB /* BakBarView.swift in Sources */,
 				2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */,
 				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
@@ -704,12 +819,12 @@
 				439ABF0A2CB825AE003F6343 /* MetronomeControlView.swift in Sources */,
 				43774F652CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift in Sources */,
 				3CF498772D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift in Sources */,
-				3CE4C4862CF4E13400FDE6AA /* ViewSobakToggleView.swift in Sources */,
 				2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */,
 				3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */,
 				3C6EAFA82CDD1243003F2191 /* MetronomeOnOffUseCase.swift in Sources */,
 				579839382CE5F37D00866AD4 /* InstrumentEnum.swift in Sources */,
 				2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */,
+				2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */,
 				2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */,
 				43774F5C2CB7C1D000F54EF7 /* Font+Extension.swift in Sources */,
 				2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */,
@@ -718,7 +833,6 @@
 				3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */,
 				2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */,
 				438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */,
-				2BCA58102CCF7CA600FA08A9 /* ReflectTempoInterface.swift in Sources */,
 				2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */,
 				2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */,
 				4349F8F42CEC85D5001FE727 /* MetronomeControlViewModel.swift in Sources */,
@@ -744,6 +858,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3CB495F92D62185E005A7E5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -756,6 +878,11 @@
 			isa = PBXTargetDependency;
 			target = 2BE5AD372C9EC9030094F3C3 /* Macro */;
 			targetProxy = 2BE5AD532C9EC9040094F3C3 /* PBXContainerItemProxy */;
+		};
+		3CB496122D621860005A7E5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */;
+			targetProxy = 3CB496112D621860005A7E5F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -884,6 +1011,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Macro/MacroDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -895,6 +1023,7 @@
 				INFOPLIST_FILE = Macro/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "한배";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -906,11 +1035,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Developer Krabs.Macro";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup Development Krabs.Macro";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -926,6 +1055,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -937,6 +1067,7 @@
 				INFOPLIST_FILE = Macro/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "한배";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -948,11 +1079,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppStore Krabs.Macro";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup AppStore Krabs.Macro";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1066,6 +1197,75 @@
 			};
 			name = Release;
 		};
+		3CB496162D621860005A7E5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanbaeWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanbaeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanbaeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup Development Krabs.Macro.HanbaeWidget";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3CB496172D621860005A7E5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanbaeWidgetExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanbaeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanbaeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup AppStore Krabs.Macro.HanbaeWidget";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1101,6 +1301,15 @@
 			buildConfigurations = (
 				2BE5AD632C9EC9040094F3C3 /* Debug */,
 				2BE5AD642C9EC9040094F3C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CB496152D621860005A7E5F /* Build configuration list for PBXNativeTarget "HanbaeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CB496162D621860005A7E5F /* Debug */,
+				3CB496172D621860005A7E5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
