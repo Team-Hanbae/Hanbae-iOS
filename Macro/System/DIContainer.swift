@@ -70,6 +70,6 @@ class DIContainer {
     private(set) var appState: AppState
     
     // Widget
-    private var widgetManager: LiveActivityManager
+    private(set) var widgetManager: WidgetManager
     
 }

@@ -9,6 +9,12 @@ import Foundation
 import ActivityKit
 import Combine
 
+protocol WidgetManager {
+    func startLiveActivity()
+    func updateLiveActivity() async
+    func endLiveActivity() async
+}
+
 class LiveActivityManager {
     
     private var jangdanRepository: JangdanRepository
@@ -73,8 +79,10 @@ class LiveActivityManager {
             }
             .store(in: &cancelBag)
     }
-    
-    private func startLiveActivity() {
+}
+
+extension LiveActivityManager: WidgetManager {
+    func startLiveActivity() {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             let initialContentState = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying) // 동적 컨텐츠
             let activityAttributes = HanbaeWidgetAttributes() // 정적 컨텐츠
@@ -89,7 +97,7 @@ class LiveActivityManager {
         }
     }
     
-    private func endLiveActivity() async {
+    func endLiveActivity() async {
         let finalStatus = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
         let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
         
@@ -99,7 +107,7 @@ class LiveActivityManager {
         }
     }
     
-    private func updateLiveActivity() async {
+    func updateLiveActivity() async {
         let status = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
         let content = ActivityContent(state: status, staleDate: nil)
         for activity in Activity<HanbaeWidgetAttributes>.activities {
