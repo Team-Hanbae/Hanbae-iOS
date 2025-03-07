@@ -13,11 +13,16 @@ class CustomJangdanPracticeViewModel {
     
     private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
+    
+    private var widgetManager: WidgetManager
+    
     private var cancelbag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager) {
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
+        
+        self.widgetManager = widgetManager
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
@@ -37,7 +42,7 @@ extension CustomJangdanPracticeViewModel {
     enum Action {
         case selectJangdan(jangdanName: String)
         case initialJangdan(jangdanName: String)
-        case stopMetronome
+        case exitMetronome
         case createCustomJangdan(newJangdanName: String)
         case changeSoundType
         case updateCustomJangdan(newJangdanName: String?)
@@ -50,8 +55,11 @@ extension CustomJangdanPracticeViewModel {
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
         case let .initialJangdan(jangdanName):
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
-        case .stopMetronome:
+        case .exitMetronome:
             self.metronomeOnOffUseCase.stop()
+            Task {
+                await self.widgetManager.endLiveActivity()
+            }
         case let .createCustomJangdan(newJangdanName):
             try! self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
         case .changeSoundType:

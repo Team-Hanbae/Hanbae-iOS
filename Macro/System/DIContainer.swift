@@ -31,8 +31,8 @@ class DIContainer {
         self.homeViewModel = HomeViewModel(metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase)
         self.customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self.templateUseCase)
         self.builtInJangdanPracticeViewModel = BuiltInJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
-        self.customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
-        self.customJangdanCreateViewModel = CustomJangdanCreateViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase)
+        self.customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
+        self.customJangdanCreateViewModel = CustomJangdanCreateViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
         
         self.router = .init()
     }

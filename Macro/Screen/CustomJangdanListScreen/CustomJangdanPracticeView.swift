@@ -76,7 +76,7 @@ struct CustomJangdanPracticeView: View {
             // 뒤로가기 chevron
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    self.viewModel.effect(action: .stopMetronome)
+                    self.viewModel.effect(action: .exitMetronome)
                     router.pop()
                 } label: {
                     Image(systemName: "chevron.backward")
