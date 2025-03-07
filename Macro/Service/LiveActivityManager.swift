@@ -50,18 +50,6 @@ class LiveActivityManager {
             guard let self else { return }
             self.isPlaying = isPlaying
             
-            if isPlaying {
-                if Activity<HanbaeWidgetAttributes>.activities.isEmpty {
-                    print("이미 라이브 액티비티 없음")
-                    self.startLiveActivity()
-                } else {
-                    print("이미 라이브 액티비티 있음")
-                    Task {
-                        await self.updateLiveActivity()
-                    }
-                }
-            }
-            
             Task {
                 await self.updateLiveActivity()
             }
@@ -75,7 +63,6 @@ class LiveActivityManager {
                 } else {
                     self.metronomeOnOffUseCase.play()
                 }
-                print("hi")
             }
             .store(in: &cancelBag)
     }

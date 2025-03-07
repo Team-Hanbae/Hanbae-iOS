@@ -16,12 +16,16 @@ class MetronomeControlViewModel {
     private var tempoUseCase: TempoUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     
+    private var widgetManager: WidgetManager
+    
     var timerCancellable: AnyCancellable?
     
-    init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase) {
+    init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager) {
         self.jangdanRepository = jangdanRepository
         self.tempoUseCase = tempoUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
+        
+        self.widgetManager = widgetManager
         
         self.timerCancellable = nil
         
@@ -76,8 +80,12 @@ extension MetronomeControlViewModel {
         case .changeIsPlaying:
             if self.state.isPlaying {
                 self.metronomeOnOffUseCase.stop()
+                Task {
+                    await self.widgetManager.endLiveActivity()
+                }
             } else {
                 self.metronomeOnOffUseCase.play()
+                self.widgetManager.startLiveActivity()
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)
