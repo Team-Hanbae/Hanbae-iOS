@@ -50,6 +50,10 @@ class LiveActivityManager {
             guard let self else { return }
             self.isPlaying = isPlaying
             
+            if isPlaying && Activity<HanbaeWidgetAttributes>.activities.isEmpty {
+                self.startLiveActivity()
+            }
+            
             Task {
                 await self.updateLiveActivity()
             }

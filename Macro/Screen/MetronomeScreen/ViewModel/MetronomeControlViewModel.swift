@@ -85,7 +85,6 @@ extension MetronomeControlViewModel {
                 }
             } else {
                 self.metronomeOnOffUseCase.play()
-                self.widgetManager.startLiveActivity()
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)
