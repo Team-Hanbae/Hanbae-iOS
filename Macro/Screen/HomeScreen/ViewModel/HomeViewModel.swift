@@ -24,7 +24,9 @@ class HomeViewModel {
             guard let self else { return }
             self.state.isBlinking = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.state.isBlinking = false
+                withAnimation(.linear(duration: 0.3)) {
+                    self.state.isBlinking = false
+                }
             }
         }
         .store(in: &cancelBag)

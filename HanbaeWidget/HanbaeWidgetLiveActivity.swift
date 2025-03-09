@@ -32,8 +32,10 @@ struct HanbaeWidgetLiveActivity: Widget {
                     VStack(spacing: 0) {
                         Text("빠르기")
                             .font(.footnote)
+                            .foregroundStyle(.textSecondary)
                         Text("\(context.state.bpm)")
                             .font(.system(size: 40))
+                            .fontWeight(.medium)
                     }
                     
                     Rectangle()
@@ -43,6 +45,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Image(systemName: "waveform")
+                            .font(.system(size: 17))
                         Text("\(context.state.jangdanName)")
                             .lineLimit(1)
                     }
@@ -79,8 +82,10 @@ struct HanbaeWidgetLiveActivity: Widget {
                             Spacer()
                             Text("빠르기")
                                 .font(.footnote)
+                                .foregroundStyle(.textSecondary)
                             Text("\(context.state.bpm)")
                                 .font(.system(size: 40))
+                                .fontWeight(.medium)
                                 .frame(width: 76, height: 48)
                             Spacer()
                         }
@@ -116,6 +121,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Image(systemName: "waveform")
+                                .font(.system(size: 17))
                             Text("\(context.state.jangdanName)")
                                 .lineLimit(1)
                         }

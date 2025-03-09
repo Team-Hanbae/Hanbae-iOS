@@ -79,7 +79,6 @@ extension MetronomeViewModel {
         case selectJangdan(selectedJangdanName: String)
         case changeSobakOnOff
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
-        case stopMetronome
         case disableEstimateBpm
         case changeBlinkOnOff
     }
@@ -100,11 +99,6 @@ extension MetronomeViewModel {
             self.metronomeOnOffUseCase.changeSobak()
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
-        case .stopMetronome: // 시트 변경 시 소리 중지를 위해 사용함
-            if self.state.isSobakOn {
-                self.metronomeOnOffUseCase.changeSobak()
-            }
-            self.metronomeOnOffUseCase.stop()
         case .disableEstimateBpm:
             self.tempoUseCase.finishTapping()
         case .changeBlinkOnOff:

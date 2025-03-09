@@ -130,12 +130,10 @@ struct HomeView: View {
                     }
                 }
                 
-                if self.viewModel.state.isBlinking {
-                    Color.white
-                        .ignoresSafeArea()
-                        .animation(.linear(duration: 0.3), value: self.viewModel.state.isBlinking)
-                        .allowsHitTesting(false)
-                }
+                Color.blink
+                    .ignoresSafeArea()
+                    .allowsHitTesting(false)
+                    .opacity(self.viewModel.state.isBlinking ? 1 : 0)
             }
         } else {
             InstrumentsSelectView()

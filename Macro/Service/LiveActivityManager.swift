@@ -9,6 +9,12 @@ import Foundation
 import ActivityKit
 import Combine
 
+protocol WidgetManager {
+    func startLiveActivity()
+    func updateLiveActivity() async
+    func endLiveActivity() async
+}
+
 class LiveActivityManager {
     
     private var jangdanRepository: JangdanRepository
@@ -44,16 +50,8 @@ class LiveActivityManager {
             guard let self else { return }
             self.isPlaying = isPlaying
             
-            if isPlaying {
-                if Activity<HanbaeWidgetAttributes>.activities.isEmpty {
-                    print("이미 라이브 액티비티 없음")
-                    self.startLiveActivity()
-                } else {
-                    print("이미 라이브 액티비티 있음")
-                    Task {
-                        await self.updateLiveActivity()
-                    }
-                }
+            if isPlaying && Activity<HanbaeWidgetAttributes>.activities.isEmpty {
+                self.startLiveActivity()
             }
             
             Task {
@@ -69,12 +67,13 @@ class LiveActivityManager {
                 } else {
                     self.metronomeOnOffUseCase.play()
                 }
-                print("hi")
             }
             .store(in: &cancelBag)
     }
-    
-    private func startLiveActivity() {
+}
+
+extension LiveActivityManager: WidgetManager {
+    func startLiveActivity() {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             let initialContentState = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying) // 동적 컨텐츠
             let activityAttributes = HanbaeWidgetAttributes() // 정적 컨텐츠
@@ -89,7 +88,7 @@ class LiveActivityManager {
         }
     }
     
-    private func endLiveActivity() async {
+    func endLiveActivity() async {
         let finalStatus = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
         let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
         
@@ -99,7 +98,7 @@ class LiveActivityManager {
         }
     }
     
-    private func updateLiveActivity() async {
+    func updateLiveActivity() async {
         let status = HanbaeWidgetAttributes.ContentState(bpm: self.bpm, jangdanName: self.jangdanName, isPlaying: self.isPlaying)
         let content = ActivityContent(state: status, staleDate: nil)
         for activity in Activity<HanbaeWidgetAttributes>.activities {
