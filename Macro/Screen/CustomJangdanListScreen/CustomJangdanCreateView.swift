@@ -27,7 +27,7 @@ struct CustomJangdanCreateView: View {
                 // 뒤로가기 chevron
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        self.viewModel.effect(action: .stopMetronome)
+                        self.viewModel.effect(action: .exitMetronome)
                         backButtonAlert = true
                     } label: {
                         Image(systemName: "chevron.backward")
@@ -38,7 +38,7 @@ struct CustomJangdanCreateView: View {
                         HStack{
                             Button("취소") { }
                             Button("나가기") {
-                                self.viewModel.effect(action: .stopMetronome)
+                                self.viewModel.effect(action: .exitMetronome)
                                 router.pop()
                             }
                         }
@@ -97,7 +97,7 @@ struct CustomJangdanCreateView: View {
                                 Button("취소") { }
                                 Button("확인") {
                                     if !inputCustomJangdanName.isEmpty {
-                                        self.viewModel.effect(action: .stopMetronome)
+                                        self.viewModel.effect(action: .exitMetronome)
                                         self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
                                         router.pop(2)
                                     }

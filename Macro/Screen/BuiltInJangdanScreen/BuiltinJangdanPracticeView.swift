@@ -60,7 +60,7 @@ struct BuiltinJangdanPracticeView: View {
             // 뒤로가기 chevron
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
-                    self.viewModel.effect(action: .stopMetronome)
+                    self.viewModel.effect(action: .exitMetronome)
                     self.dismiss()
                 }) {
                     Image(systemName: "chevron.backward")
