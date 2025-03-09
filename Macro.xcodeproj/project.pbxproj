@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2B0022492CF3260800C60C4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0022482CF3260800C60C4F /* AppState.swift */; };
+		2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
+		2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
+		2B03B91C2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */; };
+		2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */; };
+		2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
+		2B03B91F2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */; };
+		2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
+		2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
+		2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
 		2B0BC7BB2CAE72D400FD72D5 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */; };
 		2B365D202CEEE0E700565F0D /* JangdanTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D1F2CEEE0E700565F0D /* JangdanTypeSelectView.swift */; };
 		2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */; };
@@ -126,6 +135,12 @@
 
 /* Begin PBXFileReference section */
 		2B0022482CF3260800C60C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2B03B9122D7AD7A9000BF12A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		2B03B9132D7AD7A9000BF12A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizerAnimationView.swift; sourceTree = "<group>"; };
+		2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetBundle.swift; sourceTree = "<group>"; };
+		2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		2B03B9172D7AD7A9000BF12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		2B365D1F2CEEE0E700565F0D /* JangdanTypeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanTypeSelectView.swift; sourceTree = "<group>"; };
 		2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanCreateView.swift; sourceTree = "<group>"; };
@@ -210,38 +225,6 @@
 		5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicJangdanData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3CB496142D621860005A7E5F /* Exceptions for "HanbaeWidget" folder in "HanbaeWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */;
-		};
-		3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AppIntent.swift,
-				Assets.xcassets,
-				AudioVisualizerAnimationView.swift,
-				HanbaeWidgetLiveActivity.swift,
-			);
-			target = 2BE5AD372C9EC9030094F3C3 /* Macro */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		3CB496032D62185E005A7E5F /* HanbaeWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				3CB4963B2D637045005A7E5F /* Exceptions for "HanbaeWidget" folder in "Macro" target */,
-				3CB496142D621860005A7E5F /* Exceptions for "HanbaeWidget" folder in "HanbaeWidgetExtension" target */,
-			);
-			path = HanbaeWidget;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		2BE5AD352C9EC9030094F3C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -276,6 +259,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B03B9182D7AD7A9000BF12A /* HanbaeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2B03B9122D7AD7A9000BF12A /* AppIntent.swift */,
+				2B03B9132D7AD7A9000BF12A /* Assets.xcassets */,
+				2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */,
+				2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */,
+				2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */,
+				2B03B9172D7AD7A9000BF12A /* Info.plist */,
+			);
+			path = HanbaeWidget;
+			sourceTree = "<group>";
+		};
 		2B365D232CEF195200565F0D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,7 +367,7 @@
 				2BE5ADE82CABC4570094F3C3 /* Macro */,
 				2BE5ADF42CABC45A0094F3C3 /* MacroTests */,
 				2BE5ADF82CABC45D0094F3C3 /* MacroUITests */,
-				3CB496032D62185E005A7E5F /* HanbaeWidget */,
+				2B03B9182D7AD7A9000BF12A /* HanbaeWidget */,
 				3CB495FE2D62185E005A7E5F /* Frameworks */,
 				2BE5AD392C9EC9030094F3C3 /* Products */,
 			);
@@ -674,9 +670,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				3CB496032D62185E005A7E5F /* HanbaeWidget */,
-			);
 			name = HanbaeWidgetExtension;
 			packageProductDependencies = (
 			);
@@ -753,6 +746,7 @@
 				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,
 				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
 				2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */,
+				2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */,
 				43774F532CB7C10E00F54EF7 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +804,9 @@
 				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
 				3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */,
 				438226E12CAEC728007A3B23 /* TemplateImplement.swift in Sources */,
+				2B03B91F2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */,
+				2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */,
+				2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
 				4303C81D2CF5995E00EB956A /* CustomJangdanPracticeView.swift in Sources */,
 				2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */,
 				2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */,
@@ -862,6 +860,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */,
+				2B03B91C2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */,
+				2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */,
+				2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
 				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,7 +1037,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1079,7 +1081,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1220,7 +1222,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1254,7 +1256,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
