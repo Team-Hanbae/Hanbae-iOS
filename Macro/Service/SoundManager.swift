@@ -22,6 +22,7 @@ class SoundManager {
     
     init?(appState: AppState) {
         self.appState = appState
+        self.soundType = .clave
         self.engine = AVAudioEngine()
         
         // AudioSession 설정
