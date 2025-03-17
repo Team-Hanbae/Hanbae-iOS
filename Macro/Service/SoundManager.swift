@@ -16,13 +16,12 @@ class SoundManager {
     private var engine: AVAudioEngine
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
-    private var soundType: SoundType
+    private var soundType: SoundType?
     
     private var publisher: PassthroughSubject<Void, Never> = .init()
     
     init?(appState: AppState) {
         self.appState = appState
-        self.soundType = .beep
         self.engine = AVAudioEngine()
         
         // AudioSession 설정
@@ -153,7 +152,7 @@ extension SoundManager: PlaySoundInterface {
     
     func setSoundType() {
         if self.appState.isBeepSound {
-            self.soundType = .beep
+            self.soundType = .clave
         } else {
             switch self.appState.selectedInstrument {
             case .북:
@@ -162,8 +161,9 @@ extension SoundManager: PlaySoundInterface {
                 self.soundType = .jangu
             }
         }
+        guard let soundTypeName = self.soundType?.rawValue else { return }
         do {
-            try self.configureSoundPlayers(weak: "\(self.soundType.rawValue)_weak", medium: "\(self.soundType.rawValue)_medium", strong: "\(self.soundType.rawValue)_strong")
+            try self.configureSoundPlayers(weak: "\(soundTypeName)_weak", medium: "\(soundTypeName)_medium", strong: "\(soundTypeName)_strong")
         } catch {
             print("SoundManager: Sound Type 변경 실패 - \(error)")
         }
