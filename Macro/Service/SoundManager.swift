@@ -16,7 +16,7 @@ class SoundManager {
     private var engine: AVAudioEngine
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
-    private var soundType: SoundType?
+    private var soundType: SoundType
     
     private var publisher: PassthroughSubject<Void, Never> = .init()
     
@@ -78,11 +78,15 @@ class SoundManager {
         )
     }
     
-    private func configureSoundPlayers(weak: String, medium: String, strong: String) throws {
+    private func configureSoundPlayers(soundType: SoundType) throws {
+        let weakFileName: String = soundType.rawValue + "_weak"
+        let mediumFileName: String = soundType.rawValue + "_medium"
+        let strongFileName: String = soundType.rawValue + "_strong"
+        
         // 오디오 파일을 로드하고, AVAudioPCMBuffer로 변환하여 저장
-        guard let weakBuffer = try? loadAudioFile(weak),
-              let mediumBuffer = try? loadAudioFile(medium),
-              let strongBuffer = try? loadAudioFile(strong) else {
+        guard let weakBuffer = try? loadAudioFile(weakFileName),
+              let mediumBuffer = try? loadAudioFile(mediumFileName),
+              let strongBuffer = try? loadAudioFile(strongFileName) else {
             throw InitializeError.soundPlayerCreationFailed
         }
         
@@ -162,9 +166,9 @@ extension SoundManager: PlaySoundInterface {
                 self.soundType = .jangu
             }
         }
-        guard let soundTypeName = self.soundType?.rawValue else { return }
+        
         do {
-            try self.configureSoundPlayers(weak: "\(soundTypeName)_weak", medium: "\(soundTypeName)_medium", strong: "\(soundTypeName)_strong")
+            try self.configureSoundPlayers(soundType: self.soundType)
         } catch {
             print("SoundManager: Sound Type 변경 실패 - \(error)")
         }
