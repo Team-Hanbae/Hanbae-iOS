@@ -18,6 +18,8 @@ enum Jangdan: String, CaseIterable {
     case 엇모리
     case 엇중모리
     case 세마치
+    case 긴염불
+    case 반염불
     
     var name: String {
         switch self {
@@ -31,6 +33,8 @@ enum Jangdan: String, CaseIterable {
         case .엇모리: return "엇모리"
         case .엇중모리: return "엇중모리"
         case .세마치: return "세마치"
+        case .긴염불: return "긴염불"
+        case .반염불: return "반염불"
         }
     }
     
@@ -46,6 +50,8 @@ enum Jangdan: String, CaseIterable {
         case .엇모리: return Image("Eotmori")
         case .엇중모리: return Image("Eotjungmori")
         case .세마치: return Image("Semachi")
+        case .긴염불: return Image("Ginyeombul")
+        case .반염불: return Image("Banyeombul")
         }
     }
     
@@ -70,13 +76,8 @@ enum Jangdan: String, CaseIterable {
         case .엇모리: return "4박 3+2소박"
         case .엇중모리: return "6박 2소박"
         case .세마치: return "3박 3소박"
-        }
-    }
-    
-    var bakData: String {
-        switch self {
-        case .동살풀이: return "4박 2소박"
-        default: return "수정해라"
+        case .긴염불: return "6박 3소박"
+        case .반염불: return "6박 3소박"
         }
     }
 }
