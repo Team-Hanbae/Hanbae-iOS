@@ -23,6 +23,7 @@
 		2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */; };
 		2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D262CEF1C8C00565F0D /* Date+Extension.swift */; };
 		2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */; };
+		2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */; };
 		2B8861132CBD34D30036C6DB /* JangdanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861122CBD34D30036C6DB /* JangdanEnum.swift */; };
 		2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */; };
@@ -769,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */,
 				2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
