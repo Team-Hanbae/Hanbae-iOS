@@ -30,10 +30,10 @@ struct BuiltinJangdanPracticeView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: jangdanName)
+            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: self.jangdanName)
             
-            if toastAction {
-                Text("'\(inputCustomJangdanName)' 내보내기가 완료되었습니다.")
+            if self.toastAction {
+                Text("'\(self.inputCustomJangdanName)' 내보내기가 완료되었습니다.")
                     .font(.Body_R)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)
@@ -49,7 +49,7 @@ struct BuiltinJangdanPracticeView: View {
                             } completion: {
                                 self.toastAction = false
                                 self.toastOpacity = 1
-                                inputCustomJangdanName = ""
+                                self.inputCustomJangdanName = ""
                             }
                         }
                     }
@@ -71,7 +71,7 @@ struct BuiltinJangdanPracticeView: View {
             
             // 장단 선택 List title
             ToolbarItem(placement: .principal) {
-                Text(self.jangdanName)
+                Text(self.viewModel.state.currentJangdanName ?? "")
                     .font(.Body_R)
                     .foregroundStyle(.textSecondary)
                     .padding(.trailing, 6)
@@ -112,9 +112,9 @@ struct BuiltinJangdanPracticeView: View {
                     }
                     .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
                         TextField("장단명", text: $inputCustomJangdanName)
-                            .onChange(of: inputCustomJangdanName) { oldValue, newValue in
+                            .onChange(of: self.inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
-                                    inputCustomJangdanName = oldValue
+                                    self.inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
@@ -123,7 +123,7 @@ struct BuiltinJangdanPracticeView: View {
                             }
                             
                             Button("확인") {
-                                if !inputCustomJangdanName.isEmpty {
+                                if !self.inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
                                     self.toastAction = true
                                 }
