@@ -71,7 +71,7 @@ struct BuiltinJangdanPracticeView: View {
             
             // 장단 선택 List title
             ToolbarItem(placement: .principal) {
-                Text(self.viewModel.state.currentJangdanName ?? "")
+                Text(self.jangdanName)
                     .font(.Body_R)
                     .foregroundStyle(.textSecondary)
                     .padding(.trailing, 6)
