@@ -71,7 +71,7 @@ struct BuiltinJangdanPracticeView: View {
             
             // 장단 선택 List title
             ToolbarItem(placement: .principal) {
-                Text(jangdanName)
+                Text(self.jangdanName)
                     .font(.Body_R)
                     .foregroundStyle(.textSecondary)
                     .padding(.trailing, 6)
@@ -81,7 +81,7 @@ struct BuiltinJangdanPracticeView: View {
                 HStack {
                     Button {
                         // TODO: 데이터 초기화
-                        initialJangdanAlert = true
+                        self.initialJangdanAlert = true
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .aspectRatio(contentMode: .fit)
@@ -100,28 +100,17 @@ struct BuiltinJangdanPracticeView: View {
                     
                     Menu {
                         Button {
-                            self.appState.toggleBeepSound()
-                            self.viewModel.effect(action: .changeSoundType)
-                        } label: {
-                            HStack {
-                                if self.appState.isBeepSound {
-                                    Image(systemName: "checkmark")
-                                }
-                                Text("비프음으로 변환")
-                            }
-                        }
-                        Button {
-                            exportJandanAlert = true
+                            self.exportJandanAlert = true
                         } label: {
                             Text("장단 내보내기")
                         }
                         
                     } label: {
-                        Image(systemName: "ellipsis.circle")
+                        Image(systemName: "square.and.arrow.up")
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.textSecondary)
                     }
-                    .alert("장단 내보내기", isPresented: $exportJandanAlert) {
+                    .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
                         TextField("장단명", text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
@@ -129,16 +118,19 @@ struct BuiltinJangdanPracticeView: View {
                                 }
                             }
                         HStack{
-                            Button("취소") { }
-                            Button("완료") {
+                            Button("취소", role: .cancel) {
+                                self.inputCustomJangdanName.removeAll()
+                            }
+                            
+                            Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
-                                    toastAction = true
+                                    self.toastAction = true
                                 }
                             }
                         }
                     } message: {
-                        Text("저장된 장단명을 작성해주세요.")
+                        Text("저장될 이름을 작성해주세요.")
                     }
                 }
             }
