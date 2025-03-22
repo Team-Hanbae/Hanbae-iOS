@@ -164,27 +164,29 @@ struct CustomJangdanPracticeView: View {
                     } message: {
                         Text("현재 장단을 삭제하시겠습니까?")
                     }
-                    .alert("장단 내보내기", isPresented: $exportJandanAlert) {
-                        TextField("장단명", text: $inputCustomJangdanName)
+                    .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
+                        TextField("이름", text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
                                     inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
-                            Button("취소") { }
-                            Button("완료") {
+                            Button("취소", role: .cancel) {
+                                self.inputCustomJangdanName.removeAll()
+                            }
+                            Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
                                     self.toastType = .export(jangdanName: self.inputCustomJangdanName)
-                                    toastAction = true
+                                    self.toastAction = true
                                 }
                             }
                         }
                     } message: {
                         Text("저장될 이름을 작성해주세요.")
                     }
-                    .alert("장단이름 변경하기", isPresented: $updateJandanNameAlert) {
+                    .alert("변경 할 장단 이름", isPresented: $updateJandanNameAlert) {
                         TextField(jangdanName, text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
@@ -192,8 +194,10 @@ struct CustomJangdanPracticeView: View {
                                 }
                             }
                         HStack{
-                            Button("취소") { }
-                            Button("완료") {
+                            Button("취소", role: .cancel) {
+                                self.inputCustomJangdanName.removeAll()
+                            }
+                            Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: self.inputCustomJangdanName))
                                     self.viewModel.effect(action: .selectJangdan(jangdanName: self.inputCustomJangdanName))
@@ -204,7 +208,7 @@ struct CustomJangdanPracticeView: View {
                             }
                         }
                     } message: {
-                        Text("새로운 장단명을 작성해주세요.")
+                        Text("변경할 이름을 작성해주세요.")
                     }
                 }
             }
