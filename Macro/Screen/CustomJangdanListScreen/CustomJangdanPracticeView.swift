@@ -119,25 +119,12 @@ struct CustomJangdanPracticeView: View {
                     
                     Menu {
                         Button {
-                            self.appState.toggleBeepSound()
-                            self.viewModel.effect(action: .changeSoundType)
-                        } label: {
-                            HStack {
-                                if self.appState.isBeepSound {
-                                    Image(systemName: "checkmark")
-                                }
-                                Text("비프음으로 변환")
-                            }
-                        }
-                        
-                        Button {
                             self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: nil))
                             self.toastType = .save
                             self.toastAction = true
                         } label: {
                             Text("장단 저장하기")
                         }
-                        
                         
                         Button {
                             self.exportJandanAlert = true
