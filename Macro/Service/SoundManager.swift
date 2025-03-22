@@ -22,7 +22,7 @@ class SoundManager {
     
     init?(appState: AppState) {
         self.appState = appState
-        self.soundType = .beep
+        self.soundType = .clave
         self.engine = AVAudioEngine()
         
         // AudioSession 설정
@@ -78,11 +78,15 @@ class SoundManager {
         )
     }
     
-    private func configureSoundPlayers(weak: String, medium: String, strong: String) throws {
+    private func configureSoundPlayers(soundType: SoundType) throws {
+        let weakFileName: String = soundType.rawValue + "_weak"
+        let mediumFileName: String = soundType.rawValue + "_medium"
+        let strongFileName: String = soundType.rawValue + "_strong"
+        
         // 오디오 파일을 로드하고, AVAudioPCMBuffer로 변환하여 저장
-        guard let weakBuffer = try? loadAudioFile(weak),
-              let mediumBuffer = try? loadAudioFile(medium),
-              let strongBuffer = try? loadAudioFile(strong) else {
+        guard let weakBuffer = try? loadAudioFile(weakFileName),
+              let mediumBuffer = try? loadAudioFile(mediumFileName),
+              let strongBuffer = try? loadAudioFile(strongFileName) else {
             throw InitializeError.soundPlayerCreationFailed
         }
         
@@ -153,7 +157,7 @@ extension SoundManager: PlaySoundInterface {
     
     func setSoundType() {
         if self.appState.isBeepSound {
-            self.soundType = .beep
+            self.soundType = .clave
         } else {
             switch self.appState.selectedInstrument {
             case .북:
@@ -162,8 +166,9 @@ extension SoundManager: PlaySoundInterface {
                 self.soundType = .jangu
             }
         }
+        
         do {
-            try self.configureSoundPlayers(weak: "\(self.soundType.rawValue)_weak", medium: "\(self.soundType.rawValue)_medium", strong: "\(self.soundType.rawValue)_strong")
+            try self.configureSoundPlayers(soundType: self.soundType)
         } catch {
             print("SoundManager: Sound Type 변경 실패 - \(error)")
         }

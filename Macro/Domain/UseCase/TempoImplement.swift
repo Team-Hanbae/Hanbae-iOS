@@ -11,6 +11,9 @@ import Foundation
 class TempoImplement {
     private var jangdanRepository: JangdanRepository
     
+    static let minBPM: Int = 10
+    static let maxBPM: Int = 300
+    
     /// 마지막 tap 시점으로부터 6초가 지났을 때 이벤트를 전달하기 위한 publisher
     @Published private var lastTappedDate: Date?
     private var isTappingSubject: PassthroughSubject<Bool, Never>
@@ -43,12 +46,12 @@ extension TempoImplement: TempoUseCase {
     func updateTempo(newBpm: Int) {
         // 사용자가 변경한 BPM을 각 장단별 데이터 객체에 저장 요청
         switch newBpm {
-        case ..<10:
-            self.jangdanRepository.updateBPM(bpm: 10)
-        case 10...200:
+        case ..<Self.minBPM:
+            self.jangdanRepository.updateBPM(bpm: Self.minBPM)
+        case Self.minBPM...Self.maxBPM:
             self.jangdanRepository.updateBPM(bpm: newBpm)
-        case 200...:
-            self.jangdanRepository.updateBPM(bpm: 200)
+        case Self.maxBPM...:
+            self.jangdanRepository.updateBPM(bpm: Self.maxBPM)
         default :
             break
         }
