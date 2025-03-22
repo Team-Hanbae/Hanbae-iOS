@@ -112,7 +112,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.initialDaeSoBakIndex()
         UIApplication.shared.isIdleTimerDisabled = true
         // Timer 설정
-        if let timer { self.stop() }
+        if self.timer != nil { self.stop() }
         self.timer = DispatchSource.makeTimerSource(queue: self.queue)
         self.timer?.schedule(deadline: .now(), repeating: self.interval, leeway: .nanoseconds(1))
         self.timer?.setEventHandler { [weak self] in
