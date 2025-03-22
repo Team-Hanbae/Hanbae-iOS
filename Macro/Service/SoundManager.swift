@@ -156,16 +156,15 @@ extension SoundManager: PlaySoundInterface {
     }
     
     func setSoundType() {
-        if self.appState.isBeepSound {
+        switch self.appState.selectedInstrument {
+        case .북:
+            self.soundType = .buk
+        case .장구:
+            self.soundType = .jangu
+        case .나무:
             self.soundType = .clave
-        } else {
-            switch self.appState.selectedInstrument {
-            case .북:
-                self.soundType = .buk
-            case .장구:
-                self.soundType = .jangu
-            }
         }
+        
         
         do {
             try self.configureSoundPlayers(soundType: self.soundType)

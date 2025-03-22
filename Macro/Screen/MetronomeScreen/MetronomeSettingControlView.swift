@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct MetronomeSettingControlView: View {
-    @State private var viewModel: MetronomeViewModel = DIContainer.shared.metronomeViewModel
+    @State private var appState: AppState
+    @State private var viewModel: MetronomeViewModel
+    
+    init(appState: AppState, viewModel: MetronomeViewModel) {
+        self.appState = appState
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         HStack(spacing: 8) {
@@ -29,11 +35,22 @@ struct MetronomeSettingControlView: View {
             .buttonStyle(MetronomeSettingToggleButtonStyle())
             
             Menu {
-                Text("장구")
-                Text("북")
-                Text("나무")
+                ForEach(Instrument.allCases, id: \.rawValue) { instrument in
+                    Button {
+                        self.appState.setInstrument(instrument)
+                    } label: {
+                        if self.appState.selectedInstrument == instrument {
+                            Image(systemName: "checkmark")
+                        }
+                        Text(instrument.rawValue)
+                    }
+                }
             } label: {
-                Image(systemName: "speaker.wave.2.fill")
+                HStack(spacing: 6) {
+                    Image(systemName: "speaker.wave.2.fill")
+                    
+                    Text(self.appState.selectedInstrument.rawValue)
+                }
             }
             .buttonStyle(MetronomeSettingMenuButtonStyle())
         }
@@ -88,5 +105,5 @@ extension MetronomeSettingControlView {
 }
 
 #Preview {
-    MetronomeSettingControlView()
+    MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: DIContainer.shared.metronomeViewModel)
 }

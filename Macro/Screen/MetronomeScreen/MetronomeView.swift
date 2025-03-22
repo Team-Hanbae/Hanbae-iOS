@@ -42,7 +42,7 @@ struct MetronomeView: View {
             .padding(.horizontal, 8)
             
             // MARK: 2. 소박 듣기, 소박 보기 뷰
-            MetronomeSettingControlView()
+            MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: self.viewModel)
             
             // MARK: 3. BPM 및 재생 조절 뷰
             MetronomeControlView()
