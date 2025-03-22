@@ -46,9 +46,9 @@ struct CustomJangdanPracticeView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: jangdanName)
+            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: self.jangdanName)
             
-            if toastAction {
+            if self.toastAction {
                 Text(self.toastType.massage)
                     .font(.Body_R)
                     .padding(.horizontal, 20)
@@ -65,7 +65,7 @@ struct CustomJangdanPracticeView: View {
                             } completion: {
                                 self.toastAction = false
                                 self.toastOpacity = 1
-                                inputCustomJangdanName = ""
+                                self.inputCustomJangdanName = ""
                             }
                         }
                     }
@@ -77,7 +77,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     self.viewModel.effect(action: .exitMetronome)
-                    router.pop()
+                    self.router.pop()
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
@@ -88,7 +88,7 @@ struct CustomJangdanPracticeView: View {
             
             // 연습 장단 이름
             ToolbarItem(placement: .principal) {
-                Text("\(jangdanType) | \(jangdanName)")
+                Text("\(self.jangdanType) | \(self.jangdanName)")
                     .font(.Body_R)
                     .foregroundStyle(.textSecondary)
                     .lineLimit(1)
@@ -100,7 +100,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
                     Button {
-                        initialJangdanAlert = true
+                        self.initialJangdanAlert = true
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .aspectRatio(contentMode: .fit)
@@ -153,22 +153,23 @@ struct CustomJangdanPracticeView: View {
                             .foregroundStyle(.textSecondary)
                     }
                     .alert("장단 삭제하기", isPresented: $deleteJangdanAlert) {
-                        Button("예") {
-                            deleteJangdanAlert = false
-                            self.viewModel.effect(action: .deleteCustomJangdanData(jangdanName: jangdanName))
-                            router.pop()
+                        Button("취소", role: .cancel) {
+                            self.deleteJangdanAlert = false
                         }
-                        Button("아니오") {
-                            deleteJangdanAlert = false
+                        
+                        Button("삭제", role: .destructive) {
+                            self.deleteJangdanAlert = false
+                            self.viewModel.effect(action: .deleteCustomJangdanData(jangdanName: jangdanName))
+                            self.router.pop()
                         }
                     } message: {
                         Text("현재 장단을 삭제하시겠습니까?")
                     }
                     .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
                         TextField("이름", text: $inputCustomJangdanName)
-                            .onChange(of: inputCustomJangdanName) { oldValue, newValue in
+                            .onChange(of: self.inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
-                                    inputCustomJangdanName = oldValue
+                                    self.inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
@@ -177,7 +178,7 @@ struct CustomJangdanPracticeView: View {
                             }
                             Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
-                                    self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
+                                    self.viewModel.effect(action: .createCustomJangdan(newJangdanName: self.inputCustomJangdanName))
                                     self.toastType = .export(jangdanName: self.inputCustomJangdanName)
                                     self.toastAction = true
                                 }
@@ -187,10 +188,10 @@ struct CustomJangdanPracticeView: View {
                         Text("저장될 이름을 작성해주세요.")
                     }
                     .alert("변경 할 장단 이름", isPresented: $updateJandanNameAlert) {
-                        TextField(jangdanName, text: $inputCustomJangdanName)
+                        TextField(self.jangdanName, text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
-                                    inputCustomJangdanName = oldValue
+                                    self.inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
@@ -201,7 +202,7 @@ struct CustomJangdanPracticeView: View {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: self.inputCustomJangdanName))
                                     self.viewModel.effect(action: .selectJangdan(jangdanName: self.inputCustomJangdanName))
-                                    self.jangdanName = inputCustomJangdanName
+                                    self.jangdanName = self.inputCustomJangdanName
                                     self.toastType = .changeName
                                     self.toastAction = true
                                 }
