@@ -32,48 +32,20 @@ struct HomeView: View {
             {
                 VStack(spacing: 0) {
                     HStack {
-                        Menu {
-                            Button("북") {
-                                self.appState.setInstrument(.북)
-                                self.viewModel.effect(action: .changeSoundType)
-                            }
-                            Button("장구") {
-                                self.appState.setInstrument(.장구)
-                                self.viewModel.effect(action: .changeSoundType)
-                            }
-                        } label: {
-                            HStack(spacing: 12) {
-                                Text("\(self.appState.selectedInstrument.rawValue)")
-                                    .font(.Callout_R)
-                                    .frame(width: 30)
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: 16))
-                                    .fontWeight(.semibold)
-                                    .frame(height: 22)
-                            }
-                            .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 12))
-                            .background {
-                                RoundedRectangle(cornerRadius: 35)
-                                    .stroke(lineWidth: 2)
-                                    .clipShape(RoundedRectangle(cornerRadius: 35))
-                            }
-                            .foregroundStyle(.buttonReverse)
+                        ZStack {
+                            Color.clear
+                            
+                            Image(.appLogo)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 21)
                         }
-                        .padding(.leading, 8)
+                        .frame(width: 44, height: 44)
+                        .padding(EdgeInsets(top: 3, leading: 16, bottom: 8, trailing: 0))
                         
                         Spacer()
-                        
-                        Image(systemName: "tray.full.fill")
-                            .font(.system(size: 22))
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
-                            .onTapGesture {
-                                router.push(.customJangdanList)
-                            }
-                            .frame(width: 44, height: 44)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.top, 11)
+                    .frame(height: 54)
                     
                     GeometryReader { geo in
                         ZStack(alignment: .top) {
