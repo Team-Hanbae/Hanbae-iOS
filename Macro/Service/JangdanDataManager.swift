@@ -34,7 +34,7 @@ final class JangdanDataManager {
     }
     
     private var publisher: PassthroughSubject<JangdanEntity, Never> = .init()
-    private var currentJangdan: JangdanEntity = .init(name: "자진모리", bakCount: 0, daebak: 0, bpm: 0, daebakList: [[.init(bakAccentList: [.medium])]], jangdanType: .자진모리)
+    private var currentJangdan: JangdanEntity = .init(name: "자진모리", bpm: 0, daebakList: [[.init(bakAccentList: [.medium])]], jangdanType: .자진모리)
     
     private func convertToDaebakList(from daebakListStrings: [[[Int]]]) -> [[JangdanEntity.Daebak]] {
         return daebakListStrings.map { daebak in
@@ -48,8 +48,6 @@ final class JangdanDataManager {
         return JangdanEntity(
             name: model.name,
             createdAt: model.createdAt,
-            bakCount: model.bakCount,
-            daebak: model.daebak,
             bpm: model.bpm,
             daebakList: convertToDaebakList(from: model.daebakAccentList),
             jangdanType: Jangdan(rawValue: model.jangdanType) ?? .진양
@@ -137,8 +135,6 @@ extension JangdanDataManager: JangdanRepository {
     func saveNewJangdan(newJangdanName: String) {
         let newJangdan = JangdanDataModel(
             name: newJangdanName,
-            bakCount: currentJangdan.bakCount,
-            daebak: currentJangdan.daebak,
             bpm: currentJangdan.bpm,
             jangdanType: currentJangdan.jangdanType.rawValue,
             daebakList: currentJangdan.daebakList.map { $0.map { $0.bakAccentList.map { $0.rawValue } } },

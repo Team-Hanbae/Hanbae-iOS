@@ -13,8 +13,6 @@ struct BasicJangdanData {
     
     static let jinyang = JangdanEntity(
         name: "진양",
-        bakCount: 72,
-        daebak: 24,
         bpm: 30,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
@@ -35,8 +33,6 @@ struct BasicJangdanData {
     
     static let jungmori = JangdanEntity(
         name: "중모리",
-        bakCount: 24,
-        daebak: 12,
         bpm: 90,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.strong, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none]),
@@ -51,8 +47,6 @@ struct BasicJangdanData {
     
     static let jungjungmori = JangdanEntity(
         name: "중중모리",
-        bakCount: 12,
-        daebak: 4,
         bpm: 50,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium]),
@@ -65,8 +59,6 @@ struct BasicJangdanData {
     
     static let jajinmori = JangdanEntity(
         name: "자진모리",
-        bakCount: 12,
-        daebak: 4,
         bpm: 100,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
@@ -79,8 +71,6 @@ struct BasicJangdanData {
     
     static let gutgeori = JangdanEntity(
         name: "굿거리",
-        bakCount: 12,
-        daebak: 4,
         bpm: 50,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .medium]),
@@ -93,8 +83,6 @@ struct BasicJangdanData {
     
     static let dongsalpuri = JangdanEntity(
         name: "동살풀이",
-        bakCount: 8,
-        daebak: 4,
         bpm: 125,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none]),
@@ -107,8 +95,6 @@ struct BasicJangdanData {
     
     static let hwimori = JangdanEntity(
         name: "휘모리",
-        bakCount: 8,
-        daebak: 4,
         bpm: 100,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none]),
@@ -121,8 +107,6 @@ struct BasicJangdanData {
     
     static let eotmori = JangdanEntity(
         name: "엇모리",
-        bakCount: 10,
-        daebak: 4,
         bpm: 95,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak]),
@@ -135,8 +119,6 @@ struct BasicJangdanData {
     
     static let semachi = JangdanEntity(
         name: "세마치",
-        bakCount: 9,
-        daebak: 3,
         bpm: 90,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
@@ -148,8 +130,6 @@ struct BasicJangdanData {
     
     static let eotjungmori = JangdanEntity(
         name: "엇중모리",
-        bakCount: 12,
-        daebak: 6,
         bpm: 78,
         daebakList: [[
             JangdanEntity.Daebak(bakAccentList: [.strong, .none]),
@@ -164,8 +144,6 @@ struct BasicJangdanData {
     
     static let ginyeombul = JangdanEntity(
         name: "긴염불",
-        bakCount: 18,
-        daebak: 3,
         bpm: 25,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
@@ -180,8 +158,6 @@ struct BasicJangdanData {
     
     static let banyeombul = JangdanEntity(
         name: "반염불",
-        bakCount: 18,
-        daebak: 3,
         bpm: 65,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
