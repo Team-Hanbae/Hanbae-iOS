@@ -30,8 +30,7 @@ struct BasicJangdanData {
              JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
              JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])]
         ],
-        jangdanType: .진양,
-        instrument: .장구
+        jangdanType: .진양
     )
     
     static let jungmori = JangdanEntity(
@@ -47,8 +46,7 @@ struct BasicJangdanData {
              JangdanEntity.Daebak(bakAccentList: [.medium, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none]),
              JangdanEntity.Daebak(bakAccentList: [.weak, .none]), JangdanEntity.Daebak(bakAccentList: [.weak, .none])]
         ],
-        jangdanType: .중모리,
-        instrument: .장구
+        jangdanType: .중모리
     )
     
     static let jungjungmori = JangdanEntity(
@@ -62,8 +60,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .weak, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .medium, .medium])
         ]],
-        jangdanType: .중중모리,
-        instrument: .장구
+        jangdanType: .중중모리
     )
     
     static let jajinmori = JangdanEntity(
@@ -77,8 +74,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .medium, .none])
         ]],
-        jangdanType: .자진모리,
-        instrument: .장구
+        jangdanType: .자진모리
     )
     
     static let gutgeori = JangdanEntity(
@@ -92,8 +88,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])
         ]],
-        jangdanType: .굿거리,
-        instrument: .장구
+        jangdanType: .굿거리
     )
     
     static let dongsalpuri = JangdanEntity(
@@ -107,8 +102,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .none])
         ]],
-        jangdanType: .동살풀이,
-        instrument: .장구
+        jangdanType: .동살풀이
     )
     
     static let hwimori = JangdanEntity(
@@ -122,8 +116,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .none])
         ]],
-        jangdanType: .휘모리,
-        instrument: .장구
+        jangdanType: .휘모리
     )
     
     static let eotmori = JangdanEntity(
@@ -137,8 +130,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .none])
         ]],
-        jangdanType: .엇모리,
-        instrument: .장구
+        jangdanType: .엇모리
     )
     
     static let semachi = JangdanEntity(
@@ -151,8 +143,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .medium]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .medium, .none])
         ]],
-        jangdanType: .세마치,
-        instrument: .장구
+        jangdanType: .세마치
     )
     
     static let eotjungmori = JangdanEntity(
@@ -168,8 +159,7 @@ struct BasicJangdanData {
             JangdanEntity.Daebak(bakAccentList: [.medium, .none]),
             JangdanEntity.Daebak(bakAccentList: [.weak, .none])
         ]],
-        jangdanType: .엇중모리,
-        instrument: .북
+        jangdanType: .엇중모리
     )
     
     static let ginyeombul = JangdanEntity(
@@ -185,8 +175,7 @@ struct BasicJangdanData {
              JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .weak]),
              JangdanEntity.Daebak(bakAccentList: [.medium, .none, .weak])]
         ],
-        jangdanType: .긴염불,
-        instrument: .장구
+        jangdanType: .긴염불
     )
     
     static let banyeombul = JangdanEntity(
@@ -202,8 +191,7 @@ struct BasicJangdanData {
              JangdanEntity.Daebak(bakAccentList: [.weak, .weak, .weak]),
              JangdanEntity.Daebak(bakAccentList: [.none, .none, .none])]
         ],
-        jangdanType: .반염불,
-        instrument: .장구
+        jangdanType: .반염불
     )
     
     static let all: [JangdanEntity] = [

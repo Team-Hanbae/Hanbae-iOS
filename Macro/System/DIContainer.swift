@@ -15,7 +15,7 @@ class DIContainer {
         self.jangdanDataSource = .init(appState: self.appState)!
         self.soundManager = .init(appState: self.appState)!
         
-        self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource, appState: self.appState)
+        self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource)
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
         self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: soundManager)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
