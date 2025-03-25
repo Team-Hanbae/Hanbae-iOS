@@ -79,6 +79,7 @@ struct HomeView: View {
                                                 .foregroundStyle(.textTertiary)
                                                 .padding(.horizontal, 4)
                                                 .padding(.vertical, 6)
+                                                .frame(minWidth: 44, minHeight: 40)
                                         }
                                     }
                                     .padding(.horizontal, 16)
@@ -113,6 +114,9 @@ struct HomeView: View {
                                                                 Text(customJangdan.name)
                                                                     .font(.Headline_SB)
                                                                     .foregroundStyle(.textDefault)
+                                                                    .lineLimit(1)
+                                                                    .truncationMode(.tail)
+                                                                    .frame(width: 156 - 32)
                                                                 
                                                                 Text(customJangdan.type.name)
                                                                     .font(.Subheadline_R)
