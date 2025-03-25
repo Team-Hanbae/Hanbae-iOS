@@ -10,13 +10,16 @@ import Combine
 
 @Observable
 class HomeViewModel {
+    typealias JangdanSimpleType = (type: Jangdan, name: String, lastUpdate: Date)
     
+    private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var dynamicIconUseCase: DynamicIconUseCase
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase) {
+        self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         self.dynamicIconUseCase = dynamicIconUseCase
         
@@ -35,6 +38,7 @@ class HomeViewModel {
     private(set) var state: State = .init()
     
     struct State {
+        var customJangdanList: [JangdanSimpleType] = []
         var isBlinking: Bool = false
     }
 }
@@ -43,6 +47,7 @@ extension HomeViewModel {
     enum Action {
         case changeSoundType
         case appEntered
+        case fetchCustomJangdanData
     }
     
     func effect(action: Action) {
@@ -51,6 +56,12 @@ extension HomeViewModel {
             self.metronomeOnOffUseCase.setSoundType()
         case .appEntered:
             self.dynamicIconUseCase.setEventIconIfNeeded()
+        case .fetchCustomJangdanData:
+            self.state.customJangdanList = templateUseCase.allCustomJangdanTemplate.map { jangdanEntity in
+                return (jangdanEntity.jangdanType, jangdanEntity.name, jangdanEntity.createdAt ?? .now)
+            }.sorted {
+                $0.lastUpdate > $1.lastUpdate
+            }
         }
     }
 }
