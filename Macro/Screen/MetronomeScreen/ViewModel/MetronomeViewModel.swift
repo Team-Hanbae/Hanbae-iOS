@@ -81,6 +81,7 @@ extension MetronomeViewModel {
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case disableEstimateBpm
         case changeBlinkOnOff
+        case changeSoundType
     }
     
     func effect(action: Action) {
@@ -104,6 +105,8 @@ extension MetronomeViewModel {
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
             self.metronomeOnOffUseCase.changeBlink()
+        case .changeSoundType:
+            self.metronomeOnOffUseCase.setSoundType()
         }
     }
 }

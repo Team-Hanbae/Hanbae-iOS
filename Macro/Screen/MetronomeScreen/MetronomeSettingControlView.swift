@@ -38,6 +38,7 @@ struct MetronomeSettingControlView: View {
                 ForEach(Instrument.allCases, id: \.rawValue) { instrument in
                     Button {
                         self.appState.setInstrument(instrument)
+                        self.viewModel.effect(action: .changeSoundType)
                     } label: {
                         if self.appState.selectedInstrument == instrument {
                             Image(systemName: "checkmark")
