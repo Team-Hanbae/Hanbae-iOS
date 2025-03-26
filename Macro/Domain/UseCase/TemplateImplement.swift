@@ -10,14 +10,12 @@ import Combine
 class TemplateImplement {
     // 장단의 정보를 저장하고 있는 레이어
     private var jangdanRepository: JangdanRepository
-    private var appState: AppState
     
     private var currentJangdanTypeSubject: PassthroughSubject<Jangdan, Never>
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(jangdanRepository: JangdanRepository, appState: AppState) {
+    init(jangdanRepository: JangdanRepository) {
         self.jangdanRepository = jangdanRepository
-        self.appState = appState
         
         self.currentJangdanTypeSubject = .init()
         
@@ -39,7 +37,7 @@ extension TemplateImplement: TemplateUseCase {
     }
     
     var allCustomJangdanTemplate: [JangdanEntity] {
-        return jangdanRepository.fetchAllCustomJangdan(instrument: self.appState.selectedInstrument)
+        return jangdanRepository.fetchAllCustomJangdan()
     }
     
     func setJangdan(jangdanName: String) {

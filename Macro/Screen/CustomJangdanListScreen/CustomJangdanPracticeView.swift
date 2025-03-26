@@ -26,6 +26,7 @@ enum ToastType {
 
 struct CustomJangdanPracticeView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State var viewModel: CustomJangdanPracticeViewModel
     
     @State private var appState: AppState = DIContainer.shared.appState
@@ -77,7 +78,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     self.viewModel.effect(action: .exitMetronome)
-                    self.router.pop()
+                    self.dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)

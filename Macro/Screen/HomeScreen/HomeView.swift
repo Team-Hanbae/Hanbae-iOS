@@ -6,12 +6,10 @@
 //
 
 import SwiftUI
-import StoreKit
 
 struct HomeView: View {
     @Environment(\.requestReview) private var requestReview
     @State private var viewModel: HomeViewModel
-    @State private var scrollOffset: CGFloat = 0
     
     private var router: Router
     private var appState: AppState
@@ -22,204 +20,226 @@ struct HomeView: View {
         self.appState = appState
     }
     
-    private let columns: [GridItem] = .init(repeating: GridItem(.flexible(), spacing: 8), count: 2)
-    
     var body: some View {
-        if self.appState.didLaunchedBefore {
-            ZStack {
-                NavigationStack(path: Binding(
-                    get: { router.path }, set: { router.path = $0 }
-                ))
-                {
-                    VStack(spacing: 0) {
-                        HStack {
-                            Menu {
-                                Button("북") {
-                                    self.appState.setInstrument(.북)
-                                    self.viewModel.effect(action: .changeSoundType)
+        ZStack {
+            NavigationStack(path: Binding(
+                get: { router.path }, set: { router.path = $0 }
+            ))
+            {
+                VStack(spacing: 8) {
+                    // MARK: - 상단 바
+                    topBar
+                    
+                    ScrollView {
+                        VStack(spacing: 24) {
+                            // MARK: - 상단 배너
+                            if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                                Link(destination: surveyURL) {
+                                    Image(.surveyBanner)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
                                 }
-                                Button("장구") {
-                                    self.appState.setInstrument(.장구)
-                                    self.viewModel.effect(action: .changeSoundType)
-                                }
-                            } label: {
-                                HStack(spacing: 12) {
-                                    Text("\(self.appState.selectedInstrument.rawValue)")
-                                        .font(.Callout_R)
-                                        .frame(width: 30)
-                                    Image(systemName: "chevron.down")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.semibold)
-                                        .frame(height: 22)
-                                }
-                                .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 12))
-                                .background {
-                                    RoundedRectangle(cornerRadius: 35)
-                                        .stroke(lineWidth: 2)
-                                        .clipShape(RoundedRectangle(cornerRadius: 35))
-                                }
-                                .foregroundStyle(.buttonReverse)
-                            }
-                            .padding(.leading, 8)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "tray.full.fill")
-                                .font(.system(size: 22))
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundStyle(.textSecondary)
-                                .onTapGesture {
-                                    router.push(.customJangdanList)
-                                }
-                                .frame(width: 44, height: 44)
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 11)
-                        
-                        GeometryReader { geo in
-                            ZStack(alignment: .top) {
-                                ScrollView {
-                                    // MARK: - 기본 장단 목록 (2칸씩 수직 그리드)
-                                    VStack(spacing: 0) {
-                                        // 스크롤 트래킹용 투명 View
-                                        scrollObservableView
-                                        
-                                        if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
-                                            Link(destination: surveyURL) {
-                                                Image(.surveyBanner)
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                            }
-                                            .padding(.vertical, 24)
-                                        }
-                                        
-                                        VStack {
-                                            LazyVGrid(columns: columns, spacing: 8) {
-                                                ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
-                                                    Button(jangdan.name) {
-                                                        self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
-                                                        self.appState.increaseEnteredJangdan()
-                                                        if self.appState.numberOfEnteredJangdan % 100 == 0 {
-                                                            self.requestReview()
-                                                        }
-                                                    }
-                                                    .buttonStyle(JangdanLogoButtonStyle(jangdan: jangdan))
-                                                }
-                                            }
-                                        }
-                                        .padding(.bottom, 38.5)
-                                    }
-                                }
-                                .onPreferenceChange(ScrollPreferenceKey.self) { value in
-                                    // 스크롤 내부 View의 최상단 - 스크롤뷰의 최상단
-                                    self.scrollOffset = value - geo.frame(in: .global).origin.y
-                                }
-                                .scrollIndicators(.hidden)
-                                .ignoresSafeArea(edges: .bottom)
+                                .padding(.top, 8)
                                 .padding(.horizontal, 16)
-                                .navigationDestination(for: Route.self) { path in
-                                    router.view(for: path)
-                                }
-                                
-                                Rectangle()
-                                    .foregroundStyle(LinearGradient(colors: [.black, .black.opacity(0)], startPoint: .top, endPoint: .bottom))
-                                    .frame(height: min(36, max(-self.scrollOffset, 0)))
                             }
+                            
+                            // MARK: - 장단 리스트
+                            VStack(spacing: 32) {
+                                // MARK: - 커스텀 장단 리스트
+                                customJangdanList
+                                
+                                
+                                // MARK: - 빌트인 장단 리스트
+                                builtinJangdanList
+                            }
+                            .padding(.bottom, 38.5)
                         }
+                    }
+                    .scrollIndicators(.hidden)
+                    .ignoresSafeArea(edges: .bottom)
+                    .navigationDestination(for: Route.self) { path in
+                        router.view(for: path)
                     }
                 }
-                
-                Color.blink
-                    .ignoresSafeArea()
-                    .allowsHitTesting(false)
-                    .opacity(self.viewModel.state.isBlinking ? 1 : 0)
             }
-        } else {
-            InstrumentsSelectView()
+            
+            Color.blink
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+                .opacity(self.viewModel.state.isBlinking ? 1 : 0)
         }
     }
 }
 
 extension HomeView {
-    private struct JangdanLogoButtonStyle: ButtonStyle {
-        @State private var isPressed: Bool?
-        @State private var isRealPressed: Bool = false
-        
-        var jangdan: Jangdan
-        
-        func makeBody(configuration: Configuration) -> some View {
+    private var topBar: some View {
+        HStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(isPressed == true ? .buttonActive : .backgroundCard) // 배경색 설정
-                    .shadow(radius: 5) // 그림자 효과
-                    .overlay {
-                        jangdan.jangdanLogoImage
-                            .resizable()
-                            .foregroundStyle(isPressed == true ? .backgroundImageActive : .backgroundImageDefault)
-                            .frame(width: 225, height: 225)
-                            .offset(y: -116)
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                Color.clear
                 
-                Text(jangdan.name)
-                    .font(isPressed == true ? .Title1_B : .Title1_R)
-                    .foregroundStyle(isPressed == true ? .textButtonEmphasis : .textDefault)
-                    .offset(y: -2.5)
-                
-                Text(jangdan.bakInformation)
-                    .font(.Body_R)
-                    .foregroundStyle(isPressed == true ? .textButtonEmphasis : .textDefault)
-                    .offset(y: 30)
+                Image(.appLogo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 21)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .aspectRatio(1, contentMode: .fill)
-            .animation(nil, value: configuration.isPressed) // 기존 버튼에 따른 애니메이션은 제거
-            .contentShape(Rectangle())
-            .simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in
-                        if isPressed == nil { // 처음 탭될때만 버튼 Active
-                            isPressed = true
-                        } else if !configuration.isPressed { // 버튼 자체적으로 isPressed 상태가 해제되는경우 deActive
-                            withAnimation(.linear(duration: 0.2)) {
-                                isPressed = false
+            .frame(width: 44, height: 44)
+            .padding(EdgeInsets(top: 3, leading: 16, bottom: 8, trailing: 0))
+            
+            Spacer()
+        }
+        .frame(height: 54)
+    }
+    
+    private var customJangdanList: some View {
+        VStack(spacing: 8) {
+            HStack {
+                Text("내가 저장한 장단")
+                    .font(.Title2_B)
+                    .foregroundStyle(.textDefault)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 6)
+                
+                Spacer()
+                
+                Button {
+                    self.router.push(.customJangdanList)
+                } label: {
+                    Text("더보기")
+                        .font(.Callout_R)
+                        .foregroundStyle(.textTertiary)
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 6)
+                        .frame(minWidth: 44, minHeight: 40)
+                }
+            }
+            .padding(.horizontal, 16)
+            
+            if self.viewModel.state.customJangdanList.isEmpty {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.backgroundSheet)
+                    .overlay {
+                        Text("저장한 장단이 없어요")
+                            .font(.Callout_R)
+                            .foregroundStyle(.textQuaternary)
+                    }
+                    .padding(.horizontal, 16)
+                    .frame(height: 84)
+            } else {
+                ScrollView(.horizontal) {
+                    HStack(spacing: 8) {
+                        ForEach(self.viewModel.state.customJangdanList, id: \.name) { customJangdan in
+                            Button {
+                                self.router.push(.customJangdanPractice(jangdanName: customJangdan.name, jangdanType: customJangdan.type.name))
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundStyle(.backgroundSheet)
+                                    
+                                    Image(.customJangdanCardGradient)
+                                        .resizable()
+                                        .frame(width: 295, height: 295)
+                                        .offset(y: 110)
+                                    
+                                    VStack(spacing: 2) {
+                                        Text(customJangdan.name)
+                                            .font(.Headline_SB)
+                                            .foregroundStyle(.textDefault)
+                                            .lineLimit(1)
+                                            .truncationMode(.tail)
+                                            .frame(width: 156 - 32)
+                                        
+                                        Text(customJangdan.type.name)
+                                            .font(.Subheadline_R)
+                                            .foregroundStyle(.textTertiary)
+                                    }
+                                }
+                                .frame(width: 156, height: 84)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                            }
+                        }
+                        
+                        if self.viewModel.state.customJangdanList.count > 1 {
+                            Button {
+                                self.router.push(.customJangdanList)
+                            } label: {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundStyle(.backgroundSheet)
+                                    .frame(width: 156, height: 84)
+                                    .overlay {
+                                        Text("더보기")
+                                            .font(.Body_R)
+                                            .foregroundStyle(.textSecondary)
+                                    }
                             }
                         }
                     }
-                    .onEnded { _ in // 제스처 끝날때 도로 nil로 초기화
-                        if isPressed == true {
-                            self.isRealPressed = true
-                        }
-                        withAnimation {
-                            isPressed = nil
-                        }
-                    }
-            )
-            .sensoryFeedback(.impact(weight: .medium), trigger: isRealPressed) { _, newValue in
-                self.isRealPressed = false
-                return newValue
+                    .padding(.horizontal, 16)
+                }
+                .frame(height: 84)
             }
         }
-    }
-}
-
-extension HomeView {
-    struct ScrollPreferenceKey: PreferenceKey {
-        static var defaultValue: CGFloat = .zero
-        static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { }
+        .onAppear {
+            self.viewModel.effect(action: .fetchCustomJangdanData)
+        }
     }
     
-    private var scrollObservableView: some View {
-        GeometryReader { proxy in
-            let offsetY = proxy.frame(in: .global).origin.y
-            Color.clear
-                .preference(
-                    key: ScrollPreferenceKey.self,
-                    value: offsetY
-                )
+    private var builtinJangdanList: some View {
+        VStack(spacing: 8) {
+            HStack {
+                Text("바로 연습하기")
+                    .font(.Title2_B)
+                    .foregroundStyle(.textDefault)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 6)
+                Spacer()
+            }
+            
+            ForEach(Jangdan.allCases, id: \.self) { jangdan in
+                Button {
+                    self.router.push(.builtInJangdanPractice(jangdanName: jangdan.name))
+                    self.appState.increaseEnteredJangdan()
+                    if self.appState.numberOfEnteredJangdan % 100 == 0 {
+                        self.requestReview()
+                    }
+                } label: {
+                    HStack {
+                        HStack(spacing: 20) {
+                            jangdan.jangdanLogoImage
+                                .resizable()
+                                .foregroundStyle(.jangdanLogoPrimary)
+                                .frame(width: 36, height: 36)
+                                .padding(14)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundStyle(.jangdanLogoBackground)
+                                }
+                            
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(jangdan.name)
+                                    .font(.Title3_SB)
+                                    .foregroundStyle(.textDefault)
+                                
+                                Text(jangdan.bakInformation)
+                                    .font(.Subheadline_R)
+                                    .foregroundStyle(.textQuaternary)
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 20))
+                            .foregroundStyle(.textTertiary)
+                            .frame(width: 44, height: 44)
+                    }
+                    .padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                    .background(.backgroundSheet)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                }
+            }
         }
-        .frame(height: 0)
+        .padding(.horizontal, 16)
     }
 }
 

@@ -24,7 +24,7 @@ struct JangdanTypeSelectView: View {
             
             List {
                 // TODO: - 악기 종류에 따라 표시되는 장단 리스트 달라야함
-                ForEach(self.appState.selectedInstrument.defaultJangdans, id: \.self) { jangdan in
+                ForEach(Jangdan.allCases, id: \.self) { jangdan in
                     Button {
                         router.push(.customJangdanCreate(jangdanName: jangdan.name))
                     } label: {
