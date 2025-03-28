@@ -51,9 +51,11 @@ class MetronomeViewModel {
         
         self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] currentBakIndex in
             guard let self else { return }
-            self.state.currentSobak = currentBakIndex.0
-            self.state.currentDaebak = currentBakIndex.1
-            self.state.currentRow = currentBakIndex.2
+            Task { @MainActor in
+                self.state.currentSobak = currentBakIndex.0
+                self.state.currentDaebak = currentBakIndex.1
+                self.state.currentRow = currentBakIndex.2
+            }
         }
         .store(in: &self.cancelBag)
     }
