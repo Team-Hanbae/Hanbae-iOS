@@ -45,15 +45,12 @@ class HomeViewModel {
 
 extension HomeViewModel {
     enum Action {
-        case changeSoundType
         case appEntered
         case fetchCustomJangdanData
     }
     
     func effect(action: Action) {
         switch action {
-        case .changeSoundType:
-            self.metronomeOnOffUseCase.setSoundType()
         case .appEntered:
             self.dynamicIconUseCase.setEventIconIfNeeded()
         case .fetchCustomJangdanData:
