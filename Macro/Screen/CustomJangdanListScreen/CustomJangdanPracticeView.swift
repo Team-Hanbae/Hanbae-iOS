@@ -26,6 +26,7 @@ enum ToastType {
 
 struct CustomJangdanPracticeView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State var viewModel: CustomJangdanPracticeViewModel
     
     @State private var appState: AppState = DIContainer.shared.appState
@@ -46,9 +47,9 @@ struct CustomJangdanPracticeView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: jangdanName)
+            MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: self.jangdanName)
             
-            if toastAction {
+            if self.toastAction {
                 Text(self.toastType.massage)
                     .font(.Body_R)
                     .padding(.horizontal, 20)
@@ -65,7 +66,7 @@ struct CustomJangdanPracticeView: View {
                             } completion: {
                                 self.toastAction = false
                                 self.toastOpacity = 1
-                                inputCustomJangdanName = ""
+                                self.inputCustomJangdanName = ""
                             }
                         }
                     }
@@ -77,7 +78,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     self.viewModel.effect(action: .exitMetronome)
-                    router.pop()
+                    self.dismiss()
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
@@ -88,7 +89,7 @@ struct CustomJangdanPracticeView: View {
             
             // 연습 장단 이름
             ToolbarItem(placement: .principal) {
-                Text("\(jangdanType) | \(jangdanName)")
+                Text("\(self.jangdanType) | \(self.jangdanName)")
                     .font(.Body_R)
                     .foregroundStyle(.textSecondary)
                     .lineLimit(1)
@@ -100,7 +101,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
                     Button {
-                        initialJangdanAlert = true
+                        self.initialJangdanAlert = true
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .aspectRatio(contentMode: .fit)
@@ -119,25 +120,12 @@ struct CustomJangdanPracticeView: View {
                     
                     Menu {
                         Button {
-                            self.appState.toggleBeepSound()
-                            self.viewModel.effect(action: .changeSoundType)
-                        } label: {
-                            HStack {
-                                if self.appState.isBeepSound {
-                                    Image(systemName: "checkmark")
-                                }
-                                Text("비프음으로 변환")
-                            }
-                        }
-                        
-                        Button {
                             self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: nil))
                             self.toastType = .save
                             self.toastAction = true
                         } label: {
                             Text("장단 저장하기")
                         }
-                        
                         
                         Button {
                             self.exportJandanAlert = true
@@ -166,58 +154,63 @@ struct CustomJangdanPracticeView: View {
                             .foregroundStyle(.textSecondary)
                     }
                     .alert("장단 삭제하기", isPresented: $deleteJangdanAlert) {
-                        Button("예") {
-                            deleteJangdanAlert = false
-                            self.viewModel.effect(action: .deleteCustomJangdanData(jangdanName: jangdanName))
-                            router.pop()
+                        Button("취소", role: .cancel) {
+                            self.deleteJangdanAlert = false
                         }
-                        Button("아니오") {
-                            deleteJangdanAlert = false
+                        
+                        Button("삭제", role: .destructive) {
+                            self.deleteJangdanAlert = false
+                            self.viewModel.effect(action: .deleteCustomJangdanData(jangdanName: jangdanName))
+                            self.router.pop()
                         }
                     } message: {
                         Text("현재 장단을 삭제하시겠습니까?")
                     }
-                    .alert("장단 내보내기", isPresented: $exportJandanAlert) {
-                        TextField("장단명", text: $inputCustomJangdanName)
-                            .onChange(of: inputCustomJangdanName) { oldValue, newValue in
+                    .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
+                        TextField("이름", text: $inputCustomJangdanName)
+                            .onChange(of: self.inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
-                                    inputCustomJangdanName = oldValue
+                                    self.inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
-                            Button("취소") { }
-                            Button("완료") {
+                            Button("취소", role: .cancel) {
+                                self.inputCustomJangdanName.removeAll()
+                            }
+                            Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
-                                    self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
+                                    self.viewModel.effect(action: .createCustomJangdan(newJangdanName: self.inputCustomJangdanName))
                                     self.toastType = .export(jangdanName: self.inputCustomJangdanName)
-                                    toastAction = true
+                                    self.toastAction = true
                                 }
                             }
                         }
                     } message: {
                         Text("저장될 이름을 작성해주세요.")
                     }
-                    .alert("장단이름 변경하기", isPresented: $updateJandanNameAlert) {
-                        TextField(jangdanName, text: $inputCustomJangdanName)
+                    .alert("변경 할 장단 이름", isPresented: $updateJandanNameAlert) {
+                        TextField(self.jangdanName, text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
-                                    inputCustomJangdanName = oldValue
+                                    self.inputCustomJangdanName = oldValue
                                 }
                             }
                         HStack{
-                            Button("취소") { }
-                            Button("완료") {
+                            Button("취소", role: .cancel) {
+                                self.inputCustomJangdanName.removeAll()
+                            }
+                            Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: self.inputCustomJangdanName))
                                     self.viewModel.effect(action: .selectJangdan(jangdanName: self.inputCustomJangdanName))
-                                    self.jangdanName = inputCustomJangdanName
+                                    self.jangdanName = self.inputCustomJangdanName
                                     self.toastType = .changeName
                                     self.toastAction = true
                                 }
                             }
                         }
                     } message: {
-                        Text("새로운 장단명을 작성해주세요.")
+                        Text("변경할 이름을 작성해주세요.")
                     }
                 }
             }

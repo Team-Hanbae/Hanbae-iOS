@@ -15,7 +15,7 @@ class DIContainer {
         self.jangdanDataSource = .init(appState: self.appState)!
         self.soundManager = .init(appState: self.appState)!
         
-        self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource, appState: self.appState)
+        self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource)
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
         self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: soundManager)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
@@ -28,7 +28,7 @@ class DIContainer {
         self.controlViewModel =
         MetronomeControlViewModel(jangdanRepository: self.jangdanDataSource, tempoUseCase: self.tempoUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
         
-        self.homeViewModel = HomeViewModel(metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase)
+        self.homeViewModel = HomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase)
         self.customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self.templateUseCase)
         self.builtInJangdanPracticeViewModel = BuiltInJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
         self.customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)

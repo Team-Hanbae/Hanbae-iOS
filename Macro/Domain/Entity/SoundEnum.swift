@@ -6,7 +6,7 @@
 //
 
 enum SoundType: String {
-    case beep
     case buk
+    case clave
     case jangu
 }

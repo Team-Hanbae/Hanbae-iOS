@@ -34,7 +34,7 @@ final class JangdanDataManager {
     }
     
     private var publisher: PassthroughSubject<JangdanEntity, Never> = .init()
-    private var currentJangdan: JangdanEntity = .init(name: "자진모리", bakCount: 0, daebak: 0, bpm: 0, daebakList: [[.init(bakAccentList: [.medium])]], jangdanType: .자진모리, instrument: .장구)
+    private var currentJangdan: JangdanEntity = .init(name: "자진모리", bpm: 0, daebakList: [[.init(bakAccentList: [.medium])]], jangdanType: .자진모리)
     
     private func convertToDaebakList(from daebakListStrings: [[[Int]]]) -> [[JangdanEntity.Daebak]] {
         return daebakListStrings.map { daebak in
@@ -48,12 +48,9 @@ final class JangdanDataManager {
         return JangdanEntity(
             name: model.name,
             createdAt: model.createdAt,
-            bakCount: model.bakCount,
-            daebak: model.daebak,
             bpm: model.bpm,
             daebakList: convertToDaebakList(from: model.daebakAccentList),
-            jangdanType: Jangdan(rawValue: model.jangdanType) ?? .진양,
-            instrument: Instrument(rawValue: model.instrument) ?? .장구
+            jangdanType: Jangdan(rawValue: model.jangdanType) ?? .진양
         )
     }
     
@@ -65,13 +62,13 @@ extension JangdanDataManager: JangdanRepository {
         publisher.eraseToAnyPublisher()
     }
     
-    private func fetchBasicJangdan(jangdanName: String, instrument: String) -> JangdanEntity? {
-        return basicJangdanData.first { $0.name == jangdanName && $0.instrument == Instrument(rawValue: instrument)}
+    private func fetchBasicJangdan(jangdanName: String) -> JangdanEntity? {
+        return basicJangdanData.first { $0.name == jangdanName }
     }
     
-    private func fetchCustomJangdan(jangdanName: String, instrument: String) -> JangdanEntity? {
+    private func fetchCustomJangdan(jangdanName: String) -> JangdanEntity? {
         let predicate = #Predicate<JangdanDataModel> {
-            $0.name == jangdanName && $0.instrument == instrument
+            $0.name == jangdanName
         }
         let descriptor = FetchDescriptor(predicate: predicate)
         
@@ -86,8 +83,7 @@ extension JangdanDataManager: JangdanRepository {
     }
     
     func fetchJangdanData(jangdanName: String) {
-        if let jangdan = fetchBasicJangdan(jangdanName: jangdanName, instrument: self.appState.selectedInstrument.rawValue) ??
-            fetchCustomJangdan(jangdanName: jangdanName, instrument: self.appState.selectedInstrument.rawValue) {
+        if let jangdan = fetchBasicJangdan(jangdanName: jangdanName) ?? fetchCustomJangdan(jangdanName: jangdanName) {
             self.currentJangdan = jangdan
             publisher.send(currentJangdan)
         } else {
@@ -105,11 +101,8 @@ extension JangdanDataManager: JangdanRepository {
         publisher.send(currentJangdan)
     }
     
-    // MARK: 여기에 악기에 대한 정보는 들어가야 하지 않을까요 해당하는 악기의 커스텀 장단만 불러오도록
-    func fetchAllCustomJangdan(instrument: Instrument) -> [JangdanEntity] {
-        let instrument = instrument.rawValue
-        let predicate = #Predicate<JangdanDataModel> { $0.instrument == instrument }
-        let descriptor = FetchDescriptor(predicate: predicate)
+    func fetchAllCustomJangdan() -> [JangdanEntity] {
+        let descriptor = FetchDescriptor<JangdanDataModel>()
         
         do {
             let jangdanList = try context.fetch(descriptor)
@@ -142,12 +135,9 @@ extension JangdanDataManager: JangdanRepository {
     func saveNewJangdan(newJangdanName: String) {
         let newJangdan = JangdanDataModel(
             name: newJangdanName,
-            bakCount: currentJangdan.bakCount,
-            daebak: currentJangdan.daebak,
             bpm: currentJangdan.bpm,
             jangdanType: currentJangdan.jangdanType.rawValue,
             daebakList: currentJangdan.daebakList.map { $0.map { $0.bakAccentList.map { $0.rawValue } } },
-            instrument: currentJangdan.instrument.rawValue,
             createdAt: .now
         )
         
@@ -164,10 +154,9 @@ extension JangdanDataManager: JangdanRepository {
     func updateCustomJangdan(newJangdanName: String?) {
         
         let currentName = self.currentJangdan.name
-        let instrument = self.currentJangdan.instrument.rawValue
         
         let predicate = #Predicate<JangdanDataModel> {
-            $0.name == currentName && $0.instrument == instrument
+            $0.name == currentName
         }
         let descriptor = FetchDescriptor(predicate: predicate)
         

@@ -51,9 +51,11 @@ class MetronomeViewModel {
         
         self.metronomeOnOffUseCase.tickPublisher.sink { [weak self] currentBakIndex in
             guard let self else { return }
-            self.state.currentSobak = currentBakIndex.0
-            self.state.currentDaebak = currentBakIndex.1
-            self.state.currentRow = currentBakIndex.2
+            Task { @MainActor in
+                self.state.currentSobak = currentBakIndex.0
+                self.state.currentDaebak = currentBakIndex.1
+                self.state.currentRow = currentBakIndex.2
+            }
         }
         .store(in: &self.cancelBag)
     }
@@ -81,6 +83,7 @@ extension MetronomeViewModel {
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case disableEstimateBpm
         case changeBlinkOnOff
+        case changeSoundType
     }
     
     func effect(action: Action) {
@@ -104,6 +107,8 @@ extension MetronomeViewModel {
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
             self.metronomeOnOffUseCase.changeBlink()
+        case .changeSoundType:
+            self.metronomeOnOffUseCase.setSoundType()
         }
     }
 }

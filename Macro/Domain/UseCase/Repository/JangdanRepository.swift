@@ -11,7 +11,7 @@ import Foundation
 protocol JangdanRepository {
     var jangdanPublisher: AnyPublisher<JangdanEntity, Never> { get }
     
-    func fetchAllCustomJangdan(instrument: Instrument) -> [JangdanEntity]
+    func fetchAllCustomJangdan() -> [JangdanEntity]
     
     func fetchJangdanData(jangdanName: String)
     
