@@ -37,6 +37,8 @@ struct CustomJangdanPracticeView: View {
     
     @State private var initialJangdanAlert: Bool = false
     @State private var exportJandanAlert: Bool = false
+    @State private var isRepeatedName: Bool = false
+    
     @State private var inputCustomJangdanName: String = ""
     @State private var toastAction: Bool = false
     @State private var toastOpacity: Double = 1
@@ -180,6 +182,10 @@ struct CustomJangdanPracticeView: View {
                             Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .createCustomJangdan(newJangdanName: self.inputCustomJangdanName))
+                                    guard !self.viewModel.state.isRepeatedName else {
+                                        self.isRepeatedName = true
+                                        return
+                                    }
                                     self.toastType = .export(jangdanName: self.inputCustomJangdanName)
                                     self.toastAction = true
                                 }
@@ -202,6 +208,10 @@ struct CustomJangdanPracticeView: View {
                             Button("확인") {
                                 if !inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .updateCustomJangdan(newJangdanName: self.inputCustomJangdanName))
+                                    guard !self.viewModel.state.isRepeatedName else {
+                                        self.isRepeatedName = true
+                                        return
+                                    }
                                     self.viewModel.effect(action: .selectJangdan(jangdanName: self.inputCustomJangdanName))
                                     self.jangdanName = self.inputCustomJangdanName
                                     self.toastType = .changeName
@@ -211,6 +221,13 @@ struct CustomJangdanPracticeView: View {
                         }
                     } message: {
                         Text("변경할 이름을 작성해주세요.")
+                    }
+                    .alert("이미 등록된 장단 이름입니다.", isPresented: $isRepeatedName) {
+                        Button("확인") {
+                            self.viewModel.effect(action: .repeatedNameNoticed)
+                        }
+                    } message: {
+                        Text("다른 이름으로 다시 시도해주세요.")
                     }
                 }
             }

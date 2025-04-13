@@ -89,8 +89,10 @@ struct CustomJangdanListView: View {
                 }
             }
         }
-        .task {
-            self.viewModel.effect(action: .fetchCustomJangdanData)
+        .onChange(of: self.router.path) {
+            if self.router.path.last == .customJangdanList {
+                self.viewModel.effect(action: .fetchCustomJangdanData)
+            }
         }
         .onAppear {
             if self.appState.numberOfCreatedCustomJangdan == 3 {

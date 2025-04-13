@@ -35,6 +35,7 @@ class CustomJangdanPracticeViewModel {
     
     struct State {
         var currentJangdanType: Jangdan?
+        var isRepeatedName: Bool = false
     }
 }
 
@@ -44,9 +45,9 @@ extension CustomJangdanPracticeViewModel {
         case initialJangdan(jangdanName: String)
         case exitMetronome
         case createCustomJangdan(newJangdanName: String)
-        case changeSoundType
         case updateCustomJangdan(newJangdanName: String?)
         case deleteCustomJangdanData(jangdanName: String)
+        case repeatedNameNoticed
     }
     
     func effect(action: Action) {
@@ -61,13 +62,21 @@ extension CustomJangdanPracticeViewModel {
                 await self.widgetManager.endLiveActivity()
             }
         case let .createCustomJangdan(newJangdanName):
-            try! self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
-        case .changeSoundType:
-            self.metronomeOnOffUseCase.setSoundType()
+            do {
+                try self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
+            } catch {
+                self.state.isRepeatedName = true
+            }
         case let .updateCustomJangdan(newJangdanName):
-            self.templateUseCase.updateCustomJangdan(newJangdanName: newJangdanName)
+            do {
+                try self.templateUseCase.updateCustomJangdan(newJangdanName: newJangdanName)
+            } catch {
+                self.state.isRepeatedName = true
+            }
         case let .deleteCustomJangdanData(jangdanName):
             self.templateUseCase.deleteCustomJangdan(jangdanName: jangdanName)
+        case .repeatedNameNoticed:
+            self.state.isRepeatedName = false
         }
     }
 }
