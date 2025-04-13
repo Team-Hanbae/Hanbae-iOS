@@ -44,7 +44,6 @@ extension CustomJangdanPracticeViewModel {
         case initialJangdan(jangdanName: String)
         case exitMetronome
         case createCustomJangdan(newJangdanName: String)
-        case changeSoundType
         case updateCustomJangdan(newJangdanName: String?)
         case deleteCustomJangdanData(jangdanName: String)
     }
@@ -62,8 +61,6 @@ extension CustomJangdanPracticeViewModel {
             }
         case let .createCustomJangdan(newJangdanName):
             try! self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
-        case .changeSoundType:
-            self.metronomeOnOffUseCase.setSoundType()
         case let .updateCustomJangdan(newJangdanName):
             self.templateUseCase.updateCustomJangdan(newJangdanName: newJangdanName)
         case let .deleteCustomJangdanData(jangdanName):
