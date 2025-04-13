@@ -46,7 +46,7 @@ extension TemplateImplement: TemplateUseCase {
     
     // MARK: - Custom Template CRUD Logic
     func createCustomJangdan(newJangdanName: String) throws {
-        guard self.jangdanRepository.isRepeatedName(jangdanName: newJangdanName) else {
+        guard !self.jangdanRepository.isRepeatedName(jangdanName: newJangdanName) else {
             throw DataError.registedName
         }
         self.jangdanRepository.saveNewJangdan(newJangdanName: newJangdanName)

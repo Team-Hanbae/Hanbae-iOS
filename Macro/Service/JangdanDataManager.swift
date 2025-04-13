@@ -125,7 +125,7 @@ extension JangdanDataManager: JangdanRepository {
         
         do {
             let results = try context.fetch(descriptor)
-            return results.isEmpty
+            return !results.isEmpty
         } catch {
             print("중복 이름 확인 중 오류 발생: \(error.localizedDescription)")
             return true // 오류가 발생하면 기본적으로 중복된 것으로 간주
