@@ -36,6 +36,7 @@ class BuiltInJangdanPracticeViewModel {
     struct State {
         var currentJangdanName: String?
         var currentJangdanType: Jangdan?
+        var isRepeatedName: Bool = false
     }
 }
 
@@ -58,7 +59,11 @@ extension BuiltInJangdanPracticeViewModel {
                 await self.widgetManager.endLiveActivity()
             }
         case let .createCustomJangdan(newJangdanName):
-            try! self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
+            do {
+                try self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
+            } catch {
+                self.state.isRepeatedName = true
+            }
         case .changeSoundType:
             self.metronomeOnOffUseCase.setSoundType()
         }

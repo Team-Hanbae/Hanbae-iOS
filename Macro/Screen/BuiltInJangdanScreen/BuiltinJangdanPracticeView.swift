@@ -17,6 +17,7 @@ struct BuiltinJangdanPracticeView: View {
     private var jangdanName: String
     
     @State private var initialJangdanAlert: Bool = false
+    @State private var isRepeatedName: Bool = false
     
     @State private var exportJandanAlert: Bool = false
     @State private var inputCustomJangdanName: String = ""
@@ -125,12 +126,23 @@ struct BuiltinJangdanPracticeView: View {
                             Button("확인") {
                                 if !self.inputCustomJangdanName.isEmpty {
                                     self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
+                                    guard !self.viewModel.state.isRepeatedName else {
+                                        self.isRepeatedName = true
+                                        return
+                                    }
                                     self.toastAction = true
                                 }
                             }
                         }
                     } message: {
                         Text("저장될 이름을 작성해주세요.")
+                    }
+                    .alert("이미 등록된 장단 이름입니다.", isPresented: $isRepeatedName) {
+                        Button("확인") {
+                            
+                        }
+                    } message: {
+                        Text("다른 이름으로 다시 시도해주세요.")
                     }
                 }
             }
