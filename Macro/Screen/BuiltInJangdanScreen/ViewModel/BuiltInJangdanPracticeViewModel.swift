@@ -45,7 +45,6 @@ extension BuiltInJangdanPracticeViewModel {
         case initialJangdan
         case exitMetronome
         case createCustomJangdan(newJangdanName: String)
-        case changeSoundType
     }
     
     func effect(action: Action) {
@@ -64,8 +63,6 @@ extension BuiltInJangdanPracticeViewModel {
             } catch {
                 self.state.isRepeatedName = true
             }
-        case .changeSoundType:
-            self.metronomeOnOffUseCase.setSoundType()
         }
     }
 }
