@@ -52,7 +52,10 @@ extension TemplateImplement: TemplateUseCase {
         self.jangdanRepository.saveNewJangdan(newJangdanName: newJangdanName)
     }
     
-    func updateCustomJangdan(newJangdanName: String?) {
+    func updateCustomJangdan(newJangdanName: String?) throws {
+        if let newJangdanName, self.jangdanRepository.isRepeatedName(jangdanName: newJangdanName) {
+            throw DataError.registedName
+        }
         self.jangdanRepository.updateCustomJangdan(newJangdanName: newJangdanName)
     }
     
