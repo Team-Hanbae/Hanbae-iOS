@@ -45,6 +45,7 @@ extension BuiltInJangdanPracticeViewModel {
         case initialJangdan
         case exitMetronome
         case createCustomJangdan(newJangdanName: String)
+        case repeatedNameNoticed
     }
     
     func effect(action: Action) {
@@ -63,6 +64,8 @@ extension BuiltInJangdanPracticeViewModel {
             } catch {
                 self.state.isRepeatedName = true
             }
+        case .repeatedNameNoticed:
+            self.state.isRepeatedName = false
         }
     }
 }

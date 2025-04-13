@@ -139,7 +139,7 @@ struct BuiltinJangdanPracticeView: View {
                     }
                     .alert("이미 등록된 장단 이름입니다.", isPresented: $isRepeatedName) {
                         Button("확인") {
-                            
+                            self.viewModel.effect(action: .repeatedNameNoticed)
                         }
                     } message: {
                         Text("다른 이름으로 다시 시도해주세요.")
