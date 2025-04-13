@@ -18,6 +18,7 @@ struct CustomJangdanCreateView: View {
     @State private var backButtonAlert: Bool = false
     @State private var initialJangdanAlert: Bool = false
     @State private var exportJandanAlert: Bool = false
+    @State private var isRepeatedName: Bool = false
     @State private var inputCustomJangdanName: String = ""
     
     var body: some View {
@@ -94,17 +95,30 @@ struct CustomJangdanCreateView: View {
                                     }
                                 }
                             HStack{
-                                Button("취소") { }
+                                Button("취소", role: .cancel) {
+                                    self.inputCustomJangdanName.removeAll()
+                                }
                                 Button("확인") {
                                     if !inputCustomJangdanName.isEmpty {
                                         self.viewModel.effect(action: .exitMetronome)
                                         self.viewModel.effect(action: .createCustomJangdan(newJangdanName: inputCustomJangdanName))
+                                        guard !self.viewModel.state.isRepeatedName else {
+                                            self.isRepeatedName = true
+                                            return
+                                        }
                                         router.pop(2)
                                     }
                                 }
                             }
                         } message: {
                             Text("저장될 이름을 작성해주세요.")
+                        }
+                        .alert("이미 등록된 장단 이름입니다.", isPresented: $isRepeatedName) {
+                            Button("확인") {
+                                self.viewModel.effect(action: .repeatedNameNoticed)
+                            }
+                        } message: {
+                            Text("다른 이름으로 다시 시도해주세요.")
                         }
                     }
                 }
