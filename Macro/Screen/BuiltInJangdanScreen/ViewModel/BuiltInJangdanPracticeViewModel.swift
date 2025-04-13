@@ -34,7 +34,6 @@ class BuiltInJangdanPracticeViewModel {
     private(set) var state: State = .init()
     
     struct State {
-        var currentJangdanName: String?
         var currentJangdanType: Jangdan?
         var isRepeatedName: Bool = false
     }
