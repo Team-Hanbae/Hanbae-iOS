@@ -36,6 +36,7 @@ class CustomJangdanCreateViewModel {
     
     struct State {
         var currentJangdanType: Jangdan?
+        var isRepeatedName: Bool = false
     }
 }
 
@@ -44,6 +45,7 @@ extension CustomJangdanCreateViewModel {
         case initialJangdan
         case exitMetronome
         case createCustomJangdan(newJangdanName: String)
+        case repeatedNameNoticed
     }
     
     func effect(action: Action) {
@@ -57,7 +59,13 @@ extension CustomJangdanCreateViewModel {
                 await self.widgetManager.endLiveActivity()
             }
         case let .createCustomJangdan(newJangdanName):
-            try! self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
+            do {
+                try self.templateUseCase.createCustomJangdan(newJangdanName: newJangdanName)
+            } catch {
+                self.state.isRepeatedName = true
+            }
+        case .repeatedNameNoticed:
+            self.state.isRepeatedName = false
         }
     }
 }
