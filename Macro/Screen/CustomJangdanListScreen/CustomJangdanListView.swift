@@ -95,6 +95,7 @@ struct CustomJangdanListView: View {
             }
         }
         .onAppear {
+            self.viewModel.effect(action: .fetchCustomJangdanData)
             if self.appState.numberOfCreatedCustomJangdan == 3 {
                 self.requestReview()
             }
