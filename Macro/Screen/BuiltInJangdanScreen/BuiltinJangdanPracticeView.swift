@@ -103,7 +103,7 @@ struct BuiltinJangdanPracticeView: View {
                         Button {
                             self.exportJandanAlert = true
                         } label: {
-                            Text("장단 내보내기")
+                            Text("나만의 장단 저장하기")
                         }
                         
                     } label: {
