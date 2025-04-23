@@ -181,7 +181,7 @@ struct CustomJangdanPracticeView: View {
                     } message: {
                         Text("저장될 이름을 작성해주세요.")
                     }
-                    .alert("장단 이름 변경하기", isPresented: $updateJandanNameAlert) {
+                    .alert("장단이름 변경하기", isPresented: $updateJandanNameAlert) {
                         TextField(self.jangdanName, text: $inputCustomJangdanName)
                             .onChange(of: inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
