@@ -10,10 +10,8 @@
 		2B0022492CF3260800C60C4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0022482CF3260800C60C4F /* AppState.swift */; };
 		2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
 		2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
-		2B03B91C2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */; };
 		2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */; };
 		2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
-		2B03B91F2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */; };
 		2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
 		2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
 		2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
@@ -120,7 +118,6 @@
 		2B0022482CF3260800C60C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		2B03B9122D7AD7A9000BF12A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		2B03B9132D7AD7A9000BF12A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizerAnimationView.swift; sourceTree = "<group>"; };
 		2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetBundle.swift; sourceTree = "<group>"; };
 		2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		2B03B9172D7AD7A9000BF12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -227,7 +224,6 @@
 			children = (
 				2B03B9122D7AD7A9000BF12A /* AppIntent.swift */,
 				2B03B9132D7AD7A9000BF12A /* Assets.xcassets */,
-				2B03B9142D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift */,
 				2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */,
 				2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */,
 				2B03B9172D7AD7A9000BF12A /* Info.plist */,
@@ -682,7 +678,6 @@
 				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
 				3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */,
 				438226E12CAEC728007A3B23 /* TemplateImplement.swift in Sources */,
-				2B03B91F2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */,
 				2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */,
 				2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
 				4303C81D2CF5995E00EB956A /* CustomJangdanPracticeView.swift in Sources */,
@@ -721,7 +716,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */,
-				2B03B91C2D7AD7A9000BF12A /* AudioVisualizerAnimationView.swift in Sources */,
 				2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */,
 				2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
 				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
