@@ -107,7 +107,7 @@ struct BuiltinJangdanPracticeView: View {
                         }
                         
                     } label: {
-                        Image(systemName: "square.and.arrow.up")
+                        Image(.save)
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.textSecondary)
                     }
