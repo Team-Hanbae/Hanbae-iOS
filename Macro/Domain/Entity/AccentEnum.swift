@@ -13,10 +13,10 @@ enum Accent: Int, CaseIterable, Codable {
     
     func nextAccent() -> Accent {
         switch self {
-        case .strong: return .medium
-        case .medium: return .weak
-        case .weak: return .none
-        case .none: return .strong
+        case .strong: return .none
+        case .medium: return .strong
+        case .weak: return .medium
+        case .none: return .weak
         }
     }
 }
