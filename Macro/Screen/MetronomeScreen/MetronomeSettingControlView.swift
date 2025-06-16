@@ -47,10 +47,11 @@ struct MetronomeSettingControlView: View {
                     }
                 }
             } label: {
-                HStack(spacing: 6) {
+                HStack(spacing: 0) {
                     Image(systemName: "speaker.wave.2.fill")
                     
                     Text(self.appState.selectedInstrument.rawValue)
+                        .font(.Body_R)
                 }
             }
             .buttonStyle(MetronomeSettingMenuButtonStyle())
@@ -75,7 +76,7 @@ extension MetronomeSettingControlView {
                     .font(.title3)
                     .foregroundStyle(isOn ? Color.buttonToggleOn : Color.textSecondary)
             }
-            .frame(height: 56)
+            .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in
                 if newValue {
                     isOn.toggle()
@@ -97,7 +98,7 @@ extension MetronomeSettingControlView {
                     .font(.title3)
                     .foregroundStyle(isActive ? Color.buttonToggleOn : Color.textSecondary)
             }
-            .frame(height: 56)
+            .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in
                 isActive = newValue
             }
