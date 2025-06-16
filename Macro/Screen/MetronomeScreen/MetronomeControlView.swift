@@ -16,7 +16,23 @@ struct MetronomeControlView: View {
     @State private var isChangeBpm: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topTrailing) {
+            Button {
+                
+            } label: {
+                Image(systemName: "chevron.up")
+                    .foregroundStyle(.textQuaternary)
+                    .frame(width: 24, height: 24)
+                    .padding(.horizontal, 18)
+                    .padding(.vertical, 6)
+                    .background {
+                        UnevenRoundedRectangle(topLeadingRadius: 12, topTrailingRadius: 12)
+                            .foregroundStyle(.backgroundCard)
+                    }
+            }
+            .buttonStyle(.plain)
+            .offset(y: -36)
+            
             VStack(alignment: .center, spacing: 0) {
                 // 위에 드래그 제스쳐 되어야 하는 영역
                 VStack(alignment: .center, spacing: 10) {
