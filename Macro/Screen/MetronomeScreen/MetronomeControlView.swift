@@ -41,33 +41,13 @@ struct MetronomeControlView: View {
             ? AnyLayout(HStackLayout(spacing: 0))
             : AnyLayout(VStackLayout(alignment: .center, spacing: 0))
             
+            // 드래그 제스쳐 되어야 하는 영역 - BPM
             layout {
-                // 위에 드래그 제스쳐 되어야 하는 영역
-                VStack(alignment: .center, spacing: 10) {
-                    if !self.viewModel.state.isTapping {
-                        Text("빠르기(BPM)")
-                            .font(.Callout_R)
-                            .foregroundStyle(.textTertiary)
-                            .padding(.vertical, 5)
-                    } else {
-                        Text("원하는 빠르기로 계속 탭해주세요")
-                            .font(.Body_SB)
-                            .foregroundStyle(.textDefault)
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 16)
-                            .background(.backgroundDefault)
-                            .cornerRadius(8)
-                    }
-                    
-                    HStack(spacing: 12) {
-                        Circle()
-                            .fill(self.viewModel.state.isMinusActive ? .buttonBPMControlActive : .buttonBPMControlDefault)
-                            .frame(width: 56)
-                            .overlay {
-                                Image(systemName: "minus")
-                                    .font(.system(size: 26))
-                                    .foregroundStyle(.textButtonSecondary)
-                            }
+                if isFold {
+                    HStack(spacing: 0) {
+                        Image(systemName: "minus")
+                            .font(.system(size: 17))
+                            .foregroundStyle(.textQuaternary)
                             .onTapGesture {
                                 isChangeBpm = true
                                 tapOnceAction(isIncreasing: false)
@@ -76,23 +56,20 @@ struct MetronomeControlView: View {
                                 isChangeBpm = true
                                 tapTwiceAction(isIncreasing: false, isPressing: isPressing)
                             }, perform: {})
+                            .matchedGeometryEffect(id: "minusButton", in: animationNamespace)
                         
                         Text("\(self.viewModel.state.bpm)")
-                            .font(.custom("Pretendard-Medium", fixedSize: 64))
+                            .font(.custom("Pretendard-Medium", fixedSize: 44))
                             .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
-                            .frame(width: 120, height: 60)
+                            .frame(width: 100)
                             .padding(8)
                             .background(self.viewModel.state.isTapping ? .backgroundDefault : .clear)
                             .cornerRadius(16)
+                            .matchedGeometryEffect(id: "bpm", in: animationNamespace)
                         
-                        Circle()
-                            .fill(self.viewModel.state.isPlusActive ? .buttonBPMControlActive : .buttonBPMControlDefault)
-                            .frame(width: 56)
-                            .overlay {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 26))
-                                    .foregroundStyle(.textButtonSecondary)
-                            }
+                        Image(systemName: "plus")
+                            .font(.system(size: 17))
+                            .foregroundStyle(.textQuaternary)
                             .onTapGesture {
                                 isChangeBpm = true
                                 tapOnceAction(isIncreasing: true)
@@ -101,23 +78,103 @@ struct MetronomeControlView: View {
                                 isChangeBpm = true
                                 tapTwiceAction(isIncreasing: true, isPressing: isPressing)
                             }, perform: {})
+                            .matchedGeometryEffect(id: "plusButton", in: animationNamespace)
                     }
                     .sensoryFeedback(.selection, trigger: self.viewModel.state.bpm) { _, _ in
                         return isChangeBpm
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(EdgeInsets(top: 31, leading: 21, bottom: 31, trailing: 21))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                isChangeBpm = true
+                                dragAction(gesture: gesture)
+                            }
+                            .onEnded { _ in
+                                dragEnded()
+                            }
+                    )
+                } else {
+                    VStack(alignment: .center, spacing: 10) {
+                        if !self.viewModel.state.isTapping {
+                            Text("빠르기(BPM)")
+                                .font(.Callout_R)
+                                .foregroundStyle(.textTertiary)
+                                .padding(.vertical, 5)
+                        } else {
+                            Text("원하는 빠르기로 계속 탭해주세요")
+                                .font(.Body_SB)
+                                .foregroundStyle(.textDefault)
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, 16)
+                                .background(.backgroundDefault)
+                                .cornerRadius(8)
+                        }
+                        
+                        HStack(spacing: 12) {
+                            Circle()
+                                .fill(self.viewModel.state.isMinusActive ? .buttonBPMControlActive : .buttonBPMControlDefault)
+                                .frame(width: 56)
+                                .overlay {
+                                    Image(systemName: "minus")
+                                        .font(.system(size: 26))
+                                        .foregroundStyle(.textButtonSecondary)
+                                }
+                                .onTapGesture {
+                                    isChangeBpm = true
+                                    tapOnceAction(isIncreasing: false)
+                                }
+                                .onLongPressGesture(minimumDuration: 0.5, pressing: { isPressing in
+                                    isChangeBpm = true
+                                    tapTwiceAction(isIncreasing: false, isPressing: isPressing)
+                                }, perform: {})
+                                .matchedGeometryEffect(id: "minusButton", in: animationNamespace)
+                            
+                            Text("\(self.viewModel.state.bpm)")
+                                .font(.custom("Pretendard-Medium", fixedSize: 64))
+                                .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
+                                .frame(width: 120, height: 60)
+                                .padding(8)
+                                .background(self.viewModel.state.isTapping ? .backgroundDefault : .clear)
+                                .cornerRadius(16)
+                                .matchedGeometryEffect(id: "bpm", in: animationNamespace)
+                            
+                            Circle()
+                                .fill(self.viewModel.state.isPlusActive ? .buttonBPMControlActive : .buttonBPMControlDefault)
+                                .frame(width: 56)
+                                .overlay {
+                                    Image(systemName: "plus")
+                                        .font(.system(size: 26))
+                                        .foregroundStyle(.textButtonSecondary)
+                                }
+                                .onTapGesture {
+                                    isChangeBpm = true
+                                    tapOnceAction(isIncreasing: true)
+                                }
+                                .onLongPressGesture(minimumDuration: 0.5, pressing: { isPressing in
+                                    isChangeBpm = true
+                                    tapTwiceAction(isIncreasing: true, isPressing: isPressing)
+                                }, perform: {})
+                                .matchedGeometryEffect(id: "plusButton", in: animationNamespace)
+                        }
+                        .sensoryFeedback(.selection, trigger: self.viewModel.state.bpm) { _, _ in
+                            return isChangeBpm
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(EdgeInsets(top: 28, leading: 0, bottom: 32, trailing: 0))
+                    .gesture(
+                        DragGesture()
+                            .onChanged { gesture in
+                                isChangeBpm = true
+                                dragAction(gesture: gesture)
+                            }
+                            .onEnded { _ in
+                                dragEnded()
+                            }
+                    )
                 }
-                .frame(maxWidth: .infinity)
-                .padding(EdgeInsets(top: 28, leading: 0, bottom: 32, trailing: 0))
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            isChangeBpm = true
-                            dragAction(gesture: gesture)
-                        }
-                        .onEnded { _ in
-                            dragEnded()
-                        }
-                )
                 
                 // 아래 시작, 탭 버튼
                 HStack(spacing: isFold ? 8 : 12) {
@@ -161,14 +218,19 @@ struct MetronomeControlView: View {
                         }
                         .sensoryFeedback(.impact(flexibility: .rigid), trigger: self.tapFeedback)
                 }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 24)
+                .padding(
+                    isFold
+                    ? EdgeInsets(top: 24, leading: 0, bottom: 24, trailing: 12)
+                    : EdgeInsets(top: 0, leading: 12, bottom: 24, trailing: 12)
+                )
             }
             .background {
                 Rectangle()
                     .foregroundStyle(.backgroundCard)
             }
-            .clipShape(UnevenRoundedRectangle(topLeadingRadius: 12, bottomLeadingRadius: 24, bottomTrailingRadius: 24))
+            .clipShape(
+                UnevenRoundedRectangle(topLeadingRadius: 12, bottomLeadingRadius: 24, bottomTrailingRadius: 24)
+            )
         }
         .padding(.horizontal, 16)
     }
