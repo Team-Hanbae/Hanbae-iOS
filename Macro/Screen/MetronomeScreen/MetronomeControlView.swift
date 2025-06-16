@@ -9,31 +9,39 @@ import SwiftUI
 import Combine
 
 struct MetronomeControlView: View {
+    @Namespace var animationNamespace
     
     @State var viewModel: MetronomeControlViewModel = DIContainer.shared.controlViewModel
     private let threshold: CGFloat = 10 // 드래그 시 숫자변동 빠르기 조절 위한 변수
     @State private var tapFeedback: Int = 0
     @State private var isChangeBpm: Bool = false
     
+    @State private var isFold: Bool = false
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Button {
-                
-            } label: {
-                Image(systemName: "chevron.up")
-                    .foregroundStyle(.textQuaternary)
-                    .frame(width: 24, height: 24)
-                    .padding(.horizontal, 18)
-                    .padding(.vertical, 6)
-                    .background {
-                        UnevenRoundedRectangle(topLeadingRadius: 12, topTrailingRadius: 12)
-                            .foregroundStyle(.backgroundCard)
+            Image(systemName: isFold ? "chevron.up" : "chevron.down")
+                .bold()
+                .foregroundStyle(.textQuaternary)
+                .frame(width: 24, height: 24)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 6)
+                .background {
+                    UnevenRoundedRectangle(topLeadingRadius: 12, topTrailingRadius: 12)
+                        .foregroundStyle(.backgroundCard)
+                }
+                .onTapGesture {
+                    withAnimation {
+                        isFold.toggle()
                     }
-            }
-            .buttonStyle(.plain)
-            .offset(y: -36)
+                }
+                .offset(y: -36)
             
-            VStack(alignment: .center, spacing: 0) {
+            let layout = isFold
+            ? AnyLayout(HStackLayout(spacing: 0))
+            : AnyLayout(VStackLayout(alignment: .center, spacing: 0))
+            
+            layout {
                 // 위에 드래그 제스쳐 되어야 하는 영역
                 VStack(alignment: .center, spacing: 10) {
                     if !self.viewModel.state.isTapping {
@@ -100,10 +108,6 @@ struct MetronomeControlView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(EdgeInsets(top: 28, leading: 0, bottom: 32, trailing: 0))
-                .background {
-                    Rectangle()
-                        .foregroundStyle(.backgroundCard)
-                }
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
@@ -116,23 +120,39 @@ struct MetronomeControlView: View {
                 )
                 
                 // 아래 시작, 탭 버튼
-                HStack(spacing: 16) {
-                    Text(self.viewModel.state.isPlaying ? "멈춤" : "시작")
-                        .font(.custom("Pretendard-Medium", fixedSize: 34))
-                        .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 80)
-                        .background(self.viewModel.state.isPlaying ? .buttonPlayStop : .buttonPlayStart)
-                        .clipShape(RoundedRectangle(cornerRadius: 100))
-                        .onTapGesture {
-                            self.viewModel.effect(action: .changeIsPlaying)
-                        }
+                HStack(spacing: isFold ? 8 : 12) {
+                    if isFold {
+                        Image(systemName: "play.fill")
+                            .font(.system(size: 24))
+                            .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 74)
+                            .background(self.viewModel.state.isPlaying ? .buttonPlayStop : .buttonPlayStart)
+                            .clipShape(RoundedRectangle(cornerRadius: 100))
+                            .onTapGesture {
+                                self.viewModel.effect(action: .changeIsPlaying)
+                            }
+                            .matchedGeometryEffect(id: "startButton", in: animationNamespace)
+                    } else {
+                        Text(self.viewModel.state.isPlaying ? "멈춤" : "시작")
+                            .font(.custom("Pretendard-Medium", fixedSize: 32))
+                            .kerning(32 * 0.04)
+                            .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 74)
+                            .background(self.viewModel.state.isPlaying ? .buttonPlayStop : .buttonPlayStart)
+                            .clipShape(RoundedRectangle(cornerRadius: 100))
+                            .onTapGesture {
+                                self.viewModel.effect(action: .changeIsPlaying)
+                            }
+                            .matchedGeometryEffect(id: "startButton", in: animationNamespace)
+                    }
                     
-                    Text(self.viewModel.state.isTapping ? "탭" : "빠르기\n찾기")
+                    Text(isFold || self.viewModel.state.isTapping ? "탭" : "빠르기\n찾기")
                         .font(self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(self.viewModel.state.isTapping ? .textButtonEmphasis : .textButtonPrimary)
-                        .frame(width: 120, height: 80)
+                        .frame(width: isFold ? 74 : 120, height: 74)
                         .background(self.viewModel.state.isTapping ? .buttonActive : .buttonPrimary)
                         .clipShape(RoundedRectangle(cornerRadius: 100))
                         .onTapGesture {
@@ -143,7 +163,10 @@ struct MetronomeControlView: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.bottom, 24)
-                .background(.backgroundCard)
+            }
+            .background {
+                Rectangle()
+                    .foregroundStyle(.backgroundCard)
             }
             .clipShape(UnevenRoundedRectangle(topLeadingRadius: 12, bottomLeadingRadius: 24, bottomTrailingRadius: 24))
         }
