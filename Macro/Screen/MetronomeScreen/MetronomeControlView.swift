@@ -43,11 +43,13 @@ struct MetronomeControlView: View {
             
             // 드래그 제스쳐 되어야 하는 영역 - BPM
             layout {
-                if isFold {
+                if isFold { // 접힌 BPM
                     HStack(spacing: 0) {
                         Image(systemName: "minus")
                             .font(.system(size: 17))
                             .foregroundStyle(.textQuaternary)
+                            .frame(width: 16, height: 16)
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 isChangeBpm = true
                                 tapOnceAction(isIncreasing: false)
@@ -70,6 +72,8 @@ struct MetronomeControlView: View {
                         Image(systemName: "plus")
                             .font(.system(size: 17))
                             .foregroundStyle(.textQuaternary)
+                            .frame(width: 16, height: 16)
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 isChangeBpm = true
                                 tapOnceAction(isIncreasing: true)
@@ -85,6 +89,7 @@ struct MetronomeControlView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(EdgeInsets(top: 31, leading: 21, bottom: 31, trailing: 21))
+                    .contentShape(Rectangle())
                     .gesture(
                         DragGesture()
                             .onChanged { gesture in
@@ -95,7 +100,7 @@ struct MetronomeControlView: View {
                                 dragEnded()
                             }
                     )
-                } else {
+                } else { // 기본 BPM
                     VStack(alignment: .center, spacing: 10) {
                         if !self.viewModel.state.isTapping {
                             Text("빠르기(BPM)")
@@ -164,6 +169,7 @@ struct MetronomeControlView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(EdgeInsets(top: 28, leading: 0, bottom: 32, trailing: 0))
+                    .contentShape(Rectangle())
                     .gesture(
                         DragGesture()
                             .onChanged { gesture in
