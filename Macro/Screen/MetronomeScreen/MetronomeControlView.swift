@@ -88,7 +88,6 @@ struct MetronomeControlView: View {
                     Rectangle()
                         .foregroundStyle(.backgroundCard)
                 }
-                .clipShape(UnevenRoundedRectangle(topLeadingRadius: 12, topTrailingRadius: 12))
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
@@ -129,8 +128,8 @@ struct MetronomeControlView: View {
                 .padding(.horizontal, 12)
                 .padding(.bottom, 24)
                 .background(.backgroundCard)
-                .clipShape(UnevenRoundedRectangle(bottomLeadingRadius: 24, bottomTrailingRadius: 24))
             }
+            .clipShape(UnevenRoundedRectangle(topLeadingRadius: 12, bottomLeadingRadius: 24, bottomTrailingRadius: 24))
         }
         .padding(.horizontal, 16)
     }
