@@ -20,7 +20,8 @@ struct MetronomeControlView: View {
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Image(systemName: isFold ? "chevron.up" : "chevron.down")
+            Image(systemName: "chevron.down")
+                .rotationEffect(.degrees(isFold ? 180 : 0))
                 .bold()
                 .foregroundStyle(.textQuaternary)
                 .frame(width: 24, height: 24)
