@@ -213,7 +213,7 @@ struct MetronomeControlView: View {
                     }
                     
                     Text(isFold || self.viewModel.state.isTapping ? "탭" : "빠르기\n찾기")
-                        .font(self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
+                        .font(!isFold && self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(self.viewModel.state.isTapping ? .textButtonEmphasis : .textButtonPrimary)
                         .frame(width: isFold ? 74 : 120, height: 74)
