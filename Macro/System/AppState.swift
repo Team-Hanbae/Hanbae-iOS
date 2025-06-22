@@ -25,6 +25,8 @@ class AppState {
         
         self.numberOfCreatedCustomJangdan = UserDefaults.standard.integer(forKey: "numberOfCreatedCustomJangdan")
         self.numberOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numberOfEnteredJangdan")
+        self.newFeatureModal = UserDefaults.standard.bool(forKey: "newFeatureModal")
+        self.newFeatureBadge = UserDefaults.standard.bool(forKey: "newFeatureBadge")
     }
     
     // 최초실행여부
@@ -38,6 +40,10 @@ class AppState {
     
     // 장단 진입 횟수
     private(set) var numberOfEnteredJangdan: Int
+    
+    // 신규 기능 알림
+    private(set) var newFeatureModal: Bool
+    private(set) var newFeatureBadge: Bool
 }
 
 extension AppState {
@@ -59,5 +65,15 @@ extension AppState {
     func increaseEnteredJangdan() {
         self.numberOfEnteredJangdan += 1
         UserDefaults.standard.set(self.numberOfEnteredJangdan ,forKey: "numberOfEnteredJangdan")
+    }
+    
+    func checkNewFeatureModal() {
+        self.newFeatureModal = true
+        UserDefaults.standard.set(true, forKey: "newFeatureModal")
+    }
+    
+    func checkNewFeatureBadge() {
+        self.newFeatureBadge = true
+        UserDefaults.standard.set(true, forKey: "newFeatureBadge")
     }
 }

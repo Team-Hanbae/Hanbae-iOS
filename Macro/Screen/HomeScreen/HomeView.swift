@@ -64,10 +64,24 @@ struct HomeView: View {
                 }
             }
             
-            Color.blink
-                .ignoresSafeArea()
-                .allowsHitTesting(false)
-                .opacity(self.viewModel.state.isBlinking ? 1 : 0)
+            if let last = router.path.last {
+                switch last {
+                case .builtInJangdanPractice, .customJangdanPractice:
+                    LinearGradient(
+                        stops: [
+                            .init(color: .black.opacity(0.6), location: 0.0),
+                            .init(color: .black.opacity(0.9), location: 0.8)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .ignoresSafeArea()
+                    .opacity(self.appState.newFeatureModal ? 0 : 1)
+
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }

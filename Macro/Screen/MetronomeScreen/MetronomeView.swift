@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MetronomeView: View {
     @State var viewModel: MetronomeViewModel
+    @State private var appState: AppState = DIContainer.shared.appState
     
     private var jangdanName: String
     
@@ -62,6 +63,9 @@ struct MetronomeView: View {
         
         .task {
             self.viewModel.effect(action: .selectJangdan(selectedJangdanName: self.jangdanName))
+            if self.appState.newFeatureModal == false {
+                
+            }
         }
     }
 }
