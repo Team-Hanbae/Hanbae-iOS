@@ -44,10 +44,15 @@ struct MetronomeView: View {
             )
             
             // MARK: 2. 소박 듣기, 소박 보기 뷰
-            MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: self.viewModel)
+            HStack(spacing: 14) {
+                MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: self.viewModel)
+                
+                Spacer()
+                    .frame(width: 60)
+            }
             
             // MARK: 3. BPM 및 재생 조절 뷰
-            MetronomeControlView()
+                MetronomeControlView()
         }
         // 빠르기 찾기 기능 비활성화 용도
         .contentShape(Rectangle())

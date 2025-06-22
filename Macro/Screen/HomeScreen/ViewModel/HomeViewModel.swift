@@ -40,6 +40,7 @@ class HomeViewModel {
     struct State {
         var customJangdanList: [JangdanSimpleType] = []
         var isBlinking: Bool = false
+        var isCheckNewFeatureModal: Bool = false
     }
 }
 
