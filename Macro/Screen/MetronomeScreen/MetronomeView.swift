@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MetronomeView: View {
     @State var viewModel: MetronomeViewModel
-    @State private var appState: AppState = DIContainer.shared.appState
     
     private var jangdanName: String
     
@@ -53,7 +52,7 @@ struct MetronomeView: View {
             }
             
             // MARK: 3. BPM 및 재생 조절 뷰
-            MetronomeControlView()
+                MetronomeControlView()
         }
         // 빠르기 찾기 기능 비활성화 용도
         .contentShape(Rectangle())
@@ -63,9 +62,6 @@ struct MetronomeView: View {
         
         .task {
             self.viewModel.effect(action: .selectJangdan(selectedJangdanName: self.jangdanName))
-            if self.appState.newFeatureModal == false {
-                
-            }
         }
     }
 }

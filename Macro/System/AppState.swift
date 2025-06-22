@@ -76,4 +76,10 @@ extension AppState {
         self.newFeatureBadge = true
         UserDefaults.standard.set(true, forKey: "newFeatureBadge")
     }
+    
+    // for testing
+    func checkNewFeatureBadgetest() {
+        self.newFeatureBadge = false
+        UserDefaults.standard.set(false, forKey: "newFeatureBadge")
+    }
 }

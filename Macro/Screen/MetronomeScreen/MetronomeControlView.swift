@@ -17,6 +17,9 @@ struct MetronomeControlView: View {
     @State private var isChangeBpm: Bool = false
     
     @State private var isFold: Bool = false
+    @State private var isBounce: Bool = false
+    
+    @State private var appState: AppState = DIContainer.shared.appState
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -238,6 +241,32 @@ struct MetronomeControlView: View {
             .clipShape(
                 UnevenRoundedRectangle(topLeadingRadius: 12, bottomLeadingRadius: 24, bottomTrailingRadius: 24)
             )
+            
+            // MARK: 신규 추가 기능
+            if self.appState.newFeatureBadge == false {
+                Button {
+                    self.appState.checkNewFeatureBadge()
+                } label: {
+                    Image(.newFeaturePoint)
+                        .resizable()
+                        .frame(width: 56, height: 39)
+                        .shadow(color: .bakBarActiveBottom.opacity(0.5), radius: 20)
+                }
+                .offset(x: -2, y: isBounce ? -72 : -68)
+                .onAppear {
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+                        withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
+                            isBounce = true
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
+                                isBounce = false
+                            }
+                        }
+                    }
+                }
+            }
         }
         .padding(.horizontal, 16)
     }
