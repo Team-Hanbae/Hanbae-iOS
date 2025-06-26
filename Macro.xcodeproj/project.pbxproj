@@ -47,6 +47,15 @@
 		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
 		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
 		2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
+		2BF0DD7A2E0CDBDD004509E3 /* buk_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */; };
+		2BF0DD7B2E0CDBDD004509E3 /* jangu_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD772E0CDBDD004509E3 /* jangu_medium.mp3 */; };
+		2BF0DD7C2E0CDBDD004509E3 /* jangu_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD782E0CDBDD004509E3 /* jangu_strong.mp3 */; };
+		2BF0DD7D2E0CDBDD004509E3 /* jangu_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD792E0CDBDD004509E3 /* jangu_weak.mp3 */; };
+		2BF0DD7E2E0CDBDD004509E3 /* buk_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */; };
+		2BF0DD7F2E0CDBDD004509E3 /* clave_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */; };
+		2BF0DD802E0CDBDD004509E3 /* buk_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */; };
+		2BF0DD812E0CDBDD004509E3 /* clave_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */; };
+		2BF0DD822E0CDBDD004509E3 /* clave_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */; };
 		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
 		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
 		3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */; };
@@ -156,6 +165,15 @@
 		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
 		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
 		2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_medium.mp3; sourceTree = "<group>"; };
+		2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_strong.mp3; sourceTree = "<group>"; };
+		2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_weak.mp3; sourceTree = "<group>"; };
+		2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_medium.mp3; sourceTree = "<group>"; };
+		2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_strong.mp3; sourceTree = "<group>"; };
+		2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_weak.mp3; sourceTree = "<group>"; };
+		2BF0DD772E0CDBDD004509E3 /* jangu_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jangu_medium.mp3; sourceTree = "<group>"; };
+		2BF0DD782E0CDBDD004509E3 /* jangu_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jangu_strong.mp3; sourceTree = "<group>"; };
+		2BF0DD792E0CDBDD004509E3 /* jangu_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jangu_weak.mp3; sourceTree = "<group>"; };
 		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
 		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
 		3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobakSegmentView.swift; sourceTree = "<group>"; };
@@ -286,6 +304,15 @@
 				2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */,
 				2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */,
 				2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */,
+				2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */,
+				2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */,
+				2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */,
+				2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */,
+				2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */,
+				2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */,
+				2BF0DD772E0CDBDD004509E3 /* jangu_medium.mp3 */,
+				2BF0DD782E0CDBDD004509E3 /* jangu_strong.mp3 */,
+				2BF0DD792E0CDBDD004509E3 /* jangu_weak.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -647,6 +674,15 @@
 				3C8F096C2E081DB3001FE7E9 /* FoldAnimation.json in Resources */,
 				2BBDF6C12DB7AC460035E2B2 /* clave_strong.wav in Resources */,
 				2BBDF6C22DB7AC460035E2B2 /* clave_weak.wav in Resources */,
+				2BF0DD7A2E0CDBDD004509E3 /* buk_weak.mp3 in Resources */,
+				2BF0DD7B2E0CDBDD004509E3 /* jangu_medium.mp3 in Resources */,
+				2BF0DD7C2E0CDBDD004509E3 /* jangu_strong.mp3 in Resources */,
+				2BF0DD7D2E0CDBDD004509E3 /* jangu_weak.mp3 in Resources */,
+				2BF0DD7E2E0CDBDD004509E3 /* buk_medium.mp3 in Resources */,
+				2BF0DD7F2E0CDBDD004509E3 /* clave_medium.mp3 in Resources */,
+				2BF0DD802E0CDBDD004509E3 /* buk_strong.mp3 in Resources */,
+				2BF0DD812E0CDBDD004509E3 /* clave_weak.mp3 in Resources */,
+				2BF0DD822E0CDBDD004509E3 /* clave_strong.mp3 in Resources */,
 				2BBDF6C32DB7AC460035E2B2 /* clave_medium.wav in Resources */,
 				3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */,
 				3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */,

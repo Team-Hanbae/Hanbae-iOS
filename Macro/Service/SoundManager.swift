@@ -96,7 +96,7 @@ class SoundManager {
     }
     
     private func loadAudioFile(_ resource: String) throws -> AVAudioPCMBuffer {
-        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "wav") else {
+        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "mp3") else {
             throw InitializeError.soundPlayerCreationFailed
         }
         
