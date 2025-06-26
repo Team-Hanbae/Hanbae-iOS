@@ -56,6 +56,7 @@
 		2BF0DD802E0CDBDD004509E3 /* buk_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */; };
 		2BF0DD812E0CDBDD004509E3 /* clave_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */; };
 		2BF0DD822E0CDBDD004509E3 /* clave_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */; };
+		2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */; };
 		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
 		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
 		3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */; };
@@ -174,6 +175,7 @@
 		2BF0DD772E0CDBDD004509E3 /* janggu_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_medium.mp3; sourceTree = "<group>"; };
 		2BF0DD782E0CDBDD004509E3 /* janggu_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_strong.mp3; sourceTree = "<group>"; };
 		2BF0DD792E0CDBDD004509E3 /* janggu_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_weak.mp3; sourceTree = "<group>"; };
+		2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GosanjaOTF.otf; sourceTree = "<group>"; };
 		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
 		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
 		3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobakSegmentView.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				43774F542CB7C11D00F54EF7 /* Pretendard-Bold.otf */,
 				43774F552CB7C11D00F54EF7 /* Pretendard-Regular.otf */,
 				43774F562CB7C11D00F54EF7 /* Pretendard-SemiBold.otf */,
+				2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */,
 				3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */,
 				3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */,
+				2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */,
 				43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */,
 				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,
 				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
