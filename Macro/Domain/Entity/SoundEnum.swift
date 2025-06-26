@@ -8,5 +8,5 @@
 enum SoundType: String {
     case buk
     case clave
-    case jangu
+    case janggu
 }

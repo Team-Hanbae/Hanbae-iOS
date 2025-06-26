@@ -160,7 +160,7 @@ extension SoundManager: PlaySoundInterface {
         case .북:
             self.soundType = .buk
         case .장구:
-            self.soundType = .jangu
+            self.soundType = .janggu
         case .나무:
             self.soundType = .clave
         }
