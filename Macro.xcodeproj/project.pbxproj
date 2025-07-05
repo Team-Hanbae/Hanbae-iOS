@@ -22,6 +22,7 @@
 		2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D262CEF1C8C00565F0D /* Date+Extension.swift */; };
 		2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */; };
 		2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
+		2B64B3382E18E2480069E287 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
 		2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */; };
 		2B8861132CBD34D30036C6DB /* JangdanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861122CBD34D30036C6DB /* JangdanEnum.swift */; };
 		2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */; };
@@ -285,6 +286,13 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		2B64B3372E18DC750069E287 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		2B96F48D2CD12D3B00933DE2 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +526,7 @@
 		43774F502CB7BFF800F54EF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2B64B3372E18DC750069E287 /* Theme */,
 				3C8F09692E081D9E001FE7E9 /* Lottie */,
 				2B96F48D2CD12D3B00933DE2 /* Asset */,
 				43774F512CB7C00000F54EF7 /* Font */,
@@ -782,6 +791,7 @@
 				2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */,
 				2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */,
 				2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
+				2B64B3382E18E2480069E287 /* ShapeStyle+Extension.swift in Sources */,
 				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
