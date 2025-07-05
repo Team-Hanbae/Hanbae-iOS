@@ -96,7 +96,7 @@ class SoundManager {
     }
     
     private func loadAudioFile(_ resource: String) throws -> AVAudioPCMBuffer {
-        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "wav") else {
+        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "mp3") else {
             throw InitializeError.soundPlayerCreationFailed
         }
         
@@ -160,7 +160,7 @@ extension SoundManager: PlaySoundInterface {
         case .북:
             self.soundType = .buk
         case .장구:
-            self.soundType = .jangu
+            self.soundType = .janggu
         case .나무:
             self.soundType = .clave
         }
