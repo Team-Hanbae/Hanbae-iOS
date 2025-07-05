@@ -21,6 +21,48 @@ struct MetronomeControlView: View {
     
     @State private var appState: AppState = DIContainer.shared.appState
     
+    @State private var offsetY: CGFloat = -68
+    @State private var step: Int = 0
+
+    func animateStep() {
+        switch step {
+            case 0:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    withAnimation(.interpolatingSpring(stiffness: 150, damping: 6)) {
+                        offsetY = -70
+                    }
+                    step = 1
+                    animateStep()
+                }
+            case 1:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.interpolatingSpring(stiffness: 150, damping: 6)) {
+                        offsetY = -68
+                    }
+                    step = 2
+                    animateStep()
+                }
+            case 2:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.interpolatingSpring(stiffness: 150, damping: 6)) {
+                        offsetY = -70
+                    }
+                    step = 3
+                    animateStep()
+                }
+            case 3:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    withAnimation(.interpolatingSpring(stiffness: 150, damping: 6)) {
+                        offsetY = -68
+                    }
+                    step = 0
+                    animateStep()
+                }
+            default:
+                break
+            }
+    }
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Image(systemName: "chevron.down")
@@ -252,19 +294,9 @@ struct MetronomeControlView: View {
                         .frame(width: 56, height: 39)
                         .shadow(color: .bakBarActiveBottom.opacity(0.5), radius: 20)
                 }
-                .offset(x: -2, y: isBounce ? -72 : -68)
+                .offset(x: -2, y: offsetY)
                 .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
-                        withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
-                            isBounce = true
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
-                                isBounce = false
-                            }
-                        }
-                    }
+                    animateStep()
                 }
             }
         }
