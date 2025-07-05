@@ -92,7 +92,7 @@ struct HomeView: View {
 
                             VStack(spacing: 0) {
                                 Text("새로운 기능!")
-                                    .font(.Title2_B)
+                                    .font(.gosanja(size: 22))
                                     .foregroundStyle(.textSecondary)
 
                                 Rectangle()
@@ -117,7 +117,7 @@ struct HomeView: View {
                                 FoldLottieView(animationName: "FoldAnimation")
                                     .frame(width: 61, height: 96)
 
-                                Text("이제 더 크게 쓸 수 있어요!")
+                                Text("이제 화면을 더 크게 쓸 수 있어요!")
                                     .font(.Body_SB)
                                     .foregroundStyle(.textSecondary)
                                     .padding(.top, 24)

@@ -108,3 +108,9 @@ extension Font {
         return pretendardSemiBold(size: 11)
     }
 }
+
+extension Font {
+    static func gosanja(size: CGFloat) -> Font {
+        return Font.custom("GosanjaOTF", size: size)
+    }
+}
