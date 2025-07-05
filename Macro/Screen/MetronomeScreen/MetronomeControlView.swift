@@ -252,18 +252,30 @@ struct MetronomeControlView: View {
                         .frame(width: 56, height: 39)
                         .shadow(color: .bakBarActiveBottom.opacity(0.5), radius: 20)
                 }
-                .offset(x: -2, y: isBounce ? -72 : -68)
+                .offset(x: -2, y: isBounce ? -70 : -68)
                 .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
-                        withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
-                            isBounce = true
-                        }
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation(.interpolatingSpring(stiffness: 200, damping: 5)) {
-                                isBounce = false
+                    Timer.scheduledTimer(withTimeInterval: 1.8, repeats: true) { _ in
+                        withAnimation(.interpolatingSpring(stiffness: 300, damping: 10)) {
+                                isBounce = true
                             }
-                        }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.interpolatingSpring(stiffness: 300, damping: 10)) {
+                                    isBounce = false
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    withAnimation(.interpolatingSpring(stiffness: 300, damping: 10)) {
+                                        isBounce = true
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        withAnimation(.interpolatingSpring(stiffness: 300, damping: 10)) {
+                                            isBounce = false
+                                        }
+                                    }
+                                }
+                            }
                     }
                 }
             }
