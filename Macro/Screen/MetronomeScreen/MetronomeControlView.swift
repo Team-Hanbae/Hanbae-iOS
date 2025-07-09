@@ -35,6 +35,9 @@ struct MetronomeControlView: View {
                         .foregroundStyle(.backgroundCard)
                 }
                 .onTapGesture {
+                    if self.appState.newFeatureBadge == false {
+                        self.appState.checkNewFeatureBadge()
+                    }
                     withAnimation {
                         isFold.toggle()
                     }
@@ -244,14 +247,10 @@ struct MetronomeControlView: View {
             
             // MARK: 신규 추가 기능
             if self.appState.newFeatureBadge == false {
-                Button {
-                    self.appState.checkNewFeatureBadge()
-                } label: {
-                    Image(.newFeaturePoint)
-                        .resizable()
-                        .frame(width: 56, height: 39)
-                        .shadow(color: .bakBarActiveBottom.opacity(0.5), radius: 20)
-                }
+                Image(.newFeaturePoint)
+                    .resizable()
+                    .frame(width: 56, height: 39)
+                    .shadow(color: .bakBarActiveBottom.opacity(0.5), radius: 20)
                 .offset(x: -2, y: isBounce ? -70 : -68)
                 .onAppear {
                     Timer.scheduledTimer(withTimeInterval: 1.8, repeats: true) { _ in
