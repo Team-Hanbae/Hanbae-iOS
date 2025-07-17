@@ -33,9 +33,9 @@ struct HomeView: View {
                     ScrollView {
                         VStack(spacing: 24) {
                             // MARK: - 상단 배너
-                            if let surveyURL = URL(string: "https://forms.gle/uZCyBishXSHAwfTHA") {
+                            if let surveyURL = URL(string: "https://forms.gle/BxXn9vp7qWVQ6eoQA") {
                                 Link(destination: surveyURL) {
-                                    Image(.surveyBanner)
+                                    Image(.jeongakBanner)
                                         .resizable()
                                         .scaledToFill()
                                         .clipShape(RoundedRectangle(cornerRadius: 16))
