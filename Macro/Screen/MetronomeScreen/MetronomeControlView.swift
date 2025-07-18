@@ -71,7 +71,6 @@ struct MetronomeControlView: View {
                             .font(.custom("Pretendard-Medium", fixedSize: 44))
                             .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
                             .frame(width: 100)
-                            .padding(8)
                             .background(self.viewModel.state.isTapping ? .backgroundDefault : .clear)
                             .cornerRadius(16)
                             .matchedGeometryEffect(id: "bpm", in: animationNamespace)
@@ -95,7 +94,7 @@ struct MetronomeControlView: View {
                         return isChangeBpm
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(EdgeInsets(top: 31, leading: 21, bottom: 31, trailing: 21))
+                    .padding(.leading, 4)
                     .contentShape(Rectangle())
                     .gesture(
                         DragGesture()
