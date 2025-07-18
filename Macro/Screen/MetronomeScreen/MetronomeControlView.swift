@@ -222,7 +222,7 @@ struct MetronomeControlView: View {
                         .font(!isFold && self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(self.viewModel.state.isTapping ? .textButtonEmphasis : .textButtonPrimary)
-                        .frame(width: isFold ? 74 : 120, height: 74)
+                        .frame(width: isFold ? 74 : 112, height: 74)
                         .background(self.viewModel.state.isTapping ? .buttonActive : .buttonPrimary)
                         .clipShape(RoundedRectangle(cornerRadius: 100))
                         .onTapGesture {
