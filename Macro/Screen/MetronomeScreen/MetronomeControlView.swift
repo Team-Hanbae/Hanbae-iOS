@@ -192,7 +192,7 @@ struct MetronomeControlView: View {
                 // 아래 시작, 탭 버튼
                 HStack(spacing: isFold ? 8 : 12) {
                     if isFold {
-                        Image(systemName: viewModel.state.isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: viewModel.state.isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 24))
                             .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
                             .frame(maxWidth: .infinity)
