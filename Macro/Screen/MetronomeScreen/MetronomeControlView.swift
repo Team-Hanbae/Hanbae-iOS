@@ -71,7 +71,6 @@ struct MetronomeControlView: View {
                             .font(.custom("Pretendard-Medium", fixedSize: 44))
                             .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
                             .frame(width: 100)
-                            .padding(8)
                             .background(self.viewModel.state.isTapping ? .backgroundDefault : .clear)
                             .cornerRadius(16)
                             .matchedGeometryEffect(id: "bpm", in: animationNamespace)
@@ -95,7 +94,7 @@ struct MetronomeControlView: View {
                         return isChangeBpm
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(EdgeInsets(top: 31, leading: 21, bottom: 31, trailing: 21))
+                    .padding(.leading, 4)
                     .contentShape(Rectangle())
                     .gesture(
                         DragGesture()
@@ -113,12 +112,12 @@ struct MetronomeControlView: View {
                             Text("빠르기(BPM)")
                                 .font(.Callout_R)
                                 .foregroundStyle(.textTertiary)
-                                .padding(.vertical, 5)
+                                .frame(height: 32)
                         } else {
                             Text("원하는 빠르기로 계속 탭해주세요")
                                 .font(.Body_SB)
                                 .foregroundStyle(.textDefault)
-                                .padding(.vertical, 5)
+                                .frame(height: 32)
                                 .padding(.horizontal, 16)
                                 .background(.backgroundDefault)
                                 .cornerRadius(8)
@@ -192,7 +191,7 @@ struct MetronomeControlView: View {
                 // 아래 시작, 탭 버튼
                 HStack(spacing: isFold ? 8 : 12) {
                     if isFold {
-                        Image(systemName: viewModel.state.isPlaying ? "pause.fill" : "play.fill")
+                        Image(systemName: viewModel.state.isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 24))
                             .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
                             .frame(maxWidth: .infinity)
@@ -222,7 +221,7 @@ struct MetronomeControlView: View {
                         .font(!isFold && self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(self.viewModel.state.isTapping ? .textButtonEmphasis : .textButtonPrimary)
-                        .frame(width: isFold ? 74 : 120, height: 74)
+                        .frame(width: isFold ? 74 : 112, height: 74)
                         .background(self.viewModel.state.isTapping ? .buttonActive : .buttonPrimary)
                         .clipShape(RoundedRectangle(cornerRadius: 100))
                         .onTapGesture {
