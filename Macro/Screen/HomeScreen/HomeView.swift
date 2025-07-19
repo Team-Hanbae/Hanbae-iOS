@@ -64,6 +64,11 @@ struct HomeView: View {
                 }
             }
             
+            Color.blink
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+                .opacity(self.viewModel.state.isBlinking ? 1 : 0)
+            
             if let last = router.path.last {
                 switch last {
                 case .builtInJangdanPractice, .customJangdanPractice:

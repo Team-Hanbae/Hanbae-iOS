@@ -217,6 +217,7 @@ struct CustomJangdanPracticeView: View {
                         Button("삭제", role: .destructive) {
                             self.deleteJangdanAlert = false
                             self.viewModel.effect(action: .deleteCustomJangdanData(jangdanName: jangdanName))
+                            self.viewModel.effect(action: .exitMetronome)
                             self.dismiss()
                         }
                     } message: {
