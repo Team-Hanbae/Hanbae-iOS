@@ -106,10 +106,10 @@ struct HomeView: View {
                                     .background(
                                         LinearGradient(
                                             stops: [
-                                                .init(color: Color(white: 0.94).opacity(0), location: 0.0),
-                                                .init(color: .textSecondary, location: 0.25),
-                                                .init(color: .textSecondary, location: 0.75),
-                                                .init(color: Color(white: 0.94).opacity(0), location: 1.0)
+                                                .init(color: .black4.opacity(0), location: 0.0),
+                                                .init(color: .black4, location: 0.25),
+                                                .init(color: .black4, location: 0.75),
+                                                .init(color: .black4.opacity(0), location: 1.0)
                                             ],
                                             startPoint: .leading,
                                             endPoint: .trailing
