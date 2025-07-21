@@ -59,10 +59,10 @@ struct MetronomeView: View {
         .onTapGesture {
             self.viewModel.effect(action: .disableEstimateBpm)
         }
-        
         .task {
             self.viewModel.effect(action: .selectJangdan(selectedJangdanName: self.jangdanName))
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
