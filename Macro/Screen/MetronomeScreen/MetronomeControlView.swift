@@ -339,6 +339,8 @@ struct MetronomeControlView: View {
         let translationDifference = gesture.translation.width - self.viewModel.state.previousTranslation
         
         if abs(translationDifference) > threshold {   // 음수값도 있기 때문에 절댓값 사용
+            self.longPressWorkItem?.cancel()
+            
             if translationDifference > 0 {
                 self.viewModel.effect(action: .increaseShortBpm)
                 self.viewModel.effect(action: .toggleActiveState(isIncreasing: true, isActive: true))
