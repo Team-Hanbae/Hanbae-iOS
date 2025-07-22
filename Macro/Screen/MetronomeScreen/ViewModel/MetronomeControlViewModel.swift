@@ -18,16 +18,12 @@ class MetronomeControlViewModel {
     
     private var widgetManager: WidgetManager
     
-    var timerCancellable: AnyCancellable?
-    
     init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager) {
         self.jangdanRepository = jangdanRepository
         self.tempoUseCase = tempoUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         
         self.widgetManager = widgetManager
-        
-        self.timerCancellable = nil
         
         self.tempoUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
@@ -91,15 +87,16 @@ extension MetronomeControlViewModel {
             self.tempoUseCase.finishTapping()
         case let .decreaseLongBpm(currentBpm):
             let remainder = currentBpm % 10
-            let roundedBpm = remainder == 0 ? currentBpm + remainder : currentBpm + (10 - remainder)
-            self.tempoUseCase.updateTempo(newBpm: roundedBpm - 10)
+            let roundedBpm = remainder == 0 ? currentBpm - 10 : currentBpm - remainder
+            self.tempoUseCase.updateTempo(newBpm: roundedBpm)
             self.tempoUseCase.finishTapping()
         case .increaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm + 1)
             self.tempoUseCase.finishTapping()
         case let .increaseLongBpm(currentBpm):
-            let roundedBpm = currentBpm - (currentBpm % 10)
-            self.tempoUseCase.updateTempo(newBpm: roundedBpm + 10)
+            let remainder = currentBpm % 10
+            let roundedBpm = remainder == 0 ? currentBpm + 10 : currentBpm + (10 - remainder)
+            self.tempoUseCase.updateTempo(newBpm: roundedBpm)
             self.tempoUseCase.finishTapping()
         case let .roundBpm(currentBpm):
             self.tempoUseCase.updateTempo(newBpm: currentBpm)
