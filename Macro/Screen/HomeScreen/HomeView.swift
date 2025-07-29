@@ -68,6 +68,97 @@ struct HomeView: View {
                 .ignoresSafeArea()
                 .allowsHitTesting(false)
                 .opacity(self.viewModel.state.isBlinking ? 1 : 0)
+            
+            if let last = router.path.last {
+                switch last {
+                case .builtInJangdanPractice, .customJangdanPractice:
+                    Group {
+                        LinearGradient(
+                            stops: [
+                                .init(color: .black.opacity(0.6), location: 0.0),
+                                .init(color: .black.opacity(0.9), location: 0.8)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .ignoresSafeArea()
+                    
+                        VStack(spacing: 0) {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    self.appState.checkNewFeatureModal()
+                                } label: {
+                                    Image(.xmark)
+                                        .resizable()
+                                        .frame(width: 44, height: 44)
+                                }
+                            }
+
+                            VStack(spacing: 0) {
+                                Text("새로운 기능!")
+                                    .font(.gosanja(size: 22))
+                                    .foregroundStyle(.textSecondary)
+
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .frame(width: 260, height: 0.5)
+                                    .background(
+                                        LinearGradient(
+                                            stops: [
+                                                .init(color: .black4.opacity(0), location: 0.0),
+                                                .init(color: .black4, location: 0.25),
+                                                .init(color: .black4, location: 0.75),
+                                                .init(color: .black4.opacity(0), location: 1.0)
+                                            ],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .padding(.top, 16)
+                            }
+                            
+                            VStack(spacing: 0) {
+                                FoldLottieView(animationName: "FoldAnimation")
+                                    .frame(width: 61, height: 96)
+
+                                Text("이제 화면을 더 크게 쓸 수 있어요!")
+                                    .font(.Body_SB)
+                                    .foregroundStyle(.textSecondary)
+                                    .padding(.top, 24)
+                            }
+                            .padding(.top, 24)
+
+                            VStack {
+                                Button {
+                                    self.appState.checkNewFeatureModal()
+                                } label: {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .foregroundStyle(.buttonPrimary)
+                                        .overlay {
+                                            Text("확인")
+                                                .font(.Body_SB)
+                                                .foregroundStyle(.textDefault)
+                                        }
+                                        .padding(.horizontal, 30)
+                                        .frame(height: 46)
+                                }
+                            }
+                            .padding(.top, 30)
+                            .padding(.bottom, 28)
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .foregroundStyle(.backgroundCard)
+                        )
+                        .padding(.horizontal, 37)
+                    }
+                    .opacity(self.appState.newFeatureModal ? 0 : 1)
+
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }

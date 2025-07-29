@@ -34,7 +34,7 @@ struct BuiltinJangdanPracticeView: View {
             MetronomeView(viewModel: DIContainer.shared.metronomeViewModel, jangdanName: self.jangdanName)
             
             if self.toastAction {
-                Text("'\(self.inputCustomJangdanName)' 내보내기가 완료되었습니다.")
+                Text("'내가 저장한 장단'에서 확인할 수 있습니다.")
                     .font(.Body_R)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)
@@ -103,16 +103,16 @@ struct BuiltinJangdanPracticeView: View {
                         Button {
                             self.exportJandanAlert = true
                         } label: {
-                            Text("장단 내보내기")
+                            Text("나만의 장단 저장하기")
                         }
                         
                     } label: {
-                        Image(systemName: "square.and.arrow.up")
+                        Image(.save)
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.textSecondary)
                     }
-                    .alert("저장 할 장단 이름", isPresented: $exportJandanAlert) {
-                        TextField("장단명", text: $inputCustomJangdanName)
+                    .alert("나만의 장단으로 저장", isPresented: $exportJandanAlert) {
+                        TextField("이름", text: $inputCustomJangdanName)
                             .onChange(of: self.inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
                                     self.inputCustomJangdanName = oldValue
@@ -135,7 +135,7 @@ struct BuiltinJangdanPracticeView: View {
                             }
                         }
                     } message: {
-                        Text("저장될 이름을 작성해주세요.")
+                        Text("저장될 이름을 작성해주세요.\n장단종류, 강세, 빠르기값이 저장됩니다.")
                     }
                     .alert("이미 등록된 장단 이름입니다.", isPresented: $isRepeatedName) {
                         Button("확인") {

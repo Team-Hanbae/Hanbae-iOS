@@ -35,27 +35,34 @@ struct MetronomeView: View {
                 }
                 if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
                     SobakSegmentsView(sobakSegmentCount: sobakSegmentCount, currentSobak: self.viewModel.state.currentSobak, isPlaying: self.viewModel.state.isPlaying, isSobakOn: self.viewModel.state.isSobakOn)
-                        .padding(.bottom, -4)
                 }
             }
-            .frame(height: 372)
-            .padding(.horizontal, 8)
+            .padding(
+                self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil
+                ? EdgeInsets(top: 36, leading: 8, bottom: 36, trailing: 8)
+                : EdgeInsets(top: 24, leading: 8, bottom: 16, trailing: 8)
+            )
             
             // MARK: 2. 소박 듣기, 소박 보기 뷰
-            MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: self.viewModel)
+            HStack(spacing: 14) {
+                MetronomeSettingControlView(appState: DIContainer.shared.appState, viewModel: self.viewModel)
+                
+                Spacer()
+                    .frame(width: 60)
+            }
             
             // MARK: 3. BPM 및 재생 조절 뷰
-            MetronomeControlView()
+                MetronomeControlView()
         }
         // 빠르기 찾기 기능 비활성화 용도
         .contentShape(Rectangle())
         .onTapGesture {
             self.viewModel.effect(action: .disableEstimateBpm)
         }
-        
         .task {
             self.viewModel.effect(action: .selectJangdan(selectedJangdanName: self.jangdanName))
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
