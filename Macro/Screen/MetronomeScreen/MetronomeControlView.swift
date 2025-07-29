@@ -18,6 +18,7 @@ struct MetronomeControlView: View {
     
     @State private var isFold: Bool = false
     @State private var isBounce: Bool = false
+    @State private var longPressWorkItem: DispatchWorkItem?
     
     @State private var appState: AppState = DIContainer.shared.appState
     
@@ -281,45 +282,26 @@ struct MetronomeControlView: View {
         .padding(.horizontal, 16)
     }
     
-    private func startTimer(isIncreasing: Bool) {
+    private func startLongPressTimer(isIncreasing: Bool) {
         self.viewModel.effect(action: .setSpeed(speed: 0.5))
-        stopTimer()
-        self.viewModel.timerCancellable = Timer.publish(every: self.viewModel.state.speed, on: .main, in: .common)
-            .autoconnect()
-            .sink { _ in
-                if isIncreasing {
-                    self.viewModel.effect(action: .increaseLongBpm(currentBpm: self.viewModel.state.bpm))
-                    self.viewModel.effect(action: .setSpeed(speed: max(0.08, self.viewModel.state.speed * 0.5)))
-                    restartTimer(isIncreasing: isIncreasing)
-                } else {
-                    self.viewModel.effect(action: .decreaseLongBpm(currentBpm: self.viewModel.state.bpm))
-                    self.viewModel.effect(action: .setSpeed(speed: max(0.08, self.viewModel.state.speed * 0.5)))
-                    restartTimer(isIncreasing: isIncreasing)
-                }
-            }
         
-    }
-    
-    private func restartTimer(isIncreasing: Bool) {
-        stopTimer()
-        self.viewModel.timerCancellable = Timer.publish(every: self.viewModel.state.speed, on: .main, in: .common)
-            .autoconnect()
-            .sink { _ in
-                if isIncreasing {
-                    self.viewModel.effect(action: .increaseLongBpm(currentBpm: self.viewModel.state.bpm))
-                    self.viewModel.effect(action: .setSpeed(speed: max(0.08, self.viewModel.state.speed * 0.5)))
-                    restartTimer(isIncreasing: isIncreasing)
-                } else {
-                    self.viewModel.effect(action: .decreaseLongBpm(currentBpm: self.viewModel.state.bpm))
-                    self.viewModel.effect(action: .setSpeed(speed: max(0.08, self.viewModel.state.speed * 0.5)))
-                    restartTimer(isIncreasing: isIncreasing)
-                }
+        longPressWorkItem = DispatchWorkItem {
+            self.viewModel.effect(action: isIncreasing ? .increaseLongBpm(currentBpm: self.viewModel.state.bpm) : .decreaseLongBpm(currentBpm: self.viewModel.state.bpm))
+            self.viewModel.effect(action: .setSpeed(speed: max(0.08, self.viewModel.state.speed * 0.9)))
+            
+            if let workItem = self.longPressWorkItem, !workItem.isCancelled {
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.viewModel.state.speed, execute: workItem)
             }
+        }
+        
+        if let workItem = self.longPressWorkItem {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.viewModel.state.speed, execute: workItem)
+        }
     }
     
-    private func stopTimer() {
-        self.viewModel.timerCancellable?.cancel()
-        self.viewModel.timerCancellable = nil
+    private func stopLongPressTimer() {
+        longPressWorkItem?.cancel()
+        longPressWorkItem = nil
     }
     
     // 단일탭 액션
@@ -345,9 +327,9 @@ struct MetronomeControlView: View {
         }
         
         if isPressing {
-            startTimer(isIncreasing: isIncreasing)
+            startLongPressTimer(isIncreasing: isIncreasing)
         } else {
-            stopTimer()
+            stopLongPressTimer()
         }
     }
     
@@ -357,6 +339,8 @@ struct MetronomeControlView: View {
         let translationDifference = gesture.translation.width - self.viewModel.state.previousTranslation
         
         if abs(translationDifference) > threshold {   // 음수값도 있기 때문에 절댓값 사용
+            self.longPressWorkItem?.cancel()
+            
             if translationDifference > 0 {
                 self.viewModel.effect(action: .increaseShortBpm)
                 self.viewModel.effect(action: .toggleActiveState(isIncreasing: true, isActive: true))
