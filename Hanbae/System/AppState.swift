@@ -17,8 +17,8 @@ class AppState {
         self.didLaunchedBefore = UserDefaults.standard.bool(forKey: "didLaunchedBefore")
 #endif
         
-        let instrument = UserDefaults.standard.string(forKey: "selectedSound") ?? "janggu"
-        self.selectedSound = SoundType(rawValue: instrument) ?? .janggu
+        let instrument = UserDefaults.standard.string(forKey: "selectedSound") ?? "janggu1"
+        self.selectedSound = SoundType(rawValue: instrument) ?? .janggu1
         
         UserDefaults.standard.removeObject(forKey: "isBeepSound")
         

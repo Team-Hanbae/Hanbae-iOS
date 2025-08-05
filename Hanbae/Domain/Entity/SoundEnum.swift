@@ -6,23 +6,29 @@
 //
 
 enum SoundType: String, CaseIterable {
-    case buk
     case clave
-    case janggu
+    case buk2
+    case buk1
+    case janggu2
+    case janggu1
     
     var name: String {
         switch self {
-        case .buk: "북"
+        case .janggu1: "장구1"
+        case .janggu2: "장구2"
+        case .buk1: "북1"
+        case .buk2: "북2"
         case .clave: "나무"
-        case .janggu: "장구"
         }
     }
     
     var fileName: String {
         switch self {
-        case .buk: "buk"
+        case .janggu1: "janggu1"
+        case .janggu2: "janggu"
+        case .buk1: "buk1"
+        case .buk2: "buk"
         case .clave: "clave"
-        case .janggu: "janggu"
         }
     }
 }
