@@ -17,10 +17,9 @@ class AppState {
         self.didLaunchedBefore = UserDefaults.standard.bool(forKey: "didLaunchedBefore")
 #endif
         
-        let instrument = UserDefaults.standard.string(forKey: "selectedInstrument") ?? "장구"
-        self.selectedInstrument = Instrument(rawValue: instrument) ?? .장구
+        let instrument = UserDefaults.standard.string(forKey: "selectedSound") ?? "janggu"
+        self.selectedSound = SoundType(rawValue: instrument) ?? .janggu
         
-//        self.isBeepSound = UserDefaults.standard.bool(forKey: "isBeepSound")
         UserDefaults.standard.removeObject(forKey: "isBeepSound")
         
         self.numberOfCreatedCustomJangdan = UserDefaults.standard.integer(forKey: "numberOfCreatedCustomJangdan")
@@ -33,7 +32,7 @@ class AppState {
     private(set) var didLaunchedBefore: Bool
     
     // 선택된 악기
-    private(set) var selectedInstrument: Instrument
+    private(set) var selectedSound: SoundType
     
     // 커스텀장단 생성 횟수
     private(set) var numberOfCreatedCustomJangdan: Int
@@ -52,9 +51,9 @@ extension AppState {
         UserDefaults.standard.set(true, forKey: "didLaunchedBefore")
     }
     
-    func setInstrument(_ instrument: Instrument) {
-        self.selectedInstrument = instrument
-        UserDefaults.standard.set(instrument.rawValue, forKey: "selectedInstrument")
+    func setInstrument(_ sound: SoundType) {
+        self.selectedSound = sound
+        UserDefaults.standard.set(sound.rawValue, forKey: "selectedSound")
     }
     
     func increaseCreatedCustomJangdan() {

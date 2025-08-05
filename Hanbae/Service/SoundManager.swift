@@ -156,15 +156,7 @@ extension SoundManager: PlaySoundInterface {
     }
     
     func setSoundType() {
-        switch self.appState.selectedInstrument {
-        case .북:
-            self.soundType = .buk
-        case .장구:
-            self.soundType = .janggu
-        case .나무:
-            self.soundType = .clave
-        }
-        
+        self.soundType = self.appState.selectedSound
         
         do {
             try self.configureSoundPlayers(soundType: self.soundType)
