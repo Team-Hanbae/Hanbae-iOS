@@ -48,15 +48,6 @@
 		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
 		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
 		2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
-		2BF0DD7A2E0CDBDD004509E3 /* buk_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */; };
-		2BF0DD7B2E0CDBDD004509E3 /* janggu_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD772E0CDBDD004509E3 /* janggu_medium.mp3 */; };
-		2BF0DD7C2E0CDBDD004509E3 /* janggu_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD782E0CDBDD004509E3 /* janggu_strong.mp3 */; };
-		2BF0DD7D2E0CDBDD004509E3 /* janggu_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD792E0CDBDD004509E3 /* janggu_weak.mp3 */; };
-		2BF0DD7E2E0CDBDD004509E3 /* buk_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */; };
-		2BF0DD7F2E0CDBDD004509E3 /* clave_medium.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */; };
-		2BF0DD802E0CDBDD004509E3 /* buk_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */; };
-		2BF0DD812E0CDBDD004509E3 /* clave_weak.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */; };
-		2BF0DD822E0CDBDD004509E3 /* clave_strong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */; };
 		2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */; };
 		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
 		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
@@ -78,9 +69,9 @@
 		3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB496012D62185E005A7E5F /* SwiftUI.framework */; };
 		3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
-		3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */; };
-		3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */; };
-		3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */; };
+		3CBC08F82D3891B1008EBA78 /* janggu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */; };
+		3CBC08F92D3891B1008EBA78 /* janggu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */; };
+		3CBC08FA2D3891B1008EBA78 /* janggu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */; };
 		3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */; };
 		3CC35ABE2E082454005BF31A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC35ABD2E082454005BF31A /* Lottie */; };
 		3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */; };
@@ -166,15 +157,6 @@
 		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
 		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
 		2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
-		2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_medium.mp3; sourceTree = "<group>"; };
-		2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_strong.mp3; sourceTree = "<group>"; };
-		2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buk_weak.mp3; sourceTree = "<group>"; };
-		2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_medium.mp3; sourceTree = "<group>"; };
-		2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_strong.mp3; sourceTree = "<group>"; };
-		2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clave_weak.mp3; sourceTree = "<group>"; };
-		2BF0DD772E0CDBDD004509E3 /* janggu_medium.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_medium.mp3; sourceTree = "<group>"; };
-		2BF0DD782E0CDBDD004509E3 /* janggu_strong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_strong.mp3; sourceTree = "<group>"; };
-		2BF0DD792E0CDBDD004509E3 /* janggu_weak.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = janggu_weak.mp3; sourceTree = "<group>"; };
 		2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GosanjaOTF.otf; sourceTree = "<group>"; };
 		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
 		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
@@ -198,9 +180,9 @@
 		3CB4961A2D632184005A7E5F /* Hanbae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hanbae.entitlements; sourceTree = "<group>"; };
 		3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
-		3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
-		3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_strong.wav; sourceTree = "<group>"; };
-		3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_weak.wav; sourceTree = "<group>"; };
+		3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_medium.wav; sourceTree = "<group>"; };
+		3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_strong.wav; sourceTree = "<group>"; };
+		3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_weak.wav; sourceTree = "<group>"; };
 		3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeSettingControlView.swift; sourceTree = "<group>"; };
 		3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
 		3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
@@ -296,24 +278,15 @@
 		2B96F48E2CD12D5E00933DE2 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */,
-				3CBC08F62D3891B1008EBA78 /* jangu_strong.wav */,
-				3CBC08F72D3891B1008EBA78 /* jangu_weak.wav */,
+				3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */,
+				3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */,
+				3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */,
 				3C8F35222D1FF06800209AD3 /* buk_medium.wav */,
 				3C8F35232D1FF06800209AD3 /* buk_strong.wav */,
 				3C8F35242D1FF06800209AD3 /* buk_weak.wav */,
 				2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */,
 				2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */,
 				2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */,
-				2BF0DD712E0CDBDD004509E3 /* buk_medium.mp3 */,
-				2BF0DD722E0CDBDD004509E3 /* buk_strong.mp3 */,
-				2BF0DD732E0CDBDD004509E3 /* buk_weak.mp3 */,
-				2BF0DD742E0CDBDD004509E3 /* clave_medium.mp3 */,
-				2BF0DD752E0CDBDD004509E3 /* clave_strong.mp3 */,
-				2BF0DD762E0CDBDD004509E3 /* clave_weak.mp3 */,
-				2BF0DD772E0CDBDD004509E3 /* janggu_medium.mp3 */,
-				2BF0DD782E0CDBDD004509E3 /* janggu_strong.mp3 */,
-				2BF0DD792E0CDBDD004509E3 /* janggu_weak.mp3 */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -675,19 +648,10 @@
 				3C8F096C2E081DB3001FE7E9 /* FoldAnimation.json in Resources */,
 				2BBDF6C12DB7AC460035E2B2 /* clave_strong.wav in Resources */,
 				2BBDF6C22DB7AC460035E2B2 /* clave_weak.wav in Resources */,
-				2BF0DD7A2E0CDBDD004509E3 /* buk_weak.mp3 in Resources */,
-				2BF0DD7B2E0CDBDD004509E3 /* janggu_medium.mp3 in Resources */,
-				2BF0DD7C2E0CDBDD004509E3 /* janggu_strong.mp3 in Resources */,
-				2BF0DD7D2E0CDBDD004509E3 /* janggu_weak.mp3 in Resources */,
-				2BF0DD7E2E0CDBDD004509E3 /* buk_medium.mp3 in Resources */,
-				2BF0DD7F2E0CDBDD004509E3 /* clave_medium.mp3 in Resources */,
-				2BF0DD802E0CDBDD004509E3 /* buk_strong.mp3 in Resources */,
-				2BF0DD812E0CDBDD004509E3 /* clave_weak.mp3 in Resources */,
-				2BF0DD822E0CDBDD004509E3 /* clave_strong.mp3 in Resources */,
 				2BBDF6C32DB7AC460035E2B2 /* clave_medium.wav in Resources */,
-				3CBC08F82D3891B1008EBA78 /* jangu_strong.wav in Resources */,
-				3CBC08F92D3891B1008EBA78 /* jangu_medium.wav in Resources */,
-				3CBC08FA2D3891B1008EBA78 /* jangu_weak.wav in Resources */,
+				3CBC08F82D3891B1008EBA78 /* janggu_strong.wav in Resources */,
+				3CBC08F92D3891B1008EBA78 /* janggu_medium.wav in Resources */,
+				3CBC08FA2D3891B1008EBA78 /* janggu_weak.wav in Resources */,
 				2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */,
 				43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */,
 				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,

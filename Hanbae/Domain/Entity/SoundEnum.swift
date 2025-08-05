@@ -17,4 +17,12 @@ enum SoundType: String, CaseIterable {
         case .janggu: "장구"
         }
     }
+    
+    var fileName: String {
+        switch self {
+        case .buk: "buk"
+        case .clave: "clave"
+        case .janggu: "janggu"
+        }
+    }
 }
