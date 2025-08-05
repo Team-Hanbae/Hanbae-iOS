@@ -35,22 +35,22 @@ struct MetronomeSettingControlView: View {
             .buttonStyle(MetronomeSettingToggleButtonStyle())
             
             Menu {
-                ForEach(Instrument.allCases, id: \.rawValue) { instrument in
+                ForEach(SoundType.allCases, id: \.rawValue) { sound in
                     Button {
-                        self.appState.setInstrument(instrument)
+                        self.appState.setInstrument(sound)
                         self.viewModel.effect(action: .changeSoundType)
                     } label: {
-                        if self.appState.selectedInstrument == instrument {
+                        if self.appState.selectedSound == sound {
                             Image(systemName: "checkmark")
                         }
-                        Text(instrument.rawValue)
+                        Text(sound.name)
                     }
                 }
             } label: {
                 HStack(spacing: 0) {
                     Image(systemName: "speaker.wave.2.fill")
                     
-                    Text(self.appState.selectedInstrument.rawValue)
+                    Text(self.appState.selectedSound.name)
                         .font(.Body_R)
                 }
             }

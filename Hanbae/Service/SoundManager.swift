@@ -79,9 +79,9 @@ class SoundManager {
     }
     
     private func configureSoundPlayers(soundType: SoundType) throws {
-        let weakFileName: String = soundType.rawValue + "_weak"
-        let mediumFileName: String = soundType.rawValue + "_medium"
-        let strongFileName: String = soundType.rawValue + "_strong"
+        let weakFileName: String = soundType.fileName + "_weak"
+        let mediumFileName: String = soundType.fileName + "_medium"
+        let strongFileName: String = soundType.fileName + "_strong"
         
         // 오디오 파일을 로드하고, AVAudioPCMBuffer로 변환하여 저장
         guard let weakBuffer = try? loadAudioFile(weakFileName),
@@ -96,7 +96,7 @@ class SoundManager {
     }
     
     private func loadAudioFile(_ resource: String) throws -> AVAudioPCMBuffer {
-        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "mp3") else {
+        guard let fileURL = Bundle.main.url(forResource: resource, withExtension: "wav") else {
             throw InitializeError.soundPlayerCreationFailed
         }
         
@@ -156,15 +156,7 @@ extension SoundManager: PlaySoundInterface {
     }
     
     func setSoundType() {
-        switch self.appState.selectedInstrument {
-        case .북:
-            self.soundType = .buk
-        case .장구:
-            self.soundType = .janggu
-        case .나무:
-            self.soundType = .clave
-        }
-        
+        self.soundType = self.appState.selectedSound
         
         do {
             try self.configureSoundPlayers(soundType: self.soundType)
