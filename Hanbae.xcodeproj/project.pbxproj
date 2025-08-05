@@ -43,7 +43,7 @@
 		2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4BA002CE371E800A90C1F /* HomeView.swift */; };
 		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
 		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
-		2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */; };
+		2BE5ADF02CABC4570094F3C3 /* HanbaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */; };
 		2BE5ADFC2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */; };
 		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
 		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
@@ -160,9 +160,9 @@
 		2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave_weak.wav; sourceTree = "<group>"; };
 		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
 		2BC4BA002CE371E800A90C1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		2BE5AD382C9EC9030094F3C3 /* Macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BE5AD382C9EC9030094F3C3 /* Hanbae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hanbae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroApp.swift; sourceTree = "<group>"; };
+		2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeApp.swift; sourceTree = "<group>"; };
 		2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
 		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
@@ -195,8 +195,8 @@
 		3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanbaeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB495FF2D62185E005A7E5F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		3CB496012D62185E005A7E5F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		3CB496192D63115F005A7E5F /* MacroDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroDebug.entitlements; sourceTree = "<group>"; };
-		3CB4961A2D632184005A7E5F /* Macro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Macro.entitlements; sourceTree = "<group>"; };
+		3CB496192D63115F005A7E5F /* HanbaeDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeDebug.entitlements; sourceTree = "<group>"; };
+		3CB4961A2D632184005A7E5F /* Hanbae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hanbae.entitlements; sourceTree = "<group>"; };
 		3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		3CBC08F52D3891B1008EBA78 /* jangu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jangu_medium.wav; sourceTree = "<group>"; };
@@ -286,13 +286,6 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
-		2B64B3372E18DC750069E287 /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
 		2B96F48D2CD12D3B00933DE2 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,7 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */,
-				2BE5ADE82CABC4570094F3C3 /* Macro */,
+				2BE5ADE82CABC4570094F3C3 /* Hanbae */,
 				2B03B9182D7AD7A9000BF12A /* HanbaeWidget */,
 				3CB495FE2D62185E005A7E5F /* Frameworks */,
 				2BE5AD392C9EC9030094F3C3 /* Products */,
@@ -377,7 +370,7 @@
 		2BE5AD392C9EC9030094F3C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2BE5AD382C9EC9030094F3C3 /* Macro.app */,
+				2BE5AD382C9EC9030094F3C3 /* Hanbae.app */,
 				3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */,
 			);
 			name = Products;
@@ -466,7 +459,7 @@
 		2BE5ADE32CABC4570094F3C3 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				2BE5ADE22CABC4570094F3C3 /* MacroApp.swift */,
+				2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */,
 				3C57946C2CDCD6BF00AE647B /* DIContainer.swift */,
 				435BE54C2CEF221A00CCA4CA /* Router.swift */,
 				2B0022482CF3260800C60C4F /* AppState.swift */,
@@ -474,11 +467,11 @@
 			path = System;
 			sourceTree = "<group>";
 		};
-		2BE5ADE82CABC4570094F3C3 /* Macro */ = {
+		2BE5ADE82CABC4570094F3C3 /* Hanbae */ = {
 			isa = PBXGroup;
 			children = (
-				3CB4961A2D632184005A7E5F /* Macro.entitlements */,
-				3CB496192D63115F005A7E5F /* MacroDebug.entitlements */,
+				3CB4961A2D632184005A7E5F /* Hanbae.entitlements */,
+				3CB496192D63115F005A7E5F /* HanbaeDebug.entitlements */,
 				43774F5A2CB7C12D00F54EF7 /* Info.plist */,
 				2BE5ADE32CABC4570094F3C3 /* System */,
 				43774F502CB7BFF800F54EF7 /* Resources */,
@@ -487,7 +480,7 @@
 				43774F5D2CB7ED4800F54EF7 /* Screen */,
 				2BE5ADDD2CABC4570094F3C3 /* Extensions */,
 			);
-			path = Macro;
+			path = Hanbae;
 			sourceTree = "<group>";
 		};
 		3C719E412CEF52AA00D233DC /* ViewModel */ = {
@@ -526,7 +519,6 @@
 		43774F502CB7BFF800F54EF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2B64B3372E18DC750069E287 /* Theme */,
 				3C8F09692E081D9E001FE7E9 /* Lottie */,
 				2B96F48D2CD12D3B00933DE2 /* Asset */,
 				43774F512CB7C00000F54EF7 /* Font */,
@@ -590,9 +582,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BE5AD372C9EC9030094F3C3 /* Macro */ = {
+		2BE5AD372C9EC9030094F3C3 /* Hanbae */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Macro" */;
+			buildConfigurationList = 2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Hanbae" */;
 			buildPhases = (
 				2BE5AD342C9EC9030094F3C3 /* Sources */,
 				2BE5AD352C9EC9030094F3C3 /* Frameworks */,
@@ -604,12 +596,12 @@
 			dependencies = (
 				3CB496122D621860005A7E5F /* PBXTargetDependency */,
 			);
-			name = Macro;
+			name = Hanbae;
 			packageProductDependencies = (
 				3CC35ABD2E082454005BF31A /* Lottie */,
 			);
 			productName = Macro;
-			productReference = 2BE5AD382C9EC9030094F3C3 /* Macro.app */;
+			productReference = 2BE5AD382C9EC9030094F3C3 /* Hanbae.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */ = {
@@ -649,7 +641,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Macro" */;
+			buildConfigurationList = 2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Hanbae" */;
 			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -666,7 +658,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BE5AD372C9EC9030094F3C3 /* Macro */,
+				2BE5AD372C9EC9030094F3C3 /* Hanbae */,
 				3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */,
 			);
 		};
@@ -769,7 +761,7 @@
 				579839382CE5F37D00866AD4 /* InstrumentEnum.swift in Sources */,
 				2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */,
 				2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */,
-				2BE5ADF02CABC4570094F3C3 /* MacroApp.swift in Sources */,
+				2BE5ADF02CABC4570094F3C3 /* HanbaeApp.swift in Sources */,
 				43774F5C2CB7C1D000F54EF7 /* Font+Extension.swift in Sources */,
 				2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */,
 				435BE54D2CEF221A00CCA4CA /* Router.swift in Sources */,
@@ -931,16 +923,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Macro/MacroDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Hanbae/HanbaeDebug.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Macro/Resources/Asset/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Hanbae/Resources/Asset/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Macro/Info.plist;
+				INFOPLIST_FILE = Hanbae/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "한배";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
@@ -975,16 +967,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Macro/Macro.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Hanbae/Hanbae.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Macro/Resources/Asset/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Hanbae/Resources/Asset/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Macro/Info.plist;
+				INFOPLIST_FILE = Hanbae/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "한배";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
@@ -1086,7 +1078,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Macro" */ = {
+		2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Hanbae" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BE5AD5A2C9EC9040094F3C3 /* Debug */,
@@ -1095,7 +1087,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Macro" */ = {
+		2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Hanbae" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2BE5AD5D2C9EC9040094F3C3 /* Debug */,
