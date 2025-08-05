@@ -1,5 +1,5 @@
 //
-//  MacroApp.swift
+//  HanbaeApp.swift
 //  Macro
 //
 //  Created by Yunki on 9/21/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MacroApp: App {
+struct HanbaeApp: App {
     var homeViewModel: HomeViewModel = DIContainer.shared.homeViewModel
     
     var body: some Scene {

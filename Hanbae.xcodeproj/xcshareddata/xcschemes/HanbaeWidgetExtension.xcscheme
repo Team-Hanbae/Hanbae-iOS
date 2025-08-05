@@ -19,7 +19,7 @@
                BlueprintIdentifier = "3CB495FC2D62185E005A7E5F"
                BuildableName = "HanbaeWidgetExtension.appex"
                BlueprintName = "HanbaeWidgetExtension"
-               ReferencedContainer = "container:Macro.xcodeproj">
+               ReferencedContainer = "container:Hanbae.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,9 +31,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2BE5AD372C9EC9030094F3C3"
-               BuildableName = "Macro.app"
-               BlueprintName = "Macro"
-               ReferencedContainer = "container:Macro.xcodeproj">
+               BuildableName = "Hanbae.app"
+               BlueprintName = "Hanbae"
+               ReferencedContainer = "container:Hanbae.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -65,16 +65,16 @@
             BlueprintIdentifier = "3CB495FC2D62185E005A7E5F"
             BuildableName = "HanbaeWidgetExtension.appex"
             BlueprintName = "HanbaeWidgetExtension"
-            ReferencedContainer = "container:Macro.xcodeproj">
+            ReferencedContainer = "container:Hanbae.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2BE5AD372C9EC9030094F3C3"
-            BuildableName = "Macro.app"
-            BlueprintName = "Macro"
-            ReferencedContainer = "container:Macro.xcodeproj">
+            BuildableName = "Hanbae.app"
+            BlueprintName = "Hanbae"
+            ReferencedContainer = "container:Hanbae.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -118,9 +118,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2BE5AD372C9EC9030094F3C3"
-            BuildableName = "Macro.app"
-            BlueprintName = "Macro"
-            ReferencedContainer = "container:Macro.xcodeproj">
+            BuildableName = "Hanbae.app"
+            BlueprintName = "Hanbae"
+            ReferencedContainer = "container:Hanbae.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
