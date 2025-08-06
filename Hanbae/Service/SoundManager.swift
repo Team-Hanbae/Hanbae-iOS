@@ -47,16 +47,8 @@ class SoundManager {
         // SoundType에 따라 configureSoundPlayers 구성
         self.setSoundType()
         
-        // 더미 노드 생성 및 연결
-        let dummyNode = AVAudioPlayerNode()
-        self.engine.attach(dummyNode)
-        self.engine.connect(dummyNode, to: self.engine.mainMixerNode, format: nil)
-        
         // 엔진 시작
         self.audioEngineStart()
-        
-        // 더미 노드 분리
-        self.engine.detach(dummyNode)
         
         // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
         self.setupNotifications()
