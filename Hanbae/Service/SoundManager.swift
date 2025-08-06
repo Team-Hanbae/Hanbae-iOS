@@ -129,6 +129,7 @@ extension SoundManager: PlaySoundInterface {
                 print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
             }
         }
+        self.engine.prepare()
     }
 
     func beep(_ accent: Accent) {
