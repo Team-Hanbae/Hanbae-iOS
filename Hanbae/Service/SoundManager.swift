@@ -15,6 +15,9 @@ class SoundManager {
     private var appState: AppState
     
     private var engine: AVAudioEngine
+    private var playerNodePool: [AVAudioPlayerNode] = []
+    private var poolIndex: Int = 0
+    
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
@@ -38,6 +41,9 @@ class SoundManager {
             return nil
         }
         
+        // 재생시킬 노드를 미리 엔진에 연결
+        self.setupAudioNodes()
+        
         // SoundType에 따라 configureSoundPlayers 구성
         self.setSoundType()
         
@@ -54,6 +60,15 @@ class SoundManager {
         
         // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
         self.setupNotifications()
+    }
+    
+    private func setupAudioNodes() {
+        for _ in 0..<10 {
+            let playerNode = AVAudioPlayerNode()
+            self.playerNodePool.append(playerNode)
+            self.engine.attach(playerNode)
+            self.engine.connect(playerNode, to: self.engine.mainMixerNode, format: nil)
+        }
     }
     
     @objc private func handleInterruption(notification: Notification) {
@@ -125,7 +140,6 @@ extension SoundManager: PlaySoundInterface {
     }
     
     func audioEngineStart() {
-        self.engine.stop()
         if !self.engine.isRunning {
             do {
                 try self.engine.start()
@@ -147,24 +161,12 @@ extension SoundManager: PlaySoundInterface {
         
         guard let buffer = self.audioBuffers[accent] else { return }
         
-        // 각 강세별 PlayerNode를 동적으로 생성하여 재생
-        let playerNode = AVAudioPlayerNode()
-        self.engine.attach(playerNode)
-        
-        let mainMixer = self.engine.mainMixerNode
-        self.engine.connect(playerNode, to: mainMixer, format: nil)
+        let playerNode = self.playerNodePool[self.poolIndex]
+        self.poolIndex += 1
+        self.poolIndex %= 10
         
         playerNode.scheduleBuffer(buffer, at: nil, options: .interrupts)
         playerNode.play()
-        
-        // 버퍼의 길이 계산
-        let bufferLength = Double(buffer.frameLength) / buffer.format.sampleRate
-        
-        // 버퍼의 길이만큼 지난 후 playerNode 분리
-        DispatchQueue.main.asyncAfter(deadline: .now() + bufferLength + 1) { [weak self] in
-            guard let self = self else { return }
-            self.engine.detach(playerNode)
-        }
     }
     
     func setSoundType() {
