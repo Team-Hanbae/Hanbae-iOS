@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 import AVFoundation
-import OSLog
 
 class SoundManager {
     
@@ -23,9 +22,6 @@ class SoundManager {
     private var soundType: SoundType
     
     private var publisher: PassthroughSubject<Void, Never> = .init()
-    
-    private var lastBeepTime: CFAbsoluteTime?
-    private var logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "Macro", category: "SoundManager")
     
     init?(appState: AppState) {
         self.appState = appState
@@ -146,7 +142,6 @@ extension SoundManager: PlaySoundInterface {
             }
         }
         self.engine.prepare()
-        lastBeepTime = nil
     }
     
     func pauseAudioEngine() {
@@ -154,13 +149,6 @@ extension SoundManager: PlaySoundInterface {
     }
 
     func beep(_ accent: Accent) {
-        let currentTime = CFAbsoluteTimeGetCurrent()
-        if let lastTime = self.lastBeepTime {
-            let interval = currentTime - lastTime
-            logger.log("Beep interval: \(String(format: "%.4f", interval)) seconds")
-        }
-        lastBeepTime = currentTime
-        
         guard let buffer = self.audioBuffers[accent] else { return }
         
         let playerNode = self.playerNodePool[self.poolIndex]
