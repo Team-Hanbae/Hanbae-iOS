@@ -48,7 +48,7 @@ class SoundManager {
         self.setSoundType()
         
         // 엔진 시작
-        self.audioEngineStart()
+        self.prepareAudioEngine()
         
         // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
         self.setupNotifications()
@@ -75,7 +75,7 @@ class SoundManager {
             self.engine.stop()
             
         case .ended:
-            self.audioEngineStart()
+            self.prepareAudioEngine()
             do {
                 try self.audioSession.setActive(true)
             } catch {
@@ -137,7 +137,7 @@ extension SoundManager: PlaySoundInterface {
         publisher.eraseToAnyPublisher()
     }
     
-    func audioEngineStart() {
+    func prepareAudioEngine() {
         if !self.engine.isRunning {
             do {
                 try self.engine.start()
@@ -147,6 +147,10 @@ extension SoundManager: PlaySoundInterface {
         }
         self.engine.prepare()
         lastBeepTime = nil
+    }
+    
+    func pauseAudioEngine() {
+        self.engine.pause()
     }
 
     func beep(_ accent: Accent) {

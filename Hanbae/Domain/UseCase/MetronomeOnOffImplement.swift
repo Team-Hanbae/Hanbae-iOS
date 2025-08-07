@@ -106,7 +106,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     
     func play() {
         // AudioEngine start()
-        self.soundManager.audioEngineStart()
+        self.soundManager.prepareAudioEngine()
         // 데이터 갱신
         self.currentBeatIndex = 0
         self.initialDaeSoBakIndex()
@@ -128,6 +128,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     func stop() {
+        self.soundManager.pauseAudioEngine()
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil
