@@ -76,7 +76,13 @@ class SoundManager {
             
         case .ended:
             self.audioEngineStart()
-        default: ()
+            do {
+                try self.audioSession.setActive(true)
+            } catch {
+                print("SoundManager: 오디오 세션 재활성화 중 에러 발생 - \(error)")
+                return
+            }
+        default: break
         }
     }
     
