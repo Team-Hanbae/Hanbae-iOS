@@ -106,15 +106,19 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     
     func play() {
         // AudioEngine start()
-        self.soundManager.audioEngineStart()
+        self.soundManager.prepareAudioEngine()
         // 데이터 갱신
         self.currentBeatIndex = 0
         self.initialDaeSoBakIndex()
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        let deadline: DispatchTime = .now() + self.interval
+        self.timerHandler()
+        
         // Timer 설정
         if self.timer != nil { self.stop() }
         self.timer = DispatchSource.makeTimerSource(queue: self.queue)
-        self.timer?.schedule(deadline: .now(), repeating: self.interval, leeway: .nanoseconds(1))
+        self.timer?.schedule(deadline: deadline, repeating: self.interval, leeway: .nanoseconds(1))
         self.timer?.setEventHandler { [weak self] in
             guard let self = self else { return }
             self.lastPlayTime = .now
@@ -123,11 +127,13 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         
         // play 여부 publish
         self.isPlayingSubject.send(true)
+        
         // Timer 실행
         self.timer?.resume()
     }
     
     func stop() {
+        self.soundManager.pauseAudioEngine()
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil

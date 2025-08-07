@@ -14,6 +14,9 @@ class SoundManager {
     private var appState: AppState
     
     private var engine: AVAudioEngine
+    private var playerNodePool: [AVAudioPlayerNode] = []
+    private var poolIndex: Int = 0
+    
     private var audioBuffers: [Accent: AVAudioPCMBuffer] = [:]
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
@@ -27,29 +30,33 @@ class SoundManager {
         
         // AudioSession 설정
         do {
-            try self.audioSession.setCategory(.playAndRecord, options: [.mixWithOthers, .defaultToSpeaker, .allowBluetoothA2DP])
+            try self.audioSession.setCategory(.playAndRecord, options: [.mixWithOthers, .allowBluetoothA2DP])
             try self.audioSession.setActive(true)
         } catch {
             print("SoundManager: 오디오 세션 설정 중 에러 발생 - \(error)")
             return nil
         }
         
+        // 재생시킬 노드를 미리 엔진에 연결
+        self.setupAudioNodes()
+        
         // SoundType에 따라 configureSoundPlayers 구성
         self.setSoundType()
         
-        // 더미 노드 생성 및 연결
-        let dummyNode = AVAudioPlayerNode()
-        self.engine.attach(dummyNode)
-        self.engine.connect(dummyNode, to: self.engine.mainMixerNode, format: nil)
-        
         // 엔진 시작
-        self.audioEngineStart()
-        
-        // 더미 노드 분리
-        self.engine.detach(dummyNode)
+        self.prepareAudioEngine()
         
         // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
         self.setupNotifications()
+    }
+    
+    private func setupAudioNodes() {
+        for _ in 0..<10 {
+            let playerNode = AVAudioPlayerNode()
+            self.playerNodePool.append(playerNode)
+            self.engine.attach(playerNode)
+            self.engine.connect(playerNode, to: self.engine.mainMixerNode, format: nil)
+        }
     }
     
     @objc private func handleInterruption(notification: Notification) {
@@ -64,8 +71,14 @@ class SoundManager {
             self.engine.stop()
             
         case .ended:
-            self.audioEngineStart()
-        default: ()
+            self.prepareAudioEngine()
+            do {
+                try self.audioSession.setActive(true)
+            } catch {
+                print("SoundManager: 오디오 세션 재활성화 중 에러 발생 - \(error)")
+                return
+            }
+        default: break
         }
     }
     
@@ -120,8 +133,7 @@ extension SoundManager: PlaySoundInterface {
         publisher.eraseToAnyPublisher()
     }
     
-    func audioEngineStart() {
-        self.engine.stop()
+    func prepareAudioEngine() {
         if !self.engine.isRunning {
             do {
                 try self.engine.start()
@@ -129,30 +141,22 @@ extension SoundManager: PlaySoundInterface {
                 print("오디오 엔진 시작 및 재시작 실패: \(error.localizedDescription)")
             }
         }
+        self.engine.prepare()
+    }
+    
+    func pauseAudioEngine() {
+        self.engine.pause()
     }
 
     func beep(_ accent: Accent) {
-        
         guard let buffer = self.audioBuffers[accent] else { return }
         
-        // 각 강세별 PlayerNode를 동적으로 생성하여 재생
-        let playerNode = AVAudioPlayerNode()
-        self.engine.attach(playerNode)
-        
-        let mainMixer = self.engine.mainMixerNode
-        self.engine.connect(playerNode, to: mainMixer, format: nil)
+        let playerNode = self.playerNodePool[self.poolIndex]
+        self.poolIndex += 1
+        self.poolIndex %= 10
         
         playerNode.scheduleBuffer(buffer, at: nil, options: .interrupts)
         playerNode.play()
-        
-        // 버퍼의 길이 계산
-        let bufferLength = Double(buffer.frameLength) / buffer.format.sampleRate
-        
-        // 버퍼의 길이만큼 지난 후 playerNode 분리
-        DispatchQueue.main.asyncAfter(deadline: .now() + bufferLength + 1) { [weak self] in
-            guard let self = self else { return }
-            self.engine.detach(playerNode)
-        }
     }
     
     func setSoundType() {
