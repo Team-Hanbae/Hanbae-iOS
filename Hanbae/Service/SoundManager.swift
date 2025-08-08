@@ -30,7 +30,7 @@ class SoundManager {
         
         // AudioSession 설정
         do {
-            try self.audioSession.setCategory(.playAndRecord, options: [.mixWithOthers, .allowBluetoothA2DP])
+            try self.audioSession.setCategory(.playback, options: [.mixWithOthers])
             try self.audioSession.setActive(true)
         } catch {
             print("SoundManager: 오디오 세션 설정 중 에러 발생 - \(error)")
