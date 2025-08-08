@@ -16,6 +16,7 @@
 		2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
 		2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
 		2B0BC7BB2CAE72D400FD72D5 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */; };
+		2B2F77A72E45E1EA0027852A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 2B2F77A62E45E1EA0027852A /* Mixpanel */; };
 		2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */; };
 		2B3125B72E41F4D40047C365 /* janggu1_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B62E41F4D40047C365 /* janggu1_medium.wav */; };
 		2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B82E41F4D90047C365 /* janggu1_weak.wav */; };
@@ -225,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2F77A72E45E1EA0027852A /* Mixpanel in Frameworks */,
 				3CC35ABE2E082454005BF31A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,6 +593,7 @@
 			name = Hanbae;
 			packageProductDependencies = (
 				3CC35ABD2E082454005BF31A /* Lottie */,
+				2B2F77A62E45E1EA0027852A /* Mixpanel */,
 			);
 			productName = Macro;
 			productReference = 2BE5AD382C9EC9030094F3C3 /* Hanbae.app */;
@@ -644,6 +647,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2BE5AD392C9EC9030094F3C3 /* Products */;
@@ -1096,6 +1100,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1107,6 +1119,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2B2F77A62E45E1EA0027852A /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
 		3CC35ABD2E082454005BF31A /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */;
