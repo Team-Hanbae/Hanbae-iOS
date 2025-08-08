@@ -133,6 +133,8 @@
 		2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		2B03B9172D7AD7A9000BF12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		2B2F77A32E45DDE80027852A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2B2F77A42E45E01A0027852A /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
 		2B3125B62E41F4D40047C365 /* janggu1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_medium.wav; sourceTree = "<group>"; };
 		2B3125B82E41F4D90047C365 /* janggu1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_weak.wav; sourceTree = "<group>"; };
@@ -353,6 +355,8 @@
 				2B03B9182D7AD7A9000BF12A /* HanbaeWidget */,
 				3CB495FE2D62185E005A7E5F /* Frameworks */,
 				2BE5AD392C9EC9030094F3C3 /* Products */,
+				2B2F77A32E45DDE80027852A /* .gitignore */,
+				2B2F77A42E45E01A0027852A /* env.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
