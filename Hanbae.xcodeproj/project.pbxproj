@@ -136,6 +136,7 @@
 		2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		2B2F77A32E45DDE80027852A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2B2F77A42E45E01A0027852A /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		2B2F77A92E46B3020027852A /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
 		2B3125B62E41F4D40047C365 /* janggu1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_medium.wav; sourceTree = "<group>"; };
 		2B3125B82E41F4D90047C365 /* janggu1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_weak.wav; sourceTree = "<group>"; };
@@ -255,6 +256,14 @@
 			path = HanbaeWidget;
 			sourceTree = "<group>";
 		};
+		2B2F77A82E46B2D70027852A /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77A92E46B3020027852A /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		2B365D232CEF195200565F0D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +361,7 @@
 		2BE5AD2F2C9EC9030094F3C3 = {
 			isa = PBXGroup;
 			children = (
+				2B2F77A82E46B2D70027852A /* ci_scripts */,
 				3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */,
 				2BE5ADE82CABC4570094F3C3 /* Hanbae */,
 				2B03B9182D7AD7A9000BF12A /* HanbaeWidget */,
