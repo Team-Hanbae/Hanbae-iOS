@@ -22,6 +22,7 @@ class DIContainer {
         self.dynamicIconUseCase = DynamicIconImplement()
         
         self.widgetManager = LiveActivityManager(jangdanRepository: self.jangdanDataSource, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase)
+        self.AnalyticsService = MixpanelManager.shared
         
         self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase)
         
@@ -72,4 +73,6 @@ class DIContainer {
     // Widget
     private(set) var widgetManager: WidgetManager
     
+    // Analytics
+    private(set) var AnalyticsService: AnalyticsServiceInterface
 }
