@@ -49,6 +49,7 @@ class MetronomeOnOffImplement {
     private var analyticsService: AnalyticsServiceInterface
     private var appState: AppState
     private var startTime: Date?
+    private var jangdanName: String?
     
     init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface, appState: AppState, analyticsService: AnalyticsServiceInterface) {
         self.jangdan = [[[.medium]]]
@@ -65,6 +66,8 @@ class MetronomeOnOffImplement {
         
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdanEntity in
             guard let self else { return }
+            jangdanName = jangdanEntity.name
+            
             self.jangdan = jangdanEntity.daebakList.map { $0.map { $0.bakAccentList } }
             let daebakCount = self.jangdan.reduce(0) { $0 + $1.count }
             let bakCount = self.jangdan.reduce(0) { $0 + $1.reduce(0) { $0 + $1.count } }
@@ -151,10 +154,10 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isPlayingSubject.send(false)
         
         #if RELEASE
-        guard let startTime else { return }
+        guard let startTime, jangdanName else { return }
         let duration: Double = Date.now.timeIntervalSince(startTime)
         let roundedDuration: Double = round(100 * duration) / 100
-        self.analyticsService.track(event: .metronomePlay(duration: roundedDuration, soundType: appState.selectedSound.name))
+        self.analyticsService.track(event: .metronomePlay(jangdan: jangdanName, duration: roundedDuration, soundType: appState.selectedSound.name))
         self.startTime = nil
         #endif
     }

@@ -8,7 +8,7 @@
 import Mixpanel
 
 enum AnalyticsEvent {
-    case metronomePlay(duration: Double, soundType: String)
+    case metronomePlay(jangdan: String,duration: Double, soundType: String)
     
     var name: String {
         switch self {
@@ -19,8 +19,9 @@ enum AnalyticsEvent {
     
     var properties: [String: MixpanelType]? {
         switch self {
-        case let .metronomePlay(duration, soundType):
+        case let .metronomePlay(jangdan, duration, soundType):
             return [
+                "jangdan": jangdan,
                 "duration": duration,
                 "sound_type": soundType,
                 "os": "iOS"
