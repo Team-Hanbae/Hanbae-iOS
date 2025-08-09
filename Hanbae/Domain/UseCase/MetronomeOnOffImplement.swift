@@ -154,7 +154,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isPlayingSubject.send(false)
         
         #if RELEASE
-        guard let startTime, jangdanName else { return }
+        guard let startTime, let jangdanName else { return }
         let duration: Double = Date.now.timeIntervalSince(startTime)
         let roundedDuration: Double = round(100 * duration) / 100
         self.analyticsService.track(event: .metronomePlay(jangdan: jangdanName, duration: roundedDuration, soundType: appState.selectedSound.name))
