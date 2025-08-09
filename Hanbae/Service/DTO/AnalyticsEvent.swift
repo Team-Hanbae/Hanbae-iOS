@@ -5,6 +5,8 @@
 //  Created by Yunki on 8/9/25.
 //
 
+import Mixpanel
+
 enum AnalyticsEvent {
     case metronomePlay(duration: Int, soundType: String)
     
@@ -15,7 +17,7 @@ enum AnalyticsEvent {
         }
     }
     
-    var properties: [String: Any]? {
+    var properties: [String: MixpanelType]? {
         switch self {
         case let .metronomePlay(duration, soundType):
             return [
