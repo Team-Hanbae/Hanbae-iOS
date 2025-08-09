@@ -15,14 +15,16 @@ class DIContainer {
         self.jangdanDataSource = .init(appState: self.appState)!
         self.soundManager = .init(appState: self.appState)!
         
+        self.analyticsService = MixpanelManager.shared
+        
         self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource)
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
-        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: soundManager)
+        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: self.soundManager, appState: self.appState, analyticsService: self.analyticsService)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
         self.dynamicIconUseCase = DynamicIconImplement()
         
         self.widgetManager = LiveActivityManager(jangdanRepository: self.jangdanDataSource, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase)
-        self.AnalyticsService = MixpanelManager.shared
+        
         
         self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase)
         
@@ -74,5 +76,5 @@ class DIContainer {
     private(set) var widgetManager: WidgetManager
     
     // Analytics
-    private(set) var AnalyticsService: AnalyticsServiceInterface
+    private(set) var analyticsService: AnalyticsServiceInterface
 }
