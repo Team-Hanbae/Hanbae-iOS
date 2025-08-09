@@ -17,6 +17,8 @@
 		2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
 		2B0BC7BB2CAE72D400FD72D5 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */; };
 		2B2F77A72E45E1EA0027852A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 2B2F77A62E45E1EA0027852A /* Mixpanel */; };
+		2B2F77AB2E46B4280027852A /* AnalyticsServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */; };
+		2B2F77AE2E46C7980027852A /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */; };
 		2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */; };
 		2B3125B72E41F4D40047C365 /* janggu1_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B62E41F4D40047C365 /* janggu1_medium.wav */; };
 		2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B82E41F4D90047C365 /* janggu1_weak.wav */; };
@@ -137,6 +139,8 @@
 		2B2F77A32E45DDE80027852A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2B2F77A42E45E01A0027852A /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		2B2F77A92E46B3020027852A /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceInterface.swift; sourceTree = "<group>"; };
+		2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
 		2B3125B62E41F4D40047C365 /* janggu1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_medium.wav; sourceTree = "<group>"; };
 		2B3125B82E41F4D90047C365 /* janggu1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_weak.wav; sourceTree = "<group>"; };
@@ -264,6 +268,15 @@
 			path = ci_scripts;
 			sourceTree = "<group>";
 		};
+		2B2F77AC2E46C77B0027852A /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */,
+				2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
 		2B365D232CEF195200565F0D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +299,7 @@
 		2B63CFB12CE5C76A00B4C7AC /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */,
 				2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */,
 			);
 			path = DTO;
@@ -395,7 +409,6 @@
 		2BE5ADD82CABC4570094F3C3 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */,
 				3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */,
 				3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */,
 				3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */,
@@ -451,6 +464,7 @@
 		2BE5ADE12CABC4570094F3C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2B2F77AC2E46C77B0027852A /* Interface */,
 				2B63CFB12CE5C76A00B4C7AC /* DTO */,
 				2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */,
 				2BB797B62CE62532008173A5 /* JangdanDataManager.swift */,
@@ -723,6 +737,7 @@
 			files = (
 				3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */,
 				3C57946D2CDCD6BF00AE647B /* DIContainer.swift in Sources */,
+				2B2F77AE2E46C7980027852A /* AnalyticsEvent.swift in Sources */,
 				2B0022492CF3260800C60C4F /* AppState.swift in Sources */,
 				3C719E432CEF532900D233DC /* HomeViewModel.swift in Sources */,
 				2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */,
@@ -741,6 +756,7 @@
 				5798393C2CEB22CD00866AD4 /* BasicJangdanData.swift in Sources */,
 				3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */,
 				2B8861192CC3E61F0036C6DB /* BakBarView.swift in Sources */,
+				2B2F77AB2E46B4280027852A /* AnalyticsServiceInterface.swift in Sources */,
 				2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */,
 				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
 				3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */,
