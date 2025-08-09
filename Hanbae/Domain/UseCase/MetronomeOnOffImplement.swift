@@ -45,13 +45,7 @@ class MetronomeOnOffImplement {
     private var jangdanRepository: JangdanRepository
     private var soundManager: PlaySoundInterface
     
-    // Analytics
-    private var analyticsService: AnalyticsServiceInterface
-    private var appState: AppState
-    private var startTime: Date?
-    private var jangdanName: String?
-    
-    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface, appState: AppState, analyticsService: AnalyticsServiceInterface) {
+    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface) {
         self.jangdan = [[[.medium]]]
         self.bpm = 60.0
         self.currentBeatIndex = 0
@@ -61,13 +55,8 @@ class MetronomeOnOffImplement {
         self.jangdanRepository = jangdanRepository
         self.soundManager = soundManager
         
-        self.analyticsService = analyticsService
-        self.appState = appState
-        
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdanEntity in
             guard let self else { return }
-            jangdanName = jangdanEntity.name
-            
             self.jangdan = jangdanEntity.daebakList.map { $0.map { $0.bakAccentList } }
             let daebakCount = self.jangdan.reduce(0) { $0 + $1.count }
             let bakCount = self.jangdan.reduce(0) { $0 + $1.reduce(0) { $0 + $1.count } }
@@ -116,8 +105,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     }
     
     func play() {
-        self.startTime = .now
-        
         // AudioEngine start()
         self.soundManager.prepareAudioEngine()
         // 데이터 갱신
@@ -152,14 +139,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.timer = nil
         // stop 여부 publish
         self.isPlayingSubject.send(false)
-        
-        #if RELEASE
-        guard let startTime, let jangdanName else { return }
-        let duration: Double = Date.now.timeIntervalSince(startTime)
-        let roundedDuration: Double = round(100 * duration) / 100
-        self.analyticsService.track(event: .metronomePlay(jangdan: jangdanName, duration: roundedDuration, soundType: appState.selectedSound.name))
-        self.startTime = nil
-        #endif
     }
     
     func setSoundType() {
