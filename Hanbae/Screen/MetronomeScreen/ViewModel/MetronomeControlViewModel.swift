@@ -18,12 +18,21 @@ class MetronomeControlViewModel {
     
     private var widgetManager: WidgetManager
     
-    init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager) {
+    // Analytics
+    private var analyticsService: AnalyticsServiceInterface
+    private var appState: AppState
+    private var startTime: Date?
+    private var jangdanName: String?
+    
+    init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager, appState: AppState, analyticsService: AnalyticsServiceInterface) {
         self.jangdanRepository = jangdanRepository
         self.tempoUseCase = tempoUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         
         self.widgetManager = widgetManager
+        
+        self.analyticsService = analyticsService
+        self.appState = appState
         
         self.tempoUseCase.isTappingPublisher.sink { [weak self] isTapping in
             guard let self else { return }
@@ -34,6 +43,7 @@ class MetronomeControlViewModel {
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdan in
             guard let self else { return }
             self.state.bpm = jangdan.bpm
+            jangdanName = jangdan.name
         }
         .store(in: &self.cancelBag)
         
@@ -79,7 +89,16 @@ extension MetronomeControlViewModel {
                 Task {
                     await self.widgetManager.endLiveActivity()
                 }
+                
+                #if RELEASE
+                guard let startTime, let jangdanName else { return }
+                let duration: Double = Date.now.timeIntervalSince(startTime)
+                let roundedDuration: Double = round(100 * duration) / 100
+                self.analyticsService.track(event: .metronomePlay(jangdan: jangdanName, duration: roundedDuration, soundType: appState.selectedSound.name))
+                self.startTime = nil
+                #endif
             } else {
+                self.startTime = .now
                 self.metronomeOnOffUseCase.play()
             }
         case .decreaseShortBpm:

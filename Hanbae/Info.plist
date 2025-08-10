@@ -26,8 +26,10 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
+	<key>MIXPANEL_DEV_TOKEN</key>
+	<string>$(MIXPANEL_DEV_TOKEN)</string>
+	<key>MIXPANEL_PROD_TOKEN</key>
+	<string>$(MIXPANEL_PROD_TOKEN)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Medium.otf</string>
