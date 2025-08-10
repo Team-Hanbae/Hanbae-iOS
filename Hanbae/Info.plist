@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>NewYear</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>NewYear</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>CFBundleIconName</key>
+			<string></string>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>MIXPANEL_DEV_TOKEN</key>
+	<string>$(MIXPANEL_DEV_TOKEN)</string>
+	<key>MIXPANEL_PROD_TOKEN</key>
+	<string>$(MIXPANEL_PROD_TOKEN)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Pretendard-Medium.otf</string>
+		<string>Pretendard-Bold.otf</string>
+		<string>Pretendard-Regular.otf</string>
+		<string>Pretendard-SemiBold.otf</string>
+		<string>GosanjaOTF.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+</dict>
+</plist>

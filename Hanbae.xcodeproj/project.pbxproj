@@ -1,0 +1,1174 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B0022492CF3260800C60C4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0022482CF3260800C60C4F /* AppState.swift */; };
+		2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
+		2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
+		2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */; };
+		2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
+		2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9122D7AD7A9000BF12A /* AppIntent.swift */; };
+		2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */; };
+		2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B03B9132D7AD7A9000BF12A /* Assets.xcassets */; };
+		2B0BC7BB2CAE72D400FD72D5 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */; };
+		2B2F77A72E45E1EA0027852A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 2B2F77A62E45E1EA0027852A /* Mixpanel */; };
+		2B2F77AB2E46B4280027852A /* AnalyticsServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */; };
+		2B2F77AE2E46C7980027852A /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */; };
+		2B2F77B02E46C8C80027852A /* MixpanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AF2E46C8C80027852A /* MixpanelManager.swift */; };
+		2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */; };
+		2B3125B72E41F4D40047C365 /* janggu1_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B62E41F4D40047C365 /* janggu1_medium.wav */; };
+		2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B82E41F4D90047C365 /* janggu1_weak.wav */; };
+		2B3125BB2E41F4E00047C365 /* buk1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125BA2E41F4E00047C365 /* buk1_strong.wav */; };
+		2B3125BD2E41F4E40047C365 /* buk1_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125BC2E41F4E40047C365 /* buk1_medium.wav */; };
+		2B3125BF2E41F4E80047C365 /* buk1_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125BE2E41F4E80047C365 /* buk1_weak.wav */; };
+		2B365D202CEEE0E700565F0D /* JangdanTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D1F2CEEE0E700565F0D /* JangdanTypeSelectView.swift */; };
+		2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */; };
+		2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */; };
+		2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D262CEF1C8C00565F0D /* Date+Extension.swift */; };
+		2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */; };
+		2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
+		2B64B3382E18E2480069E287 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
+		2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */; };
+		2B8861132CBD34D30036C6DB /* JangdanEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861122CBD34D30036C6DB /* JangdanEnum.swift */; };
+		2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */; };
+		2B8861192CC3E61F0036C6DB /* BakBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8861182CC3E61F0036C6DB /* BakBarView.swift */; };
+		2B88611B2CC3E62A0036C6DB /* BakBarSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */; };
+		2B96F4912CD1302C00933DE2 /* MetronomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96F4902CD1302C00933DE2 /* MetronomeViewModel.swift */; };
+		2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B96F4922CD131BD00933DE2 /* AccentEnum.swift */; };
+		2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */; };
+		2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */; };
+		2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F702D2C98AC0022195E /* NewYear@2x.png */; };
+		2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAA4F722D2C98B10022195E /* NewYear@3x.png */; };
+		2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B62CE62532008173A5 /* JangdanDataManager.swift */; };
+		2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */; };
+		2BBDF6C12DB7AC460035E2B2 /* clave_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */; };
+		2BBDF6C22DB7AC460035E2B2 /* clave_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */; };
+		2BBDF6C32DB7AC460035E2B2 /* clave_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */; };
+		2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
+		2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC4BA002CE371E800A90C1F /* HomeView.swift */; };
+		2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */; };
+		2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
+		2BE5ADF02CABC4570094F3C3 /* HanbaeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */; };
+		2BE5ADFC2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */; };
+		2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */; };
+		2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
+		2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */; };
+		2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */; };
+		3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7082CABDA2400160970 /* JangdanEntity.swift */; };
+		3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DB7312CB3B58500160970 /* AccentImplement.swift */; };
+		3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */; };
+		3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C46FBE92CEE38230067EE65 /* SoundEnum.swift */; };
+		3C57946D2CDCD6BF00AE647B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C57946C2CDCD6BF00AE647B /* DIContainer.swift */; };
+		3C6EAFA42CDD1146003F2191 /* TemplateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */; };
+		3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */; };
+		3C6EAFA82CDD1243003F2191 /* MetronomeOnOffUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */; };
+		3C6EAFAA2CDD12DE003F2191 /* AccentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EAFA92CDD12DE003F2191 /* AccentUseCase.swift */; };
+		3C719E432CEF532900D233DC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C719E422CEF532900D233DC /* HomeViewModel.swift */; };
+		3C8F096B2E081DB3001FE7E9 /* FoldAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F096A2E081DB3001FE7E9 /* FoldAnimation.json */; };
+		3C8F096C2E081DB3001FE7E9 /* FoldAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F096A2E081DB3001FE7E9 /* FoldAnimation.json */; };
+		3C8F09702E081E25001FE7E9 /* FoldLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8F096F2E081E25001FE7E9 /* FoldLottieView.swift */; };
+		3C8F352A2D1FF06800209AD3 /* buk_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35222D1FF06800209AD3 /* buk_medium.wav */; };
+		3C8F352B2D1FF06800209AD3 /* buk_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35242D1FF06800209AD3 /* buk_weak.wav */; };
+		3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C8F35232D1FF06800209AD3 /* buk_strong.wav */; };
+		3CB496002D62185E005A7E5F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB495FF2D62185E005A7E5F /* WidgetKit.framework */; };
+		3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CB496012D62185E005A7E5F /* SwiftUI.framework */; };
+		3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */; };
+		3CBC08F82D3891B1008EBA78 /* janggu_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */; };
+		3CBC08F92D3891B1008EBA78 /* janggu_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */; };
+		3CBC08FA2D3891B1008EBA78 /* janggu_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */; };
+		3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */; };
+		3CC35ABE2E082454005BF31A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC35ABD2E082454005BF31A /* Lottie */; };
+		3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */; };
+		3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */; };
+		3CF498772D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF498762D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift */; };
+		4303C81D2CF5995E00EB956A /* CustomJangdanPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C81C2CF5995E00EB956A /* CustomJangdanPracticeView.swift */; };
+		4303C81F2CF7951800EB956A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303C81E2CF7951800EB956A /* String+Extension.swift */; };
+		4349F8F42CEC85D5001FE727 /* MetronomeControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4349F8F32CEC85D5001FE727 /* MetronomeControlViewModel.swift */; };
+		435BE54D2CEF221A00CCA4CA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435BE54C2CEF221A00CCA4CA /* Router.swift */; };
+		43774F532CB7C10E00F54EF7 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43774F522CB7C10E00F54EF7 /* Pretendard-Medium.otf */; };
+		43774F572CB7C11D00F54EF7 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43774F552CB7C11D00F54EF7 /* Pretendard-Regular.otf */; };
+		43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43774F542CB7C11D00F54EF7 /* Pretendard-Bold.otf */; };
+		43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43774F562CB7C11D00F54EF7 /* Pretendard-SemiBold.otf */; };
+		43774F5C2CB7C1D000F54EF7 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43774F5B2CB7C1C400F54EF7 /* Font+Extension.swift */; };
+		43774F652CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43774F642CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift */; };
+		438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438226DE2CAE8494007A3B23 /* TempoImplement.swift */; };
+		438226E12CAEC728007A3B23 /* TemplateImplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438226E02CAEC720007A3B23 /* TemplateImplement.swift */; };
+		439ABF0A2CB825AE003F6343 /* MetronomeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439ABF092CB825AE003F6343 /* MetronomeControlView.swift */; };
+		572AB1C62CEDC26200778B9B /* CustomJangdanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572AB1C32CEDC26200778B9B /* CustomJangdanListView.swift */; };
+		572AB1C72CEDC26200778B9B /* EmptyJangdanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572AB1C42CEDC26200778B9B /* EmptyJangdanListView.swift */; };
+		5798393C2CEB22CD00866AD4 /* BasicJangdanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3CB496112D621860005A7E5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BE5AD302C9EC9030094F3C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CB495FC2D62185E005A7E5F;
+			remoteInfo = HanbaeWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3CB496182D621860005A7E5F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3CB496132D621860005A7E5F /* HanbaeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2B0022482CF3260800C60C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2B03B9122D7AD7A9000BF12A /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		2B03B9132D7AD7A9000BF12A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetBundle.swift; sourceTree = "<group>"; };
+		2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		2B03B9172D7AD7A9000BF12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		2B2F77A32E45DDE80027852A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2B2F77A42E45E01A0027852A /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		2B2F77A92E46B3020027852A /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceInterface.swift; sourceTree = "<group>"; };
+		2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		2B2F77AF2E46C8C80027852A /* MixpanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixpanelManager.swift; sourceTree = "<group>"; };
+		2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
+		2B3125B62E41F4D40047C365 /* janggu1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_medium.wav; sourceTree = "<group>"; };
+		2B3125B82E41F4D90047C365 /* janggu1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_weak.wav; sourceTree = "<group>"; };
+		2B3125BA2E41F4E00047C365 /* buk1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk1_strong.wav; sourceTree = "<group>"; };
+		2B3125BC2E41F4E40047C365 /* buk1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk1_medium.wav; sourceTree = "<group>"; };
+		2B3125BE2E41F4E80047C365 /* buk1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk1_weak.wav; sourceTree = "<group>"; };
+		2B365D1F2CEEE0E700565F0D /* JangdanTypeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanTypeSelectView.swift; sourceTree = "<group>"; };
+		2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanCreateView.swift; sourceTree = "<group>"; };
+		2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanListViewModel.swift; sourceTree = "<group>"; };
+		2B365D262CEF1C8C00565F0D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeView.swift; sourceTree = "<group>"; };
+		2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanRepository.swift; sourceTree = "<group>"; };
+		2B8861122CBD34D30036C6DB /* JangdanEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEnum.swift; sourceTree = "<group>"; };
+		2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeBoardView.swift; sourceTree = "<group>"; };
+		2B8861182CC3E61F0036C6DB /* BakBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakBarView.swift; sourceTree = "<group>"; };
+		2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakBarSetView.swift; sourceTree = "<group>"; };
+		2B96F4902CD1302C00933DE2 /* MetronomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeViewModel.swift; sourceTree = "<group>"; };
+		2B96F4922CD131BD00933DE2 /* AccentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentEnum.swift; sourceTree = "<group>"; };
+		2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconUseCase.swift; sourceTree = "<group>"; };
+		2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIconImplement.swift; sourceTree = "<group>"; };
+		2BAA4F702D2C98AC0022195E /* NewYear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@2x.png"; sourceTree = "<group>"; };
+		2BAA4F722D2C98B10022195E /* NewYear@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewYear@3x.png"; sourceTree = "<group>"; };
+		2BB797B62CE62532008173A5 /* JangdanDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanDataManager.swift; sourceTree = "<group>"; };
+		2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanSwiftData.swift; sourceTree = "<group>"; };
+		2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave_medium.wav; sourceTree = "<group>"; };
+		2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave_strong.wav; sourceTree = "<group>"; };
+		2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = clave_weak.wav; sourceTree = "<group>"; };
+		2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
+		2BC4BA002CE371E800A90C1F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2BE5AD382C9EC9030094F3C3 /* Hanbae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hanbae.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanbaeApp.swift; sourceTree = "<group>"; };
+		2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffImplement.swift; sourceTree = "<group>"; };
+		2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundInterface.swift; sourceTree = "<group>"; };
+		2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GosanjaOTF.otf; sourceTree = "<group>"; };
+		3C1DB7082CABDA2400160970 /* JangdanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEntity.swift; sourceTree = "<group>"; };
+		3C1DB7312CB3B58500160970 /* AccentImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentImplement.swift; sourceTree = "<group>"; };
+		3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobakSegmentView.swift; sourceTree = "<group>"; };
+		3C46FBE92CEE38230067EE65 /* SoundEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEnum.swift; sourceTree = "<group>"; };
+		3C57946C2CDCD6BF00AE647B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateUseCase.swift; sourceTree = "<group>"; };
+		3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoUseCase.swift; sourceTree = "<group>"; };
+		3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeOnOffUseCase.swift; sourceTree = "<group>"; };
+		3C6EAFA92CDD12DE003F2191 /* AccentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentUseCase.swift; sourceTree = "<group>"; };
+		3C719E422CEF532900D233DC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3C8F096A2E081DB3001FE7E9 /* FoldAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FoldAnimation.json; sourceTree = "<group>"; };
+		3C8F096F2E081E25001FE7E9 /* FoldLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldLottieView.swift; sourceTree = "<group>"; };
+		3C8F35222D1FF06800209AD3 /* buk_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_medium.wav; sourceTree = "<group>"; };
+		3C8F35232D1FF06800209AD3 /* buk_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_strong.wav; sourceTree = "<group>"; };
+		3C8F35242D1FF06800209AD3 /* buk_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk_weak.wav; sourceTree = "<group>"; };
+		3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HanbaeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CB495FF2D62185E005A7E5F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3CB496012D62185E005A7E5F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3CB496192D63115F005A7E5F /* HanbaeDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeDebug.entitlements; sourceTree = "<group>"; };
+		3CB4961A2D632184005A7E5F /* Hanbae.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hanbae.entitlements; sourceTree = "<group>"; };
+		3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HanbaeWidgetExtension.entitlements; sourceTree = "<group>"; };
+		3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_medium.wav; sourceTree = "<group>"; };
+		3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_strong.wav; sourceTree = "<group>"; };
+		3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu_weak.wav; sourceTree = "<group>"; };
+		3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeSettingControlView.swift; sourceTree = "<group>"; };
+		3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
+		3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanPracticeViewModel.swift; sourceTree = "<group>"; };
+		3CF498762D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanCreateViewModel.swift; sourceTree = "<group>"; };
+		4303C81C2CF5995E00EB956A /* CustomJangdanPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanPracticeView.swift; sourceTree = "<group>"; };
+		4303C81E2CF7951800EB956A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4349F8F32CEC85D5001FE727 /* MetronomeControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeControlViewModel.swift; sourceTree = "<group>"; };
+		435BE54C2CEF221A00CCA4CA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		43774F522CB7C10E00F54EF7 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		43774F542CB7C11D00F54EF7 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		43774F552CB7C11D00F54EF7 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		43774F562CB7C11D00F54EF7 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		43774F5A2CB7C12D00F54EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		43774F5B2CB7C1C400F54EF7 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		43774F642CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltinJangdanPracticeView.swift; sourceTree = "<group>"; };
+		438226DE2CAE8494007A3B23 /* TempoImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoImplement.swift; sourceTree = "<group>"; };
+		438226E02CAEC720007A3B23 /* TemplateImplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateImplement.swift; sourceTree = "<group>"; };
+		439ABF092CB825AE003F6343 /* MetronomeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeControlView.swift; sourceTree = "<group>"; };
+		572AB1C32CEDC26200778B9B /* CustomJangdanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanListView.swift; sourceTree = "<group>"; };
+		572AB1C42CEDC26200778B9B /* EmptyJangdanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyJangdanListView.swift; sourceTree = "<group>"; };
+		5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicJangdanData.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BE5AD352C9EC9030094F3C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B2F77A72E45E1EA0027852A /* Mixpanel in Frameworks */,
+				3CC35ABE2E082454005BF31A /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CB495FA2D62185E005A7E5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB496022D62185E005A7E5F /* SwiftUI.framework in Frameworks */,
+				3CB496002D62185E005A7E5F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B03B9182D7AD7A9000BF12A /* HanbaeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2B03B9122D7AD7A9000BF12A /* AppIntent.swift */,
+				2B03B9132D7AD7A9000BF12A /* Assets.xcassets */,
+				2B03B9152D7AD7A9000BF12A /* HanbaeWidgetBundle.swift */,
+				2B03B9162D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift */,
+				2B03B9172D7AD7A9000BF12A /* Info.plist */,
+			);
+			path = HanbaeWidget;
+			sourceTree = "<group>";
+		};
+		2B2F77A82E46B2D70027852A /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77A92E46B3020027852A /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
+		2B2F77AC2E46C77B0027852A /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */,
+				2BE5AE012CAC289C0094F3C3 /* PlaySoundInterface.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		2B365D232CEF195200565F0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */,
+				3CF498762D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift */,
+				3CF498742D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2B58BC5E2D0FFC9F006C507B /* BuiltInJangdanScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3CF498712D12CCD600D361D6 /* ViewModel */,
+				43774F642CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift */,
+			);
+			path = BuiltInJangdanScreen;
+			sourceTree = "<group>";
+		};
+		2B63CFB12CE5C76A00B4C7AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */,
+				2BB797B82CE6253B008173A5 /* JangdanSwiftData.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		2B96F48D2CD12D3B00933DE2 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5ADDF2CABC4570094F3C3 /* Preview Content */,
+				2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		2B96F48E2CD12D5E00933DE2 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				3CBC08F52D3891B1008EBA78 /* janggu_medium.wav */,
+				3CBC08F62D3891B1008EBA78 /* janggu_strong.wav */,
+				3CBC08F72D3891B1008EBA78 /* janggu_weak.wav */,
+				3C8F35222D1FF06800209AD3 /* buk_medium.wav */,
+				3C8F35232D1FF06800209AD3 /* buk_strong.wav */,
+				3C8F35242D1FF06800209AD3 /* buk_weak.wav */,
+				2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */,
+				2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */,
+				2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */,
+				2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */,
+				2B3125B62E41F4D40047C365 /* janggu1_medium.wav */,
+				2B3125B82E41F4D90047C365 /* janggu1_weak.wav */,
+				2B3125BA2E41F4E00047C365 /* buk1_strong.wav */,
+				2B3125BC2E41F4E40047C365 /* buk1_medium.wav */,
+				2B3125BE2E41F4E80047C365 /* buk1_weak.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		2B96F48F2CD1301E00933DE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B96F4902CD1302C00933DE2 /* MetronomeViewModel.swift */,
+				4349F8F32CEC85D5001FE727 /* MetronomeControlViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2B9E88E52CDB864700B33A56 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2BAA4F672D2BA1000022195E /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				2BAA4F702D2C98AC0022195E /* NewYear@2x.png */,
+				2BAA4F722D2C98B10022195E /* NewYear@3x.png */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
+		2BC4B9FF2CE371DB00A90C1F /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3C719E412CEF52AA00D233DC /* ViewModel */,
+				2BC4BA002CE371E800A90C1F /* HomeView.swift */,
+				3C8F096F2E081E25001FE7E9 /* FoldLottieView.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		2BE5AD2F2C9EC9030094F3C3 = {
+			isa = PBXGroup;
+			children = (
+				2B2F77A82E46B2D70027852A /* ci_scripts */,
+				3CB4961B2D632194005A7E5F /* HanbaeWidgetExtension.entitlements */,
+				2BE5ADE82CABC4570094F3C3 /* Hanbae */,
+				2B03B9182D7AD7A9000BF12A /* HanbaeWidget */,
+				3CB495FE2D62185E005A7E5F /* Frameworks */,
+				2BE5AD392C9EC9030094F3C3 /* Products */,
+				2B2F77A32E45DDE80027852A /* .gitignore */,
+				2B2F77A42E45E01A0027852A /* env.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		2BE5AD392C9EC9030094F3C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5AD382C9EC9030094F3C3 /* Hanbae.app */,
+				3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BE5ADD62CABC4570094F3C3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3C1DB7082CABDA2400160970 /* JangdanEntity.swift */,
+				2B8861122CBD34D30036C6DB /* JangdanEnum.swift */,
+				2B96F4922CD131BD00933DE2 /* AccentEnum.swift */,
+				3C46FBE92CEE38230067EE65 /* SoundEnum.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		2BE5ADD82CABC4570094F3C3 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				3C6EAFA32CDD1146003F2191 /* TemplateUseCase.swift */,
+				3C6EAFA52CDD11B7003F2191 /* TempoUseCase.swift */,
+				3C6EAFA72CDD1243003F2191 /* MetronomeOnOffUseCase.swift */,
+				3C6EAFA92CDD12DE003F2191 /* AccentUseCase.swift */,
+				2BAA4F632D2B9C5A0022195E /* DynamicIconUseCase.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		2BE5ADDA2CABC4570094F3C3 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E88E52CDB864700B33A56 /* Repository */,
+				2BE5ADD82CABC4570094F3C3 /* Interface */,
+				438226E02CAEC720007A3B23 /* TemplateImplement.swift */,
+				438226DE2CAE8494007A3B23 /* TempoImplement.swift */,
+				2BE5ADFB2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift */,
+				3C1DB7312CB3B58500160970 /* AccentImplement.swift */,
+				2BAA4F652D2B9F6B0022195E /* DynamicIconImplement.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		2BE5ADDB2CABC4570094F3C3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5ADD62CABC4570094F3C3 /* Entity */,
+				2BE5ADDA2CABC4570094F3C3 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		2BE5ADDD2CABC4570094F3C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43774F5B2CB7C1C400F54EF7 /* Font+Extension.swift */,
+				2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */,
+				2B365D262CEF1C8C00565F0D /* Date+Extension.swift */,
+				4303C81E2CF7951800EB956A /* String+Extension.swift */,
+				2BE9FC7C2D646EF400731A7C /* Notification+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2BE5ADDF2CABC4570094F3C3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5ADDE2CABC4570094F3C3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2BE5ADE12CABC4570094F3C3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F77AC2E46C77B0027852A /* Interface */,
+				2B63CFB12CE5C76A00B4C7AC /* DTO */,
+				2B0BC7BA2CAE72D400FD72D5 /* SoundManager.swift */,
+				2BB797B62CE62532008173A5 /* JangdanDataManager.swift */,
+				5798393B2CEB22C100866AD4 /* BasicJangdanData.swift */,
+				3CB4963F2D637D28005A7E5F /* LiveActivityManager.swift */,
+				2B2F77AF2E46C8C80027852A /* MixpanelManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2BE5ADE32CABC4570094F3C3 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				2BE5ADE22CABC4570094F3C3 /* HanbaeApp.swift */,
+				3C57946C2CDCD6BF00AE647B /* DIContainer.swift */,
+				435BE54C2CEF221A00CCA4CA /* Router.swift */,
+				2B0022482CF3260800C60C4F /* AppState.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		2BE5ADE82CABC4570094F3C3 /* Hanbae */ = {
+			isa = PBXGroup;
+			children = (
+				3CB4961A2D632184005A7E5F /* Hanbae.entitlements */,
+				3CB496192D63115F005A7E5F /* HanbaeDebug.entitlements */,
+				43774F5A2CB7C12D00F54EF7 /* Info.plist */,
+				2BE5ADE32CABC4570094F3C3 /* System */,
+				43774F502CB7BFF800F54EF7 /* Resources */,
+				2BE5ADDB2CABC4570094F3C3 /* Domain */,
+				2BE5ADE12CABC4570094F3C3 /* Service */,
+				43774F5D2CB7ED4800F54EF7 /* Screen */,
+				2BE5ADDD2CABC4570094F3C3 /* Extensions */,
+			);
+			path = Hanbae;
+			sourceTree = "<group>";
+		};
+		3C719E412CEF52AA00D233DC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C719E422CEF532900D233DC /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3C8F09692E081D9E001FE7E9 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F096A2E081DB3001FE7E9 /* FoldAnimation.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		3CB495FE2D62185E005A7E5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CB495FF2D62185E005A7E5F /* WidgetKit.framework */,
+				3CB496012D62185E005A7E5F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CF498712D12CCD600D361D6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3CF498722D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		43774F502CB7BFF800F54EF7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C8F09692E081D9E001FE7E9 /* Lottie */,
+				2B96F48D2CD12D3B00933DE2 /* Asset */,
+				43774F512CB7C00000F54EF7 /* Font */,
+				2B96F48E2CD12D5E00933DE2 /* Sound */,
+				2BAA4F672D2BA1000022195E /* Icon */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		43774F512CB7C00000F54EF7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				43774F522CB7C10E00F54EF7 /* Pretendard-Medium.otf */,
+				43774F542CB7C11D00F54EF7 /* Pretendard-Bold.otf */,
+				43774F552CB7C11D00F54EF7 /* Pretendard-Regular.otf */,
+				43774F562CB7C11D00F54EF7 /* Pretendard-SemiBold.otf */,
+				2BF0DD832E0CE0B3004509E3 /* GosanjaOTF.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		43774F5D2CB7ED4800F54EF7 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2BC4B9FF2CE371DB00A90C1F /* HomeScreen */,
+				2B58BC5E2D0FFC9F006C507B /* BuiltInJangdanScreen */,
+				572AB1C92CEDCBAA00778B9B /* CustomJangdanListScreen */,
+				43774F612CB7EDB100F54EF7 /* MetronomeScreen */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		43774F612CB7EDB100F54EF7 /* MetronomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2B96F48F2CD1301E00933DE2 /* ViewModel */,
+				2B8861182CC3E61F0036C6DB /* BakBarView.swift */,
+				2B88611A2CC3E62A0036C6DB /* BakBarSetView.swift */,
+				2B8861162CC3E4850036C6DB /* HanbaeBoardView.swift */,
+				3C1EB3242CEC5D880030FB63 /* SobakSegmentView.swift */,
+				3CBC08FF2D4CBD6D008EBA78 /* MetronomeSettingControlView.swift */,
+				439ABF092CB825AE003F6343 /* MetronomeControlView.swift */,
+				2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */,
+			);
+			path = MetronomeScreen;
+			sourceTree = "<group>";
+		};
+		572AB1C92CEDCBAA00778B9B /* CustomJangdanListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2B365D232CEF195200565F0D /* ViewModel */,
+				572AB1C32CEDC26200778B9B /* CustomJangdanListView.swift */,
+				572AB1C42CEDC26200778B9B /* EmptyJangdanListView.swift */,
+				2B365D1F2CEEE0E700565F0D /* JangdanTypeSelectView.swift */,
+				2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */,
+				4303C81C2CF5995E00EB956A /* CustomJangdanPracticeView.swift */,
+			);
+			path = CustomJangdanListScreen;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BE5AD372C9EC9030094F3C3 /* Hanbae */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Hanbae" */;
+			buildPhases = (
+				2BE5AD342C9EC9030094F3C3 /* Sources */,
+				2BE5AD352C9EC9030094F3C3 /* Frameworks */,
+				2BE5AD362C9EC9030094F3C3 /* Resources */,
+				3CB496182D621860005A7E5F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3CB496122D621860005A7E5F /* PBXTargetDependency */,
+			);
+			name = Hanbae;
+			packageProductDependencies = (
+				3CC35ABD2E082454005BF31A /* Lottie */,
+				2B2F77A62E45E1EA0027852A /* Mixpanel */,
+			);
+			productName = Macro;
+			productReference = 2BE5AD382C9EC9030094F3C3 /* Hanbae.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CB496152D621860005A7E5F /* Build configuration list for PBXNativeTarget "HanbaeWidgetExtension" */;
+			buildPhases = (
+				3CB495F92D62185E005A7E5F /* Sources */,
+				3CB495FA2D62185E005A7E5F /* Frameworks */,
+				3CB495FB2D62185E005A7E5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HanbaeWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HanbaeWidgetExtension;
+			productReference = 3CB495FD2D62185E005A7E5F /* HanbaeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BE5AD302C9EC9030094F3C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					2BE5AD372C9EC9030094F3C3 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					3CB495FC2D62185E005A7E5F = {
+						CreatedOnToolsVersion = 16.2;
+					};
+				};
+			};
+			buildConfigurationList = 2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Hanbae" */;
+			developmentRegion = ko;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ko,
+				Base,
+			);
+			mainGroup = 2BE5AD2F2C9EC9030094F3C3;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2BE5AD392C9EC9030094F3C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BE5AD372C9EC9030094F3C3 /* Hanbae */,
+				3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BE5AD362C9EC9030094F3C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43774F572CB7C11D00F54EF7 /* Pretendard-Regular.otf in Resources */,
+				3C8F352A2D1FF06800209AD3 /* buk_medium.wav in Resources */,
+				3C8F352B2D1FF06800209AD3 /* buk_weak.wav in Resources */,
+				2BAA4F732D2C98B10022195E /* NewYear@3x.png in Resources */,
+				2BAA4F712D2C98AC0022195E /* NewYear@2x.png in Resources */,
+				3C8F35302D1FF06800209AD3 /* buk_strong.wav in Resources */,
+				3C8F096C2E081DB3001FE7E9 /* FoldAnimation.json in Resources */,
+				2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */,
+				2BBDF6C12DB7AC460035E2B2 /* clave_strong.wav in Resources */,
+				2BBDF6C22DB7AC460035E2B2 /* clave_weak.wav in Resources */,
+				2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */,
+				2B3125BD2E41F4E40047C365 /* buk1_medium.wav in Resources */,
+				2BBDF6C32DB7AC460035E2B2 /* clave_medium.wav in Resources */,
+				2B3125BF2E41F4E80047C365 /* buk1_weak.wav in Resources */,
+				2B3125B72E41F4D40047C365 /* janggu1_medium.wav in Resources */,
+				3CBC08F82D3891B1008EBA78 /* janggu_strong.wav in Resources */,
+				3CBC08F92D3891B1008EBA78 /* janggu_medium.wav in Resources */,
+				3CBC08FA2D3891B1008EBA78 /* janggu_weak.wav in Resources */,
+				2BF0DD842E0CE0B3004509E3 /* GosanjaOTF.otf in Resources */,
+				43774F582CB7C11D00F54EF7 /* Pretendard-Bold.otf in Resources */,
+				2B3125BB2E41F4E00047C365 /* buk1_strong.wav in Resources */,
+				43774F592CB7C11D00F54EF7 /* Pretendard-SemiBold.otf in Resources */,
+				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
+				2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */,
+				2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */,
+				43774F532CB7C10E00F54EF7 /* Pretendard-Medium.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CB495FB2D62185E005A7E5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C8F096B2E081DB3001FE7E9 /* FoldAnimation.json in Resources */,
+				2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */,
+				2B03B9192D7AD7A9000BF12A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BE5AD342C9EC9030094F3C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CF498752D12DB2100D361D6 /* CustomJangdanPracticeViewModel.swift in Sources */,
+				3C57946D2CDCD6BF00AE647B /* DIContainer.swift in Sources */,
+				2B2F77AE2E46C7980027852A /* AnalyticsEvent.swift in Sources */,
+				2B0022492CF3260800C60C4F /* AppState.swift in Sources */,
+				3C719E432CEF532900D233DC /* HomeViewModel.swift in Sources */,
+				2BAA4F642D2B9C650022195E /* DynamicIconUseCase.swift in Sources */,
+				3C6EAFAA2CDD12DE003F2191 /* AccentUseCase.swift in Sources */,
+				4303C81F2CF7951800EB956A /* String+Extension.swift in Sources */,
+				2B96F4932CD131BD00933DE2 /* AccentEnum.swift in Sources */,
+				572AB1C62CEDC26200778B9B /* CustomJangdanListView.swift in Sources */,
+				572AB1C72CEDC26200778B9B /* EmptyJangdanListView.swift in Sources */,
+				3CB496402D637D28005A7E5F /* LiveActivityManager.swift in Sources */,
+				3C1EB3252CEC5D880030FB63 /* SobakSegmentView.swift in Sources */,
+				3C6EAFA42CDD1146003F2191 /* TemplateUseCase.swift in Sources */,
+				3CBC09002D4CBD6D008EBA78 /* MetronomeSettingControlView.swift in Sources */,
+				2B365D202CEEE0E700565F0D /* JangdanTypeSelectView.swift in Sources */,
+				2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */,
+				3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */,
+				5798393C2CEB22CD00866AD4 /* BasicJangdanData.swift in Sources */,
+				3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */,
+				2B8861192CC3E61F0036C6DB /* BakBarView.swift in Sources */,
+				2B2F77AB2E46B4280027852A /* AnalyticsServiceInterface.swift in Sources */,
+				2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */,
+				2B8861172CC3E4850036C6DB /* HanbaeBoardView.swift in Sources */,
+				3CF498732D12CCF000D361D6 /* BuiltInJangdanPracticeViewModel.swift in Sources */,
+				438226E12CAEC728007A3B23 /* TemplateImplement.swift in Sources */,
+				2B03B9202D7AD7A9000BF12A /* AppIntent.swift in Sources */,
+				2B03B9212D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
+				4303C81D2CF5995E00EB956A /* CustomJangdanPracticeView.swift in Sources */,
+				2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */,
+				2BB797B92CE6253B008173A5 /* JangdanSwiftData.swift in Sources */,
+				3C8F09702E081E25001FE7E9 /* FoldLottieView.swift in Sources */,
+				2B96F4912CD1302C00933DE2 /* MetronomeViewModel.swift in Sources */,
+				2B0BC7BB2CAE72D400FD72D5 /* SoundManager.swift in Sources */,
+				2B8861132CBD34D30036C6DB /* JangdanEnum.swift in Sources */,
+				2B88611B2CC3E62A0036C6DB /* BakBarSetView.swift in Sources */,
+				439ABF0A2CB825AE003F6343 /* MetronomeControlView.swift in Sources */,
+				2B2F77B02E46C8C80027852A /* MixpanelManager.swift in Sources */,
+				43774F652CB7FD5300F54EF7 /* BuiltinJangdanPracticeView.swift in Sources */,
+				3CF498772D12DFB100D361D6 /* CustomJangdanCreateViewModel.swift in Sources */,
+				2BBE523D2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift in Sources */,
+				3C1DB7092CABDA2400160970 /* JangdanEntity.swift in Sources */,
+				3C6EAFA82CDD1243003F2191 /* MetronomeOnOffUseCase.swift in Sources */,
+				2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */,
+				2BE9FC7D2D646EF400731A7C /* Notification+Extension.swift in Sources */,
+				2BE5ADF02CABC4570094F3C3 /* HanbaeApp.swift in Sources */,
+				43774F5C2CB7C1D000F54EF7 /* Font+Extension.swift in Sources */,
+				2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */,
+				435BE54D2CEF221A00CCA4CA /* Router.swift in Sources */,
+				2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */,
+				3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */,
+				2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */,
+				438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */,
+				2BAA4F662D2B9F6B0022195E /* DynamicIconImplement.swift in Sources */,
+				2BE5AE022CAC289C0094F3C3 /* PlaySoundInterface.swift in Sources */,
+				4349F8F42CEC85D5001FE727 /* MetronomeControlViewModel.swift in Sources */,
+				2BE5ADFC2CAC118F0094F3C3 /* MetronomeOnOffImplement.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3CB495F92D62185E005A7E5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B03B91B2D7AD7A9000BF12A /* AppIntent.swift in Sources */,
+				2B03B91D2D7AD7A9000BF12A /* HanbaeWidgetBundle.swift in Sources */,
+				2B03B91E2D7AD7A9000BF12A /* HanbaeWidgetLiveActivity.swift in Sources */,
+				2B64B3382E18E2480069E287 /* ShapeStyle+Extension.swift in Sources */,
+				2BE9FC7E2D646F4600731A7C /* Notification+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3CB496122D621860005A7E5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3CB495FC2D62185E005A7E5F /* HanbaeWidgetExtension */;
+			targetProxy = 3CB496112D621860005A7E5F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2BE5AD5A2C9EC9040094F3C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2BE5AD5B2C9EC9040094F3C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BE5AD5D2C9EC9040094F3C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hanbae/HanbaeDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hanbae/Resources/Asset/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hanbae/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "한배";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup Development Krabs.Macro";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2BE5AD5E2C9EC9040094F3C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hanbae/Hanbae.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hanbae/Resources/Asset/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hanbae/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "한배";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup AppStore Krabs.Macro";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3CB496162D621860005A7E5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanbaeWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanbaeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanbaeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup Development Krabs.Macro.HanbaeWidget";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3CB496172D621860005A7E5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2F77A42E45E01A0027852A /* env.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HanbaeWidgetExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = UV2PAA368V;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HanbaeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HanbaeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "AppGroup AppStore Krabs.Macro.HanbaeWidget";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BE5AD332C9EC9030094F3C3 /* Build configuration list for PBXProject "Hanbae" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE5AD5A2C9EC9040094F3C3 /* Debug */,
+				2BE5AD5B2C9EC9040094F3C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BE5AD5C2C9EC9040094F3C3 /* Build configuration list for PBXNativeTarget "Hanbae" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BE5AD5D2C9EC9040094F3C3 /* Debug */,
+				2BE5AD5E2C9EC9040094F3C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CB496152D621860005A7E5F /* Build configuration list for PBXNativeTarget "HanbaeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3CB496162D621860005A7E5F /* Debug */,
+				3CB496172D621860005A7E5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B2F77A62E45E1EA0027852A /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B2F77A52E45E1EA0027852A /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+		3CC35ABD2E082454005BF31A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CC35ABC2E082454005BF31A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2BE5AD302C9EC9030094F3C3 /* Project object */;
+}
