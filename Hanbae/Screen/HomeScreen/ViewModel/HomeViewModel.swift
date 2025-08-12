@@ -33,6 +33,8 @@ class HomeViewModel {
             }
         }
         .store(in: &cancelBag)
+        
+        self.loadBanners()
     }
     
     private(set) var state: State = .init()
@@ -41,6 +43,8 @@ class HomeViewModel {
         var customJangdanList: [JangdanSimpleType] = []
         var isBlinking: Bool = false
         var isCheckNewFeatureModal: Bool = false
+        var banners: [BannerInfo] = []
+        var currentBannerIndex: Int = 0
     }
 }
 
@@ -48,6 +52,7 @@ extension HomeViewModel {
     enum Action {
         case appEntered
         case fetchCustomJangdanData
+        case rotateBanner(to: Int)
     }
     
     func effect(action: Action) {
@@ -60,6 +65,18 @@ extension HomeViewModel {
             }.sorted {
                 $0.lastUpdate > $1.lastUpdate
             }
+        case let .rotateBanner(to):
+            guard 0..<self.state.banners.count ~= to else { return }
+            self.state.currentBannerIndex = to
         }
+    }
+}
+
+extension HomeViewModel {
+    private func loadBanners() {
+        self.state.banners = [
+            BannerInfo(imageResource: .jeongakBanner, urlString: "https://forms.gle/BxXn9vp7qWVQ6eoQA"),
+            BannerInfo(imageResource: .surveyBanner, urlString: "https://forms.gle/s2XejE86tq27x6KE9")
+        ]
     }
 }
