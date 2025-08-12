@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "SurveyBanner 1.png",
+      "filename" : "img_banner_250731.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "SurveyBanner 2.png",
+      "filename" : "img_banner_250731 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "SurveyBanner 3.png",
+      "filename" : "img_banner_250731 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
