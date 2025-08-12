@@ -33,16 +33,10 @@ struct HomeView: View {
                     ScrollView {
                         VStack(spacing: 24) {
                             // MARK: - 상단 배너
-                            if let surveyURL = URL(string: "https://forms.gle/BxXn9vp7qWVQ6eoQA") {
-                                Link(destination: surveyURL) {
-                                    Image(.jeongakBanner)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                }
-                                .padding(.top, 8)
-                                .padding(.horizontal, 16)
-                            }
+                            BannerCarouselView(banners: [
+                                BannerInfo(imageResource: .jeongakBanner, urlString: "https://forms.gle/BxXn9vp7qWVQ6eoQA"),
+                                BannerInfo(imageResource: .surveyBanner, urlString: "https://forms.gle/s2XejE86tq27x6KE9")
+                            ])
                             
                             // MARK: - 장단 리스트
                             VStack(spacing: 32) {
