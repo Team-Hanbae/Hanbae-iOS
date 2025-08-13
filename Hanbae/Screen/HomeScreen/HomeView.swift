@@ -33,15 +33,8 @@ struct HomeView: View {
                     ScrollView {
                         VStack(spacing: 24) {
                             // MARK: - 상단 배너
-                            if let surveyURL = URL(string: "https://forms.gle/BxXn9vp7qWVQ6eoQA") {
-                                Link(destination: surveyURL) {
-                                    Image(.jeongakBanner)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                }
-                                .padding(.top, 8)
-                                .padding(.horizontal, 16)
+                            BannerCarouselView(banners: viewModel.state.banners, currentIndex: viewModel.state.currentBannerIndex) { newIndex in
+                                viewModel.effect(action: .rotateBanner(to: newIndex))
                             }
                             
                             // MARK: - 장단 리스트
