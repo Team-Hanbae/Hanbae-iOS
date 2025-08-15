@@ -51,7 +51,7 @@ struct BannerCarouselView: View {
             HStack(spacing: 4) {
                 Text("\(currentIndex + 1)")
                     .foregroundStyle(.textDefault)
-                    .font(.Caption1_R)
+                    .font(.pretendardRegular(size: 12))
                 
                 Rectangle()
                     .frame(width: 1, height: 11)
@@ -59,7 +59,7 @@ struct BannerCarouselView: View {
                 
                 Text("\(banners.count)")
                     .foregroundStyle(.textTertiary)
-                    .font(.Caption1_R)
+                    .font(.pretendardRegular(size: 12))
                 
                 Image(systemName: "chevron.right")
                     .resizable()
