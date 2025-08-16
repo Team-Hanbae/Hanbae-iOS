@@ -48,28 +48,7 @@ struct BannerCarouselView: View {
             .scrollTargetBehavior(.paging)
             .scrollIndicators(.hidden)
             
-            HStack(spacing: 4) {
-                Text("\(currentIndex + 1)")
-                    .foregroundStyle(.textDefault)
-                    .font(.pretendardRegular(size: 12))
-                
-                Rectangle()
-                    .frame(width: 1, height: 11)
-                    .foregroundStyle(.textTertiary)
-                
-                Text("\(banners.count)")
-                    .foregroundStyle(.textTertiary)
-                    .font(.pretendardRegular(size: 12))
-                
-                Image(systemName: "chevron.right")
-                    .resizable()
-                    .frame(width: 4, height: 8)
-                    .foregroundStyle(.textDefault)
-            }
-            .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
-            .background(.backgroundDefault.opacity(0.6))
-            .cornerRadius(500)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 24))
+            pagenation
         }
         .frame(height: 120)
         .onReceive(timer) { _ in
@@ -79,6 +58,31 @@ struct BannerCarouselView: View {
                 onIndexChange(newIndex)
             }
         }
+    }
+    
+    private var pagenation: some View {
+        HStack(spacing: 4) {
+            Text("\(currentIndex + 1)")
+                .foregroundStyle(.textDefault)
+                .font(.pretendardRegular(size: 12))
+            
+            Rectangle()
+                .frame(width: 1, height: 11)
+                .foregroundStyle(.textTertiary)
+            
+            Text("\(banners.count)")
+                .foregroundStyle(.textTertiary)
+                .font(.pretendardRegular(size: 12))
+            
+            Image(systemName: "chevron.right")
+                .resizable()
+                .frame(width: 4, height: 8)
+                .foregroundStyle(.textDefault)
+        }
+        .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+        .background(.backgroundDefault.opacity(0.6))
+        .cornerRadius(500)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 24))
     }
 }
 
