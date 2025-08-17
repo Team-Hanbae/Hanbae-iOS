@@ -10,12 +10,17 @@ import Combine
 
 struct BannerCarouselView: View {
     let banners: [BannerInfo]
-    @State private var currentIndex: Int? = 0
+    @State private var currentIndex: Int?
     @State private var expandedBanners: [[BannerInfo]] = []
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     @State private var isViewAppear = false
+    
+    init(banners: [BannerInfo]) {
+        self.banners = banners
+        self.currentIndex = banners.count
+    }
     
     var body: some View {
         let expandedBanners = self.expandedBanners.flatMap { $0 }
@@ -56,7 +61,6 @@ struct BannerCarouselView: View {
         }
         .onAppear {
             self.expandedBanners = [banners, banners, banners]
-            currentIndex = banners.count
             isViewAppear = true
         }
         .onDisappear {
