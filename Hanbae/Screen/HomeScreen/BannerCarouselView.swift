@@ -65,7 +65,7 @@ struct BannerCarouselView: View {
     
     private var pagenation: some View {
         HStack(spacing: 4) {
-            Text("\(currentIndex! + 1)")
+            Text("\((currentIndex ?? 0) + 1)")
                 .foregroundStyle(.textDefault)
                 .font(.pretendardRegular(size: 12))
             
