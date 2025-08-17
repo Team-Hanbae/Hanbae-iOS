@@ -33,9 +33,7 @@ struct HomeView: View {
                     ScrollView {
                         VStack(spacing: 24) {
                             // MARK: - 상단 배너
-                            BannerCarouselView(banners: viewModel.state.banners, currentIndex: viewModel.state.currentBannerIndex) { newIndex in
-                                viewModel.effect(action: .rotateBanner(to: newIndex))
-                            }
+                            BannerCarouselView(banners: viewModel.state.banners)
                             
                             // MARK: - 장단 리스트
                             VStack(spacing: 32) {

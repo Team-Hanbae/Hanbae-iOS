@@ -44,7 +44,6 @@ class HomeViewModel {
         var isBlinking: Bool = false
         var isCheckNewFeatureModal: Bool = false
         var banners: [BannerInfo] = []
-        var currentBannerIndex: Int = 0
     }
 }
 
@@ -52,7 +51,6 @@ extension HomeViewModel {
     enum Action {
         case appEntered
         case fetchCustomJangdanData
-        case rotateBanner(to: Int)
     }
     
     func effect(action: Action) {
@@ -65,9 +63,6 @@ extension HomeViewModel {
             }.sorted {
                 $0.lastUpdate > $1.lastUpdate
             }
-        case let .rotateBanner(to):
-            guard 0..<self.state.banners.count ~= to else { return }
-            self.state.currentBannerIndex = to
         }
     }
 }

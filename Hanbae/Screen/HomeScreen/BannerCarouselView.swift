@@ -10,27 +10,20 @@ import Combine
 
 struct BannerCarouselView: View {
     let banners: [BannerInfo]
-    let currentIndex: Int
-    let onIndexChange: (Int) -> Void
+    @State private var currentIndex: Int? = 0
     
-    @State private var internalCurrentIndex: Int?
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
-    @State private var timerSubscription: AnyCancellable?
-    
-    private let repeatBannerCount = 21
-    
-    private var extendedBanners: [BannerInfo] {
-        Array(repeating: banners, count: repeatBannerCount).flatMap{ $0 }
-    }
+    @State private var isViewAppear = false
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView(.horizontal) {
                 HStack(spacing: 0) {
-                    ForEach(extendedBanners.indices, id: \.self) { index in
-                        if let surveyURL = URL(string: extendedBanners[index].urlString) {
+                    ForEach(banners.indices, id: \.self) { index in
+                        if let surveyURL = URL(string: banners[index].urlString) {
                             Link(destination: surveyURL) {
-                                Image(extendedBanners[index].imageResource)
+                                Image(banners[index].imageResource)
                                     .resizable()
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -43,48 +36,36 @@ struct BannerCarouselView: View {
                 }
                 .scrollTargetLayout()
             }
-            .scrollPosition(id: $internalCurrentIndex, anchor: .center)
+            .scrollPosition(id: $currentIndex, anchor: .center)
             .scrollTargetBehavior(.paging)
             .scrollIndicators(.hidden)
-            .onChange(of: internalCurrentIndex) { _, newValue in
-                if let newValue {
-                    onIndexChange(newValue % banners.count)
-                }
-            }
             
             pagenation
         }
         .frame(height: 120)
-        .onAppear {
-            var transaction = Transaction()
-            transaction.disablesAnimations = true
-            withTransaction(transaction) {
-                internalCurrentIndex = repeatBannerCount / 2 * banners.count + currentIndex
-            }
-            
-            self.timerSubscription = Timer.publish(every: 5, on: .main, in: .common)
-                .autoconnect()
-                .sink { _ in
-                    withAnimation {
-                        if let index = internalCurrentIndex {
-                            if index >= extendedBanners.count - 1 {
-                                self.internalCurrentIndex = repeatBannerCount / 2 * banners.count + currentIndex
-                            } else {
-                                self.internalCurrentIndex = index + 1
-                            }
-                        }
+        .onReceive(timer) { _ in
+            guard isViewAppear else { return }
+            withAnimation {
+                if let currentIndex {
+                    if currentIndex >= banners.count - 1 {
+                        self.currentIndex = 0
+                    } else {
+                        self.currentIndex = currentIndex + 1
                     }
                 }
+            }
+        }
+        .onAppear {
+            isViewAppear = true
         }
         .onDisappear {
-            self.timerSubscription?.cancel()
-            self.timerSubscription = nil
+            isViewAppear = false
         }
     }
     
     private var pagenation: some View {
         HStack(spacing: 4) {
-            Text("\(realCurrentIndex + 1)")
+            Text("\(currentIndex! + 1)")
                 .foregroundStyle(.textDefault)
                 .font(.pretendardRegular(size: 12))
             
@@ -106,16 +87,11 @@ struct BannerCarouselView: View {
         .cornerRadius(500)
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 24))
     }
-    
-    private var realCurrentIndex: Int {
-        guard let internalCurrentIndex else { return 0 }
-        return internalCurrentIndex % banners.count
-    }
 }
 
 #Preview {
     BannerCarouselView(banners: [
         BannerInfo(imageResource: .jeongakBanner, urlString: "https://forms.gle/BxXn9vp7qWVQ6eoQA"),
         BannerInfo(imageResource: .surveyBanner, urlString: "https://forms.gle/BxXn9vp7qWVQ6eoQA"),
-    ], currentIndex: 0, onIndexChange: { i in })
+    ])
 }
