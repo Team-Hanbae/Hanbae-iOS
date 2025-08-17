@@ -11,19 +11,22 @@ import Combine
 struct BannerCarouselView: View {
     let banners: [BannerInfo]
     @State private var currentIndex: Int? = 0
+    @State private var expandedBanners: [[BannerInfo]] = []
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     @State private var isViewAppear = false
     
     var body: some View {
+        let expandedBanners = self.expandedBanners.flatMap { $0 }
+        
         ZStack(alignment: .bottomTrailing) {
             ScrollView(.horizontal) {
                 HStack(spacing: 0) {
-                    ForEach(banners.indices, id: \.self) { index in
-                        if let surveyURL = URL(string: banners[index].urlString) {
+                    ForEach(expandedBanners.indices, id: \.self) { index in
+                        if let surveyURL = URL(string: expandedBanners[index].urlString) {
                             Link(destination: surveyURL) {
-                                Image(banners[index].imageResource)
+                                Image(expandedBanners[index].imageResource)
                                     .resizable()
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -46,26 +49,45 @@ struct BannerCarouselView: View {
         .onReceive(timer) { _ in
             guard isViewAppear else { return }
             withAnimation {
-                if let currentIndex {
-                    if currentIndex >= banners.count - 1 {
-                        self.currentIndex = 0
-                    } else {
-                        self.currentIndex = currentIndex + 1
-                    }
+                if let currentIndex, 0..<expandedBanners.count - 1 ~= currentIndex {
+                    self.currentIndex = currentIndex + 1
                 }
             }
         }
         .onAppear {
+            self.expandedBanners = [banners, banners, banners]
+            currentIndex = banners.count
             isViewAppear = true
         }
         .onDisappear {
             isViewAppear = false
         }
+        .onChange(of: currentIndex) { _, newIndex in
+            guard let newIndex else { return }
+            let bannerCount = banners.count
+            if newIndex / bannerCount == 0 && newIndex % bannerCount == bannerCount - 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.expandedBanners.removeLast()
+                    self.expandedBanners.insert(banners, at: 0)
+                    self.currentIndex = newIndex + bannerCount
+                }
+                return
+            }
+            
+            if newIndex / bannerCount == 2 && newIndex % bannerCount == 0 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.expandedBanners.removeFirst()
+                    self.expandedBanners.append(banners)
+                    self.currentIndex = newIndex - bannerCount
+                }
+                return
+            }
+        }
     }
     
     private var pagenation: some View {
         HStack(spacing: 4) {
-            Text("\((currentIndex ?? 0) + 1)")
+            Text("\((currentIndex ?? 0) % banners.count + 1)")
                 .foregroundStyle(.textDefault)
                 .font(.pretendardRegular(size: 12))
             
