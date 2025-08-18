@@ -69,7 +69,7 @@ struct MetronomeControlView: View {
                             .matchedGeometryEffect(id: "minusButton", in: animationNamespace)
                         
                         Text("\(self.viewModel.state.bpm)")
-                            .font(.custom("Pretendard-Medium", fixedSize: 44))
+                            .font(.pretendardMedium(fixedSize: 44))
                             .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
                             .frame(width: 100)
                             .background(self.viewModel.state.isTapping ? .backgroundDefault : .clear)
@@ -144,7 +144,7 @@ struct MetronomeControlView: View {
                                 .matchedGeometryEffect(id: "minusButton", in: animationNamespace)
                             
                             Text("\(self.viewModel.state.bpm)")
-                                .font(.custom("Pretendard-Medium", fixedSize: 64))
+                                .font(.pretendardMedium(fixedSize: 64))
                                 .foregroundStyle(self.viewModel.state.isTapping ? .textBPMSearch : .textSecondary)
                                 .frame(width: 120, height: 60)
                                 .padding(8)
@@ -205,7 +205,7 @@ struct MetronomeControlView: View {
                             .matchedGeometryEffect(id: "startButton", in: animationNamespace)
                     } else {
                         Text(self.viewModel.state.isPlaying ? "멈춤" : "시작")
-                            .font(.custom("Pretendard-Medium", fixedSize: 32))
+                            .font(.pretendardMedium(fixedSize: 32))
                             .kerning(32 * 0.04)
                             .foregroundStyle(self.viewModel.state.isPlaying ? .textButtonPrimary : .textButtonEmphasis)
                             .frame(maxWidth: .infinity)
@@ -219,7 +219,7 @@ struct MetronomeControlView: View {
                     }
                     
                     Text(isFold || self.viewModel.state.isTapping ? "탭" : "빠르기\n찾기")
-                        .font(!isFold && self.viewModel.state.isTapping ? .custom("Pretendard-Regular", size: 28) : .custom("Pretendard-Regular", size: 17))
+                        .font(!isFold && self.viewModel.state.isTapping ? .pretendardRegular(fixedSize: 28) : .pretendardRegular(fixedSize: 17))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(self.viewModel.state.isTapping ? .textButtonEmphasis : .textButtonPrimary)
                         .frame(width: isFold ? 74 : 112, height: 74)
