@@ -13,7 +13,8 @@ struct BannerCarouselView: View {
     @State private var currentIndex: Int?
     @State private var expandedBanners: [[BannerInfo]] = []
     
-    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    @State private var currentIndexSubject: PassthroughSubject<Int, Never> = .init()
+    @State private var autoScrollSubscription: AnyCancellable?
     
     @State private var isViewAppear = false
     
@@ -46,25 +47,35 @@ struct BannerCarouselView: View {
             pagenation
         }
         .frame(height: 120)
-        .onReceive(timer) { _ in
-            guard isViewAppear else { return }
-            guard let currentIndex else { return }
-            guard expandedBanners.count > 1 else { return }
-            guard 0..<expandedBanners.count - 1 ~= currentIndex else { return }
-            withAnimation {
-                self.currentIndex = currentIndex + 1
-            }
-        }
         .onAppear {
             self.expandedBanners = [banners, banners, banners]
             self.currentIndex = banners.count
             isViewAppear = true
+            
+            autoScrollSubscription = currentIndexSubject
+                .debounce(for: .seconds(5), scheduler: DispatchQueue.main)
+                .sink { index in
+                    let bannersCount = self.expandedBanners.flatMap({ $0 }).count
+                    guard isViewAppear else { return }
+                    guard let currentIndex else { return }
+                    guard bannersCount > 1 else { return }
+                    guard 0..<bannersCount - 1 ~= currentIndex else { return }
+                    withAnimation {
+                        self.currentIndex = index + 1
+                    }
+                }
+            if let currentIndex {
+                currentIndexSubject.send(currentIndex)
+            }
         }
         .onDisappear {
             isViewAppear = false
+            autoScrollSubscription?.cancel()
+            autoScrollSubscription = nil
         }
         .onChange(of: currentIndex) { _, newIndex in
             guard let newIndex else { return }
+            currentIndexSubject.send(newIndex)
             let bannerCount = banners.count
             if newIndex / bannerCount == 0 && newIndex % bannerCount == bannerCount - 1 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
