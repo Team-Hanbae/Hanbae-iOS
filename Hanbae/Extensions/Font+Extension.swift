@@ -24,6 +24,22 @@ extension Font {
         return Font.custom("Pretendard-SemiBold", size: size)
     }
     
+    static func pretendardMedium(fixedSize: CGFloat) -> Font {
+        return Font.custom("Pretendard-Medium", fixedSize: fixedSize)
+    }
+    
+    static func pretendardRegular(fixedSize: CGFloat) -> Font {
+        return Font.custom("Pretendard-Regular", fixedSize: fixedSize)
+    }
+    
+    static func pretendardBold(fixedSize: CGFloat) -> Font {
+        return Font.custom("Pretendard-Bold", fixedSize: fixedSize)
+    }
+    
+    static func pretendardSemiBold(fixedSize: CGFloat) -> Font {
+        return Font.custom("Pretendard-SemiBold", fixedSize: fixedSize)
+    }
+    
     static var LargeTitle_R: Font {
         return pretendardRegular(size: 34)
     }
