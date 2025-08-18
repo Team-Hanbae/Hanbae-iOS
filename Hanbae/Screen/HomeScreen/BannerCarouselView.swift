@@ -17,11 +17,6 @@ struct BannerCarouselView: View {
     
     @State private var isViewAppear = false
     
-    init(banners: [BannerInfo]) {
-        self.banners = banners
-        self.currentIndex = banners.count
-    }
-    
     var body: some View {
         let expandedBanners = self.expandedBanners.flatMap { $0 }
         
@@ -53,14 +48,16 @@ struct BannerCarouselView: View {
         .frame(height: 120)
         .onReceive(timer) { _ in
             guard isViewAppear else { return }
+            guard let currentIndex else { return }
+            guard expandedBanners.count > 1 else { return }
+            guard 0..<expandedBanners.count - 1 ~= currentIndex else { return }
             withAnimation {
-                if let currentIndex, 0..<expandedBanners.count - 1 ~= currentIndex {
-                    self.currentIndex = currentIndex + 1
-                }
+                self.currentIndex = currentIndex + 1
             }
         }
         .onAppear {
             self.expandedBanners = [banners, banners, banners]
+            self.currentIndex = banners.count
             isViewAppear = true
         }
         .onDisappear {
