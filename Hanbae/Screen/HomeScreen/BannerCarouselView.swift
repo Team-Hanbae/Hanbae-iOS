@@ -17,6 +17,7 @@ struct BannerCarouselView: View {
     @State private var autoScrollSubscription: AnyCancellable?
     
     @State private var isViewAppear = false
+    @State private var didInitialized = false
     
     var body: some View {
         let expandedBanners = self.expandedBanners.flatMap { $0 }
@@ -49,7 +50,10 @@ struct BannerCarouselView: View {
         .frame(height: 120)
         .onAppear {
             self.expandedBanners = [banners, banners, banners]
-            self.currentIndex = banners.count
+            if !didInitialized {
+                self.currentIndex = banners.count
+                didInitialized = true
+            }
             isViewAppear = true
             
             autoScrollSubscription = currentIndexSubject
