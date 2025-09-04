@@ -34,6 +34,14 @@ struct MetronomeSettingControlView: View {
             }
             .buttonStyle(MetronomeSettingToggleButtonStyle())
             
+            Button {
+                
+            } label: {
+                Image(.precount)
+                    .aspectRatio(contentMode: .fit)
+            }
+            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            
             Menu {
                 ForEach(SoundType.allCases, id: \.rawValue) { sound in
                     Button {
@@ -47,14 +55,11 @@ struct MetronomeSettingControlView: View {
                     }
                 }
             } label: {
-                HStack(spacing: 0) {
-                    Image(systemName: "speaker.wave.2.fill")
-                    
-                    Text(self.appState.selectedSound.name)
-                        .font(.Body_R)
-                }
+                Text(self.appState.selectedSound.name)
+                    .font(.Body_R)
             }
             .buttonStyle(MetronomeSettingMenuButtonStyle())
+            .frame(width: 70)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
