@@ -26,6 +26,7 @@ class AppState {
         self.numberOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numberOfEnteredJangdan")
         self.newFeatureModal = UserDefaults.standard.bool(forKey: "newFeatureModal")
         self.newFeatureBadge = UserDefaults.standard.bool(forKey: "newFeatureBadge")
+        self.precount = UserDefaults.standard.bool(forKey: "precount")
     }
     
     // 최초실행여부
@@ -43,6 +44,9 @@ class AppState {
     // 신규 기능 알림
     private(set) var newFeatureModal: Bool
     private(set) var newFeatureBadge: Bool
+    
+    // Precount
+    private(set) var precount: Bool
 }
 
 extension AppState {
@@ -76,4 +80,8 @@ extension AppState {
         UserDefaults.standard.set(true, forKey: "newFeatureBadge")
     }
     
+    func togglePrecount() {
+        self.precount.toggle()
+        UserDefaults.standard.set(self.precount, forKey: "newFeatureBadge")
+    }
 }

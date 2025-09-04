@@ -14,15 +14,17 @@ class MetronomeViewModel {
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var accentUseCase: AccentUseCase
     private var tempoUseCase: TempoUseCase
+    private var appState: AppState
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, tempoUseCase: TempoUseCase, accentUseCase: AccentUseCase, appState: AppState) {
         
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         self.tempoUseCase = tempoUseCase
         self.accentUseCase = accentUseCase
+        self.appState = appState
         
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
@@ -83,6 +85,7 @@ extension MetronomeViewModel {
         case changeAccent(row: Int, daebak: Int, sobak: Int, newAccent: Accent)
         case disableEstimateBpm
         case changeBlinkOnOff
+        case togglePrecount
         case changeSoundType
     }
     
@@ -107,6 +110,8 @@ extension MetronomeViewModel {
         case .changeBlinkOnOff:
             self.state.isBlinkOn.toggle()
             self.metronomeOnOffUseCase.changeBlink()
+        case .togglePrecount:
+            self.appState.togglePrecount()
         case .changeSoundType:
             self.metronomeOnOffUseCase.setSoundType()
         }

@@ -35,7 +35,7 @@ struct MetronomeSettingControlView: View {
             .buttonStyle(MetronomeSettingToggleButtonStyle())
             
             Button {
-                
+                self.viewModel.effect(action: .togglePrecount)
             } label: {
                 Image(.precount)
                     .aspectRatio(contentMode: .fit)
