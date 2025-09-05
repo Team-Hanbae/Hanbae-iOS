@@ -40,7 +40,7 @@ struct MetronomeSettingControlView: View {
                 Image(.precount)
                     .aspectRatio(contentMode: .fit)
             }
-            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.precount))
             
             Menu {
                 ForEach(SoundType.allCases, id: \.rawValue) { sound in

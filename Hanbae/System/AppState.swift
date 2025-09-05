@@ -82,6 +82,6 @@ extension AppState {
     
     func togglePrecount() {
         self.precount.toggle()
-        UserDefaults.standard.set(self.precount, forKey: "newFeatureBadge")
+        UserDefaults.standard.set(self.precount, forKey: "precount")
     }
 }
