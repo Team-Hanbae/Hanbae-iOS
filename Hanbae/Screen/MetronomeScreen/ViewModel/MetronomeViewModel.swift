@@ -75,6 +75,7 @@ class MetronomeViewModel {
         var currentSobak: Int = 0
         var currentDaebak: Int = 0
         var currentRow: Int = 0
+        var precount: Int? = nil
     }
 }
 
