@@ -37,7 +37,8 @@ struct HanbaeBoardView: View {
                             daebakIndex: daebakIndex + prefixSumList[row],
                             isDaebakOnly: !isSobakOn,
                             isPlaying: isPlaying,
-                            activeIndex: !disabled && currentRow == row && currentDaebak == daebakIndex ? currentSobak : nil
+                            activeIndex: currentRow == row && currentDaebak == daebakIndex ? currentSobak : nil,
+                            disabled: disabled
                         ) { sobakIndex, newAccent in
                             tabBakBarEvent(row, daebakIndex, sobakIndex, newAccent)
                         }
