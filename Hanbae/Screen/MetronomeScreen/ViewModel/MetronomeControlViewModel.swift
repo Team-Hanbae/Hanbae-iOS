@@ -99,7 +99,7 @@ extension MetronomeControlViewModel {
                 #endif
             } else {
                 self.startTime = .now
-                self.metronomeOnOffUseCase.play()
+                self.metronomeOnOffUseCase.play(withPrecount: self.appState.precount)
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)

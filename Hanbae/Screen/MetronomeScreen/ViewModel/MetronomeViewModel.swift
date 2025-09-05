@@ -60,6 +60,12 @@ class MetronomeViewModel {
             }
         }
         .store(in: &self.cancelBag)
+        
+        self.metronomeOnOffUseCase.precountPublisher.sink { [weak self] precount in
+            guard let self else { return }
+            self.state.precount = precount
+        }
+        .store(in: &self.cancelBag)
     }
     
     private(set) var state: State = .init()
