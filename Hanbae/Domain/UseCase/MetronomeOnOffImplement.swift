@@ -115,12 +115,15 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.currentBeatIndex = 0
         self.initialDaeSoBakIndex()
         
+        // play 여부 publish
+        self.isPlayingSubject.send(true)
+        
         if withPrecount {
             var precount: Int = 3
             let deadline: DispatchTime = .now() + 60 / self.rawBpm
             self.precountSubject.send(precount)
             precount -= 1
-            self.soundManager.beep(.medium)
+            self.soundManager.playCountSound()
             
             self.timer = DispatchSource.makeTimerSource(queue: self.queue)
             self.timer?.schedule(deadline: deadline, repeating: 60 / self.rawBpm, leeway: .nanoseconds(1))
@@ -139,7 +142,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
                 } else {
                     self.precountSubject.send(precount)
                     precount -= 1
-                    self.soundManager.beep(.medium)
+                    self.soundManager.playCountSound()
                 }
             }
             self.timer?.resume()
@@ -161,9 +164,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
             self.timerHandler()
         }
         
-        // play 여부 publish
-        self.isPlayingSubject.send(true)
-        
         // Timer 실행
         self.timer?.resume()
     }
@@ -175,6 +175,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.timer = nil
         // stop 여부 publish
         self.isPlayingSubject.send(false)
+        self.precountSubject.send(nil)
         self.tickSubject.send((0, 0, 0))
     }
     
