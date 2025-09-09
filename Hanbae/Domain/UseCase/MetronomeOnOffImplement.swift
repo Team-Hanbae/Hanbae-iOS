@@ -66,7 +66,12 @@ class MetronomeOnOffImplement {
             let averageSobakCount = Double(bakCount) / Double(daebakCount)
             
             self.rawBpm = Double(jangdanEntity.bpm)
+            
+            // BPM 갱신마다 타이머 스케줄링
+            let nextPlayTime = self.lastPlayTime.addingTimeInterval(self.interval)
             self.bpm = Double(jangdanEntity.bpm) * averageSobakCount
+            let nextStartTime = nextPlayTime.timeIntervalSince(.now)
+            self.timer?.schedule(deadline: .now() + nextStartTime, repeating: self.interval, leeway: .nanoseconds(1))
         }
         .store(in: &self.cancelBag)
         
