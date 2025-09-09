@@ -14,6 +14,7 @@ struct HanbaeBoardView: View {
     var currentRow: Int
     var currentDaebak: Int
     var currentSobak: Int
+    var disabled: Bool
     var tabBakBarEvent: (Int, Int, Int, Accent) -> Void
     
     // 대박 누적합 미리 연산
@@ -36,7 +37,8 @@ struct HanbaeBoardView: View {
                             daebakIndex: daebakIndex + prefixSumList[row],
                             isDaebakOnly: !isSobakOn,
                             isPlaying: isPlaying,
-                            activeIndex: currentRow == row && currentDaebak == daebakIndex ? currentSobak : nil
+                            activeIndex: currentRow == row && currentDaebak == daebakIndex ? currentSobak : nil,
+                            disabled: disabled
                         ) { sobakIndex, newAccent in
                             tabBakBarEvent(row, daebakIndex, sobakIndex, newAccent)
                         }
@@ -53,5 +55,5 @@ struct HanbaeBoardView: View {
         jangdan: [[[.strong, .weak],
                    [.weak, .medium, .medium],
                    [.weak, .weak],
-                   [.weak, .weak, .weak]]], isSobakOn: true, isPlaying: true, currentRow: 0, currentDaebak: 1, currentSobak: 2) { _, _, _, _ in }
+                   [.weak, .weak, .weak]]], isSobakOn: true, isPlaying: true, currentRow: 0, currentDaebak: 1, currentSobak: 2, disabled: false) { _, _, _, _ in }
 }

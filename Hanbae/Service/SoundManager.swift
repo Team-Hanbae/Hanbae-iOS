@@ -21,12 +21,18 @@ class SoundManager {
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundType: SoundType
     
+    private let countSoundPlayerNode: AVAudioPlayerNode = .init()
+    private var countSoundBuffer: AVAudioPCMBuffer?
+    
     private var publisher: PassthroughSubject<Void, Never> = .init()
     
     init?(appState: AppState) {
         self.appState = appState
         self.soundType = .clave
         self.engine = AVAudioEngine()
+        
+        let countSoundFileName: String = "clave_medium"
+        self.countSoundBuffer = try? loadAudioFile(countSoundFileName)
         
         // AudioSession 설정
         do {
@@ -48,6 +54,7 @@ class SoundManager {
         
         // 전화 송/수신 시 interrupt 여부를 감지를 위한 notificationCenter 생성
         self.setupNotifications()
+        
     }
     
     private func setupAudioNodes() {
@@ -57,6 +64,9 @@ class SoundManager {
             self.engine.attach(playerNode)
             self.engine.connect(playerNode, to: self.engine.mainMixerNode, format: nil)
         }
+        
+        self.engine.attach(countSoundPlayerNode)
+        self.engine.connect(countSoundPlayerNode, to: self.engine.mainMixerNode, format: nil)
     }
     
     @objc private func handleInterruption(notification: Notification) {
@@ -157,6 +167,12 @@ extension SoundManager: PlaySoundInterface {
         
         playerNode.scheduleBuffer(buffer, at: nil, options: .interrupts)
         playerNode.play()
+    }
+    
+    func playCountSound() {
+        guard let countSoundBuffer else { return }
+        countSoundPlayerNode.scheduleBuffer(countSoundBuffer, at: nil, options: .interrupts)
+        countSoundPlayerNode.play()
     }
     
     func setSoundType() {
