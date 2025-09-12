@@ -45,9 +45,9 @@ enum Jangdan: String, CaseIterable {
         case .세마치: return "세마치"
         case .좌질굿: return "좌질굿"
         // 정악
-        case .상령산: return "상령산"
-        case .세령산: return "세령산"
-        case .타령: return "타령"
+        case .상령산: return "상령산, 중령산"
+        case .세령산: return "세령산, 가락덜이"
+        case .타령: return "타령, 군악"
         case .취타: return "취타"
         case .절화: return "절화"
         case .긴염불: return "긴염불"

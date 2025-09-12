@@ -144,7 +144,7 @@ struct BasicJangdanData {
     )
     
     static let jwajilgut = JangdanEntity(
-        name: "사물놀이 - 좌질굿",
+        name: "좌질굿",
         bpm: 100,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
@@ -159,8 +159,8 @@ struct BasicJangdanData {
              JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
              JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium]),
              JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium])],
-            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none])],
-            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none])],
         ],
         jangdanType: .좌질굿
     )
