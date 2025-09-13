@@ -48,6 +48,7 @@ struct MetronomeView: View {
                 if let precount = viewModel.state.precount {
                     Text("\(precount)")
                         .font(.pretendardBold(fixedSize: 100))
+                        .foregroundStyle(.common100)
                 }
             }
             

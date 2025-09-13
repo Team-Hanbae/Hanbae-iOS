@@ -84,7 +84,7 @@ struct CustomJangdanPracticeView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.textDefault)
+                        .foregroundColor(.labelPrimary)
                 }
             }
             
@@ -93,7 +93,7 @@ struct CustomJangdanPracticeView: View {
             ToolbarItem(placement: .principal) {
                 Text("\(self.jangdanType) | \(self.jangdanName)")
                     .font(.Body_R)
-                    .foregroundStyle(.textSecondary)
+                    .foregroundStyle(.labelDefault)
                     .lineLimit(1)
                     .truncationMode(.tail)
                     .frame(width: 200)
@@ -107,7 +107,7 @@ struct CustomJangdanPracticeView: View {
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
+                            .foregroundStyle(.labelPrimary)
                     }
                     .alert("장단 설정 초기화", isPresented: $initialJangdanAlert) {
                         HStack{
@@ -153,7 +153,7 @@ struct CustomJangdanPracticeView: View {
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
+                            .foregroundStyle(.labelPrimary)
                     }
                     .alert("다른 이름으로 저장", isPresented: $exportJandanAlert) {
                         TextField("이름", text: $inputCustomJangdanName)
@@ -233,7 +233,7 @@ struct CustomJangdanPracticeView: View {
                 }
             }
         }
-        .toolbarBackground(.backgroundNavigationBar, for: .navigationBar)
+        .toolbarBackground(.backgroundMute, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarTitleDisplayMode(.inline)
     }

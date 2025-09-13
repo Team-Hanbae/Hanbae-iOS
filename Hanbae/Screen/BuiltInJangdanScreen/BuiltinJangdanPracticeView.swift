@@ -66,7 +66,7 @@ struct BuiltinJangdanPracticeView: View {
                 }) {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.textDefault)
+                        .foregroundColor(.labelPrimary)
                 }
             }
             
@@ -74,7 +74,7 @@ struct BuiltinJangdanPracticeView: View {
             ToolbarItem(placement: .principal) {
                 Text(self.jangdanName)
                     .font(.Body_R)
-                    .foregroundStyle(.textSecondary)
+                    .foregroundStyle(.labelDefault)
                     .padding(.trailing, 6)
             }
             
@@ -86,7 +86,7 @@ struct BuiltinJangdanPracticeView: View {
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
+                            .foregroundStyle(.labelPrimary)
                     }
                     .alert("장단 설정 초기화", isPresented: $initialJangdanAlert) {
                         HStack{
@@ -109,7 +109,7 @@ struct BuiltinJangdanPracticeView: View {
                     } label: {
                         Image(.save)
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textSecondary)
+                            .foregroundStyle(.labelPrimary)
                     }
                     .alert("나만의 장단으로 저장", isPresented: $exportJandanAlert) {
                         TextField("이름", text: $inputCustomJangdanName)
@@ -147,7 +147,7 @@ struct BuiltinJangdanPracticeView: View {
                 }
             }
         }
-        .toolbarBackground(.backgroundNavigationBar, for: .navigationBar)
+        .toolbarBackground(.backgroundMute, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarTitleDisplayMode(.inline)
     }
