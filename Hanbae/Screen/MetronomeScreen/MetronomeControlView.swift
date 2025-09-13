@@ -194,10 +194,10 @@ struct MetronomeControlView: View {
                     if isFold {
                         Image(systemName: viewModel.state.isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 24))
-                            .foregroundStyle(self.viewModel.state.isPlaying ? .labelInverse : .labelPrimary)
+                            .foregroundStyle(self.viewModel.state.isPlaying ? .labelPrimary : .labelInverse)
                             .frame(maxWidth: .infinity)
                             .frame(height: 74)
-                            .background(self.viewModel.state.isPlaying ? .buttonInverse : .buttonDefault)
+                            .background(self.viewModel.state.isPlaying ? .buttonDefault : .buttonInverse)
                             .clipShape(RoundedRectangle(cornerRadius: 100))
                             .onTapGesture {
                                 self.viewModel.effect(action: .changeIsPlaying)
@@ -207,10 +207,10 @@ struct MetronomeControlView: View {
                         Text(self.viewModel.state.isPlaying ? "멈춤" : "시작")
                             .font(.pretendardMedium(fixedSize: 32))
                             .kerning(32 * 0.04)
-                            .foregroundStyle(self.viewModel.state.isPlaying ? .labelInverse : .labelPrimary)
+                            .foregroundStyle(self.viewModel.state.isPlaying ? .labelPrimary : .labelInverse)
                             .frame(maxWidth: .infinity)
                             .frame(height: 74)
-                            .background(self.viewModel.state.isPlaying ? .buttonInverse : .buttonDefault)
+                            .background(self.viewModel.state.isPlaying ? .buttonDefault : .buttonInverse)
                             .clipShape(RoundedRectangle(cornerRadius: 100))
                             .onTapGesture {
                                 self.viewModel.effect(action: .changeIsPlaying)

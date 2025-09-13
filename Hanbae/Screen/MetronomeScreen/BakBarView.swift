@@ -59,7 +59,7 @@ struct BakBarView: View {
                         .foregroundColor(
                             isActive
                             ? .bakBarNumberDefault
-                            : accent == .strong ? .bakBarNumberInactive : geo.size.height < 100 && accent == .medium ? .bakBarNumberInactive : .bakBarNumberInactive
+                            : accent == .strong ? .bakBarNumberAlternative : geo.size.height < 100 && accent == .medium ? .bakBarNumberAlternative : .bakBarNumberInactive
                         )
                 }
             }
