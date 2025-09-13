@@ -13,12 +13,12 @@ struct EmptyJangdanListView: View {
             VStack(alignment: .leading, spacing: 8) {
                 
                 Text("아직 저장한 장단이 없어요")
-                    .font(.Subheadline_R) // SwiftUI 문법에서 소문자로 시작
-                    .foregroundColor(.textTertiary)
+                    .font(.Subheadline_R)
+                    .foregroundColor(.labelSecondary)
                 
                 Text("장단 만들러 가기")
                     .font(.Title3_R)
-                    .foregroundColor(.textSecondary)
+                    .foregroundColor(.labelDefault)
                 
             }
             
@@ -27,12 +27,12 @@ struct EmptyJangdanListView: View {
             Image(systemName: "chevron.right")
                 .fontWeight(.semibold)
                 .frame(width: 20, height: 22)
-                .foregroundColor(.textTertiary)
+                .foregroundColor(.labelSecondary)
             
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
-        .background(.backgroundCard)
+        .background(.backgroundSubtle)
         .cornerRadius(16)
     }
 }
