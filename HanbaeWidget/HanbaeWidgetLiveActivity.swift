@@ -32,10 +32,11 @@ struct HanbaeWidgetLiveActivity: Widget {
                     VStack(spacing: 0) {
                         Text("빠르기")
                             .font(.footnote)
-                            .foregroundStyle(.textSecondary)
+                            .foregroundStyle(.labelSecondary)
                         Text("\(context.state.bpm)")
                             .font(.system(size: 40))
                             .fontWeight(.medium)
+                            .foregroundStyle(.labelDefault)
                     }
                     
                     Rectangle()
@@ -56,11 +57,11 @@ struct HanbaeWidgetLiveActivity: Widget {
                         ZStack {
                             Circle()
                                 .frame(width: 50, height: 50)
-                                .foregroundStyle(Color.orange900)
+                                .foregroundStyle(.orange8)
                             Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
                                 .aspectRatio(contentMode: .fit)
                                 .font(.system(size: 24))
-                                .foregroundStyle(Color.buttonActive)
+                                .foregroundStyle(.orange13)
                         }
                     }
                     .buttonStyle(.plain)
@@ -82,7 +83,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                             Spacer()
                             Text("빠르기")
                                 .font(.footnote)
-                                .foregroundStyle(.textSecondary)
+                                .foregroundStyle(.labelSecondary)
                             Text("\(context.state.bpm)")
                                 .font(.system(size: 40))
                                 .fontWeight(.medium)
@@ -104,11 +105,11 @@ struct HanbaeWidgetLiveActivity: Widget {
                             ZStack {
                                 Circle()
                                     .frame(width: 50, height: 50)
-                                    .foregroundStyle(Color.orange900)
+                                    .foregroundStyle(.orange8)
                                 Image(systemName: context.state.isPlaying ? "pause.fill": "play.fill")
                                     .aspectRatio(contentMode: .fit)
                                     .font(.system(size: 24))
-                                    .foregroundStyle(Color.buttonActive)
+                                    .foregroundStyle(.orange13)
                             }
                         }
                         .buttonStyle(.plain)
@@ -125,6 +126,7 @@ struct HanbaeWidgetLiveActivity: Widget {
                             Text("\(context.state.jangdanName)")
                                 .lineLimit(1)
                         }
+                        .foregroundStyle(.labelDefault)
                         .padding(.leading, 16)
                         Spacer()
                     }

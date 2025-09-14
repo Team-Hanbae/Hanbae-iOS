@@ -58,23 +58,23 @@ struct CustomJangdanListView: View {
                                 VStack(alignment: .leading, spacing: 12) {
                                     Text(jangdan.type.name)
                                         .font(.Subheadline_R)
-                                        .foregroundStyle(.textSecondary)
+                                        .foregroundStyle(.labelDefault)
                                     
                                     Text(jangdan.name)
                                         .font(.Title3_R)
-                                        .foregroundStyle(.textDefault)
+                                        .foregroundStyle(.labelPrimary)
                                 }
                                 
                                 Spacer()
                                 
                                 Text(jangdan.lastUpdate.format("yyyy.MM.dd."))
                                     .font(.Subheadline_R)
-                                    .foregroundStyle(.textSecondary)
+                                    .foregroundStyle(.labelDefault)
                             }
                             .animation(.easeInOut, value: editMode?.wrappedValue)
                             .padding(.horizontal, 24)
                             .padding(.vertical, 20)
-                            .background(.backgroundCard)
+                            .background(.backgroundMute)
                             .onTapGesture {
                                 router.push(.customJangdanPractice(jangdanName: jangdan.name, jangdanType: jangdan.type.rawValue))
                             }
@@ -123,7 +123,7 @@ struct CustomJangdanListView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.textDefault)
+                        .foregroundColor(.labelPrimary)
                 }
             }
             
@@ -131,7 +131,7 @@ struct CustomJangdanListView: View {
             ToolbarItem(placement: .principal) {
                 Text("내가 저장한 장단")
                     .font(.Body_R)
-                    .foregroundStyle(.textSecondary)
+                    .foregroundStyle(.labelDefault)
             }
             
             // MARK: - EditMode
@@ -145,15 +145,15 @@ struct CustomJangdanListView: View {
                     } label: {
                         Image(systemName: "plus")
                             .aspectRatio(contentMode: .fit)
-                            .foregroundStyle(.textDefault)
+                            .foregroundStyle(.labelPrimary)
                     }
                     
                     EditButton()
-                        .foregroundStyle(.textDefault)
+                        .foregroundStyle(.labelPrimary)
                 }
             }
         }
-        .toolbarBackground(.backgroundNavigationBar, for: .navigationBar)
+        .toolbarBackground(.backgroundMute, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()

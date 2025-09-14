@@ -17,24 +17,24 @@ struct JangdanTypeSelectView: View {
             Text("만들 장단의\n종류를 선택해주세요.")
                 .multilineTextAlignment(.leading)
                 .font(.Title1_R)
-                .foregroundStyle(.textDefault)
+                .foregroundStyle(.labelPrimary)
                 .padding(.leading, 20)
                 .padding(.top, 36)
                 .padding(.bottom, 24)
             
             List {
-                // TODO: - 악기 종류에 따라 표시되는 장단 리스트 달라야함
                 ForEach(Jangdan.allCases, id: \.self) { jangdan in
                     Button {
                         router.push(.customJangdanCreate(jangdanName: jangdan.name))
                     } label: {
                         Text(jangdan.name)
                             .padding(.vertical, 9)
+                            .foregroundStyle(.labelPrimary)
                     }
                 }
             }
             .contentMargins(.top, 0, for: .scrollContent)
-            .foregroundStyle(.primary)
+            .foregroundStyle(.backgroundSubtle)
             
         }
         .navigationBarBackButtonHidden()
@@ -46,7 +46,7 @@ struct JangdanTypeSelectView: View {
                 } label: {
                     Image(systemName: "chevron.backward")
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.textDefault)
+                        .foregroundColor(.labelPrimary)
                 }
             }
             
@@ -54,10 +54,10 @@ struct JangdanTypeSelectView: View {
             ToolbarItem(placement: .principal) {
                 Text("장단 만들기")
                     .font(.Body_R)
-                    .foregroundStyle(.textSecondary)
+                    .foregroundStyle(.labelDefault)
             }
         }
-        .toolbarBackground(.backgroundNavigationBar, for: .navigationBar)
+        .toolbarBackground(.backgroundSubtle, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .toolbarTitleDisplayMode(.inline)
     }

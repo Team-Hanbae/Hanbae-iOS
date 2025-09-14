@@ -104,21 +104,21 @@ struct BannerCarouselView: View {
     private var pagenation: some View {
         HStack(spacing: 4) {
             Text("\((currentIndex ?? 0) % banners.count + 1)")
-                .foregroundStyle(.textDefault)
+                .foregroundStyle(.labelPrimary)
                 .font(.pretendardRegular(fixedSize: 12))
             
             Rectangle()
                 .frame(width: 1, height: 11)
-                .foregroundStyle(.textTertiary)
+                .foregroundStyle(.labelDisable)
             
             Text("\(banners.count)")
-                .foregroundStyle(.textTertiary)
+                .foregroundStyle(.labelDisable)
                 .font(.pretendardRegular(fixedSize: 12))
             
             Image(systemName: "chevron.right")
                 .resizable()
                 .frame(width: 4, height: 8)
-                .foregroundStyle(.textDefault)
+                .foregroundStyle(.labelPrimary)
         }
         .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
         .background(.backgroundDefault.opacity(0.6))

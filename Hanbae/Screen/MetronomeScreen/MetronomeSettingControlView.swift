@@ -74,12 +74,12 @@ extension MetronomeSettingControlView {
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isOn ? Color.backgroundCard : Color.buttonToggleOff)
-                    .strokeBorder(isOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                    .fill(isOn ? .backgroundSubtle : .buttonDefault)
+                    .strokeBorder(isOn ? .themeNormal : .buttonDefault)
                 
                 configuration.label
                     .font(.title3)
-                    .foregroundStyle(isOn ? Color.buttonToggleOn : Color.textSecondary)
+                    .foregroundStyle(isOn ? .themeNormal : .labelDefault)
             }
             .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in
@@ -96,12 +96,12 @@ extension MetronomeSettingControlView {
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isActive ? Color.backgroundCard : Color.buttonToggleOff)
-                    .strokeBorder(isActive ? Color.buttonToggleOn : Color.buttonToggleOff)
+                    .fill(isActive ? .backgroundSubtle : .buttonDefault)
+                    .strokeBorder(isActive ? .themeNormal : .buttonDefault)
                 
                 configuration.label
                     .font(.title3)
-                    .foregroundStyle(isActive ? Color.buttonToggleOn : Color.textSecondary)
+                    .foregroundStyle(isActive ? .themeNormal : .labelDefault)
             }
             .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in

@@ -33,7 +33,7 @@ struct CustomJangdanCreateView: View {
                     } label: {
                         Image(systemName: "chevron.backward")
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color.textDefault)
+                            .foregroundColor(.labelPrimary)
                     }
                     .alert("저장하지 않고\n나가시겠습니까?", isPresented: $backButtonAlert) {
                         HStack{
@@ -51,7 +51,7 @@ struct CustomJangdanCreateView: View {
                 ToolbarItem(placement: .principal) {
                     Text("\(self.viewModel.state.currentJangdanType ?? .굿거리) 장단 만들기")
                         .font(.Body_R)
-                        .foregroundStyle(.textSecondary)
+                        .foregroundStyle(.labelDefault)
                 }
                 
                 // 현재 장단 저장하기
@@ -63,7 +63,7 @@ struct CustomJangdanCreateView: View {
                         } label: {
                             Image(systemName: "arrow.counterclockwise")
                                 .aspectRatio(contentMode: .fit)
-                                .foregroundStyle(.textSecondary)
+                                .foregroundStyle(.labelPrimary)
                         }
                         .alert("장단 설정 초기화", isPresented: $initialJangdanAlert) {
                             HStack{
@@ -85,7 +85,7 @@ struct CustomJangdanCreateView: View {
                         } label: {
                             Text("저장")
                                 .font(.Body_R)
-                                .foregroundStyle(.textDefault)
+                                .foregroundStyle(.labelPrimary)
                         }
                         .alert("저장할 장단 이름", isPresented: $exportJandanAlert) {
                             TextField("이름", text: $inputCustomJangdanName)
@@ -123,7 +123,7 @@ struct CustomJangdanCreateView: View {
                     }
                 }
             }
-            .toolbarBackground(.backgroundNavigationBar, for: .navigationBar)
+            .toolbarBackground(.backgroundMute, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarTitleDisplayMode(.inline)
     }
