@@ -26,6 +26,8 @@ class AppState {
         self.numberOfEnteredJangdan = UserDefaults.standard.integer(forKey: "numberOfEnteredJangdan")
         self.newFeatureModal = UserDefaults.standard.bool(forKey: "newFeatureModal")
         self.newFeatureBadge = UserDefaults.standard.bool(forKey: "newFeatureBadge")
+        self.isSobakOn = UserDefaults.standard.bool(forKey: "isSobakOn")
+        self.isBlinkOn = UserDefaults.standard.bool(forKey: "isBlinkOn")
         self.precount = UserDefaults.standard.bool(forKey: "precount")
     }
     
@@ -45,6 +47,10 @@ class AppState {
     private(set) var newFeatureModal: Bool
     private(set) var newFeatureBadge: Bool
     
+    // Sobak
+    private(set) var isSobakOn: Bool
+    // Blink
+    private(set) var isBlinkOn: Bool
     // Precount
     private(set) var precount: Bool
 }
@@ -78,6 +84,16 @@ extension AppState {
     func checkNewFeatureBadge() {
         self.newFeatureBadge = true
         UserDefaults.standard.set(true, forKey: "newFeatureBadge")
+    }
+    
+    func toggleSobak() {
+        self.isSobakOn.toggle()
+        UserDefaults.standard.set(self.isSobakOn, forKey: "isSobakOn")
+    }
+    
+    func toggleBlink() {
+        self.isBlinkOn.toggle()
+        UserDefaults.standard.set(self.isBlinkOn, forKey: "isBlinkOn")
     }
     
     func togglePrecount() {
