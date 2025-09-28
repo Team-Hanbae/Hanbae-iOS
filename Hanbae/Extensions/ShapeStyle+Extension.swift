@@ -5,7 +5,7 @@
 //  Created by Yunki on 11/18/24.
 //
 
-import SwiftUICore
+import SwiftUI
 
 extension ShapeStyle {
     static var bakBarGradient: LinearGradient {

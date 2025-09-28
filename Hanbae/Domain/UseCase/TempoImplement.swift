@@ -11,7 +11,7 @@ import Foundation
 class TempoImplement {
     private var jangdanRepository: JangdanRepository
     
-    static let minBPM: Int = 10
+    static let minBPM: Int = 1
     static let maxBPM: Int = 300
     
     /// 마지막 tap 시점으로부터 6초가 지났을 때 이벤트를 전달하기 위한 publisher
