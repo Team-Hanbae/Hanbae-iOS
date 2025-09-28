@@ -17,9 +17,7 @@ struct SobakSegmentsView: View {
         HStack(spacing: 1) {
             ForEach(0..<sobakSegmentCount, id: \.self) { index in
                 Rectangle()
-                    .foregroundStyle(isSobakOn ? isPlaying
-                                     ? self.currentSobak == index ? index == 0 ? .sobakSegmentDaebak : .sobakSegmentSobak : .frame
-                                     : .frame : .frame)
+                    .foregroundStyle(segmentStyle(for: index))
             }
         }
         .background(isSobakOn ? .bakBarBorder : .bakBarLine)
@@ -32,9 +30,15 @@ struct SobakSegmentsView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
+    
+    private func segmentStyle(for index: Int) -> AnyShapeStyle {
+        guard isSobakOn, isPlaying, currentSobak == index else {
+            return AnyShapeStyle(.frame)
+        }
+        return AnyShapeStyle(index == 0 ? .sobakSegmentDaebak : .sobakSegmentSobak)
+    }
 }
 
 #Preview {
     SobakSegmentsView(sobakSegmentCount: 3, currentSobak: 2, isPlaying: true, isSobakOn: false)
 }
-
