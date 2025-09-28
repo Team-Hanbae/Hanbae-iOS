@@ -12,7 +12,7 @@ import UIKit.UIApplication
 class MetronomeOnOffImplement {
     private var jangdan: [[[Accent]]]
     private var jangdanAccentList: [Accent] {
-        if self.isSobakOn {
+        if self.appState.isSobakOn {
             return jangdan.flatMap { $0 }.flatMap { $0 }
         } else {
             return jangdan.flatMap { $0 }.map { $0.enumerated().map { $0.offset == 0 ? $0.element : .none }}.flatMap { $0 }
@@ -22,7 +22,6 @@ class MetronomeOnOffImplement {
     private var bpm: Double
     private var rawBpm: Double
     private var currentBeatIndex: Int
-    private var isSobakOn: Bool
     
     // 현재 진행중인 박 위치 관련 변수
     private var currentSobak: Int = 0
@@ -45,16 +44,17 @@ class MetronomeOnOffImplement {
     private var lastPlayTime: Date
     private var jangdanRepository: JangdanRepository
     private var soundManager: PlaySoundInterface
+    private var appState: AppState
     
-    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface) {
+    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface, appState: AppState) {
         self.jangdan = [[[.medium]]]
         self.bpm = 60.0
         self.rawBpm = 60.0
         self.currentBeatIndex = 0
-        self.isSobakOn = false
         self.lastPlayTime = .now
         self.jangdanRepository = jangdanRepository
         self.soundManager = soundManager
+        self.appState = appState
         
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdanEntity in
             guard let self else { return }
@@ -86,10 +86,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isPlayingSubject.eraseToAnyPublisher()
     }
     
-    var isSobakOnPublisher: AnyPublisher<Bool, Never> {
-        self.isSobakOnSubject.eraseToAnyPublisher()
-    }
-    
     var tickPublisher: AnyPublisher<(Int,Int,Int), Never> {
         self.tickSubject.eraseToAnyPublisher()
     }
@@ -100,11 +96,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     
     var precountPublisher: AnyPublisher<Int?, Never> {
         self.precountSubject.eraseToAnyPublisher()
-    }
-    
-    func changeSobak() {
-        self.isSobakOn.toggle()
-        self.isSobakOnSubject.send(self.isSobakOn)
     }
     
     func play(withPrecount: Bool = false) {
@@ -222,9 +213,5 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.currentRow = self.jangdan.count - 1
         self.currentDaebak = self.jangdan[self.currentRow].count - 1
         self.currentSobak = self.jangdan[self.currentRow][self.currentDaebak].count - 1
-    }
-    
-    func resetOptions() {
-        self.isSobakOn = false
     }
 }

@@ -26,6 +26,7 @@ class MetronomeViewModel {
         self.accentUseCase = accentUseCase
         self.appState = appState
         
+        self.state.isSobakOn = self.appState.isSobakOn
         
         self.templateUseCase.currentJangdanTypePublisher.sink { [weak self] jangdanType in
             guard let self else { return }
@@ -103,10 +104,9 @@ extension MetronomeViewModel {
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.metronomeOnOffUseCase.initialDaeSoBakIndex()
-            self.metronomeOnOffUseCase.resetOptions()
         case .changeSobakOnOff:
             self.appState.toggleSobak()
-            self.metronomeOnOffUseCase.changeSobak()
+            self.state.isSobakOn.toggle()
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .disableEstimateBpm:

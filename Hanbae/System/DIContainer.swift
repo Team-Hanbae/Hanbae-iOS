@@ -19,7 +19,7 @@ class DIContainer {
         
         self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource)
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
-        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: self.soundManager)
+        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: self.soundManager, appState: self.appState)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
         self.dynamicIconUseCase = DynamicIconImplement()
         
