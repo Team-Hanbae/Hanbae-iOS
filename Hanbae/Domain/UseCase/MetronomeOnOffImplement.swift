@@ -23,7 +23,6 @@ class MetronomeOnOffImplement {
     private var rawBpm: Double
     private var currentBeatIndex: Int
     private var isSobakOn: Bool
-    private var isBlinkOn: Bool
     
     // 현재 진행중인 박 위치 관련 변수
     private var currentSobak: Int = 0
@@ -53,7 +52,6 @@ class MetronomeOnOffImplement {
         self.rawBpm = 60.0
         self.currentBeatIndex = 0
         self.isSobakOn = false
-        self.isBlinkOn = false
         self.lastPlayTime = .now
         self.jangdanRepository = jangdanRepository
         self.soundManager = soundManager
@@ -107,10 +105,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     func changeSobak() {
         self.isSobakOn.toggle()
         self.isSobakOnSubject.send(self.isSobakOn)
-    }
-    
-    func changeBlink() {
-        self.isBlinkOn.toggle()
     }
     
     func play(withPrecount: Bool = false) {
@@ -192,7 +186,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         // timer 카운트를 해주고, 틱마다 publish
         self.updateStatePerBak()
         self.tickSubject.send((currentSobak, currentDaebak, currentRow))
-        if self.isBlinkOn && self.currentRow == 0 && self.currentDaebak == 0 && self.currentSobak == 0 {
+        if self.currentRow == 0 && self.currentDaebak == 0 && self.currentSobak == 0 {
             self.firstTickSubject.send()
         }
         
@@ -232,6 +226,5 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
     
     func resetOptions() {
         self.isSobakOn = false
-        self.isBlinkOn = false
     }
 }

@@ -77,7 +77,6 @@ class MetronomeViewModel {
         var isSobakOn: Bool = false
         var isPlaying: Bool = false
         var isTapping: Bool = false
-        var isBlinkOn: Bool = false
         var currentSobak: Int = 0
         var currentDaebak: Int = 0
         var currentRow: Int = 0
@@ -104,19 +103,16 @@ extension MetronomeViewModel {
             self.state.currentJangdanName = jangdanName
             self.templateUseCase.setJangdan(jangdanName: jangdanName)
             self.metronomeOnOffUseCase.initialDaeSoBakIndex()
-            self.state.isSobakOn = false
-            self.state.isBlinkOn = false
             self.metronomeOnOffUseCase.resetOptions()
         case .changeSobakOnOff:
-            self.state.isSobakOn.toggle()
+            self.appState.toggleSobak()
             self.metronomeOnOffUseCase.changeSobak()
         case let .changeAccent(row, daebak, sobak, newAccent):
             self.accentUseCase.moveNextAccent(rowIndex: row, daebakIndex: daebak, sobakIndex: sobak, to: newAccent)
         case .disableEstimateBpm:
             self.tempoUseCase.finishTapping()
         case .changeBlinkOnOff:
-            self.state.isBlinkOn.toggle()
-            self.metronomeOnOffUseCase.changeBlink()
+            self.appState.toggleBlink()
         case .togglePrecount:
             self.appState.togglePrecount()
         case .changeSoundType:

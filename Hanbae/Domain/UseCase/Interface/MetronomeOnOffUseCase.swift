@@ -15,7 +15,6 @@ protocol MetronomeOnOffUseCase {
     var precountPublisher: AnyPublisher<Int?, Never> { get }
     
     func changeSobak()
-    func changeBlink()
     func play(withPrecount: Bool)
     func stop()
     func setSoundType()

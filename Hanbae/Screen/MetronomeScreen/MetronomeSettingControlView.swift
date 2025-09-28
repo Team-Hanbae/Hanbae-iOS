@@ -24,7 +24,7 @@ struct MetronomeSettingControlView: View {
                 Image(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? .listenSobak : .viewSobak)
                     .aspectRatio(contentMode: .fit)
             }
-            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.isSobakOn))
             
             Button {
                 self.viewModel.effect(action: .changeBlinkOnOff)
@@ -32,7 +32,7 @@ struct MetronomeSettingControlView: View {
                 Image(.flash)
                     .aspectRatio(contentMode: .fit)
             }
-            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.isBlinkOn))
             
             Button {
                 self.viewModel.effect(action: .togglePrecount)
