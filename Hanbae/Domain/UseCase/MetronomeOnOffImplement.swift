@@ -43,6 +43,13 @@ class MetronomeOnOffImplement {
     private var interval: TimeInterval {
         60.0 / bpm
     }
+    
+    // for Precount
+    private var precountTimer: DispatchSourceTimer?
+    private var precountInterval: TimeInterval {
+        60.0 / rawBpm
+    }
+    
     private var lastPlayTime: Date
     private var jangdanRepository: JangdanRepository
     private var soundManager: PlaySoundInterface
@@ -72,6 +79,10 @@ class MetronomeOnOffImplement {
             self.bpm = Double(jangdanEntity.bpm) * averageSobakCount
             let nextStartTime = nextPlayTime.timeIntervalSince(.now)
             self.timer?.schedule(deadline: .now() + nextStartTime, repeating: self.interval, leeway: .nanoseconds(1))
+            
+            let nextPrecountTime = self.lastPlayTime.addingTimeInterval(self.precountInterval)
+            let nextCountingTime = nextPrecountTime.timeIntervalSince(.now)
+            self.precountTimer?.schedule(deadline: .now() + nextCountingTime, repeating: self.precountInterval, leeway: .nanoseconds(1))
         }
         .store(in: &self.cancelBag)
         
@@ -125,20 +136,22 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         
         if withPrecount {
             var precount: Int = 3
-            let deadline: DispatchTime = .now() + 60 / self.rawBpm
+            let deadline: DispatchTime = .now() + precountInterval
             self.precountSubject.send(precount)
             precount -= 1
+            self.lastPlayTime = .now
             self.soundManager.playCountSound()
             
-            self.timer = DispatchSource.makeTimerSource(queue: self.queue)
-            self.timer?.schedule(deadline: deadline, repeating: 60 / self.rawBpm, leeway: .nanoseconds(1))
-            self.timer?.setEventHandler { [weak self] in
+            self.precountTimer = DispatchSource.makeTimerSource(queue: self.queue)
+            self.precountTimer?.schedule(deadline: deadline, repeating: precountInterval, leeway: .nanoseconds(1))
+            self.precountTimer?.setEventHandler { [weak self] in
                 guard let self = self else { return }
+                self.lastPlayTime = .now
                 
                 if precount == 0 {
                     self.soundManager.pauseAudioEngine()
-                    self.timer?.cancel()
-                    self.timer = nil
+                    self.precountTimer?.cancel()
+                    self.precountTimer = nil
                     
                     Task { @MainActor in
                         self.precountSubject.send(nil)
@@ -150,7 +163,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
                     self.soundManager.playCountSound()
                 }
             }
-            self.timer?.resume()
+            self.precountTimer?.resume()
             return
         }
         
@@ -178,6 +191,8 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil
+        self.precountTimer?.cancel()
+        self.precountTimer = nil
         // stop 여부 publish
         self.isPlayingSubject.send(false)
         self.precountSubject.send(nil)
