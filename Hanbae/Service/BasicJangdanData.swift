@@ -224,7 +224,7 @@ struct BasicJangdanData {
     )
     
     static let jeolhwa = JangdanEntity(
-        name: "절화",
+        name: "절화(길군악)",
         bpm: 60,
         daebakList: [
             [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
