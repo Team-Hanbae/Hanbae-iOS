@@ -132,7 +132,7 @@ struct CustomJangdanPracticeView: View {
                         Button {
                             self.exportJandanAlert = true
                         } label: {
-                            Text("다른 이름으로 저장하기")
+                            Text("새로운 장단으로 저장하기")
                         }
                         
                         Button {
@@ -155,7 +155,7 @@ struct CustomJangdanPracticeView: View {
                             .aspectRatio(contentMode: .fit)
                             .foregroundStyle(.labelPrimary)
                     }
-                    .alert("다른 이름으로 저장", isPresented: $exportJandanAlert) {
+                    .alert("새로운 장단으로 저장하기", isPresented: $exportJandanAlert) {
                         TextField("이름", text: $inputCustomJangdanName)
                             .onChange(of: self.inputCustomJangdanName) { oldValue, newValue in
                                 if newValue.count > 10 {
