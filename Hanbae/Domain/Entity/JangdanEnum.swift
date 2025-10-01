@@ -49,7 +49,7 @@ enum Jangdan: String, CaseIterable {
         case .세령산: return "세령산, 가락덜이"
         case .타령: return "타령, 군악"
         case .취타: return "취타"
-        case .절화: return "절화"
+        case .절화: return "절화(길군악)"
         case .긴염불: return "긴염불"
         case .반염불: return "반염불"
         }
