@@ -15,16 +15,20 @@ class HomeViewModel {
     private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var dynamicIconUseCase: DynamicIconUseCase
+    private var appState: AppState
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase, appState: AppState) {
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         self.dynamicIconUseCase = dynamicIconUseCase
+        self.appState = appState
         
         self.metronomeOnOffUseCase.firstTickPublisher.sink { [weak self] _ in
             guard let self else { return }
+            guard appState.isBlinkOn else { return }
+            
             self.state.isBlinking = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.linear(duration: 0.3)) {
