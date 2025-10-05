@@ -15,16 +15,20 @@ class HomeViewModel {
     private var templateUseCase: TemplateUseCase
     private var metronomeOnOffUseCase: MetronomeOnOffUseCase
     private var dynamicIconUseCase: DynamicIconUseCase
+    private var appState: AppState
     
     private var cancelBag: Set<AnyCancellable> = []
     
-    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase) {
+    init(templateUseCase: TemplateUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, dynamicIconUseCase: DynamicIconUseCase, appState: AppState) {
         self.templateUseCase = templateUseCase
         self.metronomeOnOffUseCase = metronomeOnOffUseCase
         self.dynamicIconUseCase = dynamicIconUseCase
+        self.appState = appState
         
         self.metronomeOnOffUseCase.firstTickPublisher.sink { [weak self] _ in
             guard let self else { return }
+            guard appState.isBlinkOn else { return }
+            
             self.state.isBlinking = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.linear(duration: 0.3)) {
@@ -33,6 +37,8 @@ class HomeViewModel {
             }
         }
         .store(in: &cancelBag)
+        
+        self.loadBanners()
     }
     
     private(set) var state: State = .init()
@@ -41,6 +47,7 @@ class HomeViewModel {
         var customJangdanList: [JangdanSimpleType] = []
         var isBlinking: Bool = false
         var isCheckNewFeatureModal: Bool = false
+        var banners: [BannerInfo] = []
     }
 }
 
@@ -61,5 +68,14 @@ extension HomeViewModel {
                 $0.lastUpdate > $1.lastUpdate
             }
         }
+    }
+}
+
+extension HomeViewModel {
+    private func loadBanners() {
+        self.state.banners = [
+            BannerInfo(imageResource: .jeongakBanner, urlString: "https://forms.gle/BxXn9vp7qWVQ6eoQA"),
+            BannerInfo(imageResource: .surveyBanner, urlString: "https://forms.gle/s2XejE86tq27x6KE9")
+        ]
     }
 }

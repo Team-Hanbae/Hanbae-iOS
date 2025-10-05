@@ -12,7 +12,7 @@ import UIKit.UIApplication
 class MetronomeOnOffImplement {
     private var jangdan: [[[Accent]]]
     private var jangdanAccentList: [Accent] {
-        if self.isSobakOn {
+        if self.appState.isSobakOn {
             return jangdan.flatMap { $0 }.flatMap { $0 }
         } else {
             return jangdan.flatMap { $0 }.map { $0.enumerated().map { $0.offset == 0 ? $0.element : .none }}.flatMap { $0 }
@@ -20,9 +20,8 @@ class MetronomeOnOffImplement {
     }
     
     private var bpm: Double
+    private var rawBpm: Double
     private var currentBeatIndex: Int
-    private var isSobakOn: Bool
-    private var isBlinkOn: Bool
     
     // 현재 진행중인 박 위치 관련 변수
     private var currentSobak: Int = 0
@@ -33,6 +32,7 @@ class MetronomeOnOffImplement {
     private var isSobakOnSubject: PassthroughSubject<Bool, Never> = .init()
     private var tickSubject: PassthroughSubject<(Int,Int,Int), Never> = .init()
     private var firstTickSubject: PassthroughSubject<Void, Never> = .init()
+    private var precountSubject: PassthroughSubject<Int?, Never> = .init()
     private var cancelBag: Set<AnyCancellable> = []
     
     // timer
@@ -41,19 +41,27 @@ class MetronomeOnOffImplement {
     private var interval: TimeInterval {
         60.0 / bpm
     }
+    
+    // for Precount
+    private var precountTimer: DispatchSourceTimer?
+    private var precountInterval: TimeInterval {
+        60.0 / rawBpm
+    }
+    
     private var lastPlayTime: Date
     private var jangdanRepository: JangdanRepository
     private var soundManager: PlaySoundInterface
+    private var appState: AppState
     
-    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface) {
+    init(jangdanRepository: JangdanRepository, soundManager: PlaySoundInterface, appState: AppState) {
         self.jangdan = [[[.medium]]]
         self.bpm = 60.0
+        self.rawBpm = 60.0
         self.currentBeatIndex = 0
-        self.isSobakOn = false
-        self.isBlinkOn = false
         self.lastPlayTime = .now
         self.jangdanRepository = jangdanRepository
         self.soundManager = soundManager
+        self.appState = appState
         
         self.jangdanRepository.jangdanPublisher.sink { [weak self] jangdanEntity in
             guard let self else { return }
@@ -62,11 +70,17 @@ class MetronomeOnOffImplement {
             let bakCount = self.jangdan.reduce(0) { $0 + $1.reduce(0) { $0 + $1.count } }
             let averageSobakCount = Double(bakCount) / Double(daebakCount)
             
-            // 직전 play() 시점 및 interval을 통한 다음 play() 시점 찾기
+            self.rawBpm = Double(jangdanEntity.bpm)
+            
+            // BPM 갱신마다 타이머 스케줄링
             let nextPlayTime = self.lastPlayTime.addingTimeInterval(self.interval)
             self.bpm = Double(jangdanEntity.bpm) * averageSobakCount
             let nextStartTime = nextPlayTime.timeIntervalSince(.now)
             self.timer?.schedule(deadline: .now() + nextStartTime, repeating: self.interval, leeway: .nanoseconds(1))
+            
+            let nextPrecountTime = self.lastPlayTime.addingTimeInterval(self.precountInterval)
+            let nextCountingTime = nextPrecountTime.timeIntervalSince(.now)
+            self.precountTimer?.schedule(deadline: .now() + nextCountingTime, repeating: self.precountInterval, leeway: .nanoseconds(1))
         }
         .store(in: &self.cancelBag)
         
@@ -83,10 +97,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.isPlayingSubject.eraseToAnyPublisher()
     }
     
-    var isSobakOnPublisher: AnyPublisher<Bool, Never> {
-        self.isSobakOnSubject.eraseToAnyPublisher()
-    }
-    
     var tickPublisher: AnyPublisher<(Int,Int,Int), Never> {
         self.tickSubject.eraseToAnyPublisher()
     }
@@ -95,21 +105,53 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.firstTickSubject.eraseToAnyPublisher()
     }
     
-    func changeSobak() {
-        self.isSobakOn.toggle()
-        self.isSobakOnSubject.send(self.isSobakOn)
+    var precountPublisher: AnyPublisher<Int?, Never> {
+        self.precountSubject.eraseToAnyPublisher()
     }
     
-    func changeBlink() {
-        self.isBlinkOn.toggle()
-    }
-    
-    func play() {
+    func play(withPrecount: Bool = false) {
         // AudioEngine start()
         self.soundManager.prepareAudioEngine()
         // 데이터 갱신
         self.currentBeatIndex = 0
         self.initialDaeSoBakIndex()
+        
+        // play 여부 publish
+        self.isPlayingSubject.send(true)
+        
+        if withPrecount {
+            var precount: Int = 3
+            let deadline: DispatchTime = .now() + precountInterval
+            self.precountSubject.send(precount)
+            precount -= 1
+            self.lastPlayTime = .now
+            self.soundManager.playCountSound()
+            
+            self.precountTimer = DispatchSource.makeTimerSource(queue: self.queue)
+            self.precountTimer?.schedule(deadline: deadline, repeating: precountInterval, leeway: .nanoseconds(1))
+            self.precountTimer?.setEventHandler { [weak self] in
+                guard let self = self else { return }
+                self.lastPlayTime = .now
+                
+                if precount == 0 {
+                    self.soundManager.pauseAudioEngine()
+                    self.precountTimer?.cancel()
+                    self.precountTimer = nil
+                    
+                    Task { @MainActor in
+                        self.precountSubject.send(nil)
+                        self.play()
+                    }
+                } else {
+                    self.precountSubject.send(precount)
+                    precount -= 1
+                    self.soundManager.playCountSound()
+                }
+            }
+            self.precountTimer?.resume()
+            return
+        }
+        
         UIApplication.shared.isIdleTimerDisabled = true
         
         let deadline: DispatchTime = .now() + self.interval
@@ -125,9 +167,6 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
             self.timerHandler()
         }
         
-        // play 여부 publish
-        self.isPlayingSubject.send(true)
-        
         // Timer 실행
         self.timer?.resume()
     }
@@ -137,8 +176,12 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         UIApplication.shared.isIdleTimerDisabled = false
         self.timer?.cancel()
         self.timer = nil
+        self.precountTimer?.cancel()
+        self.precountTimer = nil
         // stop 여부 publish
         self.isPlayingSubject.send(false)
+        self.precountSubject.send(nil)
+        self.tickSubject.send((0, 0, 0))
     }
     
     func setSoundType() {
@@ -149,7 +192,7 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         // timer 카운트를 해주고, 틱마다 publish
         self.updateStatePerBak()
         self.tickSubject.send((currentSobak, currentDaebak, currentRow))
-        if self.isBlinkOn && self.currentRow == 0 && self.currentDaebak == 0 && self.currentSobak == 0 {
+        if self.currentRow == 0 && self.currentDaebak == 0 && self.currentSobak == 0 {
             self.firstTickSubject.send()
         }
         
@@ -185,10 +228,5 @@ extension MetronomeOnOffImplement: MetronomeOnOffUseCase {
         self.currentRow = self.jangdan.count - 1
         self.currentDaebak = self.jangdan[self.currentRow].count - 1
         self.currentSobak = self.jangdan[self.currentRow][self.currentDaebak].count - 1
-    }
-    
-    func resetOptions() {
-        self.isSobakOn = false
-        self.isBlinkOn = false
     }
 }

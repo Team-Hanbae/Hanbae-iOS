@@ -13,6 +13,7 @@ struct BakBarSetView: View {
     var isDaebakOnly: Bool
     var isPlaying: Bool
     var activeIndex: Int?
+    var disabled: Bool
     var tabBakBarEvent: (Int, Accent) -> Void
     
     var body: some View {
@@ -21,7 +22,7 @@ struct BakBarSetView: View {
                 BakBarView(
                     accent: accents[index],
                     isPlaying: isPlaying,
-                    isActive: !isPlaying || (isDaebakOnly ? activeIndex != nil : index == activeIndex),
+                    isActive: !disabled && (!isPlaying || (isDaebakOnly ? activeIndex != nil : index == activeIndex)),
                     bakNumber: index == 0 ? daebakIndex + 1 : nil
                 ) { newAccent in
                     tabBakBarEvent(index, newAccent)
@@ -49,5 +50,5 @@ struct BakBarSetView: View {
 }
 
 #Preview {
-    BakBarSetView(accents: [.strong, .medium, .weak, .none], daebakIndex: 3, isDaebakOnly: false, isPlaying: true, activeIndex: nil) {_, _ in}
+    BakBarSetView(accents: [.strong, .medium, .weak, .none], daebakIndex: 3, isDaebakOnly: false, isPlaying: true, activeIndex: nil, disabled: false) {_, _ in}
 }

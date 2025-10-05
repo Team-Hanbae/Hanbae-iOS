@@ -20,7 +20,8 @@
 		2B2F77AB2E46B4280027852A /* AnalyticsServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */; };
 		2B2F77AE2E46C7980027852A /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */; };
 		2B2F77B02E46C8C80027852A /* MixpanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F77AF2E46C8C80027852A /* MixpanelManager.swift */; };
-		2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */; };
+		2B2F78522E4B23D90027852A /* BannerCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F78512E4B23D90027852A /* BannerCarouselView.swift */; };
+		2B2F78562E4B359A0027852A /* BannerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2F78552E4B359A0027852A /* BannerInfo.swift */; };
 		2B3125B72E41F4D40047C365 /* janggu1_medium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B62E41F4D40047C365 /* janggu1_medium.wav */; };
 		2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125B82E41F4D90047C365 /* janggu1_weak.wav */; };
 		2B3125BB2E41F4E00047C365 /* buk1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3125BA2E41F4E00047C365 /* buk1_strong.wav */; };
@@ -30,6 +31,7 @@
 		2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */; };
 		2B365D252CEF196100565F0D /* CustomJangdanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */; };
 		2B365D272CEF1C8C00565F0D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B365D262CEF1C8C00565F0D /* Date+Extension.swift */; };
+		2B3C6E6B2E8B6891008B0C21 /* janggu1_strong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B3C6E6A2E8B6891008B0C21 /* janggu1_strong.wav */; };
 		2B58BC5D2D0FEB5B006C507B /* MetronomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */; };
 		2B63FBFC2D8ADF2E008E1389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE5ADE72CABC4570094F3C3 /* Assets.xcassets */; };
 		2B64B3382E18E2480069E287 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE523C2CEB7AAF00EF1515 /* ShapeStyle+Extension.swift */; };
@@ -143,7 +145,8 @@
 		2B2F77AA2E46B4280027852A /* AnalyticsServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceInterface.swift; sourceTree = "<group>"; };
 		2B2F77AD2E46C7960027852A /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		2B2F77AF2E46C8C80027852A /* MixpanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixpanelManager.swift; sourceTree = "<group>"; };
-		2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
+		2B2F78512E4B23D90027852A /* BannerCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCarouselView.swift; sourceTree = "<group>"; };
+		2B2F78552E4B359A0027852A /* BannerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerInfo.swift; sourceTree = "<group>"; };
 		2B3125B62E41F4D40047C365 /* janggu1_medium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_medium.wav; sourceTree = "<group>"; };
 		2B3125B82E41F4D90047C365 /* janggu1_weak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_weak.wav; sourceTree = "<group>"; };
 		2B3125BA2E41F4E00047C365 /* buk1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buk1_strong.wav; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		2B365D212CEEF08A00565F0D /* CustomJangdanCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanCreateView.swift; sourceTree = "<group>"; };
 		2B365D242CEF196100565F0D /* CustomJangdanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomJangdanListViewModel.swift; sourceTree = "<group>"; };
 		2B365D262CEF1C8C00565F0D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		2B3C6E6A2E8B6891008B0C21 /* janggu1_strong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = janggu1_strong.wav; sourceTree = "<group>"; };
 		2B58BC5C2D0FEB5B006C507B /* MetronomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeView.swift; sourceTree = "<group>"; };
 		2B8861102CBD2EF10036C6DB /* JangdanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanRepository.swift; sourceTree = "<group>"; };
 		2B8861122CBD34D30036C6DB /* JangdanEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JangdanEnum.swift; sourceTree = "<group>"; };
@@ -279,6 +283,14 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		2B2F78532E4B35850027852A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F78552E4B359A0027852A /* BannerInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2B365D232CEF195200565F0D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +340,7 @@
 				2BBDF6BE2DB7AC460035E2B2 /* clave_medium.wav */,
 				2BBDF6BF2DB7AC460035E2B2 /* clave_strong.wav */,
 				2BBDF6C02DB7AC460035E2B2 /* clave_weak.wav */,
-				2B3125B42E41F4CD0047C365 /* janggu1_strong.wav */,
+				2B3C6E6A2E8B6891008B0C21 /* janggu1_strong.wav */,
 				2B3125B62E41F4D40047C365 /* janggu1_medium.wav */,
 				2B3125B82E41F4D90047C365 /* janggu1_weak.wav */,
 				2B3125BA2E41F4E00047C365 /* buk1_strong.wav */,
@@ -367,9 +379,11 @@
 		2BC4B9FF2CE371DB00A90C1F /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2B2F78532E4B35850027852A /* Model */,
 				3C719E412CEF52AA00D233DC /* ViewModel */,
 				2BC4BA002CE371E800A90C1F /* HomeView.swift */,
 				3C8F096F2E081E25001FE7E9 /* FoldLottieView.swift */,
+				2B2F78512E4B23D90027852A /* BannerCarouselView.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -702,7 +716,6 @@
 				2B3125B92E41F4D90047C365 /* janggu1_weak.wav in Resources */,
 				2BBDF6C12DB7AC460035E2B2 /* clave_strong.wav in Resources */,
 				2BBDF6C22DB7AC460035E2B2 /* clave_weak.wav in Resources */,
-				2B3125B52E41F4CD0047C365 /* janggu1_strong.wav in Resources */,
 				2B3125BD2E41F4E40047C365 /* buk1_medium.wav in Resources */,
 				2BBDF6C32DB7AC460035E2B2 /* clave_medium.wav in Resources */,
 				2B3125BF2E41F4E80047C365 /* buk1_weak.wav in Resources */,
@@ -717,6 +730,7 @@
 				2BE5ADE92CABC4570094F3C3 /* Preview Assets.xcassets in Resources */,
 				2BE5ADEA2CABC4570094F3C3 /* Assets.xcassets in Resources */,
 				2B03B9222D7AD7A9000BF12A /* Assets.xcassets in Resources */,
+				2B3C6E6B2E8B6891008B0C21 /* janggu1_strong.wav in Resources */,
 				43774F532CB7C10E00F54EF7 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,6 +770,7 @@
 				2B365D202CEEE0E700565F0D /* JangdanTypeSelectView.swift in Sources */,
 				2B8861112CBD2EF10036C6DB /* JangdanRepository.swift in Sources */,
 				3C1DB7322CB3B58500160970 /* AccentImplement.swift in Sources */,
+				2B2F78522E4B23D90027852A /* BannerCarouselView.swift in Sources */,
 				5798393C2CEB22CD00866AD4 /* BasicJangdanData.swift in Sources */,
 				3C46FBEA2CEE38230067EE65 /* SoundEnum.swift in Sources */,
 				2B8861192CC3E61F0036C6DB /* BakBarView.swift in Sources */,
@@ -788,6 +803,7 @@
 				2B365D222CEEF08A00565F0D /* CustomJangdanCreateView.swift in Sources */,
 				435BE54D2CEF221A00CCA4CA /* Router.swift in Sources */,
 				2BC4BA012CE371E800A90C1F /* HomeView.swift in Sources */,
+				2B2F78562E4B359A0027852A /* BannerInfo.swift in Sources */,
 				3C6EAFA62CDD11B7003F2191 /* TempoUseCase.swift in Sources */,
 				2BB797B72CE62532008173A5 /* JangdanDataManager.swift in Sources */,
 				438226DF2CAE84A0007A3B23 /* TempoImplement.swift in Sources */,
@@ -973,7 +989,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1019,7 +1035,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1059,7 +1075,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1094,7 +1110,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.6.1;
+				MARKETING_VERSION = 2.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = Krabs.Macro.HanbaeWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

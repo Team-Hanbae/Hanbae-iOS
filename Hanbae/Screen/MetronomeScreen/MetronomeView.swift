@@ -20,28 +20,42 @@ struct MetronomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             // MARK: 1. 메트로놈 박자 표시 뷰
-            VStack(spacing: 12) {
-                HanbaeBoardView(
-                    jangdan: viewModel.state.jangdanAccent,
-                    isSobakOn: self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? viewModel.state.isSobakOn : false,
-                    isPlaying: viewModel.state.isPlaying,
-                    currentRow: viewModel.state.currentRow,
-                    currentDaebak: viewModel.state.currentDaebak,
-                    currentSobak: viewModel.state.currentSobak
-                ) { row, daebak, sobak, newAccent in
-                    withAnimation {
-                        viewModel.effect(action: .changeAccent(row: row, daebak: daebak, sobak: sobak, newAccent: newAccent))
+            ZStack {
+                VStack(spacing: 12) {
+                    HanbaeBoardView(
+                        jangdan: viewModel.state.jangdanAccent,
+                        isSobakOn: viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? viewModel.state.isSobakOn : false,
+                        isPlaying: viewModel.state.isPlaying,
+                        currentRow: viewModel.state.currentRow,
+                        currentDaebak: viewModel.state.currentDaebak,
+                        currentSobak: viewModel.state.currentSobak,
+                        disabled: viewModel.state.precount != nil
+                    ) { row, daebak, sobak, newAccent in
+                        withAnimation {
+                            viewModel.effect(action: .changeAccent(row: row, daebak: daebak, sobak: sobak, newAccent: newAccent))
+                        }
+                    }
+                    if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
+                        SobakSegmentsView(
+                            sobakSegmentCount: sobakSegmentCount,
+                            currentSobak: self.viewModel.state.currentSobak,
+                            isPlaying: self.viewModel.state.isPlaying && viewModel.state.precount == nil,
+                            isSobakOn: self.viewModel.state.isSobakOn
+                        )
                     }
                 }
-                if let sobakSegmentCount = self.viewModel.state.currentJangdanType?.sobakSegmentCount {
-                    SobakSegmentsView(sobakSegmentCount: sobakSegmentCount, currentSobak: self.viewModel.state.currentSobak, isPlaying: self.viewModel.state.isPlaying, isSobakOn: self.viewModel.state.isSobakOn)
+                .padding(
+                    self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil
+                    ? EdgeInsets(top: 36, leading: 8, bottom: 36, trailing: 8)
+                    : EdgeInsets(top: 24, leading: 8, bottom: 16, trailing: 8)
+                )
+                
+                if let precount = viewModel.state.precount {
+                    Text("\(precount)")
+                        .font(.pretendardBold(fixedSize: 100))
+                        .foregroundStyle(.common100)
                 }
             }
-            .padding(
-                self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil
-                ? EdgeInsets(top: 36, leading: 8, bottom: 36, trailing: 8)
-                : EdgeInsets(top: 24, leading: 8, bottom: 16, trailing: 8)
-            )
             
             // MARK: 2. 소박 듣기, 소박 보기 뷰
             HStack(spacing: 14) {

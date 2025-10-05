@@ -11,6 +11,7 @@ import Foundation
 
 struct BasicJangdanData {
     
+    // 민속악 장단
     static let jinyang = JangdanEntity(
         name: "진양",
         bpm: 30,
@@ -142,6 +143,102 @@ struct BasicJangdanData {
         jangdanType: .엇중모리
     )
     
+    static let jwajilgut = JangdanEntity(
+        name: "좌질굿",
+        bpm: 100,
+        daebakList: [
+            [JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium])],
+            [JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium])],
+            [JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .weak, .medium])],
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak, .weak, .none])],
+        ],
+        jangdanType: .좌질굿
+    )
+    
+    
+    // 정악 장단
+    static let sangnyeongsan = JangdanEntity(
+        name: "상령산, 중령산",
+        bpm: 3,
+        daebakList: [
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none, .none, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.medium, .none, .none, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .medium, .none, .none, .none, .weak])],
+        ],
+        jangdanType: .상령산
+    )
+    
+    static let seryeongsan = JangdanEntity(
+        name: "세령산, 가락덜이",
+        bpm: 5,
+        daebakList: [
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .weak]),
+             JangdanEntity.Daebak(bakAccentList: [.medium, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.weak, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.medium, .none, .none])],
+        ],
+        jangdanType: .세령산
+    )
+    
+    static let taryeong = JangdanEntity(
+        name: "타령, 군악",
+        bpm: 35,
+        daebakList: [[
+            JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+            JangdanEntity.Daebak(bakAccentList: [.medium, .none, .none]),
+            JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
+            JangdanEntity.Daebak(bakAccentList: [.none, .none, .none]),
+        ]],
+        jangdanType: .타령
+    )
+    
+    static let chwita = JangdanEntity(
+        name: "취타",
+        bpm: 60,
+        daebakList: [
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.none, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.medium, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])],
+        ],
+        jangdanType: .취타
+    )
+    
+    static let jeolhwa = JangdanEntity(
+        name: "절화(길군악)",
+        bpm: 60,
+        daebakList: [
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])],
+            [JangdanEntity.Daebak(bakAccentList: [.strong, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.none, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.medium, .none, .none]),
+             JangdanEntity.Daebak(bakAccentList: [.weak, .none, .none])],
+        ],
+        jangdanType: .절화
+    )
+    
     static let ginyeombul = JangdanEntity(
         name: "긴염불",
         bpm: 25,
@@ -171,6 +268,7 @@ struct BasicJangdanData {
     )
     
     static let all: [JangdanEntity] = [
+        // 민속악
         jinyang,
         jungmori,
         jungjungmori,
@@ -181,8 +279,14 @@ struct BasicJangdanData {
         eotmori,
         semachi,
         eotjungmori,
+        jwajilgut,
+        // 정악
+        sangnyeongsan,
+        seryeongsan,
+        taryeong,
+        chwita,
+        jeolhwa,
         ginyeombul,
         banyeombul
     ]
-    
 }

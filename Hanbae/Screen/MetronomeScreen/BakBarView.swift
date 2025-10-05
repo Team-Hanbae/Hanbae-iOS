@@ -33,7 +33,7 @@ struct BakBarView: View {
             ZStack(alignment: .top) {
                 ZStack(alignment: .bottom) {
                     Rectangle()
-                        .foregroundStyle(isPlaying && isActive ? .orange.opacity(0.5) : .frame)
+                        .foregroundStyle(isPlaying && isActive ? .themeNormal.opacity(0.8) : .frame)
                     
                     Path { path in
                         for i in 1..<3 {
@@ -43,7 +43,7 @@ struct BakBarView: View {
                         }
                     }
                     .stroke(style: StrokeStyle(lineWidth: 1, dash: [2, 2]))
-                    .foregroundColor(.bakBarDivider)
+                    .foregroundColor(.bakBarBorder)
                     
                     Rectangle()
                         .frame(height: CGFloat((geo.size.height / 3) * Double(accentHeight)))
@@ -58,8 +58,8 @@ struct BakBarView: View {
                         .padding(.top, 20)
                         .foregroundColor(
                             isActive
-                            ? .bakBarNumberWhite
-                            : accent == .strong ? .bakBarNumberBlack : geo.size.height < 100 && accent == .medium ? .bakBarNumberBlack : .bakBarNumberGray
+                            ? .bakBarNumberDefault
+                            : accent == .strong ? .bakBarNumberAlternative : geo.size.height < 100 && accent == .medium ? .bakBarNumberAlternative : .bakBarNumberInactive
                         )
                 }
             }

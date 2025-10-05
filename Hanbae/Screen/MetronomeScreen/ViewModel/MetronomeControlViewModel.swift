@@ -22,6 +22,7 @@ class MetronomeControlViewModel {
     private var analyticsService: AnalyticsServiceInterface
     private var appState: AppState
     private var startTime: Date?
+    private var jangdanType: Jangdan?
     private var jangdanName: String?
     
     init(jangdanRepository: JangdanRepository, tempoUseCase: TempoUseCase, metronomeOnOffUseCase: MetronomeOnOffUseCase, widgetManager: WidgetManager, appState: AppState, analyticsService: AnalyticsServiceInterface) {
@@ -44,6 +45,7 @@ class MetronomeControlViewModel {
             guard let self else { return }
             self.state.bpm = jangdan.bpm
             jangdanName = jangdan.name
+            jangdanType = jangdan.jangdanType
         }
         .store(in: &self.cancelBag)
         
@@ -90,16 +92,10 @@ extension MetronomeControlViewModel {
                     await self.widgetManager.endLiveActivity()
                 }
                 
-                #if RELEASE
-                guard let startTime, let jangdanName else { return }
-                let duration: Double = Date.now.timeIntervalSince(startTime)
-                let roundedDuration: Double = round(100 * duration) / 100
-                self.analyticsService.track(event: .metronomePlay(jangdan: jangdanName, duration: roundedDuration, soundType: appState.selectedSound.name))
-                self.startTime = nil
-                #endif
+                logging()
             } else {
                 self.startTime = .now
-                self.metronomeOnOffUseCase.play()
+                self.metronomeOnOffUseCase.play(withPrecount: self.appState.precount)
             }
         case .decreaseShortBpm:
             self.tempoUseCase.updateTempo(newBpm: self.state.bpm - 1)
@@ -132,5 +128,20 @@ extension MetronomeControlViewModel {
         case let .setSpeed(speed):
             self.state.speed = speed
         }
+    }
+    
+    private func logging() {
+        // MixPanel
+        guard let startTime, let jangdanName, let jangdanType else { return }
+        let duration: Double = Date.now.timeIntervalSince(startTime)
+        let roundedDuration: Double = round(100 * duration) / 100
+        let event: AnalyticsEvent = .metronomePlay(
+            jangdanType: jangdanType.name,
+            jangdanName: jangdanName == jangdanType.name ? "template" : jangdanName,
+            duration: roundedDuration,
+            soundType: appState.selectedSound.name
+        )
+        self.analyticsService.track(event: event)
+        self.startTime = nil
     }
 }

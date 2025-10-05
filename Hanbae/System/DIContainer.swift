@@ -19,19 +19,19 @@ class DIContainer {
         
         self.templateUseCase = TemplateImplement(jangdanRepository: self.jangdanDataSource)
         self.tempoUseCase = TempoImplement(jangdanRepository: self.jangdanDataSource)
-        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: self.soundManager)
+        self.metronomeOnOffUseCase = MetronomeOnOffImplement(jangdanRepository: self.jangdanDataSource, soundManager: self.soundManager, appState: self.appState)
         self.accentUseCase = AccentImplement(jangdanRepository: self.jangdanDataSource)
         self.dynamicIconUseCase = DynamicIconImplement()
         
         self.widgetManager = LiveActivityManager(jangdanRepository: self.jangdanDataSource, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase)
         
         
-        self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase)
+        self.metronomeViewModel = MetronomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, tempoUseCase: self.tempoUseCase, accentUseCase: self.accentUseCase, appState: appState)
         
         self.controlViewModel =
         MetronomeControlViewModel(jangdanRepository: self.jangdanDataSource, tempoUseCase: self.tempoUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager, appState: self.appState, analyticsService: self.analyticsService)
         
-        self.homeViewModel = HomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase)
+        self.homeViewModel = HomeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, dynamicIconUseCase: self.dynamicIconUseCase, appState: self.appState)
         self.customJangdanListViewModel = CustomJangdanListViewModel(templateUseCase: self.templateUseCase)
         self.builtInJangdanPracticeViewModel = BuiltInJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)
         self.customJangdanPracticeViewModel = CustomJangdanPracticeViewModel(templateUseCase: self.templateUseCase, metronomeOnOffUseCase: self.metronomeOnOffUseCase, widgetManager: self.widgetManager)

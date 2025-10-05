@@ -33,16 +33,7 @@ struct HomeView: View {
                     ScrollView {
                         VStack(spacing: 24) {
                             // MARK: - 상단 배너
-                            if let surveyURL = URL(string: "https://forms.gle/BxXn9vp7qWVQ6eoQA") {
-                                Link(destination: surveyURL) {
-                                    Image(.jeongakBanner)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                                }
-                                .padding(.top, 8)
-                                .padding(.horizontal, 16)
-                            }
+                            BannerCarouselView(banners: viewModel.state.banners)
                             
                             // MARK: - 장단 리스트
                             VStack(spacing: 32) {
@@ -75,8 +66,8 @@ struct HomeView: View {
                     Group {
                         LinearGradient(
                             stops: [
-                                .init(color: .black.opacity(0.6), location: 0.0),
-                                .init(color: .black.opacity(0.9), location: 0.8)
+                                .init(color: .common0.opacity(0.6), location: 0.0),
+                                .init(color: .common0.opacity(0.9), location: 0.8)
                             ],
                             startPoint: .top,
                             endPoint: .bottom
@@ -98,7 +89,7 @@ struct HomeView: View {
                             VStack(spacing: 0) {
                                 Text("새로운 기능!")
                                     .font(.gosanja(size: 22))
-                                    .foregroundStyle(.textSecondary)
+                                    .foregroundStyle(.labelDefault)
 
                                 Rectangle()
                                     .foregroundColor(.clear)
@@ -106,10 +97,10 @@ struct HomeView: View {
                                     .background(
                                         LinearGradient(
                                             stops: [
-                                                .init(color: .black4.opacity(0), location: 0.0),
-                                                .init(color: .black4, location: 0.25),
-                                                .init(color: .black4, location: 0.75),
-                                                .init(color: .black4.opacity(0), location: 1.0)
+                                                .init(color: .neutral4.opacity(0), location: 0.0),
+                                                .init(color: .neutral4, location: 0.25),
+                                                .init(color: .neutral4, location: 0.75),
+                                                .init(color: .neutral4.opacity(0), location: 1.0)
                                             ],
                                             startPoint: .leading,
                                             endPoint: .trailing
@@ -124,7 +115,7 @@ struct HomeView: View {
 
                                 Text("이제 화면을 더 크게 쓸 수 있어요!")
                                     .font(.Body_SB)
-                                    .foregroundStyle(.textSecondary)
+                                    .foregroundStyle(.labelDefault)
                                     .padding(.top, 24)
                             }
                             .padding(.top, 24)
@@ -134,11 +125,11 @@ struct HomeView: View {
                                     self.appState.checkNewFeatureModal()
                                 } label: {
                                     RoundedRectangle(cornerRadius: 12)
-                                        .foregroundStyle(.buttonPrimary)
+                                        .foregroundStyle(.buttonDefault)
                                         .overlay {
                                             Text("확인")
                                                 .font(.Body_SB)
-                                                .foregroundStyle(.textDefault)
+                                                .foregroundStyle(.labelPrimary)
                                         }
                                         .padding(.horizontal, 30)
                                         .frame(height: 46)
@@ -149,7 +140,7 @@ struct HomeView: View {
                         }
                         .background(
                             RoundedRectangle(cornerRadius: 16)
-                                .foregroundStyle(.backgroundCard)
+                                .foregroundStyle(.backgroundElevated)
                         )
                         .padding(.horizontal, 37)
                     }
@@ -187,7 +178,7 @@ extension HomeView {
             HStack {
                 Text("내가 저장한 장단")
                     .font(.Title2_B)
-                    .foregroundStyle(.textDefault)
+                    .foregroundStyle(.labelPrimary)
                     .padding(.horizontal, 4)
                     .padding(.vertical, 6)
                 
@@ -198,7 +189,7 @@ extension HomeView {
                 } label: {
                     Text("더보기")
                         .font(.Callout_R)
-                        .foregroundStyle(.textTertiary)
+                        .foregroundStyle(.labelSecondary)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 6)
                         .frame(minWidth: 44, minHeight: 40)
@@ -208,11 +199,11 @@ extension HomeView {
             
             if self.viewModel.state.customJangdanList.isEmpty {
                 RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(.backgroundSheet)
+                    .foregroundStyle(.backgroundMute)
                     .overlay {
                         Text("저장한 장단이 없어요")
                             .font(.Callout_R)
-                            .foregroundStyle(.textQuaternary)
+                            .foregroundStyle(.labelTertiary)
                     }
                     .padding(.horizontal, 16)
                     .frame(height: 84)
@@ -225,7 +216,7 @@ extension HomeView {
                             } label: {
                                 ZStack {
                                     Rectangle()
-                                        .foregroundStyle(.backgroundSheet)
+                                        .foregroundStyle(.backgroundMute)
                                     
                                     Image(.customJangdanCardGradient)
                                         .resizable()
@@ -235,14 +226,14 @@ extension HomeView {
                                     VStack(spacing: 2) {
                                         Text(customJangdan.name)
                                             .font(.Headline_SB)
-                                            .foregroundStyle(.textDefault)
+                                            .foregroundStyle(.labelDefault)
                                             .lineLimit(1)
                                             .truncationMode(.tail)
                                             .frame(width: 156 - 32)
                                         
                                         Text(customJangdan.type.name)
                                             .font(.Subheadline_R)
-                                            .foregroundStyle(.textTertiary)
+                                            .foregroundStyle(.labelSecondary)
                                     }
                                 }
                                 .frame(width: 156, height: 84)
@@ -255,12 +246,12 @@ extension HomeView {
                                 self.router.push(.customJangdanList)
                             } label: {
                                 RoundedRectangle(cornerRadius: 16)
-                                    .foregroundStyle(.backgroundSheet)
+                                    .foregroundStyle(.backgroundMute)
                                     .frame(width: 156, height: 84)
                                     .overlay {
                                         Text("더보기")
                                             .font(.Body_R)
-                                            .foregroundStyle(.textSecondary)
+                                            .foregroundStyle(.labelTertiary)
                                     }
                             }
                         }
@@ -280,7 +271,7 @@ extension HomeView {
             HStack {
                 Text("바로 연습하기")
                     .font(.Title2_B)
-                    .foregroundStyle(.textDefault)
+                    .foregroundStyle(.labelPrimary)
                     .padding(.horizontal, 4)
                     .padding(.vertical, 6)
                 Spacer()
@@ -298,22 +289,22 @@ extension HomeView {
                         HStack(spacing: 20) {
                             jangdan.jangdanLogoImage
                                 .resizable()
-                                .foregroundStyle(.jangdanLogoPrimary)
+                                .foregroundStyle(.orange8)
                                 .frame(width: 36, height: 36)
                                 .padding(14)
                                 .background {
                                     RoundedRectangle(cornerRadius: 10)
-                                        .foregroundStyle(.jangdanLogoBackground)
+                                        .foregroundStyle(.orange13)
                                 }
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(jangdan.name)
                                     .font(.Title3_SB)
-                                    .foregroundStyle(.textDefault)
+                                    .foregroundStyle(.labelDefault)
                                 
                                 Text(jangdan.bakInformation)
                                     .font(.Subheadline_R)
-                                    .foregroundStyle(.textQuaternary)
+                                    .foregroundStyle(.labelSecondary)
                             }
                         }
                         
@@ -321,11 +312,11 @@ extension HomeView {
                         
                         Image(systemName: "chevron.right")
                             .font(.system(size: 20))
-                            .foregroundStyle(.textTertiary)
+                            .foregroundStyle(.labelSecondary)
                             .frame(width: 44, height: 44)
                     }
                     .padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
-                    .background(.backgroundSheet)
+                    .background(.backgroundMute)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }

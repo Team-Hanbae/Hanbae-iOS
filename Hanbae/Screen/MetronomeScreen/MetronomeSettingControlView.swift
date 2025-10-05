@@ -24,7 +24,7 @@ struct MetronomeSettingControlView: View {
                 Image(self.viewModel.state.currentJangdanType?.sobakSegmentCount == nil ? .listenSobak : .viewSobak)
                     .aspectRatio(contentMode: .fit)
             }
-            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.isSobakOn))
             
             Button {
                 self.viewModel.effect(action: .changeBlinkOnOff)
@@ -32,7 +32,15 @@ struct MetronomeSettingControlView: View {
                 Image(.flash)
                     .aspectRatio(contentMode: .fit)
             }
-            .buttonStyle(MetronomeSettingToggleButtonStyle())
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.isBlinkOn))
+            
+            Button {
+                self.viewModel.effect(action: .togglePrecount)
+            } label: {
+                Image(.precount)
+                    .aspectRatio(contentMode: .fit)
+            }
+            .buttonStyle(MetronomeSettingToggleButtonStyle(isOn: appState.precount))
             
             Menu {
                 ForEach(SoundType.allCases, id: \.rawValue) { sound in
@@ -47,14 +55,11 @@ struct MetronomeSettingControlView: View {
                     }
                 }
             } label: {
-                HStack(spacing: 0) {
-                    Image(systemName: "speaker.wave.2.fill")
-                    
-                    Text(self.appState.selectedSound.name)
-                        .font(.Body_R)
-                }
+                Text(self.appState.selectedSound.name)
+                    .font(.Body_R)
             }
             .buttonStyle(MetronomeSettingMenuButtonStyle())
+            .frame(width: 70)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
@@ -69,12 +74,12 @@ extension MetronomeSettingControlView {
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isOn ? Color.backgroundCard : Color.buttonToggleOff)
-                    .strokeBorder(isOn ? Color.buttonToggleOn : Color.buttonToggleOff)
+                    .fill(isOn ? .backgroundSubtle : .buttonDefault)
+                    .strokeBorder(isOn ? .themeNormal : .buttonDefault)
                 
                 configuration.label
                     .font(.title3)
-                    .foregroundStyle(isOn ? Color.buttonToggleOn : Color.textSecondary)
+                    .foregroundStyle(isOn ? .themeNormal : .labelDefault)
             }
             .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in
@@ -91,12 +96,12 @@ extension MetronomeSettingControlView {
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isActive ? Color.backgroundCard : Color.buttonToggleOff)
-                    .strokeBorder(isActive ? Color.buttonToggleOn : Color.buttonToggleOff)
+                    .fill(isActive ? .backgroundSubtle : .buttonDefault)
+                    .strokeBorder(isActive ? .themeNormal : .buttonDefault)
                 
                 configuration.label
                     .font(.title3)
-                    .foregroundStyle(isActive ? Color.buttonToggleOn : Color.textSecondary)
+                    .foregroundStyle(isActive ? .themeNormal : .labelDefault)
             }
             .frame(height: 48)
             .onChange(of: configuration.isPressed) { _, newValue in
